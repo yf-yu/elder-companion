@@ -13,7 +13,7 @@
 - 📞 重要電話
 
 ## 線上使用
-https://你的帳號.github.io/elder-companion/
+[GOGO](https://yf-yu.github.io/elder-companion/)
 
 ## 本機開發
 直接用瀏覽器開啟 `index.html` 即可（無需建置）。
