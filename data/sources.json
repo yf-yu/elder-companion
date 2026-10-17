@@ -1,4 +1,10 @@
 
 {
-  "sources": []
+  "sources": [
+    {
+      "name": "衛生福利部疾病管制署",
+      "category": "健康資訊",
+      "url": "https://www.cdc.gov.tw/RSS/RssXml/Hh094B49-DRwe2RR4eFfrQ?type=1"
+    }
+  ]
 }
