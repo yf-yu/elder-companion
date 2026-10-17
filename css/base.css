@@ -1,122 +1,55 @@
-/* ============ base.css：變數、reset、RWD 基礎、頁面切換 ============ */
-:root{
-  /* 色彩 */
-  --n:#1A3C5E; --n2:#2A5580;
-  --sky:#EBF5FB; --sky2:#C8E4F8;
-  --red:#C0392B; --red2:#E74C3C; --redbg:#FDEDEC;
-  --green:#1A6035; --green2:#27AE60; --greenbg:#EAFAF1;
-  --amber:#D4821A;
-  --white:#fff; --bg:#F4F8FB;
-  --text:#1A1A2E; --muted:#5A6A7A;
-  --border:#C8D8E8; --hint:#8A9AAA;
-  
-  /* RWD 基準 */
-  --app-max: 480px;
-  --pad-x: clamp(12px, 3vw, 18px);
-  --gap: clamp(8px, 2vw, 12px);
-}
 
-/* Reset */
-*,*::before,*::after{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+/* 所有頁面預設隱藏 */
+.page,
+.sub {
+  display: none !important;
+  position: fixed;
+  inset: 0;
 
-html, body{
-  height:100%;
-  font-family:'Noto Sans TC',system-ui,-apple-system,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-  -webkit-font-smoothing:antialiased;
-  
-  /* 🌟 關鍵：鎖定外層，絕對不讓網頁本身上下滑動，避免切頁時畫面跟著跳 */
-  overflow:hidden; 
-}
-
-body{
-  min-width:200px;
-}
-
-/* ==========================================
-   🌟 頁面切換核心：絕對覆蓋，防止背景透視
-   ========================================== */
-.page, .sub {
-  display: none;
-  flex-direction: column;
-  
-  /* 改用 fixed 強制貼齊視窗，讓每一頁都像一張滿版貼紙 */
-  position: fixed; 
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  
-  /* 只有「當前顯示的頁面」可以上下滑動 */
-  overflow-y: auto; 
-  -webkit-overflow-scrolling: touch;
-  
-  /* 🌟 關鍵：加上不透明背景，徹底遮住底層，不會透出下方內容 */
-  background: var(--bg); 
-  z-index: 10; 
-}
+  height: 100vh;
+  height: 100dvh;
 
-/* 首頁專屬漸層背景（層級設為 1，確保被隱藏時不會干擾子頁面） */
-#home {
-  background: linear-gradient(155deg, #102A40, var(--n), var(--n2));
-  z-index: 1; 
-}
+  flex-direction: column;
+  overflow: hidden;
 
-/* 子女設定頁背景 */
-#setup {
   background: var(--bg);
-  z-index: 5;
+  z-index: 1;
 }
 
-/* 當加上 .show 時，才顯示該頁面 */
-.page.show, .sub.show {
-  display: flex;
+/* 只有目前頁面顯示 */
+.page.show,
+.sub.show {
+  display: flex !important;
 }
 
-/* 桌機版：畫面置中、加上陰影，像一個手機框 */
-@media(min-width:481px){
-  .page, .sub {
+/* 首頁背景 */
+#home {
+  position: fixed;
+  background: linear-gradient(
+    155deg,
+    #102A40,
+    var(--n),
+    var(--n2)
+  );
+}
+
+/* 子頁面內容可捲動 */
+.sub .sbdy {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 桌機置中 */
+@media (min-width: 481px) {
+  .page,
+  .sub {
     max-width: var(--app-max);
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
-    box-shadow: 0 0 40px rgba(0,0,0,.08);
   }
-}
-
-/* 深色模式（跟隨系統） */
-@media(prefers-color-scheme: dark){
-  :root{
-    --bg:#0F1A24; --white:#15222E;
-    --text:#E8EEF4; --muted:#A0B0C0;
-    --border:#2A3A4A; --hint:#6A7A8A;
-    --sky:#1A2A38; --sky2:#25384A;
-  }
-}
-
-/* Toast 提示訊息 */
-#toast {
-  position: fixed;
-  bottom: 26px; 
-  left: 50%;
-  transform: translateX(-50%) translateY(80px);
-  background: var(--n); 
-  color: #fff;
-  padding: 12px 24px; 
-  border-radius: 100px;
-  font-size: clamp(13px, 3.5vw, 15px); 
-  font-weight: 600;
-  z-index: 9999;
-  transition: transform .3s;
-  white-space: nowrap;
-  pointer-events: none;
-  max-width: 90vw;
-  overflow: hidden; 
-  text-overflow: ellipsis;
 }
