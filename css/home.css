@@ -1,4 +1,4 @@
-/* ============ home.css：首頁 ============ */
+
 #home{
   background:linear-gradient(155deg,#102A40,var(--n),var(--n2));
   position:relative; overflow:hidden;
@@ -14,7 +14,6 @@
 .e-date{font-size:clamp(14px,3.8vw,17px); color:rgba(255,255,255,.75); font-weight:500}
 .e-wx{display:flex; align-items:center; gap:8px; margin-top:7px; font-size:clamp(14px,3.8vw,17px); color:rgba(255,255,255,.8)}
 
-/* SOS */
 .sos-wrap{padding:0 var(--pad-x) 10px; position:relative; z-index:1}
 .sos{
   width:100%; padding:clamp(18px,4.5vw,22px) clamp(14px,3.5vw,18px);
@@ -30,7 +29,6 @@
 .sos-main{font-size:clamp(20px,5.5vw,32px); font-weight:900; color:#fff; letter-spacing:1px}
 .sos-sub{font-size:clamp(12px,3.2vw,15px); color:rgba(255,255,255,.8); margin-top:2px}
 
-/* 功能格：200px 時單欄，較寬時兩欄 */
 .fgrid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(min(100%,160px),1fr));
@@ -54,7 +52,6 @@
 .fb-lb{font-size:clamp(16px,4.2vw,19px); font-weight:700; color:#fff; letter-spacing:.5px}
 .fb-sub{font-size:clamp(10px,2.8vw,12px); color:rgba(255,255,255,.6)}
 
-/* 通知列 */
 .e-ntc{
   margin:0 var(--pad-x) 18px;
   background:rgba(255,255,255,.1);
