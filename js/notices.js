@@ -90,7 +90,7 @@
       : Infinity;
 
     const fresh =
-      age >= 0 && age < 6 * 60 * 60 * 1000;
+  age >= 0 && age < 30 * 60 * 60 * 1000;
 
     const status =
       data.status === "ok" && fresh
