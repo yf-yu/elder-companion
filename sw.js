@@ -1,4 +1,4 @@
-const CACHE = 'banlaoyou-v1';
+const CACHE = 'banlaoyou-v2';
 const ASSETS = [
   './',
   './index.html',
