@@ -91,3 +91,8 @@
     transform: translateX(-50%);
   }
 }
+
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #1261b0;outline-offset:3px}
+.mem-card{cursor:pointer;font:inherit;min-height:54px}
+.safety-note{font-size:16px;line-height:1.7;background:#fff5df;border-left:4px solid #a56b00;padding:12px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
