@@ -1,8 +1,8 @@
-/* ============ home.js：首頁、季節養生 ============ */
+
 window.initH = function(){
   const now = new Date(), h = now.getHours();
   const days = ['日','一','二','三','四','五','六'];
-  const nm = window.C.name || '長輩';
+  const nm = window.C.name || '朋友';
 
   const greet = h < 12 ? '早安 ☀️' : h < 18 ? '午安 🌤️' : '晚安 🌙';
   e('eg').textContent = greet + '，' + nm;
@@ -29,5 +29,4 @@ window.setSeason = function(m){
   if(e('sei'))  e('sei').textContent = s.i;
   if(e('set'))  e('set').textContent = s.t;
   if(e('seb'))  e('seb').textContent = s.b;
-  if(e('setp')) e('setp').textContent = s.tp;
-};
+  if(e('setp'))
