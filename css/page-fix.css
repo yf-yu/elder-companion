@@ -1,11 +1,18 @@
-html,body{height:100%;overflow:hidden}
-.page,.sub{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;display:none;flex-direction:column;overflow:hidden;background:var(--bg);isolation:isolate;z-index:1}
-.page.show{display:flex;z-index:10}
-.sub.show{display:flex;z-index:20}
-#home{position:fixed;inset:0;background:linear-gradient(155deg,#102A40,var(--n),var(--n2));overflow-y:auto;overscroll-behavior:contain;z-index:1}
-#home.show{z-index:10}
-#setup{position:fixed;inset:0;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;z-index:1}
-#setup.show{z-index:10}
-.sub .shdr{position:relative;flex:0 0 auto;z-index:2}
-.sub .sbdy{flex:1 1 auto;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:var(--bg)}
-@media(min-width:481px){.page,.sub,#home,#setup{left:50%;right:auto;width:100%;max-width:var(--app-max);transform:translateX(-50%)}}
+/* 深色模式：健康操展開區 */
+@media (prefers-color-scheme: dark) {
+  .estps {
+    background: var(--white);
+  }
+}
+
+/* 防止圖片超出頁面 */
+.sbdy img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 讓頁面內容不受底層視覺影響 */
+.sub,
+.sub .sbdy {
+  background-color: var(--bg);
+}
