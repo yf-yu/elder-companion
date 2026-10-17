@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-10-17T15:03:14.758210+00:00",
+  "sources": {
+    "預定停水": {
+      "state": "ok",
+      "items": 0
+    },
+    "預定停電": {
+      "state": "ok",
+      "items": 0
+    },
+    "天氣預報": {
+      "state": "ok",
+      "items": 66
+    },
+    "W-C0033-006": {
+      "state": "ok",
+      "items": 0
+    },
+    "W-C0033-007": {
+      "state": "error",
+      "items": 0,
+      "message": "HTTP Error 404: Not Found"
+    },
+    "W-C0033-008": {
+      "state": "error",
+      "items": 0,
+      "message": "HTTP Error 404: Not Found"
+    },
+    "W-C0033-009": {
+      "state": "error",
+      "items": 0,
+      "message": "HTTP Error 404: Not Found"
+    },
+    "W-C0033-010": {
+      "state": "error",
+      "items": 0,
+      "message": "HTTP Error 500: Server Error"
+    }
+  },
+  "items": 66
+}
