@@ -1,26 +1,28 @@
 
-window.go = function(id) {
+function showPage(id) {
   const target = document.getElementById(id);
-  if (!target || !target.classList.contains('sub')) return;
 
-  // 確保一次只有一個子頁面顯示
-  document.querySelectorAll('.sub').forEach(p => {
-    p.classList.remove('show');
+  if (!target) return;
+
+  // 先隱藏所有頁面
+  document.querySelectorAll('.page, .sub').forEach(page => {
+    page.classList.remove('show');
   });
 
-  // 主頁面只顯示首頁
-  document.querySelectorAll('.page').forEach(p => {
-    p.classList.toggle('show', p.id === 'home');
-  });
-
+  // 只顯示指定頁面
   target.classList.add('show');
 
-  // 重設真正的捲動容器
+  // 切換後回到頂部
   target.scrollTop = 0;
-  const body = target.querySelector('.sbdy');
-  if (body) body.scrollTop = 0;
 
-  // 保留原有功能
+  const content = target.querySelector('.sbdy');
+  if (content) content.scrollTop = 0;
+}
+
+window.go = function(id) {
+  showPage(id);
+
+  // 保留原本功能初始化
   if (id === 'sos') bldP('sos-phones', true);
   if (id === 'phone') bldP('all-phones', false);
   if (id === 'notice') bldN();
@@ -30,10 +32,7 @@ window.go = function(id) {
 };
 
 window.bk = function(id) {
-  const target = document.getElementById(id);
-  if (!target) return;
-
-  target.classList.remove('show');
+  showPage('home');
 };
 
 window.goHome = function() {
@@ -42,17 +41,6 @@ window.goHome = function() {
     new Date().toLocaleString('zh-TW')
   );
 
-  document.querySelectorAll('.sub').forEach(p => {
-    p.classList.remove('show');
-  });
-
-  document.querySelectorAll('.page').forEach(p => {
-    p.classList.remove('show');
-  });
-
-  const home = document.getElementById('home');
-  home.classList.add('show');
-  home.scrollTop = 0;
-
+  showPage('home');
   initH();
 };
