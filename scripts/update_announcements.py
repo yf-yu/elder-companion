@@ -1,3 +1,4 @@
+
 import json
 import re
 import sys
@@ -99,6 +100,8 @@ def parse_date(value):
         "%Y/%m/%d %H:%M:%S",
         "%Y-%m-%d %H:%M",
         "%Y/%m/%d %H:%M",
+        "%Y-%m-%d",
+        "%Y/%m/%d",
         "%Y-%m-%d",
         "%Y/%m/%d",
         "%Y.%m.%d",
@@ -318,86 +321,70 @@ def find_date(element):
 
 
 def find_link(element, feed_url):
-    """兼容 RSS 與 Atom 連結格式。"""
-
+    """RSS/Atom 連結；兼容 CDATA、相對網址、guid 與文字連結。"""
     for child in element:
         if local_name(child.tag) != "link":
             continue
+        href = child.attrib.get("href", "").strip()
+        rel = child.attrib.get("rel", "alternate").lower()
+        raw = href or "".join(child.itertext()).strip()
+        if raw and rel in ("alternate", ""):
+            return urljoin(feed_url, html.unescape(raw))
 
-        href = child.attrib.get("href")
-
-        if href:
-            rel = child.attrib.get("rel", "alternate")
-
-            if rel in ("alternate", ""):
-                return urljoin(feed_url, href.strip())
-
-        if child.text and child.text.strip():
-            return urljoin(
-                feed_url,
-                child.text.strip()
-            )
-
+    # 有些政府 RSS 將文章網址放在 guid/id 中
+    for field in ("guid", "id"):
+        raw = find_text(element, [field]).strip()
+        if raw.startswith(("https://", "http://", "/")):
+            return urljoin(feed_url, html.unescape(raw))
     return ""
 
 
 def parse_feed(xml_data, source):
-    """解析單一 RSS / Atom 資料來源。"""
-
+    """解析 RSS/Atom，並回傳公告與診斷資訊。"""
     root = ET.fromstring(xml_data)
-
-    source_name = clean_text(
-        source.get("name", "官方公告")
-    )
-
-    category = clean_text(
-        source.get("category", "政府資訊")
-    )
-
+    source_name = clean_text(source.get("name", "官方公告"))
+    category = clean_text(source.get("category", "政府資訊"))
     feed_url = source["url"]
 
-    entries = []
-
-    for element in root.iter():
-        if local_name(element.tag) in ("item", "entry"):
-            entries.append(element)
-
+    entries = [element for element in root.iter()
+               if local_name(element.tag) in ("item", "entry")]
     results = []
+    missing_title = 0
+    rejected_link = 0
+    examples = []
 
     for entry in entries[:MAX_ITEMS_PER_SOURCE]:
-
-        title = clean_text(
-            find_text(entry, ["title"])
-        )
-
+        title = clean_text(find_text(entry, ["title"]))
         url = find_link(entry, feed_url)
-
-        if not title or not is_official_url(url):
+        if not title:
+            missing_title += 1
             continue
-
-        summary = find_text(
-            entry,
-            [
-                "description",
-                "summary",
-                "content",
-                "encoded",
-                "subtitle",
-            ]
-        )
-
-        published_at = find_date(entry)
-
+        if not is_official_url(url):
+            rejected_link += 1
+            if len(examples) < 2:
+                # 僅輸出網址供診斷，不抓取或開啟文章連結
+                examples.append(url[:180] or "(空連結)")
+            continue
+        summary = find_text(entry, [
+            "description", "summary", "content", "encoded", "subtitle"
+        ])
         results.append({
             "title": title,
             "url": url,
             "summary": shorten_text(summary),
             "source": source_name,
             "category": category,
-            "published_at": published_at,
+            "published_at": find_date(entry),
         })
 
-    return results
+    diagnostics = {
+        "root": local_name(root.tag),
+        "entries": len(entries),
+        "missing_title": missing_title,
+        "rejected_link": rejected_link,
+        "examples": examples,
+    }
+    return results, diagnostics
 
 
 # ============================================================
@@ -625,7 +612,7 @@ def main():
     for source in sources:
 
         print("")
-        print("讀取來源：" + source["name"])
+        print("讀取來源：" + source["name"], flush=True)
         print("網址：" + source["url"])
 
         try:
@@ -634,14 +621,24 @@ def main():
                 source["url"]
             )
 
-            items = parse_feed(
+            items, diagnostics = parse_feed(
                 xml_data,
                 source
             )
 
+            print(
+                "RSS 診斷：根節點={root}、原始項目={entries}、"
+                "缺少標題={missing_title}、不符官方網址={rejected_link}".format(
+                    **diagnostics
+                ),
+                flush=True
+            )
+            for example in diagnostics["examples"]:
+                print("未通過網址檢查的範例：" + example, flush=True)
+
             if not items:
                 raise ValueError(
-                    "RSS 沒有可用的官方公告"
+                    "RSS 沒有可用的官方公告；請查看上方 RSS 診斷"
                 )
 
             successful_sources += 1
