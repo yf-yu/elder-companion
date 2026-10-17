@@ -1,7 +1,7 @@
 {
-  "name": "陪伴好友",
-  "short_name": "陪伴好友",
-  "description": "給長輩的高齡友善陪伴 App",
+  "name": "伴老友",
+  "short_name": "伴老友",
+  "description": "大字級、大按鈕、離線可用的友善陪伴 App",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -11,13 +11,13 @@
   "lang": "zh-TW",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "icon/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "icon/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
