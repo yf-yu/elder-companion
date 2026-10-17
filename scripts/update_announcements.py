@@ -1,16 +1,20 @@
-
-
 import html
 import ipaddress
 import json
 import re
 import sys
+
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, urlunparse
-from urllib.request import HTTPRedirectHandler, Request, build_opener
+from urllib.request import (
+    HTTPRedirectHandler,
+    Request,
+    build_opener,
+)
 from xml.etree import ElementTree as ET
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES_FILE = ROOT / "data" / "sources.json"
@@ -24,54 +28,120 @@ TIMEOUT = 20
 
 TZ_TAIWAN = timezone(timedelta(hours=8))
 USER_AGENT = (
-    "BanLaoYou-OfficialNotices/1.1 "
+    "BanLaoYou-OfficialNotices/8.1 "
     "(Public government RSS reader)"
 )
 
-# 各分類先分配名額；如有剩餘空間，再依日期補滿 40 則。
+# 不強迫補滿 40 則。
+# 每個主題設定上限，避免單一來源淹沒其他資訊。
 CATEGORY_LIMITS = {
-    "健康資訊": 12,
-    "長者福利": 8,
+    "健康資訊": 10,
+    "長者福利": 10,
     "食藥安全": 10,
-    "健保就醫": 6,
-    "年金給付": 6,
-    "防詐提醒": 5,
-    "衛福部公告": 6,
-    "政府資訊": 6,
+    "健保就醫": 7,
+    "年金給付": 7,
+    "防詐提醒": 7,
+    "天氣預報": 6,
+    "預定停電": 6,
+    "預定停水": 6,
+    "衛福部公告": 3,
+    "政府資訊": 3,
 }
 
 WELFARE_WORDS = (
-    "長照", "高齡", "長者", "老人", "敬老",
-    "失智", "日照中心", "照顧服務",
-    "居家照護", "喘息服務", "老人福利"
+    "長照", "長期照顧", "高齡", "長者", "老人",
+    "敬老", "失智", "日照中心", "照顧服務",
+    "居家照護", "居家照顧", "喘息服務",
+    "老人福利", "獨居長者", "輔具",
+    "照顧者", "老老照顧", "銀髮",
 )
 
 MEDICAL_WORDS = (
-    "健保", "健保署", "健保給付",
-    "就醫權益", "部分負擔", "醫療費用"
+    "健保", "健保署", "健保給付", "就醫權益",
+    "部分負擔", "醫療費用", "慢性病",
+    "居家醫療", "醫療補助",
 )
 
 PENSION_WORDS = (
     "國民年金", "老年年金", "勞保年金",
     "老年給付", "退休金", "勞工退休金",
-    "農民退休儲金", "年金給付"
+    "農民退休儲金", "年金給付",
+    "老農津貼", "勞保給付",
 )
 
 FRAUD_WORDS = (
-    "詐騙", "防詐", "假投資",
-    "165反詐", "165全民防騙"
+    "詐騙", "防詐", "反詐", "假投資",
+    "假檢警", "假冒", "165反詐",
+    "165全民防騙", "金融詐欺",
 )
 
+HEALTH_WORDS = (
+    "疫苗", "接種", "流感", "新冠",
+    "COVID", "肺炎", "疫情", "防疫",
+    "傳染病", "帶狀疱疹", "健康檢查",
+    "成人預防保健", "癌症篩檢",
+    "疾病預防", "登革熱", "腸病毒",
+    "公費疫苗",
+)
 
-# ============================================================
-# 文字及網址安全
-# ============================================================
+FOOD_DRUG_WORDS = (
+    "食安", "食品安全", "食品中毒",
+    "食物中毒", "食品召回", "回收",
+    "下架", "藥品", "藥物", "用藥",
+    "不良反應", "違規食品",
+    "醫療器材", "藥品安全",
+)
+
+LIFE_WORDS = (
+    "停水", "停電", "供水", "供電",
+    "豪雨", "低溫", "高溫", "寒流",
+    "颱風", "熱傷害", "避難",
+    "補助申請", "補助資格",
+    "申請期限", "津貼",
+)
+
+# 只用於行政院 RSS 的生活政策篩選。
+POLICY_WORDS = (
+    "長照", "高齡", "長者", "老人",
+    "敬老", "失智", "照顧服務",
+    "老人福利", "健保", "醫療",
+    "就醫", "慢性病", "年金",
+    "退休金", "老農津貼",
+    "詐騙", "防詐", "反詐",
+    "食安", "食品安全", "藥品安全",
+    "疫苗", "流感", "防疫",
+    "停水", "停電", "供水",
+    "豪雨", "寒流", "高溫",
+    "熱傷害", "弱勢補助",
+    "社會救助", "住宅補貼",
+    "補助申請", "補助資格",
+)
+
+# 明確排除不符合本服務方向的內容。
+# 不使用「市長」「總統」等單字排除，
+# 以免誤刪真正影響長輩權益的政策。
+EXCLUDE_WORDS = (
+    "地震", "震央", "地震報告",
+    "剪綵", "揭牌典禮",
+    "競選造勢", "選舉造勢",
+    "政黨募款", "黨內初選",
+    "觀光行銷", "旅遊推廣",
+    "演唱會售票", "藝文表演售票",
+)
+
+# 只針對行政院的新聞式標題進一步排除。
+POLICY_NEWS_EXCLUDE = (
+    "接見外賓", "外交宴會",
+    "國際訪賓", "出席晚宴",
+    "體育賽事成績",
+)
+
 
 def clean_text(value):
     value = re.sub(
         r"(?is)<(script|style)\b[^>]*>.*?</\1\s*>",
         " ",
-        str(value or "")
+        str(value or ""),
     )
     value = re.sub(r"(?s)<[^>]+>", " ", value)
     return re.sub(
@@ -80,24 +150,23 @@ def clean_text(value):
 
 
 def is_official_url(value):
-    """RSS 來源及公告連結必須是 HTTPS 的 .gov.tw。"""
     if not isinstance(value, str):
         return False
 
     try:
-        p = urlparse(value.strip())
-        host = (p.hostname or "").lower().rstrip(".")
+        parsed = urlparse(value.strip())
+        host = (parsed.hostname or "").lower().rstrip(".")
 
-        if p.scheme.lower() != "https":
+        if parsed.scheme.lower() != "https":
             return False
 
         if not host.endswith(".gov.tw"):
             return False
 
-        if p.username or p.password:
+        if parsed.username or parsed.password:
             return False
 
-        if p.port not in (None, 443):
+        if parsed.port not in (None, 443):
             return False
 
         try:
@@ -111,30 +180,27 @@ def is_official_url(value):
 
 
 def normalize_article_url(value):
-    """
-    只針對食藥署官方 RSS 使用的 HTTP 文章網址，
-    升級為 HTTPS，不放寬其他網址安全規則。
-    """
+    """僅將食藥署官方文章的 HTTP 網址升級為 HTTPS。"""
     if not isinstance(value, str):
         return ""
 
     value = html.unescape(value.strip())
 
     try:
-        p = urlparse(value)
+        parsed = urlparse(value)
 
         if (
-            p.scheme.lower() == "http"
-            and (p.hostname or "").lower().rstrip(".")
-                == "www.fda.gov.tw"
-            and not p.username
-            and not p.password
-            and p.port in (None, 80)
+            parsed.scheme.lower() == "http"
+            and (parsed.hostname or "").lower().rstrip(".")
+            == "www.fda.gov.tw"
+            and not parsed.username
+            and not parsed.password
+            and parsed.port in (None, 80)
         ):
             return urlunparse(
-                p._replace(
+                parsed._replace(
                     scheme="https",
-                    netloc="www.fda.gov.tw"
+                    netloc="www.fda.gov.tw",
                 )
             )
 
@@ -145,8 +211,6 @@ def normalize_article_url(value):
 
 
 class SafeRedirectHandler(HTTPRedirectHandler):
-    """每次 RSS 轉址都重新檢查官方 HTTPS 網域。"""
-
     def redirect_request(
         self, req, fp, code, msg, headers, newurl
     ):
@@ -161,10 +225,6 @@ class SafeRedirectHandler(HTTPRedirectHandler):
             req, fp, code, msg, headers, target
         )
 
-
-# ============================================================
-# 日期
-# ============================================================
 
 def parse_date(value):
     value = str(value or "").strip()
@@ -208,24 +268,22 @@ def parse_date(value):
         "%Y/%m/%d %H:%M",
         "%Y-%m-%d",
         "%Y/%m/%d",
-        "%Y.%m.%d"
+        "%Y.%m.%d",
     )
 
     for fmt in formats:
         try:
             dt = datetime.strptime(value, fmt)
-            dt = dt.replace(tzinfo=TZ_TAIWAN)
-
-            return dt.astimezone(
-                timezone.utc
-            ).isoformat()
+            return dt.replace(
+                tzinfo=TZ_TAIWAN
+            ).astimezone(timezone.utc).isoformat()
 
         except ValueError:
             pass
 
     match = re.fullmatch(
         r"(\d{2,3})[/-](\d{1,2})[/-](\d{1,2})",
-        value
+        value,
     )
 
     if match:
@@ -234,7 +292,7 @@ def parse_date(value):
                 int(match[1]) + 1911,
                 int(match[2]),
                 int(match[3]),
-                tzinfo=TZ_TAIWAN
+                tzinfo=TZ_TAIWAN,
             )
 
             return dt.astimezone(
@@ -247,12 +305,13 @@ def parse_date(value):
     return None
 
 
-# ============================================================
-# RSS / Atom
-# ============================================================
-
 def local_name(tag):
-    return str(tag).split("}")[-1].split(":")[-1].lower()
+    return (
+        str(tag)
+        .split("}")[-1]
+        .split(":")[-1]
+        .lower()
+    )
 
 
 def child_text(element, names):
@@ -267,9 +326,15 @@ def child_text(element, names):
 
 def entry_date(entry):
     fields = (
-        "pubDate", "published", "publishedDate",
-        "publicationDate", "date", "issued",
-        "created", "updated", "modified"
+        "pubDate",
+        "published",
+        "publishedDate",
+        "publicationDate",
+        "date",
+        "issued",
+        "created",
+        "updated",
+        "modified",
     )
 
     for field in fields:
@@ -315,31 +380,32 @@ def entry_link(entry, feed_url):
     return ""
 
 
-# ============================================================
-# 公告自動分類
-# ============================================================
+def contains_any(text, words):
+    text = (text or "").lower()
+
+    return any(
+        word.lower() in text
+        for word in words
+    )
+
 
 def classify(item, source):
-    """
-    根據來源及標題分類。
+    """依文章標題與來源分類。"""
 
-    衛福部的所有新聞不會自動視為長者福利。
-    這是關鍵字初步分類，不代表人工審核結果。
-    """
     title = item["title"]
     source_name = source["name"]
     configured = source["category"]
 
-    if any(word in title for word in FRAUD_WORDS):
+    if contains_any(title, FRAUD_WORDS):
         return "防詐提醒"
 
-    if any(word in title for word in PENSION_WORDS):
+    if contains_any(title, PENSION_WORDS):
         return "年金給付"
 
-    if any(word in title for word in MEDICAL_WORDS):
+    if contains_any(title, MEDICAL_WORDS):
         return "健保就醫"
 
-    if any(word in title for word in WELFARE_WORDS):
+    if contains_any(title, WELFARE_WORDS):
         return "長者福利"
 
     if (
@@ -357,17 +423,75 @@ def classify(item, source):
     return configured or "政府資訊"
 
 
+def is_relevant(item, source):
+    """判斷公告是否適合伴老友。
+
+    行政院採嚴格關鍵字篩選。
+    原有專業來源保留其主題公告，
+    並排除明顯無關的內容。
+    """
+
+    title = item["title"]
+    summary = item.get("summary", "")
+    category = item["category"]
+
+    if contains_any(title, EXCLUDE_WORDS):
+        return False
+
+    if source.get("filter") == "elder_life":
+        if contains_any(
+            title, POLICY_NEWS_EXCLUDE
+        ):
+            return False
+
+        # 行政院必須在標題出現明確生活主題，
+        # 避免摘要中的偶然字詞造成誤判。
+        return contains_any(
+            title, POLICY_WORDS
+        )
+
+    if category == "衛福部公告":
+        # 衛福部的一般新聞不再全部保留。
+        # 必須與生活、健康、福利或安全有關。
+        return contains_any(
+            title + " " + summary,
+            (
+                WELFARE_WORDS
+                + MEDICAL_WORDS
+                + PENSION_WORDS
+                + FRAUD_WORDS
+                + HEALTH_WORDS
+                + FOOD_DRUG_WORDS
+                + LIFE_WORDS
+            ),
+        )
+
+    # 疾管署、食藥署等專業來源，
+    # 先保留主題公告，避免過度過濾重要警訊。
+    return True
+
+
 def parse_feed(data, source):
     root = ET.fromstring(data)
 
+    root_type = local_name(root.tag)
+
+    if root_type not in ("rss", "feed", "rdf"):
+        raise ValueError(
+            "不是有效 RSS/Atom，根節點：" + root_type
+        )
+
     entries = [
-        el for el in root.iter()
-        if local_name(el.tag) in ("item", "entry")
+        element
+        for element in root.iter()
+        if local_name(element.tag)
+        in ("item", "entry")
     ]
 
     results = []
     missing_title = 0
     rejected_link = 0
+    filtered = 0
     examples = []
 
     for entry in entries[:MAX_ITEMS_PER_SOURCE]:
@@ -397,9 +521,12 @@ def parse_feed(data, source):
             child_text(
                 entry,
                 (
-                    "description", "summary",
-                    "content", "encoded", "subtitle"
-                )
+                    "description",
+                    "summary",
+                    "content",
+                    "encoded",
+                    "subtitle",
+                ),
             )
         )
 
@@ -415,27 +542,28 @@ def parse_feed(data, source):
             "summary": summary,
             "source": source["name"],
             "category": source["category"],
-            "published_at": entry_date(entry)
+            "published_at": entry_date(entry),
         }
 
-        item["category"] = classify(item, source)
+        item["category"] = classify(
+            item, source
+        )
+
+        if not is_relevant(item, source):
+            filtered += 1
+            continue
 
         results.append(item)
 
-    diagnostics = {
-        "root": local_name(root.tag),
+    return results, {
+        "root": root_type,
         "entries": len(entries),
         "missing_title": missing_title,
         "rejected_link": rejected_link,
-        "examples": examples
+        "filtered": filtered,
+        "examples": examples,
     }
 
-    return results, diagnostics
-
-
-# ============================================================
-# 下載 RSS
-# ============================================================
 
 def download_feed(url):
     if not is_official_url(url):
@@ -443,7 +571,7 @@ def download_feed(url):
             "不允許的官方來源網址：" + str(url)
         )
 
-    req = Request(
+    request = Request(
         url,
         headers={
             "User-Agent": USER_AGENT,
@@ -452,14 +580,21 @@ def download_feed(url):
                 "application/atom+xml,"
                 "application/xml,"
                 "text/xml,*/*"
-            )
-        }
+            ),
+        },
     )
 
-    opener = build_opener(SafeRedirectHandler())
+    opener = build_opener(
+        SafeRedirectHandler()
+    )
 
-    with opener.open(req, timeout=TIMEOUT) as response:
-        if not is_official_url(response.geturl()):
+    with opener.open(
+        request, timeout=TIMEOUT
+    ) as response:
+
+        if not is_official_url(
+            response.geturl()
+        ):
             raise ValueError(
                 "RSS 最終網址不符合安全規則"
             )
@@ -476,19 +611,17 @@ def download_feed(url):
         return data
 
 
-# ============================================================
-# 來源設定
-# ============================================================
-
 def load_sources():
     with SOURCES_FILE.open(
         "r", encoding="utf-8"
-    ) as f:
-        raw = json.load(f)
+    ) as file:
+        raw = json.load(file)
 
     if (
         not isinstance(raw, dict)
-        or not isinstance(raw.get("sources"), list)
+        or not isinstance(
+            raw.get("sources"), list
+        )
     ):
         raise ValueError(
             "sources.json 必須包含 sources 陣列"
@@ -506,25 +639,29 @@ def load_sources():
             )
         ):
             raise ValueError(
-                f"第 {index} 個來源網址不符合官方 HTTPS 規則"
+                f"第 {index} 個來源網址"
+                "不符合官方 HTTPS 規則"
             )
 
         sources.append({
             "name": clean_text(
-                source.get("name", "官方公告")
+                source.get(
+                    "name", "官方公告"
+                )
             ),
             "category": clean_text(
-                source.get("category", "政府資訊")
+                source.get(
+                    "category", "政府資訊"
+                )
             ),
-            "url": source["url"].strip()
+            "url": source["url"].strip(),
+            "filter": source.get(
+                "filter", ""
+            ),
         })
 
     return sources
 
-
-# ============================================================
-# 排序、去重及分類配額
-# ============================================================
 
 def timestamp(item):
     try:
@@ -540,10 +677,8 @@ def timestamp(item):
 
 
 def select_balanced(items):
-    """
-    第一輪：依分類名額選取。
-    第二輪：如果不足 40 則，依日期補滿。
-    """
+    """去重、依主題上限選取，不強迫補滿。"""
+
     unique = {}
 
     for item in items:
@@ -554,54 +689,41 @@ def select_balanced(items):
     ordered = sorted(
         unique.values(),
         key=timestamp,
-        reverse=True
+        reverse=True,
     )
 
     selected = []
-    deferred = []
     counts = {}
 
     for item in ordered:
-        cat = item["category"]
-
-        limit = CATEGORY_LIMITS.get(
-            cat, 6
-        )
-
-        if (
-            counts.get(cat, 0) < limit
-            and len(selected) < MAX_ITEMS
-        ):
-            selected.append(item)
-
-            counts[cat] = (
-                counts.get(cat, 0) + 1
-            )
-
-        else:
-            deferred.append(item)
-
-    for item in deferred:
         if len(selected) >= MAX_ITEMS:
             break
 
+        category = item["category"]
+        limit = CATEGORY_LIMITS.get(
+            category, 5
+        )
+
+        if counts.get(category, 0) >= limit:
+            continue
+
         selected.append(item)
+
+        counts[category] = (
+            counts.get(category, 0) + 1
+        )
 
     return sorted(
         selected,
         key=timestamp,
-        reverse=True
+        reverse=True,
     )
 
-
-# ============================================================
-# 寫入 JSON
-# ============================================================
 
 def write_json(data):
     OUTPUT_FILE.parent.mkdir(
         parents=True,
-        exist_ok=True
+        exist_ok=True,
     )
 
     temporary = OUTPUT_FILE.with_suffix(
@@ -610,57 +732,40 @@ def write_json(data):
 
     with temporary.open(
         "w", encoding="utf-8"
-    ) as f:
+    ) as file:
         json.dump(
             data,
-            f,
+            file,
             ensure_ascii=False,
-            indent=2
+            indent=2,
         )
+        file.write("\n")
 
-        f.write("\n")
+    temporary.replace(
+        OUTPUT_FILE
+    )
 
-    temporary.replace(OUTPUT_FILE)
-
-
-# ============================================================
-# 主程式
-# ============================================================
 
 def main():
+    print("=" * 45, flush=True)
     print(
-        "================================",
-        flush=True
+        "伴老友｜官方生活公告自動更新 V8.1",
+        flush=True,
     )
-
-    print(
-        "伴老友｜官方公告自動更新 V7.8",
-        flush=True
-    )
-
-    print(
-        "================================",
-        flush=True
-    )
+    print("=" * 45, flush=True)
 
     sources = load_sources()
 
     print(
         f"設定來源數量：{len(sources)}",
-        flush=True
+        flush=True,
     )
 
     if not sources:
-        write_json({
-            "generated_at": None,
-            "status": "not_configured",
-            "items": []
-        })
-
-        print(
-            "Status: not_configured, items: 0"
+        # 不覆蓋現有公告。
+        raise RuntimeError(
+            "沒有設定來源，保留上次公告"
         )
-        return
 
     all_items = []
     successes = 0
@@ -668,65 +773,64 @@ def main():
 
     for source in sources:
         print(
-            f'\n讀取來源：{source["name"]}'
-            f'\n網址：{source["url"]}',
-            flush=True
+            f"\n讀取來源：{source['name']}",
+            flush=True,
+        )
+
+        print(
+            f"網址：{source['url']}",
+            flush=True,
         )
 
         try:
+            data = download_feed(
+                source["url"]
+            )
+
             items, info = parse_feed(
-                download_feed(source["url"]),
-                source
+                data, source
             )
 
             print(
                 "RSS 診斷："
-                "根節點={root}、"
-                "原始項目={entries}、"
-                "缺少標題={missing_title}、"
-                "不符官方網址={rejected_link}".format(
-                    **info
-                ),
-                flush=True
+                f"根節點={info['root']}、"
+                f"原始項目={info['entries']}、"
+                f"缺少標題={info['missing_title']}、"
+                f"網址不符={info['rejected_link']}、"
+                f"生活篩選排除={info['filtered']}",
+                flush=True,
             )
 
             for example in info["examples"]:
                 print(
-                    "未通過網址檢查的範例："
-                    + example,
-                    flush=True
+                    "網址檢查未通過：" + example,
+                    flush=True,
                 )
 
-            if not items:
+            # 解析成功且原始 RSS 有項目，
+            # 即使全部被生活篩選排除，
+            # 也不視為來源連線失敗。
+            if info["entries"] == 0:
                 raise ValueError(
-                    "RSS 沒有可用的官方公告"
+                    "RSS 沒有任何原始公告"
                 )
 
             successes += 1
             all_items.extend(items)
 
             print(
-                f"成功取得 {len(items)} 則公告",
-                flush=True
-            )
-
-            dated_count = sum(
-                bool(x["published_at"])
-                for x in items
-            )
-
-            print(
-                f"具有發布日期：{dated_count} 則",
-                flush=True
+                f"保留 {len(items)} 則生活公告",
+                flush=True,
             )
 
         except Exception as exc:
             failures += 1
 
             print(
-                f"來源讀取失敗：{exc}",
+                "來源讀取失敗："
+                + str(exc),
                 file=sys.stderr,
-                flush=True
+                flush=True,
             )
 
     if not successes:
@@ -735,49 +839,60 @@ def main():
             "保留上次 announcements.json"
         )
 
-    selected = select_balanced(all_items)
+    selected = select_balanced(
+        all_items
+    )
 
     status = (
         "ok" if failures == 0
         else "partial"
     )
 
+    # 安全保護：
+    # 避免來源格式異常或篩選規則過嚴，
+    # 把原本有資料的公告覆蓋成空清單。
+    if not selected:
+        raise RuntimeError(
+            "篩選後沒有任何公告；"
+            "保留上次 announcements.json"
+        )
+
     write_json({
         "generated_at": datetime.now(
             timezone.utc
         ).isoformat(),
         "status": status,
-        "items": selected
+        "items": selected,
     })
 
-    print("\n================================")
-
+    print()
+    print("=" * 45)
     print(
         f"Status: {status}, "
         f"items: {len(selected)}"
     )
-
     print(f"成功來源：{successes}")
     print(f"失敗來源：{failures}")
 
     print("分類統計：")
 
-    for cat in sorted({
+    for category in sorted({
         item["category"]
         for item in selected
     }):
         count = sum(
-            item["category"] == cat
+            item["category"] == category
             for item in selected
         )
 
-        print(f"  {cat}：{count} 則")
+        print(
+            f"  {category}：{count} 則"
+        )
 
     print(
         "資料檔案：data/announcements.json"
     )
-
-    print("================================")
+    print("=" * 45)
 
 
 if __name__ == "__main__":
@@ -787,7 +902,6 @@ if __name__ == "__main__":
     except Exception as exc:
         print(
             "更新失敗：" + str(exc),
-            file=sys.stderr
+            file=sys.stderr,
         )
-
         sys.exit(1)
