@@ -8,32 +8,29 @@
 <meta name="apple-mobile-web-app-title" content="伴老友">
 <meta name="theme-color" content="#1A3C5E">
 <meta name="description" content="伴老友 — 大字級、大按鈕、離線可用的友善陪伴 App。整合健康操、動腦訓練、用藥提醒、緊急求救與生活資訊。">
-<meta name="keywords" content="伴老友,陪伴,健康操,動腦訓練,用藥提醒,PWA">
-
-<title>伴老友 — 陪伴日常</title>
+<title>伴老友 — 友善陪伴 App</title>
 
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16.png">
+<link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
 
 <!-- Open Graph -->
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="伴老友">
-<meta property="og:title"       content="伴老友 — 陪伴日常">
-<meta property="og:description" content="大字級、大按鈕、離線可用的陪伴小工具。健康操、動腦訓練、用藥提醒、緊急求救，打開就能用。">
+<meta property="og:title"       content="伴老友 — 友善陪伴 App">
+<meta property="og:description" content="大字級、大按鈕、離線可用的陪伴 App。健康操、動腦訓練、用藥提醒、緊急求救，打開就能用。">
 <meta property="og:url"         content="https://你的帳號.github.io/elder-companion/">
 <meta property="og:image"       content="https://你的帳號.github.io/elder-companion/icon/og-image.png">
 <meta property="og:image:width"  content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt"   content="伴老友 ">
+<meta property="og:image:alt"   content="伴老友 App 首頁預覽">
 <meta property="og:locale"      content="zh_TW">
 
 <!-- Twitter / X -->
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="伴老友 — 陪伴日常">
-<meta name="twitter:description" content="大字級、大按鈕、離線可用的陪伴小工具。健康操、動腦訓練、用藥提醒、緊急求救。">
+<meta name="twitter:title"       content="伴老友 — 友善陪伴 App">
+<meta name="twitter:description" content="大字級、大按鈕、離線可用的陪伴 App。健康操、動腦訓練、用藥提醒、緊急求救。">
 <meta name="twitter:image"       content="https://你的帳號.github.io/elder-companion/icon/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +41,14 @@
 <link rel="stylesheet" href="css/modules.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/games.css">
+<style>
+/* 新增：影片嵌入區塊的樣式 */
+.video-box { margin-top: 10px; display: none; }
+.video-box iframe { width: 100%; aspect-ratio: 16/9; border-radius: 10px; border: none; }
+.video-list { display: flex; flex-direction: column; gap: 8px; }
+.v-btn { padding: 10px; background: #fff; border: 1px solid var(--border); border-radius: 8px; text-align: left; font-size: 14px; cursor: pointer; }
+.v-btn:active { background: var(--sky); }
+</style>
 </head>
 <body>
 
