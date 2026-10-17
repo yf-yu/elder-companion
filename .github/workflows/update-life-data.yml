@@ -1,54 +1,37 @@
-
-name: Update All Life Information
-
+name: Update Life Information
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 22 * * *"
-
+    - cron: '37 22 * * *'
 permissions:
   contents: write
-
 concurrency:
-  group: life-information-update
+  group: elder-companion-data
   cancel-in-progress: false
-
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
+    timeout-minutes: 20
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
-      - name: Update official announcements
-        run: python scripts/update_announcements.py
-
-      - name: Update weather water and power
+          python-version: '3.12'
+      - name: Fetch official life data
         env:
           CWA_API_KEY: ${{ secrets.CWA_API_KEY }}
         run: python scripts/update_life_data.py
-
-      - name: Validate JSON files
+      - name: Validate output
         run: |
-          python -m json.tool data/announcements.json > /dev/null
+          python -m json.tool data/life_information.json > /dev/null
           python -m json.tool data/life_source_status.json > /dev/null
-
-      - name: Commit updated data
+      - name: Commit data
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/announcements.json data/life_source_status.json
-
-          if git diff --cached --quiet; then
-            echo "No changes"
-          else
-            git commit -m "Update official life information"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/life_information.json data/life_source_status.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update life information data'
+            git pull --rebase
             git push
           fi
