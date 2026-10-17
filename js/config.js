@@ -1,8 +1,7 @@
-/* ============ config.js：全域狀態 C、localStorage 存取 ============ */
 window.C = {};
 
 window.lC = function(){
-  try { window.C = JSON.parse(localStorage.getItem('ec3') || '{}'); }
+  try { window.C = JSON.parse(localStorage.getItem('banlaoyou') || '{}'); }
   catch(e){ window.C = {}; }
 };
 
