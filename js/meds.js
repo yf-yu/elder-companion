@@ -1,5 +1,6 @@
 /* ============ meds.js：吃藥提醒 ============ */
-let medData = JSON.parse(localStorage.getItem('elder_meds') || '[]');
+let medData = readJSON('elder_meds', []);
+if(!Array.isArray(medData)) medData = [];
 
 window.initMeds = function(){
   const today = new Date().toLocaleDateString('zh-TW');
@@ -14,7 +15,7 @@ window.initMeds = function(){
 
   if(e('med-hist-list')){
     e('med-hist-list').innerHTML = medData.slice(0, 10).map(m =>
-      `<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--muted)"><span>${m.date}</span><span>${m.time}</span><span style="font-size:18px">${m.time==='早上'?'☀️':m.time==='中午'?'🌿':'🌙'}</span></div>`
+      `<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--muted)"><span>${escapeHTML(m.date)}</span><span>${escapeHTML(m.time)}</span><span style="font-size:18px">${m.time==='早上'?'☀️':m.time==='中午'?'🌿':'🌙'}</span></div>`
     ).join('') || '<div style="color:var(--hint);font-size:14px;text-align:center;padding:10px">還沒有記錄</div>';
   }
 };

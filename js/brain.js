@@ -2,9 +2,10 @@
 
 /* ─── 配對記憶 ─── */
 const EMOJIS = ['🍎','🐶','🌸','🐟','🌙','☀️','🎯','🦋'];
-let memFlipped = [], memMatched = 0, memSteps = 0, memLock = false;
+let memFlipped = [], memMatched = 0, memSteps = 0, memLock = false, memTimers = [], memRound = 0;
 
 window.initMem = function(){
+  memRound++; memTimers.forEach(clearTimeout); memTimers = [];
   const cards = [...EMOJIS, ...EMOJIS].sort(() => Math.random() - .5);
   memFlipped = []; memMatched = 0; memSteps = 0; memLock = false;
 
@@ -14,7 +15,7 @@ window.initMem = function(){
   const g = e('mem-grid');
   if(!g) return;
   g.innerHTML = cards.map((em, i) =>
-    `<div class="mem-card" data-em="${em}" data-i="${i}" onclick="flipCard(this)">❓</div>`
+    `<button type="button" class="mem-card" data-em="${em}" data-i="${i}" aria-label="第 ${i+1} 張牌，尚未翻開" onclick="flipCard(this)">❓</button>`
   ).join('');
 };
 
@@ -22,6 +23,7 @@ window.flipCard = function(card){
   if(memLock || card.classList.contains('flip') || card.classList.contains('matched')) return;
   card.classList.add('flip');
   card.textContent = card.dataset.em;
+  card.setAttribute('aria-label', '圖案：' + card.dataset.em);
   memFlipped.push(card);
 
   if(memFlipped.length === 2){
@@ -30,7 +32,7 @@ window.flipCard = function(card){
     if(e('mem-steps')) e('mem-steps').textContent = memSteps;
 
     if(memFlipped[0].dataset.em === memFlipped[1].dataset.em){
-      memFlipped.forEach(c => { c.classList.add('matched'); c.classList.remove('flip'); });
+      memFlipped.forEach(c => { c.classList.add('matched'); c.classList.remove('flip'); c.disabled = true; });
       memMatched++;
       if(e('mem-matched')) e('mem-matched').textContent = memMatched;
       memFlipped = []; memLock = false;
@@ -38,16 +40,19 @@ window.flipCard = function(card){
         setTimeout(() => toast('🎉 恭喜！全部配對完成！步數：' + memSteps), 300);
       }
     } else {
-      setTimeout(() => {
+      const round = memRound;
+      memTimers.push(setTimeout(() => {
+        if(round !== memRound) return;
         memFlipped.forEach(c => c.classList.add('wrong'));
-        setTimeout(() => {
+        memTimers.push(setTimeout(() => {
+          if(round !== memRound) return;
           memFlipped.forEach(c => {
             c.classList.remove('flip', 'wrong');
-            c.textContent = '❓';
+            c.textContent = '❓'; c.setAttribute('aria-label', '尚未翻開');
           });
           memFlipped = []; memLock = false;
-        }, 600);
-      }, 600);
+        }, 600));
+      }, 600));
     }
   }
 };
@@ -134,7 +139,8 @@ window.chkMath = function(btn, chosen, ans){
 /* ─── 情緒打卡 ─── */
 const MOODS = {5:'😄', 4:'🙂', 3:'😐', 2:'😔', 1:'😢'};
 const MOOD_LABELS = {5:'很好', 4:'不錯', 3:'普通', 2:'不太好', 1:'很不好'};
-let moodData = JSON.parse(localStorage.getItem('elder_mood') || '[]');
+let moodData = readJSON('elder_mood', []);
+if(!Array.isArray(moodData)) moodData = [];
 
 window.selMood = function(btn, score){
   document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('sel'));
@@ -156,7 +162,7 @@ window.renderMoodHist = function(){
   const hist = e('mood-hist');
   if(!hist) return;
   hist.innerHTML = moodData.slice(0, 7).map(m =>
-    `<div class="mhrow"><span class="mhdate">${m.date}</span><span class="mhface">${MOODS[m.score]}</span><span style="font-size:13px;color:var(--muted)">${MOOD_LABELS[m.score]}</span></div>`
+    `<div class="mhrow"><span class="mhdate">${escapeHTML(m.date)}</span><span class="mhface">${MOODS[m.score]}</span><span style="font-size:13px;color:var(--muted)">${MOOD_LABELS[m.score]}</span></div>`
   ).join('') || '<div style="color:var(--hint);font-size:14px;text-align:center;padding:10px">還沒有記錄</div>';
 };
 

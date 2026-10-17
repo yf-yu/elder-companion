@@ -18,7 +18,14 @@ const CITY_COORDS = {
   '基隆市': { lat: 25.13, lon: 121.74 },
   '新竹市': { lat: 24.80, lon: 120.97 },
   '嘉義市': { lat: 23.48, lon: 120.44 },
-  '預設':   { lat: 25.03, lon: 121.56 } // 台北
+  '新竹縣': {lat:24.83,lon:121.01}, '苗栗縣': {lat:24.56,lon:120.82},
+  '彰化縣': {lat:24.07,lon:120.54}, '南投縣': {lat:23.91,lon:120.68},
+  '雲林縣': {lat:23.71,lon:120.43}, '嘉義縣': {lat:23.46,lon:120.29},
+  '屏東縣': {lat:22.67,lon:120.49}, '宜蘭縣': {lat:24.75,lon:121.75},
+  '花蓮縣': {lat:23.99,lon:121.60}, '臺東縣': {lat:22.76,lon:121.14},
+  '澎湖縣': {lat:23.57,lon:119.57}, '金門縣': {lat:24.43,lon:118.32},
+  '連江縣': {lat:26.16,lon:119.95},
+  '預設':   { lat: 25.03, lon: 121.56 } // 尚未設定時僅供預覽
 };
 
 window.initDress = async function(){
@@ -36,11 +43,12 @@ window.initDress = async function(){
   let isRealData = false;
 
   // 1. 嘗試從網路抓真實氣溫
-  if (navigator.onLine) {
+  if (navigator.onLine && window.C && CITY_COORDS[window.C.rg]) {
     try {
       const rg = (window.C && window.C.rg) ? window.C.rg : '預設';
       const coords = CITY_COORDS[rg] || CITY_COORDS['預設'];
       const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current_weather=true`);
+      if (!res.ok) throw new Error('weather HTTP ' + res.status);
       const data = await res.json();
       if (data && data.current_weather && typeof data.current_weather.temperature === 'number') {
         temp = data.current_weather.temperature;
@@ -83,7 +91,7 @@ window.initDress = async function(){
       <div style="font-size:clamp(18px,5vw,22px);font-weight:900;margin-bottom:4px">${guide.name}</div>
       <div style="font-size:clamp(13px,3.4vw,15px);opacity:.8">${now.getMonth()+1}月${now.getDate()}日（星期${days[now.getDay()]}）</div>
       <div style="font-size:clamp(11px,3vw,13px);opacity:.65;margin-top:4px">
-        ${isRealData ? `目前氣溫：${temp.toFixed(1)}°C（即時資料）` : `參考氣溫區間：${guide.range}`}
+        ${isRealData ? `目前氣溫：${temp.toFixed(1)}°C（線上觀測）` : '無法取得目前氣溫，以下僅為季節性參考'}
       </div>
     </div>
     <div style="background:var(--white);border:2px solid var(--border);border-radius:16px;padding:18px;margin-bottom:12px">
@@ -95,7 +103,7 @@ window.initDress = async function(){
       <br>如果不確定，可以問家人今天的天氣如何。
     </div>
     <div style="margin-top:12px;font-size:12px;color:var(--hint);text-align:center;line-height:1.7">
-      ${isRealData ? '天氣資料來源：Open-Meteo.com' : `以上建議依台灣${m}月份一般氣候推估<br>實際天氣以當天狀況為準`}
+      ${isRealData ? '天氣資料來源：Open-Meteo.com；縣市中心附近參考值' : '無即時天氣資料，請勿以此判斷戶外溫度或天氣警報'}
     </div>
   `;
 };

@@ -15,8 +15,8 @@ window.initH = function(){
   setSeason(m);
 
   e('ntxt').textContent = window.C.rg
-    ? `${window.C.rg}：目前無緊急公告，點「最新公告」查看詳情`
-    : '今天沒有緊急公告';
+    ? `${window.C.rg}：尚未連接即時公告，請查詢官方資訊`
+    : '公告尚未連接即時資料，請以官方資訊為準';
 };
 
 window.setSeason = function(m){

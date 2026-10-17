@@ -1,8 +1,22 @@
 window.C = {};
+window.readJSON = function(key, fallback){
+  try { const value = JSON.parse(localStorage.getItem(key)); return value === null ? fallback : value; }
+  catch (_) { return fallback; }
+};
+window.escapeHTML = function(value){
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+};
 
 window.lC = function(){
   try { window.C = JSON.parse(localStorage.getItem('banlaoyou') || '{}'); }
-  catch(e){ window.C = {}; }
+  catch(e){ window.C = {};
+window.readJSON = function(key, fallback){
+  try { const value = JSON.parse(localStorage.getItem(key)); return value === null ? fallback : value; }
+  catch (_) { return fallback; }
+};
+window.escapeHTML = function(value){
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}; }
 };
 
 window.e = function(id){ return document.getElementById(id); };
