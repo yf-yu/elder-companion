@@ -1,6 +1,6 @@
 
 {
-  "version": "8.0-preview",
+  "version": "8.1",
   "categories": [
     "健康資訊",
     "天氣預報",
@@ -19,7 +19,7 @@
       "category": "健康資訊",
       "type": "rss",
       "url": "https://www.cdc.gov.tw/RSS/RssXml/Hh094B49-DRwe2RR4eFfrQ?type=1",
-      "status": "previously_working",
+      "status": "verified",
       "enabled": true
     },
     {
@@ -28,7 +28,7 @@
       "category": "長者福利",
       "type": "rss",
       "url": "https://www.mohw.gov.tw/rss-18-1.html",
-      "status": "previously_working",
+      "status": "verified",
       "enabled": true
     },
     {
@@ -37,7 +37,7 @@
       "category": "食藥安全",
       "type": "rss",
       "url": "https://www.fda.gov.tw/Tc/rssNews.ashx",
-      "status": "previously_working",
+      "status": "verified",
       "enabled": true
     },
     {
@@ -46,7 +46,7 @@
       "category": "食藥安全",
       "type": "rss",
       "url": "https://www.fda.gov.tw/Tc/rssAnnouncement.ashx",
-      "status": "previously_working",
+      "status": "verified",
       "enabled": true
     },
     {
@@ -55,7 +55,7 @@
       "category": "健保就醫",
       "type": "rss",
       "url": "https://www.nhi.gov.tw/ch/rss-3255-1.xml",
-      "status": "needs_validation",
+      "status": "http_403_in_github_actions",
       "enabled": false
     },
     {
@@ -106,16 +106,16 @@
     {
       "id": "ey",
       "name": "行政院",
-      "category": "長者福利",
+      "category": "政府資訊",
       "type": "rss",
       "url": "https://www.ey.gov.tw/RSS_Content.aspx?ModuleType=1",
-      "status": "needs_validation_and_filter",
-      "enabled": false
+      "status": "rss_verified_filter_pending",
+      "enabled": true
     },
     {
       "id": "president",
       "name": "總統府公報",
-      "category": "長者福利",
+      "category": "政府資訊",
       "type": "website",
       "url": "https://www.president.gov.tw/RSSGazette.aspx",
       "status": "reference_only",
