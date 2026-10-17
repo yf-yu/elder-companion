@@ -71,7 +71,7 @@
     <button class="fb" onclick="go('brain')"><span class="fb-em">🧠</span><span class="fb-lb">動腦訓練</span><span class="fb-sub">記憶・算術</span></button>
     <button class="fb" onclick="go('dress')"><span class="fb-em">👕</span><span class="fb-lb">今天穿什麼</span><span class="fb-sub">天氣穿搭建議</span></button>
     <button class="fb" onclick="go('notice')"><span class="fb-em">📢</span><span class="fb-lb">最新公告</span><span class="fb-sub">停水停電・政府</span></button>
-    <button class="fb" onclick="go('meds')"><span class="fb-em">💊</span><span class="fb-lb">今天吃藥了嗎</span><span class="fb-sub">記錄用藥</span></button>
+    <button class="fb" onclick="go('meds')"><span class="fb-em">💊</span><span class="fb-lb">用藥紀錄</span><span class="fb-sub">自行記錄已服藥</span></button>
     <button class="fb" onclick="go('phone')"><span class="fb-em">📞</span><span class="fb-lb">重要電話</span><span class="fb-sub">一鍵撥打</span></button>
   </div>
   <div class="e-ntc"><div class="ndot"></div><div class="ntxt" id="ntxt">今天沒有緊急公告</div></div>
@@ -257,9 +257,10 @@
 
 <!-- ══ 吃藥提醒 ══ -->
 <div id="meds" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('meds')">←</button><div class="stit">💊 今天吃藥了嗎</div></div>
+  <div class="shdr"><button class="bk" onclick="bk('meds')">←</button><div class="stit">💊 用藥紀錄</div></div>
   <div class="sbdy">
-    <div id="med-status" class="med-status"><div class="med-today" id="med-today-txt">今天還沒記錄</div><div class="med-hist" id="med-today-date"></div></div>
+    <p class="safety-note">此功能僅供手動記錄，不會在指定時間自動提醒，也無法確認藥物是否正確服用。請依醫囑用藥。</p>
+    <p class="safety-note">僅供手動記錄，不會自動提醒服藥；請依醫囑用藥。</p><div id="med-status" class="med-status"><div class="med-today" id="med-today-txt">今天還沒記錄</div><div class="med-hist" id="med-today-date"></div></div>
     <button class="med-big" onclick="markMed('早上')"><span class="med-ic">☀️</span><span class="med-lbl">早上藥吃了！</span><span class="med-sub">按這裡記錄早上的藥</span></button>
     <button class="med-big med-mid" onclick="markMed('中午')"><span class="med-ic">🌿</span><span class="med-lbl">中午藥吃了！</span><span class="med-sub">按這裡記錄中午的藥</span></button>
     <button class="med-big med-night" onclick="markMed('晚上')"><span class="med-ic">🌙</span><span class="med-lbl">晚上藥吃了！</span><span class="med-sub">按這裡記錄晚上的藥</span></button>
