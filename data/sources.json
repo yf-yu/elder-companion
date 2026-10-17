@@ -5,6 +5,21 @@
       "name": "衛生福利部疾病管制署",
       "category": "健康資訊",
       "url": "https://www.cdc.gov.tw/RSS/RssXml/Hh094B49-DRwe2RR4eFfrQ?type=1"
+    },
+    {
+      "name": "衛生福利部",
+      "category": "長者福利",
+      "url": "https://www.mohw.gov.tw/rss-18-1.html"
+    },
+    {
+      "name": "衛生福利部食品藥物管理署",
+      "category": "食藥安全",
+      "url": "https://www.fda.gov.tw/Tc/rssNews.ashx"
+    },
+    {
+      "name": "衛生福利部食品藥物管理署",
+      "category": "食藥安全",
+      "url": "https://www.fda.gov.tw/Tc/rssAnnouncement.ashx"
     }
   ]
 }
