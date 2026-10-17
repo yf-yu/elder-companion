@@ -29,4 +29,5 @@ window.setSeason = function(m){
   if(e('sei'))  e('sei').textContent = s.i;
   if(e('set'))  e('set').textContent = s.t;
   if(e('seb'))  e('seb').textContent = s.b;
-  if(e('setp'))
+  if(e('setp')) e('setp').textContent = s.tp;
+};
