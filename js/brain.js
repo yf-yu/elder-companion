@@ -142,7 +142,6 @@ window.renderMoodHist = function(){
   ).join('') || '<div style="color:var(--hint);font-size:14px;text-align:center;padding:10px">還沒有記錄</div>';
 };
 
-/* ─── 分頁切換 ─── */
 window.swb = function(btn, tid){
   document.querySelectorAll('.btab').forEach(t => t.classList.remove('act'));
   btn.classList.add('act');
