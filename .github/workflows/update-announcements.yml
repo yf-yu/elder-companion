@@ -4,8 +4,8 @@ name: Update official announcements
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 */3 * * *"
-
+  - cron: "17 22 * * *"
+  
 permissions:
   contents: write
 
