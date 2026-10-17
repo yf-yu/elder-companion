@@ -27,7 +27,7 @@ window.markMed = function(time){
 
   medData.unshift({date: today, time});
   if(medData.length > 60) medData = medData.slice(0, 60);
-  localStorage.setItem('elder_meds', JSON.stringify(medData));
+  if(!saveJSON('elder_meds', medData)) { medData.shift(); return; }
   toast(`✓ ${time}的藥記錄完成！`);
   initMeds();
 };

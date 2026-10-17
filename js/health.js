@@ -31,22 +31,15 @@ window.loadVideo = function(btn, query) {
     return;
   }
 
-  // 顯示載入中
-  btn.textContent = '⏳ 影片載入中...';
-  box.style.display = 'block';
-  box.innerHTML = '<div style="padding:10px;text-align:center;color:var(--muted)">正在搜尋影片...</div>';
-
-  // 使用 YouTube 的 iframe 搜尋 API (不需 Key)
-  // 限制：listType=search 會顯示搜尋結果清單，讓使用者自己點選最安全的影片
-  const searchUrl = `https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(query)}`;
-  
-  // 建立 iframe
-  box.innerHTML = `
-    <iframe src="${searchUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-    <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;line-height:1.5;">
-      若上方影片無法播放，請點擊 
-      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query)}" target="_blank" style="color:var(--n);font-weight:bold;text-decoration:underline;">前往 YouTube 觀看</a>
-    </div>
-  `;
-  btn.textContent = '📺 隱藏示範影片';
+  // YouTube 已不支援 iframe 搜尋清單；使用明確的外部搜尋連結。
+  const url = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query);
+  box.replaceChildren();
+  const note = document.createElement('p');
+  note.textContent = '影片由 YouTube 提供，請選擇適合自己身體狀況的動作；如有疼痛請停止。';
+  const link = document.createElement('a');
+  link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+  link.textContent = '📺 開啟 YouTube 示範影片搜尋';
+  link.style.cssText = 'display:block;padding:16px;font-size:18px;text-decoration:underline';
+  box.append(note, link); box.style.display = 'block';
+  btn.textContent = '📺 隱藏影片連結';
 };

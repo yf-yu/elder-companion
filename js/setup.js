@@ -24,7 +24,7 @@ window.saveC = function(){
     sg:  e('tg').classList.contains('on'),
     ok:  true
   };
-  localStorage.setItem('banlaoyou', JSON.stringify(C));
+  if(!saveJSON('banlaoyou', C)) return;
   toast('✓ 設定已儲存！');
   setTimeout(() => goHome(), 800);
 };

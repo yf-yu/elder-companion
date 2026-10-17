@@ -47,7 +47,11 @@ window.initDress = async function(){
     try {
       const rg = (window.C && window.C.rg) ? window.C.rg : '預設';
       const coords = CITY_COORDS[rg] || CITY_COORDS['預設'];
-      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current_weather=true`);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+      let res;
+      try { res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current_weather=true`, {signal:controller.signal}); }
+      finally { clearTimeout(timeout); }
       if (!res.ok) throw new Error('weather HTTP ' + res.status);
       const data = await res.json();
       if (data && data.current_weather && typeof data.current_weather.temperature === 'number') {
@@ -59,14 +63,10 @@ window.initDress = async function(){
     }
   }
 
-  // 2. 如果沒抓到，使用原本的月份推估
-  if (temp === null) {
-    temp = (m <= 1 || m === 12) ? 8
-         : m <= 3 ? 15
-         : m <= 4 ? 22
-         : m <= 9 ? 30
-         : m <= 10 ? 25
-         : 18;
+  // 無資料時不猜測氣溫，避免錯誤的穿衣建議。
+  if(temp === null) {
+    body.innerHTML = '<div class="safety-note" role="status">目前無法取得即時氣溫，請先查看手機天氣或詢問家人，再決定衣著。<button type="button" onclick="initDress()">重新查詢天氣</button></div>';
+    return;
   }
 
   // 判斷類別

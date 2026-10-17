@@ -17,7 +17,8 @@ window.bldP = function(tid, sosOnly){
   if(!target) return;
 
   target.innerHTML = list.map(p => {
-    const telNum = p.num.replace(/[^\d+]/g, '');
+    const telNum = String(p.num).replace(/[^\d+]/g, '');
+    if(!/^\+?\d{2,15}$/.test(telNum)) return `<div class="pcd"><div class="pin"><div class="pnm">${escapeHTML(p.n)}</div><div class="pph">電話號碼格式不正確，請至設定檢查</div></div></div>`;
     return `<div class="pcd"><div class="pst ${p.s}"></div><div class="pct"><span class="pic">${p.ic}</span><div class="pin"><div class="pnm">${escapeHTML(p.n)}</div><div class="pph">${escapeHTML(p.num)}</div></div></div><div class="prgt"><a class="pcl ${p.cls}" href="tel:${telNum}" aria-label="撥打 ${escapeHTML(p.n)}">撥打</a></div></div>`;
   }).join('');
 };

@@ -37,7 +37,7 @@ window.flipCard = function(card){
       if(e('mem-matched')) e('mem-matched').textContent = memMatched;
       memFlipped = []; memLock = false;
       if(memMatched === 8){
-        setTimeout(() => toast('🎉 恭喜！全部配對完成！步數：' + memSteps), 300);
+        memTimers.push(setTimeout(() => toast('🎉 恭喜！全部配對完成！步數：' + memSteps), 300));
       }
     } else {
       const round = memRound;
@@ -58,9 +58,10 @@ window.flipCard = function(card){
 };
 
 /* ─── 算術練習 ─── */
-let mathR = 0, mathW = 0, mathLevel = 1;
+let mathR = 0, mathW = 0, mathLevel = 1, mathTimer = null, mathLocked = false;
 
 window.setMathLevel = function(level){
+  clearTimeout(mathTimer); mathLocked = false;
   mathLevel = level;
   [1,2,3].forEach(l => {
     const btn = e('ml-' + l);
@@ -75,12 +76,11 @@ window.setMathLevel = function(level){
 };
 
 window.newMath = function(){
-  // 如果有網路，就開放額外的題型（例如：除法、混合）
+  mathLocked = false;
+  // 題目完全在本機產生，不需要網路
   const ops = ['+','-','×'];
-  if (navigator.onLine) {
-    ops.push('÷');
-    if (mathLevel === 3) ops.push('mix'); // 高級混合題
-  }
+  ops.push('÷');
+  if (mathLevel === 3) ops.push('mix');
   
   const op = ops[Math.floor(Math.random() * ops.length)];
   let a, b, ans;
@@ -105,9 +105,10 @@ window.newMath = function(){
   if(op !== 'mix' && e('math-q')) e('math-q').textContent = `${a} ${op} ${b} = ?`;
 
   const opts = new Set([ans]);
-  while(opts.size < 4){
-    const r = ans + Math.floor(Math.random()*11) - 5;
-    if(r > 0 && r !== ans) opts.add(r);
+  let offset = 1;
+  while(opts.size < 4) {
+    if(ans - offset >= 0) opts.add(ans - offset);
+    opts.add(ans + offset); offset++;
   }
   const optArr = [...opts].sort(() => Math.random() - .5);
   if(e('math-opts')){
@@ -118,7 +119,9 @@ window.newMath = function(){
 };
 
 window.chkMath = function(btn, chosen, ans){
-  document.querySelectorAll('.mopt').forEach(b => b.style.pointerEvents = 'none');
+  if(mathLocked) return;
+  mathLocked = true;
+  document.querySelectorAll('.mopt').forEach(b => b.disabled = true);
   if(chosen === ans){
     btn.classList.add('correct');
     mathR++;
@@ -133,7 +136,7 @@ window.chkMath = function(btn, chosen, ans){
     toast('✗ 答錯了，繼續加油！');
     if(e('math-wrong')) e('math-wrong').textContent = mathW;
   }
-  setTimeout(() => newMath(), 1400);
+  mathTimer = setTimeout(() => newMath(), 1400);
 };
 
 /* ─── 情緒打卡 ─── */
@@ -152,7 +155,7 @@ window.selMood = function(btn, score){
   else moodData.unshift({date: today, score});
 
   if(moodData.length > 30) moodData = moodData.slice(0, 30);
-  localStorage.setItem('elder_mood', JSON.stringify(moodData));
+  if(!saveJSON('elder_mood', moodData)) return;
 
   if(e('mood-msg')) e('mood-msg').textContent = `已記錄：${MOODS[score]} ${MOOD_LABELS[score]}`;
   renderMoodHist();
