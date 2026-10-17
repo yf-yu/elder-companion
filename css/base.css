@@ -1,6 +1,4 @@
-/* ============ base.css：變數、reset、RWD 基礎 ============ */
 :root{
-  /* 色彩 */
   --n:#1A3C5E; --n2:#2A5580;
   --sky:#EBF5FB; --sky2:#C8E4F8;
   --red:#C0392B; --red2:#E74C3C; --redbg:#FDEDEC;
@@ -9,13 +7,11 @@
   --white:#fff; --bg:#F4F8FB;
   --text:#1A1A2E; --muted:#5A6A7A;
   --border:#C8D8E8; --hint:#8A9AAA;
-  /* RWD 基準 */
   --app-max: 480px;
   --pad-x: clamp(12px, 3vw, 18px);
   --gap: clamp(8px, 2vw, 12px);
 }
 
-/* Reset */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{
   height:100%;
@@ -26,15 +22,11 @@ html,body{
   touch-action:manipulation;
   -webkit-font-smoothing:antialiased;
 }
-
-/* 最小寬度 200px 也能正常顯示 */
 body{min-width:200px;overflow-x:hidden}
 
-/* 頁面切換 */
 .page,.sub{display:none;flex-direction:column;min-height:100vh}
 .page.show,.sub.show{display:flex}
 
-/* 響應式：桌機置中、加邊框陰影 */
 @media(min-width:481px){
   .page,.sub{
     max-width:var(--app-max);
@@ -43,7 +35,6 @@ body{min-width:200px;overflow-x:hidden}
   }
 }
 
-/* 深色模式（可選，預設跟隨系統） */
 @media(prefers-color-scheme: dark){
   :root{
     --bg:#0F1A24; --white:#15222E;
@@ -53,7 +44,6 @@ body{min-width:200px;overflow-x:hidden}
   }
 }
 
-/* Toast */
 #toast{
   position:fixed;
   bottom:26px; left:50%;
