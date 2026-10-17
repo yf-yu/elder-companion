@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="陪伴好友">
+<meta name="theme-color" content="#1A3C5E">
+<meta name="description" content="陪伴好友 — 長輩日常陪伴 App">
+<title>陪伴好友</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/modules.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/games.css">
+</head>
+<body>
+
+<!-- ══ 老人主頁 ══ -->
+<div id="home" class="page show">
+  <div class="e-hdr">
+    <div class="e-greet" id="eg">早安 ☀️</div>
+    <div class="e-date" id="ed">今天是...</div>
+    <div class="e-wx"><span>🌤️</span><span id="ewx">今天天氣舒適</span></div>
+  </div>
+  <div class="sos-wrap">
+    <button class="sos" onclick="go('sos')">
+      <span class="sos-ic">🆘</span>
+      <div><div class="sos-main">緊急求救</div><div class="sos-sub">點這裡打電話給家人或救護車</div></div>
+    </button>
+  </div>
+  <div class="fgrid">
+    <button class="fb" onclick="go('ex')"><span class="fb-em">🤸</span><span class="fb-lb">健康操</span><span class="fb-sub">每天動一動</span></button>
+    <button class="fb" onclick="go('health')"><span class="fb-em">🌿</span><span class="fb-lb">養生知識</span><span class="fb-sub">飲食起居建議</span></button>
+    <button class="fb" onclick="go('brain')"><span class="fb-em">🧠</span><span class="fb-lb">動腦訓練</span><span class="fb-sub">記憶・算術</span></button>
+    <button class="fb" onclick="go('dress')"><span class="fb-em">👕</span><span class="fb-lb">今天穿什麼</span><span class="fb-sub">天氣穿搭建議</span></button>
+    <button class="fb" onclick="go('notice')"><span class="fb-em">📢</span><span class="fb-lb">最新公告</span><span class="fb-sub">停水停電・政府</span></button>
+    <button class="fb" onclick="go('meds')"><span class="fb-em">💊</span><span class="fb-lb">今天吃藥了嗎</span><span class="fb-sub">記錄用藥</span></button>
+    <button class="fb" onclick="go('phone')"><span class="fb-em">📞</span><span class="fb-lb">重要電話</span><span class="fb-sub">一鍵撥打</span></button>
+  </div>
+  <div class="e-ntc"><div class="ndot"></div><div class="ntxt" id="ntxt">今天沒有緊急公告</div></div>
+</div>
+
+<!-- ══ 健康操 ══ -->
+<div id="ex" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('ex')">←</button><div class="stit">🤸 健康操</div></div>
+  <div class="sbdy">
+    <div class="ex-intro">
+      <div class="ei-t">每天 15 分鐘，活動筋骨！</div>
+      <div class="ei-s">每個動作都可以「坐著」做，安全不費力。飯後休息 30 分鐘再開始。</div>
+    </div>
+    <div class="ec"><div class="et" onclick="tex(this)"><div class="en">1</div><div class="ei"><div class="enm">脖子轉動放鬆</div><div class="ebr">緩解頸部僵硬・左右各5次</div></div><span class="etg">▼</span></div>
+    <div class="estps"><div class="si"><div class="sn">①</div><div class="st">坐直，背靠椅背，雙手放在膝蓋上</div></div><div class="si"><div class="sn">②</div><div class="st">慢慢把頭轉向<strong>右邊</strong>，感覺脖子有點緊就停</div></div><div class="si"><div class="sn">③</div><div class="st">停住數三秒（心裡數：一、二、三）</div></div><div class="si"><div class="sn">④</div><div class="st">慢慢轉回正面，再轉向<strong>左邊</strong>，同樣停三秒</div></div><div class="si"><div class="sn">⑤</div><div class="st">左右各做5次，動作要慢，不要甩頭</div></div><div class="snote">⚠️ 如果頭暈請立刻停止，告訴家人。</div><button class="eytb" onclick="ytl('長輩頸部健康操')">有網路時看示範影片 ↗</button></div></div>
+    <div class="ec"><div class="et" onclick="tex(this)"><div class="en">2</div><div class="ei"><div class="enm">坐椅抬腿強化</div><div class="ebr">預防跌倒・各腿10次</div></div><span class="etg">▼</span></div>
+    <div class="estps"><div class="si"><div class="sn">①</div><div class="st">坐穩椅子，雙手扶住椅子旁邊或大腿</div></div><div class="si"><div class="sn">②</div><div class="st">把<strong>右腿</strong>慢慢抬起來，離地約一個手掌高</div></div><div class="si"><div class="sn">③</div><div class="st">在空中數三秒，再慢慢放下</div></div><div class="si"><div class="sn">④</div><div class="st">換<strong>左腿</strong>，一樣抬起數三秒再放下</div></div><div class="si"><div class="sn">⑤</div><div class="st">左右各做10次，中間可以休息</div></div><div class="snote">💡 背要挺直，做完腿部微微酸是正常的。</div><button class="eytb" onclick="ytl('長輩坐椅腿部運動')">有網路時看示範影片 ↗</button></div></div>
+    <div class="ec"><div class="et" onclick="tex(this)"><div class="en">3</div><div class="ei"><div class="enm">擴胸深呼吸</div><div class="ebr">改善駝背，讓呼吸更順暢・做8次</div></div><span class="etg">▼</span></div>
+    <div class="estps"><div class="si"><div class="sn">①</div><div class="st">坐直，雙手自然放在大腿上</div></div><div class="si"><div class="sn">②</div><div class="st">雙手慢慢向<strong>兩側打開</strong>，感覺胸口打開</div></div><div class="si"><div class="sn">③</div><div class="st">同時用鼻子<strong>慢慢深吸氣</strong>，肚子微微鼓起</div></div><div class="si"><div class="sn">④</div><div class="st">停三秒，再把手放回來，同時<strong>慢慢吐氣</strong></div></div><div class="si"><div class="sn">⑤</div><div class="st">做8次，感覺整個人輕鬆下來就對了</div></div><div class="snote">💡 睡前做也很好，幫助放鬆好入睡。</div><button class="eytb" onclick="ytl('長輩擴胸深呼吸操')">有網路時看示範影片 ↗</button></div></div>
+    <div class="ec"><div class="et" onclick="tex(this)"><div class="en">4</div><div class="ei"><div class="enm">手腕手指靈活操</div><div class="ebr">預防退化，拿筷子更靈活</div></div><span class="etg">▼</span></div>
+    <div class="estps"><div class="si"><div class="sn">①</div><div class="st">雙手舉起來，放在胸前，手背朝外</div></div><div class="si"><div class="sn">②</div><div class="st">十根手指頭<strong>用力張開</strong>，像在說「我要五十元！」</div></div><div class="si"><div class="sn">③</div><div class="st">再把手指<strong>慢慢握成拳頭</strong></div></div><div class="si"><div class="sn">④</div><div class="st">張開、握緊，做10次</div></div><div class="si"><div class="sn">⑤</div><div class="st">雙手手腕慢慢轉圈，左右各轉5圈</div></div><div class="snote">💡 早上剛起床做最有效，洗完臉順手做一組！</div><button class="eytb" onclick="ytl('長輩手腕手指運動')">有網路時看示範影片 ↗</button></div></div>
+    <div class="ec"><div class="et" onclick="tex(this)"><div class="en">5</div><div class="ei"><div class="enm">深呼吸放鬆收操</div><div class="ebr">幫助放鬆・睡前也適合・做5次</div></div><span class="etg">▼</span></div>
+    <div class="estps"><div class="si"><div class="sn">①</div><div class="st">坐著或躺著都可以，讓自己舒服就好</div></div><div class="si"><div class="sn">②</div><div class="st">用<strong>鼻子慢慢吸氣</strong>，心裡數一、二、三、四</div></div><div class="si"><div class="sn">③</div><div class="st">肚子像氣球一樣慢慢鼓起來</div></div><div class="si"><div class="sn">④</div><div class="st">再用<strong>嘴巴更慢地吐氣</strong>，心裡數一到六</div></div><div class="si"><div class="sn">⑤</div><div class="st">做5次，做完整個人很放鬆</div></div><div class="snote">💡 睡前、心情不好、身體緊繃時都可以做，幫助降血壓。</div></div></div>
+  </div>
+</div>
+
+<!-- ══ 養生知識 ══ -->
+<div id="health" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('health')">←</button><div class="stit">🌿 養生知識</div></div>
+  <div class="sbdy">
+    <div class="htabs">
+      <button class="htab act" onclick="swh(this,'hf')">飲食</button>
+      <button class="htab" onclick="swh(this,'hs')">睡眠</button>
+      <button class="htab" onclick="swh(this,'hse')">季節</button>
+      <button class="htab" onclick="swh(this,'hm')">用藥</button>
+    </div>
+    <div id="hf" class="hcards">
+      <div class="hc"><span class="hci">💧</span><div class="hct">每天要喝足夠的水</div><div class="hcb">每天喝6到8杯水（約1500cc）。老人家容易忘記喝水，但水分不夠身體會不舒服。</div><div class="htp">💡 桌上放一壺水，每次電視廣告時間就喝一小杯！</div></div>
+      <div class="hc"><span class="hci">🥬</span><div class="hct">多吃蔬菜、少油少鹽</div><div class="hcb">每餐至少吃一拳頭份量的蔬菜，幫助消化和控制血壓血糖。炒菜少放鹽，用蔥薑蒜提味。</div><div class="htp">💡 深綠色蔬菜（菠菜、空心菜）最好，每天換著吃！</div></div>
+      <div class="hc"><span class="hci">🐟</span><div class="hct">每週吃2到3次魚</div><div class="hcb">魚肉對心臟和腦部很好，可以幫助預防失智。清蒸或水煮比油炸更健康。</div><div class="htp">💡 吳郭魚、鯛魚、秋刀魚都便宜又好，隨時都買得到！</div></div>
+    </div>
+    <div id="hs" class="hcards" style="display:none">
+      <div class="hc"><span class="hci">🌙</span><div class="hct">睡前少喝水，少跑廁所</div><div class="hcb">晚上八點後少喝水，減少半夜起床。白天水分要補足。</div><div class="htp">💡 如果半夜常要起床，告訴家人，可能需要看醫生。</div></div>
+      <div class="hc"><span class="hci">⏰</span><div class="hct">每天差不多時間睡覺</div><div class="hcb">固定時間上床、起床，讓身體養成習慣，睡眠品質會好很多。</div><div class="htp">💡 睡前泡溫水腳15分鐘，更容易入睡！</div></div>
+      <div class="hc"><span class="hci">☀️</span><div class="hct">白天曬曬太陽</div><div class="hcb">每天早上曬15到30分鐘太陽，補充維生素D，骨頭更強壯，晚上也睡得更好。</div><div class="htp">💡 早上9到10點的陽光最溫和，避開正午大太陽！</div></div>
+    </div>
+    <div id="hse" class="hcards" style="display:none">
+      <div class="hc" id="season-card"><span class="hci" id="sei">🌸</span><div class="hct" id="set">季節養生</div><div class="hcb" id="seb">載入中...</div><div class="htp" id="setp"></div></div>
+      <div class="hc"><span class="hci">🧥</span><div class="hct">早晚溫差大，注意穿衣</div><div class="hcb">台灣早晚溫差變化大，出門一定要帶薄外套。老人家身體對溫度比較敏感，著涼容易感冒。</div><div class="htp">💡 準備一件隨手帶的薄外套，掛在門口就不會忘記！</div></div>
+    </div>
+    <div id="hm" class="hcards" style="display:none">
+      <div class="hc"><span class="hci">💊</span><div class="hct">按時吃藥，不要自己停藥</div><div class="hcb">高血壓、糖尿病的藥每天要按時吃。感覺好了也不能自己停藥，一定要問醫生。</div><div class="htp">💡 買一週的藥盒，每天早中晚分格放好，就不會忘記！</div></div>
+      <div class="hc"><span class="hci">⚠️</span><div class="hct">葡萄柚配某些藥很危險</div><div class="hcb">葡萄柚會讓某些藥藥效變太強，特別是降血壓藥和降血脂藥。吃藥時不要喝葡萄柚汁。</div><div class="htp">💡 不確定的話，問家庭醫師或藥師！</div></div>
+      <div class="hc"><span class="hci">📋</span><div class="hct">看診時帶著所有藥袋</div><div class="hcb">去看不同科的醫生，把家裡所有藥袋一起帶去，避免重複用藥。</div><div class="htp">💡 把所有藥袋放在一個塑膠袋，每次出門看診都帶著！</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 動腦訓練 ══ -->
+<div id="brain" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('brain')">←</button><div class="stit">🧠 動腦訓練</div></div>
+  <div class="sbdy">
+    <div class="brain-tabs">
+      <button class="btab act" onclick="swb(this,'mem-game')">配對記憶</button>
+      <button class="btab" onclick="swb(this,'math-game')">算術練習</button>
+      <button class="btab" onclick="swb(this,'mood-track')">今日心情</button>
+    </div>
+    <div id="mem-game">
+      <div class="game-card">
+        <div class="game-title">🃏 翻牌配對</div>
+        <div class="game-desc">找出兩張一樣的牌，全部配對完成！訓練記憶力和注意力。</div>
+        <div class="score-bar"><span>步數：</span><span id="mem-steps">0</span><span>已配對：</span><span id="mem-matched">0</span><span>/8</span></div>
+        <div class="mem-grid" id="mem-grid"></div>
+        <button onclick="initMem()" class="btn-restart">重新開始</button>
+      </div>
+    </div>
+    <div id="math-game" style="display:none">
+      <div class="game-card">
+        <div class="game-title">🔢 算術練習</div>
+        <div class="game-desc">選出正確答案！訓練計算能力和反應速度。</div>
+        <div class="math-levels">
+          <button onclick="setMathLevel(1)" id="ml-1" class="ml act">初級</button>
+          <button onclick="setMathLevel(2)" id="ml-2" class="ml">中級</button>
+          <button onclick="setMathLevel(3)" id="ml-3" class="ml">高級</button>
+        </div>
+        <div class="score-bar"><span>答對：</span><span id="math-right">0</span><span>答錯：</span><span id="math-wrong">0</span></div>
+        <div class="math-box"><div class="math-q" id="math-q">載入中...</div></div>
+        <div class="math-opts" id="math-opts"></div>
+      </div>
+    </div>
+    <div id="mood-track" style="display:none">
+      <div class="game-card" style="text-align:left">
+        <div class="game-title" style="text-align:center">😊 今天心情怎麼樣？</div>
+        <div class="mood-grid" id="mood-grid">
+          <div style="text-align:center"><button class="mood-btn" data-mood="5" onclick="selMood(this,5)">😄</button><span class="mood-label">很好</span></div>
+          <div style="text-align:center"><button class="mood-btn" data-mood="4" onclick="selMood(this,4)">🙂</button><span class="mood-label">不錯</span></div>
+          <div style="text-align:center"><button class="mood-btn" data-mood="3" onclick="selMood(this,3)">😐</button><span class="mood-label">普通</span></div>
+          <div style="text-align:center"><button class="mood-btn" data-mood="2" onclick="selMood(this,2)">😔</button><span class="mood-label">不太好</span></div>
+          <div style="text-align:center"><button class="mood-btn" data-mood="1" onclick="selMood(this,1)">😢</button><span class="mood-label">很不好</span></div>
+        </div>
+        <div id="mood-msg" class="mood-msg">點上方的臉，記錄今天的心情</div>
+        <div class="mood-hist-title">最近7天</div>
+        <div class="mood-history" id="mood-hist"></div>
+        <div class="mood-note">📌 心情記錄可以讓家人了解你的狀況。如果連續幾天心情不好，記得告訴家人。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 吃藥提醒 ══ -->
+<div id="meds" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('meds')">←</button><div class="stit">💊 今天吃藥了嗎</div></div>
+  <div class="sbdy">
+    <div id="med-status" class="med-status"><div class="med-today" id="med-today-txt">今天還沒記錄</div><div class="med-hist" id="med-today-date"></div></div>
+    <button class="med-big" onclick="markMed('早上')"><span class="med-ic">☀️</span><span class="med-lbl">早上藥吃了！</span><span class="med-sub">按這裡記錄早上的藥</span></button>
+    <button class="med-big med-mid" onclick="markMed('中午')"><span class="med-ic">🌿</span><span class="med-lbl">中午藥吃了！</span><span class="med-sub">按這裡記錄中午的藥</span></button>
+    <button class="med-big med-night" onclick="markMed('晚上')"><span class="med-ic">🌙</span><span class="med-lbl">晚上藥吃了！</span><span class="med-sub">按這裡記錄晚上的藥</span></button>
+    <div class="med-history-box">
+      <div class="med-hist-title">最近用藥紀錄</div>
+      <div id="med-hist-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 公告 ══ -->
+<div id="notice" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('notice')">←</button><div class="stit">📢 最新公告</div></div>
+  <div class="sbdy"><div class="nlist" id="nlist"></div></div>
+</div>
+
+<!-- ══ 緊急求救 ══ -->
+<div id="sos" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('sos')">←</button><div class="stit">🆘 緊急求救</div></div>
+  <div class="sbdy"><div class="pintro">身體不舒服或有危險<br>馬上按下面的撥打！</div><div class="pcards" id="sos-phones"></div></div>
+</div>
+
+<!-- ══ 重要電話 ══ -->
+<div id="phone" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('phone')">←</button><div class="stit">📞 重要電話</div></div>
+  <div class="sbdy"><div class="pcards" id="all-phones"></div></div>
+</div>
+
+<!-- ══ 子女設定 ══ -->
+<div id="setup" class="page">
+  <div class="shero"><div class="sht">⚙️ 子女設定</div><div class="shs">請幫家中長輩設定好。設定完成後，長輩只要每天打開這個頁面就好，什麼都不需要操作！</div></div>
+  <div class="sbody">
+    <div class="ssec"><div class="sstit">叫他什麼？</div>
+      <div class="sfd"><label class="slb">長輩的稱呼<span class="slbs">顯示在問候語中（例：阿嬤、爸爸）</span></label><input class="sinp" id="sn" type="text" placeholder="阿嬤" maxlength="6"></div>
+    </div>
+    <div class="ssec"><div class="sstit">緊急聯絡人</div>
+      <div class="sfd"><label class="slb">家人姓名1（最重要的）</label><input class="sinp" id="sf1n" type="text" placeholder="大兒子" maxlength="8"></div>
+      <div class="sfd"><label class="slb">他的電話</label><input class="sinp" id="sf1p" type="tel" placeholder="0912-345-678"></div>
+      <div class="sfd"><label class="slb">家人姓名2（選填）</label><input class="sinp" id="sf2n" type="text" placeholder="二女兒" maxlength="8"></div>
+      <div class="sfd"><label class="slb">他的電話（選填）</label><input class="sinp" id="sf2p" type="tel" placeholder=""></div>
+      <div class="sfd"><label class="slb">家庭醫師（選填）</label><input class="sinp" id="scn" type="text" placeholder="○○診所"></div>
+      <div class="sfd"><label class="slb">診所電話（選填）</label><input class="sinp" id="scp" type="tel" placeholder=""></div>
+    </div>
+    <div class="ssec"><div class="sstit">所在地區</div>
+      <div class="sfd"><label class="slb">縣市</label>
+        <select class="sinp" id="srg">
+          <option value="">-- 請選擇 --</option>
+          <option>臺北市</option><option>新北市</option><option>桃園市</option><option>臺中市</option><option>臺南市</option><option>高雄市</option><option>基隆市</option><option>新竹市</option><option>嘉義市</option><option>新竹縣</option><option>苗栗縣</option><option>彰化縣</option><option>南投縣</option><option>雲林縣</option><option>嘉義縣</option><option>屏東縣</option><option>宜蘭縣</option><option>花蓮縣</option><option>臺東縣</option><option>澎湖縣</option><option>金門縣</option><option>連江縣</option>
+        </select>
+      </div>
+    </div>
+    <div class="ssec"><div class="sstit">通知設定</div>
+      <div class="tr"><div><div class="trlb">停水公告</div><div class="trsub">有停水時顯示</div></div><button class="tog on" id="tw" onclick="this.classList.toggle('on')"></button></div>
+      <div class="tr"><div><div class="trlb">停電公告</div><div class="trsub">有停電時顯示</div></div><button class="tog on" id="te" onclick="this.classList.toggle('on')"></button></div>
+      <div class="tr"><div><div class="trlb">政府福利公告</div><div class="trsub">長照補助、老人福利等</div></div><button class="tog on" id="tg" onclick="this.classList.toggle('on')"></button></div>
+    </div>
+    <button class="svbtn" onclick="saveC()">✓ 儲存，進入長輩頁面</button>
+    <button class="pvbtn" onclick="goHome()">👀 先預覽長輩畫面</button>
+    <div class="status-box">
+      <div class="status-title">📊 長輩今日狀況（子女查看）</div>
+      <div id="elder-status" class="status-list">
+        <div>💊 今日用藥紀錄：<strong id="status-meds">讀取中...</strong></div>
+        <div>😊 今日心情：<strong id="status-mood">讀取中...</strong></div>
+        <div>✅ 今日習慣打勾：<strong id="status-habits">讀取中...</strong></div>
+        <div>📅 最後開啟：<strong id="status-lastopen">讀取中...</strong></div>
+      </div>
+      <div class="status-note">資料來自長輩的手機瀏覽器，需在同一台裝置上查看</div>
+    </div>
+    <div class="inst"><strong>📱 如何讓長輩像App一樣使用</strong>
+      <ul class="ilist">
+        <li class="iitem"><div class="inn">1</div><span>用 Safari（iPhone）或 Chrome（Android）開啟此頁</span></li>
+        <li class="iitem"><div class="inn">2</div><span>iPhone：點下方「分享」→「加入主畫面」</span></li>
+        <li class="iitem"><div class="inn">3</div><span>Android：點右上角三個點→「加入主畫面」</span></li>
+        <li class="iitem"><div class="inn">4</div><span>主畫面出現「陪伴好友」圖示，點開就能用！</span></li>
+      </ul>
+      <div class="inst-note">沒有網路時，健康操、電話、養生知識都不需要網路。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 今天穿什麼 ══ -->
+<div id="dress" class="sub">
+  <div class="shdr"><button class="bk" onclick="bk('dress')">←</button><div class="stit">👕 今天穿什麼</div></div>
+  <div class="sbdy" id="dress-body"></div>
+</div>
+
+<div id="toast" aria-live="polite"></div>
+
+<!-- JS：順序很重要，main.js 最後 -->
+<script src="js/config.js" defer></script>
+<script src="js/router.js" defer></script>
+<script src="js/home.js" defer></script>
+<script src="js/health.js" defer></script>
+<script src="js/brain.js" defer></script>
+<script src="js/meds.js" defer></script>
+<script src="js/phones.js" defer></script>
+<script src="js/dress.js" defer></script>
+<script src="js/setup.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
