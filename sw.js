@@ -1,4 +1,4 @@
-const CACHE = 'banlaoyou-v5';
+const CACHE = 'banlaoyou-V6';
 const ASSETS = [
   './',
   './index.html',
@@ -55,33 +55,23 @@ self.addEventListener('activate', evt => {
   );
 });
 
-// 3. 攔截網路請求：有快取先用快取，沒快取才連網
+// 僅攔截同源資源；HTML 採網路優先，其他靜態資源採快取優先。
 self.addEventListener('fetch', evt => {
-  // 只處理 GET 請求
-  if(evt.request.method !== 'GET') return;
-
-  // 如果請求的是氣象 API 或 YouTube，就直接放行連網（不要快取動態資料）
-  if(evt.request.url.includes('api.open-meteo.com') || evt.request.url.includes('youtube.com')) {
+  const req = evt.request;
+  if(req.method !== 'GET') return;
+  const url = new URL(req.url);
+  if(url.origin !== self.location.origin) return;
+  if(req.mode === 'navigate') {
+    evt.respondWith(fetch(req).then(response => {
+      if(response.ok) { const copy = response.clone(); evt.waitUntil(caches.open(CACHE).then(c => c.put('./index.html', copy))); }
+      return response;
+    }).catch(async () => (await caches.match('./index.html')) || Response.error()));
     return;
   }
-
-  evt.respondWith(
-    caches.match(evt.request).then(cached => {
-      // 如果有快取，直接回傳快取（這讓長輩在沒網路時也能瞬間開啟）
-      if (cached) return cached;
-
-      // 如果沒快取，就發送網路請求
-      return fetch(evt.request).then(resp => {
-        // 確保請求成功，且是本地端檔案才存入快取
-        if(resp && resp.status === 200 && resp.type === 'basic'){
-          const clone = resp.clone();
-          caches.open(CACHE).then(c => c.put(evt.request, clone));
-        }
-        return resp;
-      }).catch(() => {
-        // 如果連網失敗（例如完全沒網路），且沒有快取，就回傳 undefined 或首頁
-        // 這樣可以避免瀏覽器報錯中斷
-      });
-    })
-  );
+  evt.respondWith(caches.match(req).then(cached => cached || fetch(req).then(response => {
+    if(response.ok && response.type === 'basic') {
+      const copy = response.clone(); evt.waitUntil(caches.open(CACHE).then(c => c.put(req, copy)));
+    }
+    return response;
+  })));
 });
