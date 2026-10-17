@@ -78,8 +78,8 @@
 </div>
 
 <!-- ══ 健康操 ══ -->
-<div id="ex" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('ex')">←</button><div class="stit">🤸 健康操</div></div>
+<div id="ex" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('ex')">← 返回</button><div class="stit">🤸 健康操</div></div>
   <div class="sbdy">
     <div class="ex-intro">
       <div class="ei-t">每天 15 分鐘，活動筋骨！</div>
@@ -173,8 +173,8 @@
 </div>
 
 <!-- ══ 養生知識 ══ -->
-<div id="health" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('health')">←</button><div class="stit">🌿 養生知識</div></div>
+<div id="health" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('health')">← 返回</button><div class="stit">🌿 養生知識</div></div>
   <div class="sbdy">
     <div class="htabs">
       <button class="htab act" onclick="swh(this,'hf')">飲食</button>
@@ -205,8 +205,8 @@
 </div>
 
 <!-- ══ 動腦訓練 ══ -->
-<div id="brain" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('brain')">←</button><div class="stit">🧠 動腦訓練</div></div>
+<div id="brain" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('brain')">← 返回</button><div class="stit">🧠 動腦訓練</div></div>
   <div class="sbdy">
     <div class="brain-tabs">
       <button class="btab act" onclick="swb(this,'mem-game')">配對記憶</button>
@@ -256,8 +256,8 @@
 </div>
 
 <!-- ══ 吃藥提醒 ══ -->
-<div id="meds" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('meds')">←</button><div class="stit">💊 用藥紀錄</div></div>
+<div id="meds" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('meds')">← 返回</button><div class="stit">💊 用藥紀錄</div></div>
   <div class="sbdy">
     <p class="safety-note">此功能僅供手動記錄，不會在指定時間自動提醒，也無法確認藥物是否正確服用。請依醫囑用藥。</p>
     <p class="safety-note">僅供手動記錄，不會自動提醒服藥；請依醫囑用藥。</p><div id="med-status" class="med-status"><div class="med-today" id="med-today-txt">今天還沒記錄</div><div class="med-hist" id="med-today-date"></div></div>
@@ -272,25 +272,25 @@
 </div>
 
 <!-- ══ 公告 ══ -->
-<div id="notice" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('notice')">←</button><div class="stit">📢 最新公告</div></div>
+<div id="notice" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('notice')">← 返回</button><div class="stit">📢 最新公告</div></div>
   <div class="sbdy"><div class="nlist" id="nlist"></div></div>
 </div>
 
 <!-- ══ 緊急求救 ══ -->
-<div id="sos" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('sos')">←</button><div class="stit">🆘 緊急求救</div></div>
+<div id="sos" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('sos')">← 返回</button><div class="stit">🆘 緊急求救</div></div>
   <div class="sbdy"><div class="pintro">身體不舒服或有危險<br>馬上按下面的撥打！</div><div class="pcards" id="sos-phones"></div></div>
 </div>
 
 <!-- ══ 重要電話 ══ -->
-<div id="phone" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('phone')">←</button><div class="stit">📞 重要電話</div></div>
+<div id="phone" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('phone')">← 返回</button><div class="stit">📞 重要電話</div></div>
   <div class="sbdy"><div class="pcards" id="all-phones"></div></div>
 </div>
 
 <!-- ══ 子女設定 ══ -->
-<div id="setup" class="page">
+<div id="setup" class="page" hidden>
   <div class="shero"><div class="sht">⚙️ 子女設定</div><div class="shs">請幫家中親友設定好。設定完成後，每天只要打開這個頁面就好，什麼都不需要操作！</div></div>
   <div class="sbody">
     <div class="ssec"><div class="sstit">叫他什麼？</div>
@@ -313,8 +313,8 @@
       </div>
     </div>
     <div class="ssec"><div class="sstit">通知設定</div>
-      <div class="tr"><div><div class="trlb">停水公告</div><div class="trsub">有停水時顯示</div></div><button class="tog on" id="tw" onclick="this.classList.toggle('on')"></button></div>
-      <div class="tr"><div><div class="trlb">停電公告</div><div class="trsub">有停電時顯示</div></div><button class="tog on" id="te" onclick="this.classList.toggle('on')"></button></div>
+      <div class="tr"><div><div class="trlb">停水公告</div><div class="trsub">顯示官方查詢方式</div></div><button class="tog on" id="tw" onclick="this.classList.toggle('on')"></button></div>
+      <div class="tr"><div><div class="trlb">停電公告</div><div class="trsub">顯示官方查詢方式</div></div><button class="tog on" id="te" onclick="this.classList.toggle('on')"></button></div>
       <div class="tr"><div><div class="trlb">政府福利公告</div><div class="trsub">長照補助、福利資訊等</div></div><button class="tog on" id="tg" onclick="this.classList.toggle('on')"></button></div>
     </div>
     <button class="svbtn" onclick="saveC()">✓ 儲存，進入主頁面</button>
@@ -342,8 +342,8 @@
 </div>
 
 <!-- ══ 今天穿什麼 ══ -->
-<div id="dress" class="sub">
-  <div class="shdr"><button class="bk" onclick="bk('dress')">←</button><div class="stit">👕 今天穿什麼</div></div>
+<div id="dress" class="sub" hidden>
+  <div class="shdr"><button class="bk" onclick="bk('dress')">← 返回</button><div class="stit">👕 今天穿什麼</div></div>
   <div class="sbdy" id="dress-body"></div>
 </div>
 
