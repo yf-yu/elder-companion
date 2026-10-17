@@ -1,0 +1,50 @@
+
+name: Check Official Sources
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-sources:
+    name: Validate Government RSS
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate source catalog JSON
+        run: |
+          python -m json.tool data/source_catalog.json > /dev/null
+          python -m json.tool data/sources.json > /dev/null
+
+      - name: Check official RSS sources
+        run: |
+          python scripts/check_sources.py
+
+      - name: Print source check report
+        if: always()
+        run: |
+          if [ -f data/source_check_report.json ]; then
+            python -m json.tool data/source_check_report.json
+          else
+            echo "No source check report generated."
+          fi
+
+      - name: Upload source check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-source-check-report
+          path: data/source_check_report.json
+          if-no-files-found: warn
+          retention-days: 7
