@@ -1,4 +1,4 @@
-/* ============ games.css：動腦訓練 ============ */
+
 .brain-tabs{display:flex; gap:7px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px}
 .brain-tabs::-webkit-scrollbar{display:none}
 .btab{
@@ -17,7 +17,6 @@
 .game-title{font-size:clamp(16px,4.5vw,20px); font-weight:900; color:var(--n); margin-bottom:8px}
 .game-desc{font-size:clamp(12px,3.2vw,14px); color:var(--muted); margin-bottom:16px; line-height:1.7}
 
-/* 配對記憶 */
 .mem-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px}
 .mem-card{
   aspect-ratio:1; border-radius:12px;
@@ -40,7 +39,6 @@
   cursor:pointer; font-family:inherit;
 }
 
-/* 算術 */
 .math-levels{display:flex; gap:8px; margin-bottom:12px}
 .ml{
   flex:1; padding:8px; border-radius:10px;
@@ -63,7 +61,6 @@
 .mopt.correct{background:var(--greenbg); border-color:var(--green2); color:var(--green)}
 .mopt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
 
-/* 情緒打卡 */
 .mood-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:14px}
 .mood-btn{
   padding:10px 4px; border-radius:12px;
