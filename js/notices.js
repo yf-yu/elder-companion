@@ -1,581 +1,533 @@
+
+/*
+ * 伴老友｜最新公告 V7.6
+ *
+ * 每日官方公告
+ * 九大分類
+ * 長輩友善閱讀
+ * 保留既有 window.bldN() 入口
+ *
+ * 不需要外部套件或付費服務。
+ */
+
 (function () {
   "use strict";
 
   const DATA_URL = "./data/announcements.json";
-
   const MAX_ITEMS = 40;
   const STALE_HOURS = 30;
-  const FETCH_TIMEOUT = 9000;
+  const TIMEOUT_MS = 9000;
 
-  const FONT_STORAGE_KEY = "banlaoyou_notice_font";
+  const FONT_KEY = "banlaoyou_notice_font";
 
-  const FONT_MIN = 1;
-  const FONT_MAX = 3;
-
-  const officialLinks = [
+  const categories = [
     {
-      name: "停水公告",
-      description: "查詢自來水相關公告",
-      url: "https://www.water.gov.tw/"
+      id: "all",
+      name: "全部公告",
+      keywords: []
     },
     {
-      name: "停電查詢",
-      description: "查詢台電停電資訊",
-      url: "https://www.taipower.com.tw/"
+      id: "health",
+      name: "健康防疫",
+      keywords: ["健康", "疫情", "防疫", "疾管"]
     },
     {
-      name: "防災示警",
-      description: "查詢政府防災示警",
-      url: "https://alerts.ncdr.nat.gov.tw/"
+      id: "weather",
+      name: "天氣預報",
+      keywords: ["天氣", "氣象", "預報"]
     },
     {
-      name: "天氣警特報",
-      description: "查詢中央氣象署警特報",
-      url: "https://www.cwa.gov.tw/"
+      id: "power",
+      name: "預定停電",
+      keywords: ["停電", "電力"]
     },
     {
-      name: "防詐資訊",
-      description: "查詢官方防詐資訊",
-      url: "https://165.npa.gov.tw/"
+      id: "water",
+      name: "預定停水",
+      keywords: ["停水", "供水"]
+    },
+    {
+      id: "welfare",
+      name: "長者福利",
+      keywords: ["長者福利", "老人福利", "長照", "補助"]
+    },
+    {
+      id: "fraud",
+      name: "防詐提醒",
+      keywords: ["防詐", "詐騙"]
+    },
+    {
+      id: "medical",
+      name: "健保就醫",
+      keywords: ["健保", "就醫"]
+    },
+    {
+      id: "food",
+      name: "食藥安全",
+      keywords: ["食藥", "食品安全", "藥品"]
+    },
+    {
+      id: "pension",
+      name: "年金給付",
+      keywords: ["年金", "退休", "給付"]
     }
   ];
 
+  const officialLinks = [
+    ["健康防疫", "疾病管制署", "https://www.cdc.gov.tw/"],
+    ["天氣預報", "中央氣象署", "https://www.cwa.gov.tw/"],
+    ["預定停電", "台灣電力公司", "https://www.taipower.com.tw/"],
+    ["預定停水", "台灣自來水公司", "https://www.water.gov.tw/"],
+    ["長者福利", "衛生福利部", "https://www.mohw.gov.tw/"],
+    ["防詐提醒", "165 全民防騙網", "https://165.npa.gov.tw/"],
+    ["健保就醫", "中央健康保險署", "https://www.nhi.gov.tw/"],
+    ["食藥安全", "食品藥物管理署", "https://www.fda.gov.tw/"],
+    ["年金給付", "勞工保險局", "https://www.bli.gov.tw/"]
+  ];
+
   let currentData = null;
-  let loading = false;
-  let requestNumber = 0;
-
+  let activeCategory = "all";
   let fontLevel = readFontLevel();
+  let loading = false;
 
-  // --------------------------------------------------
-  // 基本工具
-  // --------------------------------------------------
+  // ==================================================
+  // 工具
+  // ==================================================
 
-  function makeNode(tag, content, className) {
-    const element = document.createElement(tag);
+  function node(tag, text, className) {
+    const el = document.createElement(tag);
 
-    if (className) {
-      element.className = className;
+    if (className) el.className = className;
+
+    if (text !== null && text !== undefined) {
+      el.textContent = String(text);
     }
 
-    if (content !== null && content !== undefined) {
-      element.textContent = String(content);
-    }
-
-    return element;
+    return el;
   }
 
-  function makeButton(text, onClick) {
-    const button = makeNode("button", text);
+  function button(text, callback) {
+    const el = node("button", text);
 
-    button.type = "button";
+    el.type = "button";
 
-    button.addEventListener("click", onClick);
-
-    button.style.cssText = [
+    el.style.cssText = [
       "min-height:44px",
       "padding:10px 14px",
-      "border:1px solid #777",
-      "border-radius:10px",
+      "border:1px solid #888",
+      "border-radius:12px",
       "background:transparent",
       "color:inherit",
       "font:inherit",
-      "font-weight:600",
       "cursor:pointer"
     ].join(";");
 
-    return button;
-  }
+    el.addEventListener("click", callback);
 
-  function makeLink(text, url) {
-    const link = makeNode("a", text);
-
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-
-    link.style.cssText = [
-      "display:inline-flex",
-      "align-items:center",
-      "min-height:44px",
-      "padding:8px 2px",
-      "text-decoration:underline",
-      "text-underline-offset:3px",
-      "font-weight:700",
-      "overflow-wrap:anywhere"
-    ].join(";");
-
-    return link;
-  }
-
-  function setStyles(element, styles) {
-    Object.assign(element.style, styles);
-    return element;
+    return el;
   }
 
   function safeUrl(value) {
     try {
       const url = new URL(value);
 
-      if (url.protocol !== "https:") {
-        return null;
-      }
-
-      if (url.username || url.password) {
-        return null;
-      }
-
       const host = url.hostname
         .toLowerCase()
         .replace(/\.$/, "");
 
-      const official =
-        host.endsWith(".gov.tw") ||
-        host === "www.taipower.com.tw";
+      if (url.protocol !== "https:") return null;
+      if (url.username || url.password) return null;
 
-      return official ? url.href : null;
+      if (
+        host.endsWith(".gov.tw") ||
+        host === "www.taipower.com.tw"
+      ) {
+        return url.href;
+      }
+
+      return null;
 
     } catch {
       return null;
     }
   }
 
-  function parseDate(value) {
-    if (!value) return null;
+  function link(text, url) {
+    const el = node("a", text);
 
-    const date = new Date(value);
+    el.href = url;
+    el.target = "_blank";
+    el.rel = "noopener noreferrer";
 
-    return Number.isNaN(date.getTime())
-      ? null
-      : date;
+    el.style.cssText = [
+      "display:inline-flex",
+      "align-items:center",
+      "min-height:44px",
+      "padding:8px 2px",
+      "font-weight:700",
+      "text-decoration:underline",
+      "text-underline-offset:3px",
+      "overflow-wrap:anywhere"
+    ].join(";");
+
+    return el;
   }
 
-  function formatDate(value, withTime = false) {
-    const date = parseDate(value);
+  function dateValue(value) {
+    if (!value) return null;
 
-    if (!date) {
-      return "日期未提供";
-    }
+    const d = new Date(value);
+
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+
+  function formatDate(value, time = false) {
+    const d = dateValue(value);
+
+    if (!d) return "日期未提供";
 
     return new Intl.DateTimeFormat("zh-TW", {
       timeZone: "Asia/Taipei",
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-      ...(withTime
+      ...(time
         ? {
             hour: "2-digit",
             minute: "2-digit",
             hour12: false
           }
         : {})
-    }).format(date);
-  }
-
-  function taiwanDayNumber(date) {
-    const parts = new Intl.DateTimeFormat("en-US", {
-      timeZone: "Asia/Taipei",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit"
-    }).formatToParts(date);
-
-    const values = {};
-
-    parts.forEach(part => {
-      if (part.type !== "literal") {
-        values[part.type] = Number(part.value);
-      }
-    });
-
-    return Math.floor(
-      Date.UTC(
-        values.year,
-        values.month - 1,
-        values.day
-      ) / 86400000
-    );
-  }
-
-  function relativeDate(value) {
-    const date = parseDate(value);
-
-    if (!date) {
-      return "發布日期未提供";
-    }
-
-    const days =
-      taiwanDayNumber(new Date()) -
-      taiwanDayNumber(date);
-
-    if (days === 0) return "今天發布";
-    if (days === 1) return "昨天發布";
-
-    if (days > 1 && days <= 6) {
-      return days + " 天前發布";
-    }
-
-    return formatDate(value) + " 發布";
+    }).format(d);
   }
 
   function readFontLevel() {
     try {
       const value = Number(
-        localStorage.getItem(FONT_STORAGE_KEY)
+        localStorage.getItem(FONT_KEY)
       );
 
       if (
         Number.isInteger(value) &&
-        value >= FONT_MIN &&
-        value <= FONT_MAX
+        value >= 1 &&
+        value <= 3
       ) {
         return value;
       }
-
-    } catch {
-      // 無痕模式或儲存空間停用時使用預設值
-    }
+    } catch {}
 
     return 2;
   }
 
-  function saveFontLevel(level) {
-    fontLevel = Math.max(
-      FONT_MIN,
-      Math.min(FONT_MAX, level)
-    );
+  function setFontLevel(value) {
+    fontLevel = Math.max(1, Math.min(3, value));
 
     try {
       localStorage.setItem(
-        FONT_STORAGE_KEY,
+        FONT_KEY,
         String(fontLevel)
       );
-    } catch {
-      // 儲存失敗不影響閱讀
+    } catch {}
+
+    render();
+  }
+
+  function fontSize() {
+    return [16, 19, 22][fontLevel - 1];
+  }
+
+  function titleSize() {
+    return [19, 23, 27][fontLevel - 1];
+  }
+
+  function currentRegion() {
+    const value = window.C?.rg;
+
+    return typeof value === "string" && value.trim()
+      ? value.trim()
+      : "未設定";
+  }
+
+  // ==================================================
+  // 分類
+  // ==================================================
+
+  function categoryFor(item) {
+    const category = String(item.category || "");
+    const source = String(item.source || "");
+
+    // 優先辨識資料來源及分類，
+    // 避免一般新聞內提到其他詞就誤分類。
+    if (
+      source.includes("疾病管制署") ||
+      category === "健康資訊"
+    ) {
+      return "health";
     }
 
-    applyFontLevel();
-  }
+    const text = category + " " + source;
 
-  function applyFontLevel() {
-    const container = document.getElementById("nlist");
+    for (const group of categories) {
+      if (group.id === "all") continue;
 
-    if (!container) return;
-
-    const sizes = {
-      1: {
-        body: "16px",
-        title: "19px"
-      },
-      2: {
-        body: "19px",
-        title: "23px"
-      },
-      3: {
-        body: "22px",
-        title: "27px"
+      if (
+        group.keywords.some(keyword =>
+          text.includes(keyword)
+        )
+      ) {
+        return group.id;
       }
-    };
+    }
 
-    const size = sizes[fontLevel];
-
-    container.style.setProperty(
-      "--notice-body-size",
-      size.body
-    );
-
-    container.style.setProperty(
-      "--notice-title-size",
-      size.title
-    );
+    return "other";
   }
 
-  // --------------------------------------------------
-  // 標題與操作工具
-  // --------------------------------------------------
+  function getItems() {
+    const data = currentData;
 
-  function makeHeader(container) {
-    const header = makeNode("div");
+    if (!data || !Array.isArray(data.items)) {
+      return [];
+    }
 
-    setStyles(header, {
-      display: "flex",
-      flexWrap: "wrap",
-      gap: "12px",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: "16px"
-    });
+    const seen = new Set();
 
-    const heading = makeNode(
+    return data.items
+      .filter(item => {
+        if (!item || typeof item !== "object") {
+          return false;
+        }
+
+        const url = safeUrl(item.url);
+
+        if (!url || seen.has(url)) {
+          return false;
+        }
+
+        seen.add(url);
+        return true;
+      })
+      .sort((a, b) => {
+        const aTime =
+          dateValue(a.published_at)?.getTime() || 0;
+
+        const bTime =
+          dateValue(b.published_at)?.getTime() || 0;
+
+        return bTime - aTime;
+      })
+      .slice(0, MAX_ITEMS);
+  }
+
+  // ==================================================
+  // 頁面
+  // ==================================================
+
+  function renderHeader(container) {
+    const heading = node(
       "h3",
       "政府官方最新公告"
     );
 
-    heading.style.margin = "0";
+    container.appendChild(heading);
 
-    header.appendChild(heading);
+    const region = node(
+      "p",
+      "目前設定地區：" + currentRegion() +
+      "。全國性公告均可查看；" +
+      "地方資訊請以官方公告的影響範圍為準。"
+    );
 
-    const controls = makeNode("div");
+    container.appendChild(region);
 
-    setStyles(controls, {
-      display: "flex",
-      flexWrap: "wrap",
-      gap: "8px"
+    const controls = node("div");
+
+    controls.style.cssText = [
+      "display:flex",
+      "flex-wrap:wrap",
+      "gap:8px",
+      "margin:14px 0"
+    ].join(";");
+
+    const smaller = button("字體 A−", () => {
+      setFontLevel(fontLevel - 1);
     });
 
-    const smaller = makeButton("字體 A−", () => {
-      saveFontLevel(fontLevel - 1);
-      updateFontButtons();
+    smaller.disabled = fontLevel === 1;
+
+    const larger = button("字體 A＋", () => {
+      setFontLevel(fontLevel + 1);
     });
 
-    smaller.dataset.noticeControl = "smaller";
+    larger.disabled = fontLevel === 3;
 
-    const larger = makeButton("字體 A＋", () => {
-      saveFontLevel(fontLevel + 1);
-      updateFontButtons();
-    });
-
-    larger.dataset.noticeControl = "larger";
-
-    const refresh = makeButton("重新整理", () => {
+    const refresh = button("重新整理", () => {
       window.bldN();
     });
 
-    refresh.dataset.noticeControl = "refresh";
+    refresh.disabled = loading;
 
-    controls.append(
-      smaller,
-      larger,
-      refresh
-    );
+    controls.append(smaller, larger, refresh);
 
-    header.appendChild(controls);
-
-    container.appendChild(header);
-
-    updateFontButtons();
+    container.appendChild(controls);
   }
 
-  function updateFontButtons() {
-    const container = document.getElementById("nlist");
+  function renderStatus(container) {
+    const data = currentData;
 
-    if (!container) return;
+    const status = node("section");
 
-    const smaller = container.querySelector(
-      '[data-notice-control="smaller"]'
-    );
+    status.style.cssText = [
+      "border:1px solid #999",
+      "border-radius:12px",
+      "padding:14px",
+      "margin:14px 0",
+      "line-height:1.7"
+    ].join(";");
 
-    const larger = container.querySelector(
-      '[data-notice-control="larger"]'
-    );
+    let message = "尚未取得公告資料";
 
-    const refresh = container.querySelector(
-      '[data-notice-control="refresh"]'
-    );
+    if (loading && !data) {
+      message = "正在讀取官方公告…";
 
-    if (smaller) {
-      smaller.disabled = fontLevel <= FONT_MIN;
+    } else if (data?.status === "unavailable") {
+      message = "目前無法取得最新公告，請稍後再試。";
+
+    } else if (data?.status === "not_configured") {
+      message = "尚未設定官方公告來源。";
+
+    } else if (data?.status === "partial") {
+      message = "部分官方來源更新失敗，公告可能不完整。";
+
+    } else if (data?.status === "ok") {
+      const updated = dateValue(data.generated_at);
+
+      if (updated) {
+        const age = Date.now() - updated.getTime();
+
+        message =
+          age >= 0 &&
+          age <= 30 * 60 * 60 * 1000
+            ? "官方公告資料已更新"
+            : "公告資料可能延遲，請以官方網站為準。";
+      } else {
+        message = "公告更新時間未提供。";
+      }
     }
 
-    if (larger) {
-      larger.disabled = fontLevel >= FONT_MAX;
+    status.appendChild(node("strong", message));
+
+    if (data?.generated_at) {
+      status.appendChild(
+        node(
+          "p",
+          "資料更新時間：" +
+          formatDate(data.generated_at, true)
+        )
+      );
     }
 
-    if (refresh) {
-      refresh.disabled = loading;
-      refresh.textContent = loading
-        ? "更新中…"
-        : "重新整理";
-    }
-  }
-
-  // --------------------------------------------------
-  // 狀態資訊
-  // --------------------------------------------------
-
-  function getStatus(data) {
-    if (data.status === "loading") {
-      return {
-        title: "正在讀取官方公告",
-        detail: "請稍候，正在取得最新資料。"
-      };
-    }
-
-    if (data.status === "unavailable") {
-      return {
-        title: "目前無法取得公告資料",
-        detail:
-          "可能是網路中斷或資料暫時無法讀取。" +
-          "請稍後重新整理，並可使用下方官方查詢連結。"
-      };
-    }
-
-    if (data.status === "not_configured") {
-      return {
-        title: "官方公告來源尚未設定",
-        detail:
-          "目前尚未完成自動公告來源設定，" +
-          "請使用下方官方查詢連結。"
-      };
-    }
-
-    const updated = parseDate(data.generated_at);
-
-    if (!updated) {
-      return {
-        title: "公告更新時間未提供",
-        detail: "無法確認這批公告的更新時間。"
-      };
-    }
-
-    const age = Date.now() - updated.getTime();
-
-    const stale =
-      age < -10 * 60 * 1000 ||
-      age > STALE_HOURS * 60 * 60 * 1000;
-
-    if (data.status === "partial") {
-      return {
-        title: "部分公告來源更新失敗",
-        detail:
-          "目前仍可閱讀已取得的公告，" +
-          "但內容可能不完整。"
-      };
-    }
-
-    if (stale) {
-      return {
-        title: "公告資料可能延遲",
-        detail:
-          "已超過預期更新時間，" +
-          "請以官方網站最新資訊為準。"
-      };
-    }
-
-    if (data.status === "ok") {
-      return {
-        title: "官方公告資料已更新",
-        detail:
-          "資料依每日排程更新，" +
-          "不是即時緊急警報。"
-      };
-    }
-
-    return {
-      title: "公告資料狀態尚未確認",
-      detail: "請以官方網站資訊為準。"
-    };
-  }
-
-  function makeStatusSection(container, data) {
-    const status = getStatus(data);
-
-    const section = makeNode("section");
-
-    setStyles(section, {
-      padding: "16px",
-      border: "1px solid #999",
-      borderRadius: "12px",
-      marginBottom: "18px",
-      fontSize: "var(--notice-body-size)"
-    });
-
-    const title = makeNode(
-      "p",
-      status.title
-    );
-
-    title.style.fontWeight = "700";
-    title.style.margin = "0 0 8px";
-
-    const detail = makeNode(
-      "p",
-      status.detail
-    );
-
-    detail.style.margin = "0";
-
-    section.append(title, detail);
-
-    if (data.generated_at) {
-      const updated = makeNode(
+    status.appendChild(
+      node(
         "p",
-        "資料更新時間：" +
-        formatDate(data.generated_at, true)
+        "本頁每天整理一次公告，" +
+        "不是即時緊急警報。"
+      )
+    );
+
+    container.appendChild(status);
+  }
+
+  function renderCategories(container, items) {
+    const section = node("section");
+
+    section.style.cssText = [
+      "display:grid",
+      "grid-template-columns:repeat(auto-fit,minmax(120px,1fr))",
+      "gap:10px",
+      "margin:18px 0"
+    ].join(";");
+
+    categories.forEach(group => {
+      const count = group.id === "all"
+        ? items.length
+        : items.filter(item =>
+            categoryFor(item) === group.id
+          ).length;
+
+      const el = button(
+        group.name + "（" + count + "）",
+        () => {
+          activeCategory = group.id;
+          render();
+        }
       );
 
-      updated.style.margin = "10px 0 0";
+      el.setAttribute(
+        "aria-pressed",
+        String(activeCategory === group.id)
+      );
 
-      section.appendChild(updated);
-    }
+      if (activeCategory === group.id) {
+        el.style.borderWidth = "2px";
+        el.style.fontWeight = "800";
+      }
+
+      section.appendChild(el);
+    });
 
     container.appendChild(section);
   }
 
-  // --------------------------------------------------
-  // 公告卡片
-  // --------------------------------------------------
-
-  function makeAnnouncementCard(item) {
+  function renderCard(container, item) {
     const url = safeUrl(item.url);
 
-    if (!url) return null;
+    if (!url) return;
 
-    const card = makeNode(
-      "article",
-      null,
-      "nc gov"
+    const card = node("article", null, "nc gov");
+
+    card.style.cssText = [
+      "padding:18px",
+      "border:1px solid #aaa",
+      "border-radius:14px",
+      "margin:14px 0",
+      "line-height:1.75",
+      "overflow-wrap:anywhere"
+    ].join(";");
+
+    const label = categories.find(
+      group => group.id === categoryFor(item)
+    )?.name || item.category || "政府資訊";
+
+    card.appendChild(
+      node("div", label, "nb")
     );
 
-    setStyles(card, {
-      padding: "18px",
-      marginBottom: "16px",
-      border: "1px solid #aaa",
-      borderRadius: "14px",
-      fontSize: "var(--notice-body-size)",
-      lineHeight: "1.75",
-      overflowWrap: "anywhere"
-    });
-
-    const category = makeNode(
-      "div",
-      item.category || "政府資訊",
-      "nb"
-    );
-
-    category.style.fontWeight = "700";
-
-    const title = makeNode(
+    const title = node(
       "h4",
       item.title || "官方公告",
       "nt"
     );
 
-    setStyles(title, {
-      margin: "10px 0",
-      fontSize: "var(--notice-title-size)",
-      lineHeight: "1.45"
-    });
+    title.style.cssText =
+      "font-size:" + titleSize() + "px;" +
+      "line-height:1.45;margin:10px 0";
 
-    const date = makeNode(
-      "p",
-      relativeDate(item.published_at)
+    card.appendChild(title);
+
+    card.appendChild(
+      node(
+        "p",
+        "發布日期：" +
+        formatDate(item.published_at)
+      )
     );
 
-    date.style.margin = "6px 0";
-
-    const source = makeNode(
-      "p",
-      "資料來源：" +
-      (item.source || "政府官方來源")
-    );
-
-    source.style.margin = "6px 0 12px";
-
-    card.append(
-      category,
-      title,
-      date,
-      source
+    card.appendChild(
+      node(
+        "p",
+        "來源：" +
+        (item.source || "政府官方來源")
+      )
     );
 
     const summary = String(
@@ -583,31 +535,28 @@
     ).trim();
 
     if (summary) {
-      const previewLength = 100;
+      const limit = 100;
 
-      const preview = makeNode(
+      const preview = node(
         "p",
-        summary.length > previewLength
-          ? summary.slice(0, previewLength) + "…"
-          : summary,
-        "nb"
+        summary.length > limit
+          ? summary.slice(0, limit) + "…"
+          : summary
       );
-
-      preview.style.margin = "10px 0";
 
       card.appendChild(preview);
 
-      if (summary.length > previewLength) {
+      if (summary.length > limit) {
         let expanded = false;
 
-        const toggle = makeButton(
+        const toggle = button(
           "展開更多內容",
           () => {
             expanded = !expanded;
 
             preview.textContent = expanded
               ? summary
-              : summary.slice(0, previewLength) + "…";
+              : summary.slice(0, limit) + "…";
 
             toggle.textContent = expanded
               ? "收合內容"
@@ -629,105 +578,41 @@
       }
     }
 
-    const footer = makeNode("div");
-
-    footer.style.marginTop = "12px";
-
-    footer.appendChild(
-      makeLink("閱讀官方完整公告 ↗", url)
+    card.appendChild(
+      link("閱讀官方完整公告 ↗", url)
     );
 
-    card.appendChild(footer);
-
-    return card;
+    container.appendChild(card);
   }
 
-  function normalizeItems(data) {
-    if (!Array.isArray(data.items)) {
-      return [];
-    }
-
-    const seen = new Set();
-
-    return data.items
-      .filter(item => {
-        if (
-          !item ||
-          typeof item !== "object" ||
-          !safeUrl(item.url)
-        ) {
-          return false;
-        }
-
-        if (seen.has(item.url)) {
-          return false;
-        }
-
-        seen.add(item.url);
-        return true;
-      })
-      .sort((a, b) => {
-        const dateA = parseDate(a.published_at);
-        const dateB = parseDate(b.published_at);
-
-        return (
-          (dateB ? dateB.getTime() : 0) -
-          (dateA ? dateA.getTime() : 0)
-        );
-      })
-      .slice(0, MAX_ITEMS);
-  }
-
-  // --------------------------------------------------
-  // 官方查詢入口
-  // --------------------------------------------------
-
-  function makeOfficialLinks(container) {
-    const section = makeNode("section");
+  function renderOfficialLinks(container) {
+    const section = node("section");
 
     section.style.marginTop = "24px";
 
-    const heading = makeNode(
-      "h3",
-      "直接查詢官方資訊"
+    section.appendChild(
+      node("h3", "官方資訊查詢")
     );
 
-    section.appendChild(heading);
-
-    const intro = makeNode(
-      "p",
-      "停水、停電、天氣及防災資訊可能隨時變動。" +
-      "請直接查詢官方網站，" +
-      "不要只依賴每日更新的公告。"
+    section.appendChild(
+      node(
+        "p",
+        "尚未自動串接的類別，" +
+        "仍可透過以下官方網站查詢。"
+      )
     );
 
-    intro.style.fontSize =
-      "var(--notice-body-size)";
+    officialLinks.forEach(([category, name, url]) => {
+      const row = node("div");
 
-    section.appendChild(intro);
+      row.style.cssText = [
+        "padding:10px 0",
+        "border-bottom:1px solid #bbb"
+      ].join(";");
 
-    officialLinks.forEach(item => {
-      const row = makeNode("div");
-
-      setStyles(row, {
-        padding: "12px 0",
-        borderBottom: "1px solid #bbb",
-        fontSize: "var(--notice-body-size)"
-      });
-
-      const link = makeLink(
-        item.name + " ↗",
-        item.url
+      row.appendChild(
+        link(category + "｜" + name + " ↗", url)
       );
-
-      const description = makeNode(
-        "div",
-        item.description
-      );
-
-      description.style.opacity = "0.85";
-
-      row.append(link, description);
 
       section.appendChild(row);
     });
@@ -735,113 +620,79 @@
     container.appendChild(section);
   }
 
-  // --------------------------------------------------
-  // 頁面渲染
-  // --------------------------------------------------
-
-  function renderAnnouncements(data) {
+  function render() {
     const container = document.getElementById("nlist");
 
     if (!container) return;
 
     container.replaceChildren();
 
-    applyFontLevel();
+    container.style.fontSize = fontSize() + "px";
+    container.style.lineHeight = "1.7";
 
-    makeHeader(container);
+    renderHeader(container);
+    renderStatus(container);
 
-    const region = window.C?.rg || "未設定";
+    const allItems = getItems();
 
-    const regionText = makeNode(
-      "p",
-      "目前設定地區：" + region +
-      "。以下公告不一定只與此地區有關，" +
-      "請以官方公告確認影響範圍。"
-    );
+    renderCategories(container, allItems);
 
-    regionText.style.fontSize =
-      "var(--notice-body-size)";
+    const items = activeCategory === "all"
+      ? allItems
+      : allItems.filter(item =>
+          categoryFor(item) === activeCategory
+        );
 
-    container.appendChild(regionText);
-
-    makeStatusSection(container, data);
-
-    const items = normalizeItems(data);
-
-    if (items.length > 0) {
-      const count = makeNode(
-        "h3",
-        "已取得 " + items.length + " 則官方公告"
+    if (items.length) {
+      container.appendChild(
+        node(
+          "h3",
+          "目前顯示 " + items.length + " 則公告"
+        )
       );
-
-      container.appendChild(count);
 
       items.forEach(item => {
-        const card = makeAnnouncementCard(item);
-
-        if (card) {
-          container.appendChild(card);
-        }
+        renderCard(container, item);
       });
 
-    } else if (data.status !== "loading") {
-      const empty = makeNode(
-        "p",
-        "目前沒有可顯示的已匯入公告。" +
-        "這不代表沒有停水、停電、疫情或災害。"
+    } else {
+      const selected = categories.find(
+        group => group.id === activeCategory
       );
 
-      empty.style.fontSize =
-        "var(--notice-body-size)";
+      const message =
+        activeCategory === "all"
+          ? "目前沒有可顯示的已匯入公告，" +
+            "不代表沒有停水、停電或其他生活影響。"
+          : selected.name +
+            "目前沒有已匯入的公告。" +
+            "可能尚未串接資料來源，" +
+            "不代表沒有相關公告。";
 
-      container.appendChild(empty);
+      container.appendChild(
+        node("p", message)
+      );
     }
 
-    makeOfficialLinks(container);
-
-    const note = makeNode(
-      "p",
-      "提醒：本頁提供官方公告整理，" +
-      "不提供即時緊急警報。遇到緊急危險，" +
-      "請依當地政府及相關單位指示處理。"
-    );
-
-    setStyles(note, {
-      marginTop: "24px",
-      fontSize: "var(--notice-body-size)",
-      lineHeight: "1.7"
-    });
-
-    container.appendChild(note);
-
-    updateFontButtons();
+    renderOfficialLinks(container);
   }
 
-  // --------------------------------------------------
-  // 資料讀取
-  // --------------------------------------------------
+  // ==================================================
+  // 讀取資料
+  // ==================================================
 
   window.bldN = async function () {
     if (loading) return;
 
     loading = true;
 
-    const thisRequest = ++requestNumber;
-
-    if (currentData) {
-      renderAnnouncements(currentData);
-    } else {
-      renderAnnouncements({
-        status: "loading",
-        items: []
-      });
-    }
+    render();
 
     const controller = new AbortController();
 
     const timer = setTimeout(
       () => controller.abort(),
-      FETCH_TIMEOUT
+      TIMEOUT_MS
     );
 
     try {
@@ -867,42 +718,34 @@
         !Array.isArray(data.items)
       ) {
         throw new Error(
-          "公告資料格式不正確"
+          "公告 JSON 格式錯誤"
         );
-      }
-
-      if (thisRequest !== requestNumber) {
-        return;
       }
 
       currentData = data;
 
-      renderAnnouncements(data);
-
     } catch (error) {
       console.warn(
-        "伴老友公告讀取失敗：",
+        "公告資料讀取失敗：",
         error
       );
 
       if (currentData) {
-        renderAnnouncements({
+        currentData = {
           ...currentData,
           status: "unavailable"
-        });
+        };
       } else {
-        renderAnnouncements({
+        currentData = {
           status: "unavailable",
           items: []
-        });
+        };
       }
 
     } finally {
       clearTimeout(timer);
-
       loading = false;
-
-      updateFontButtons();
+      render();
     }
   };
 
