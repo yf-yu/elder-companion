@@ -1,3 +1,4 @@
+/* ============ base.css：變數、reset、RWD 基礎 ============ */
 :root{
   --n:#1A3C5E; --n2:#2A5580;
   --sky:#EBF5FB; --sky2:#C8E4F8;
@@ -21,20 +22,36 @@ html,body{
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
   -webkit-font-smoothing:antialiased;
+  /* 鎖定外層捲動，讓滑動只發生在子頁面內 */
+  overflow:hidden; 
 }
-body{min-width:200px;overflow-x:hidden}
+body{min-width:200px}
 
-.page,.sub{display:none;flex-direction:column;min-height:100vh}
+/* 頁面切換：絕對覆蓋，不影響上下排列 */
+.page,.sub{
+  display:none;
+  flex-direction:column;
+  height:100%; /* 強制滿版 */
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  overflow-y:auto; /* 內容過長時，只有這裡面會滑動 */
+  -webkit-overflow-scrolling:touch;
+}
 .page.show,.sub.show{display:flex}
 
+/* 桌機版：置中、加陰影 */
 @media(min-width:481px){
   .page,.sub{
     max-width:var(--app-max);
-    margin:0 auto;
+    left:50%;
+    transform:translateX(-50%);
     box-shadow:0 0 40px rgba(0,0,0,.08);
   }
 }
 
+/* 深色模式 */
 @media(prefers-color-scheme: dark){
   :root{
     --bg:#0F1A24; --white:#15222E;
@@ -44,6 +61,7 @@ body{min-width:200px;overflow-x:hidden}
   }
 }
 
+/* Toast */
 #toast{
   position:fixed;
   bottom:26px; left:50%;
