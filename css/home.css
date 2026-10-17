@@ -1,0 +1,68 @@
+/* ============ home.css：首頁 ============ */
+#home{
+  background:linear-gradient(155deg,#102A40,var(--n),var(--n2));
+  position:relative; overflow:hidden;
+}
+#home::before{
+  content:''; position:absolute; top:-80px; right:-60px;
+  width:clamp(200px,50vw,280px); height:clamp(200px,50vw,280px);
+  border-radius:50%; background:rgba(255,255,255,.03);
+  pointer-events:none;
+}
+.e-hdr{padding:clamp(20px,5vw,28px) var(--pad-x) clamp(10px,2.5vw,14px); position:relative; z-index:1}
+.e-greet{font-size:clamp(22px,6vw,36px); font-weight:900; color:#fff; line-height:1.2; margin-bottom:5px}
+.e-date{font-size:clamp(14px,3.8vw,17px); color:rgba(255,255,255,.75); font-weight:500}
+.e-wx{display:flex; align-items:center; gap:8px; margin-top:7px; font-size:clamp(14px,3.8vw,17px); color:rgba(255,255,255,.8)}
+
+/* SOS */
+.sos-wrap{padding:0 var(--pad-x) 10px; position:relative; z-index:1}
+.sos{
+  width:100%; padding:clamp(18px,4.5vw,22px) clamp(14px,3.5vw,18px);
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  border-radius:22px; border:none;
+  display:flex; align-items:center; gap:14px;
+  box-shadow:0 6px 28px rgba(192,57,43,.5);
+  cursor:pointer; transition:transform .12s;
+  text-align:left;
+}
+.sos:active{transform:scale(.97)}
+.sos-ic{font-size:clamp(38px,10vw,46px); flex-shrink:0}
+.sos-main{font-size:clamp(20px,5.5vw,32px); font-weight:900; color:#fff; letter-spacing:1px}
+.sos-sub{font-size:clamp(12px,3.2vw,15px); color:rgba(255,255,255,.8); margin-top:2px}
+
+/* 功能格：200px 時單欄，較寬時兩欄 */
+.fgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,160px),1fr));
+  gap:var(--gap);
+  padding:4px var(--pad-x) 10px;
+  position:relative; z-index:1; flex:1;
+}
+.fb{
+  background:rgba(255,255,255,.1);
+  border:1.5px solid rgba(255,255,255,.17);
+  border-radius:20px;
+  padding:clamp(14px,3.5vw,20px) clamp(8px,2.5vw,12px);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; gap:9px;
+  min-height:clamp(100px,26vw,122px);
+  cursor:pointer; transition:all .15s;
+  backdrop-filter:blur(4px);
+}
+.fb:active{background:rgba(255,255,255,.2); transform:scale(.96)}
+.fb-em{font-size:clamp(32px,8vw,38px)}
+.fb-lb{font-size:clamp(16px,4.2vw,19px); font-weight:700; color:#fff; letter-spacing:.5px}
+.fb-sub{font-size:clamp(10px,2.8vw,12px); color:rgba(255,255,255,.6)}
+
+/* 通知列 */
+.e-ntc{
+  margin:0 var(--pad-x) 18px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:14px; padding:12px 14px;
+  display:flex; gap:9px; align-items:flex-start;
+  position:relative; z-index:1;
+}
+.ndot{width:9px; height:9px; border-radius:50%; background:var(--amber); flex-shrink:0; margin-top:5px; animation:bk 2s ease-in-out infinite}
+@keyframes bk{0%,100%{opacity:1}50%{opacity:.4}}
+.ntxt{font-size:clamp(13px,3.4vw,16px); color:rgba(255,255,255,.85); line-height:1.6}
