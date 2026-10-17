@@ -1,0 +1,149 @@
+
+{
+  "version": "8.0-preview",
+  "categories": [
+    "健康資訊",
+    "天氣預報",
+    "預定停電",
+    "預定停水",
+    "長者福利",
+    "防詐提醒",
+    "健保就醫",
+    "食藥安全",
+    "年金給付"
+  ],
+  "sources": [
+    {
+      "id": "cdc",
+      "name": "疾病管制署",
+      "category": "健康資訊",
+      "type": "rss",
+      "url": "https://www.cdc.gov.tw/RSS/RssXml/Hh094B49-DRwe2RR4eFfrQ?type=1",
+      "status": "previously_working",
+      "enabled": true
+    },
+    {
+      "id": "mohw",
+      "name": "衛生福利部",
+      "category": "長者福利",
+      "type": "rss",
+      "url": "https://www.mohw.gov.tw/rss-18-1.html",
+      "status": "previously_working",
+      "enabled": true
+    },
+    {
+      "id": "fda_news",
+      "name": "食藥署新聞",
+      "category": "食藥安全",
+      "type": "rss",
+      "url": "https://www.fda.gov.tw/Tc/rssNews.ashx",
+      "status": "previously_working",
+      "enabled": true
+    },
+    {
+      "id": "fda_announcements",
+      "name": "食藥署公告",
+      "category": "食藥安全",
+      "type": "rss",
+      "url": "https://www.fda.gov.tw/Tc/rssAnnouncement.ashx",
+      "status": "previously_working",
+      "enabled": true
+    },
+    {
+      "id": "nhi",
+      "name": "中央健康保險署",
+      "category": "健保就醫",
+      "type": "rss",
+      "url": "https://www.nhi.gov.tw/ch/rss-3255-1.xml",
+      "status": "needs_validation",
+      "enabled": false
+    },
+    {
+      "id": "cwa",
+      "name": "中央氣象署 RSS 服務",
+      "category": "天氣預報",
+      "type": "website",
+      "url": "https://www.cwa.gov.tw/V8/C/S/eservice/rss.html",
+      "status": "find_feed_url",
+      "enabled": false
+    },
+    {
+      "id": "taipower",
+      "name": "台灣電力公司",
+      "category": "預定停電",
+      "type": "website",
+      "url": "https://www.taipower.com.tw/26275/2715/",
+      "status": "find_structured_data",
+      "enabled": false
+    },
+    {
+      "id": "water",
+      "name": "台灣自來水公司",
+      "category": "預定停水",
+      "type": "website",
+      "url": "https://www.water.gov.tw/",
+      "status": "find_structured_data",
+      "enabled": false
+    },
+    {
+      "id": "fraud",
+      "name": "165 全民防騙網",
+      "category": "防詐提醒",
+      "type": "website",
+      "url": "https://165.npa.gov.tw/#/",
+      "status": "find_structured_data",
+      "enabled": false
+    },
+    {
+      "id": "bli",
+      "name": "勞工保險局",
+      "category": "年金給付",
+      "type": "website",
+      "url": "https://www.bli.gov.tw/",
+      "status": "find_feed_url",
+      "enabled": false
+    },
+    {
+      "id": "ey",
+      "name": "行政院",
+      "category": "長者福利",
+      "type": "rss",
+      "url": "https://www.ey.gov.tw/RSS_Content.aspx?ModuleType=1",
+      "status": "needs_validation_and_filter",
+      "enabled": false
+    },
+    {
+      "id": "president",
+      "name": "總統府公報",
+      "category": "長者福利",
+      "type": "website",
+      "url": "https://www.president.gov.tw/RSSGazette.aspx",
+      "status": "reference_only",
+      "enabled": false
+    }
+  ],
+  "local_governments": [
+    {"city": "基隆市", "rss_url": null},
+    {"city": "臺北市", "rss_url": null},
+    {"city": "新北市", "rss_url": null},
+    {"city": "桃園市", "rss_url": null},
+    {"city": "新竹市", "rss_url": null},
+    {"city": "新竹縣", "rss_url": null},
+    {"city": "苗栗縣", "rss_url": null},
+    {"city": "臺中市", "rss_url": null},
+    {"city": "彰化縣", "rss_url": null},
+    {"city": "南投縣", "rss_url": null},
+    {"city": "雲林縣", "rss_url": null},
+    {"city": "嘉義市", "rss_url": null},
+    {"city": "嘉義縣", "rss_url": null},
+    {"city": "臺南市", "rss_url": null},
+    {"city": "高雄市", "rss_url": null},
+    {"city": "屏東縣", "rss_url": null},
+    {"city": "宜蘭縣", "rss_url": null},
+    {"city": "花蓮縣", "rss_url": null},
+    {"city": "臺東縣", "rss_url": null},
+    {"city": "澎湖縣", "rss_url": null},
+    {"city": "金門縣", "rss_url": null},
+    {"city": "連江縣", "rss_url": null}
+  ]
+}
