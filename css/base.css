@@ -1,0 +1,70 @@
+/* ============ base.css：變數、reset、RWD 基礎 ============ */
+:root{
+  /* 色彩 */
+  --n:#1A3C5E; --n2:#2A5580;
+  --sky:#EBF5FB; --sky2:#C8E4F8;
+  --red:#C0392B; --red2:#E74C3C; --redbg:#FDEDEC;
+  --green:#1A6035; --green2:#27AE60; --greenbg:#EAFAF1;
+  --amber:#D4821A;
+  --white:#fff; --bg:#F4F8FB;
+  --text:#1A1A2E; --muted:#5A6A7A;
+  --border:#C8D8E8; --hint:#8A9AAA;
+  /* RWD 基準 */
+  --app-max: 480px;
+  --pad-x: clamp(12px, 3vw, 18px);
+  --gap: clamp(8px, 2vw, 12px);
+}
+
+/* Reset */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  height:100%;
+  font-family:'Noto Sans TC',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 最小寬度 200px 也能正常顯示 */
+body{min-width:200px;overflow-x:hidden}
+
+/* 頁面切換 */
+.page,.sub{display:none;flex-direction:column;min-height:100vh}
+.page.show,.sub.show{display:flex}
+
+/* 響應式：桌機置中、加邊框陰影 */
+@media(min-width:481px){
+  .page,.sub{
+    max-width:var(--app-max);
+    margin:0 auto;
+    box-shadow:0 0 40px rgba(0,0,0,.08);
+  }
+}
+
+/* 深色模式（可選，預設跟隨系統） */
+@media(prefers-color-scheme: dark){
+  :root{
+    --bg:#0F1A24; --white:#15222E;
+    --text:#E8EEF4; --muted:#A0B0C0;
+    --border:#2A3A4A; --hint:#6A7A8A;
+    --sky:#1A2A38; --sky2:#25384A;
+  }
+}
+
+/* Toast */
+#toast{
+  position:fixed;
+  bottom:26px; left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--n); color:#fff;
+  padding:12px 24px; border-radius:100px;
+  font-size:clamp(13px,3.5vw,15px); font-weight:600;
+  z-index:9999;
+  transition:transform .3s;
+  white-space:nowrap;
+  pointer-events:none;
+  max-width:90vw;
+  overflow:hidden; text-overflow:ellipsis;
+}
