@@ -1,4 +1,4 @@
-const CACHE = 'banlaoyou-v3';
+const CACHE = 'banlaoyou-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS = [
   './css/modules.css',
   './css/home.css',
   './css/games.css',
+  './css/page-fix.css',
 
   // 腳本
   './js/config.js',
