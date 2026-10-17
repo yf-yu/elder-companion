@@ -1,7 +1,7 @@
 /* ============ brain.js：配對記憶、算術、情緒打卡 ============ */
 
 /* ─── 配對記憶 ─── */
-const EMOJIS = ['🍎','🐶','🌸','🐟','🌙','☀️','🎵','🦋'];
+const EMOJIS = ['🍎','🐶','🌸','🐟','🌙','☀️','🎯','🦋'];
 let memFlipped = [], memMatched = 0, memSteps = 0, memLock = false;
 
 window.initMem = function(){
@@ -70,16 +70,34 @@ window.setMathLevel = function(level){
 };
 
 window.newMath = function(){
+  // 如果有網路，就開放額外的題型（例如：除法、混合）
   const ops = ['+','-','×'];
-  const op = ops[Math.floor(Math.random() * 3)];
+  if (navigator.onLine) {
+    ops.push('÷');
+    if (mathLevel === 3) ops.push('mix'); // 高級混合題
+  }
+  
+  const op = ops[Math.floor(Math.random() * ops.length)];
   let a, b, ans;
   const maxNum = mathLevel === 1 ? 20 : mathLevel === 2 ? 50 : 99;
 
   if(op === '+'){ a = Math.floor(Math.random()*maxNum)+1; b = Math.floor(Math.random()*maxNum)+1; ans = a+b; }
   else if(op === '-'){ a = Math.floor(Math.random()*(maxNum*2))+maxNum; b = Math.floor(Math.random()*a)+1; ans = a-b; }
-  else { const m = mathLevel===1?9:mathLevel===2?12:19; a = Math.floor(Math.random()*m)+2; b = Math.floor(Math.random()*m)+2; ans = a*b; }
+  else if(op === '×'){ const m = mathLevel===1?9:mathLevel===2?12:19; a = Math.floor(Math.random()*m)+2; b = Math.floor(Math.random()*m)+2; ans = a*b; }
+  else if(op === '÷'){ 
+    ans = Math.floor(Math.random()*(mathLevel===1?5:10)) + 2; 
+    b = Math.floor(Math.random()*(mathLevel===1?5:10)) + 2; 
+    a = ans * b; 
+  }
+  else if(op === 'mix') {
+    a = Math.floor(Math.random()*20)+1; b = Math.floor(Math.random()*10)+1; 
+    const c = Math.floor(Math.random()*10)+1;
+    ans = a + b * c;
+    if(e('math-q')) e('math-q').textContent = `${a} + ${b} × ${c} = ?`;
+    // 跳過下面的一般渲染
+  }
 
-  if(e('math-q')) e('math-q').textContent = `${a} ${op} ${b} = ?`;
+  if(op !== 'mix' && e('math-q')) e('math-q').textContent = `${a} ${op} ${b} = ?`;
 
   const opts = new Set([ans]);
   while(opts.size < 4){
