@@ -1,55 +1,86 @@
-
-/* 所有頁面預設隱藏 */
-.page,
-.sub {
-  display: none !important;
-  position: fixed;
-  inset: 0;
-
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-
-  flex-direction: column;
-  overflow: hidden;
-
-  background: var(--bg);
-  z-index: 1;
+/* 伴老友：基礎樣式與單一頁面顯示 */
+:root{
+  --n:#1A3C5E; --n2:#2A5580;
+  --sky:#EBF5FB; --sky2:#C8E4F8;
+  --red:#C0392B; --red2:#E74C3C; --redbg:#FDEDEC;
+  --green:#1A6035; --green2:#27AE60; --greenbg:#EAFAF1;
+  --amber:#D4821A;
+  --white:#fff; --bg:#F4F8FB;
+  --text:#1A1A2E; --muted:#5A6A7A;
+  --border:#C8D8E8; --hint:#8A9AAA;
+  --app-max:480px;
+  --pad-x:clamp(12px,3vw,18px);
+  --gap:clamp(8px,2vw,12px);
 }
-
-/* 只有目前頁面顯示 */
-.page.show,
-.sub.show {
-  display: flex !important;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  width:100%;height:100%;
+  font-family:'Noto Sans TC',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;-webkit-font-smoothing:antialiased;
+  overflow:hidden;
 }
-
-/* 首頁背景 */
-#home {
-  position: fixed;
-  background: linear-gradient(
-    155deg,
-    #102A40,
-    var(--n),
-    var(--n2)
-  );
+body{min-width:200px}
+/* !important 防止其他模組意外把隱藏頁面重新顯示 */
+.page,.sub{
+  display:none !important;
+  position:fixed !important;
+  inset:0;
+  width:100%;height:100vh;height:100dvh;
+  flex-direction:column;
+  overflow:hidden;
+  background:var(--bg);
+  isolation:isolate;
+  z-index:1;
 }
-
-/* 子頁面內容可捲動 */
-.sub .sbdy {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
+.page.show,.sub.show{display:flex !important}
+/* 首頁自身捲動；子頁由 sbdy 捲動 */
+#home{
+  position:fixed !important;
+  background:linear-gradient(155deg,#102A40,var(--n),var(--n2));
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
 }
-
-/* 桌機置中 */
-@media (min-width: 481px) {
-  .page,
-  .sub {
-    max-width: var(--app-max);
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+#setup{
+  position:fixed !important;
+  background:var(--bg);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.sub .shdr{flex:0 0 auto}
+.sub .sbdy{
+  flex:1 1 auto;min-height:0;
+  overflow-x:hidden;overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  background:var(--bg);
+}
+@media(min-width:481px){
+  .page,.sub{
+    max-width:var(--app-max);
+    left:50%;right:auto;
+    transform:translateX(-50%);
+    box-shadow:0 0 40px rgba(0,0,0,.08);
   }
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#0F1A24;--white:#15222E;
+    --text:#E8EEF4;--muted:#A0B0C0;
+    --border:#2A3A4A;--hint:#6A7A8A;
+    --sky:#1A2A38;--sky2:#25384A;
+  }
+}
+#toast{
+  position:fixed;bottom:26px;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--n);color:#fff;
+  padding:12px 24px;border-radius:100px;
+  font-size:clamp(13px,3.5vw,15px);font-weight:600;
+  z-index:9999;transition:transform .3s;
+  white-space:nowrap;pointer-events:none;
+  max-width:90vw;overflow:hidden;text-overflow:ellipsis;
 }
