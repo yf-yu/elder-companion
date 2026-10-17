@@ -113,3 +113,56 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .page[hidden], .sub[hidden] { display:none !important; }
 /* Keep the active page visible, including during fast navigation. */
 .page.show:not([hidden]), .sub.show:not([hidden]) { display:flex !important; }
+
+
+/* V6：頁面內容完整捲動 */
+.page.show:not([hidden]),
+.sub.show:not([hidden]) {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow-x: hidden;
+}
+
+/* 首頁與設定頁可以上下滑動 */
+#home.show:not([hidden]),
+#setup.show:not([hidden]) {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: max(
+    24px,
+    env(safe-area-inset-bottom)
+  );
+}
+
+/* 子頁由內容區負責捲動 */
+.sub.show:not([hidden]) {
+  overflow: hidden;
+}
+
+.sub .sbdy {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: max(
+    32px,
+    env(safe-area-inset-bottom)
+  );
+  scrollbar-gutter: stable;
+}
+
+/* 避免最後一張卡片被遮擋 */
+.sub .sbdy > :last-child {
+  margin-bottom: 16px;
+}
+
+/* 小螢幕高度調整 */
+@media (max-height: 520px) {
+  .sub .shdr {
+    flex-shrink: 0;
+  }
+
+  .sub .sbdy {
+    overscroll-behavior-y: auto;
+  }
+}
