@@ -96,3 +96,20 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .mem-card{cursor:pointer;font:inherit;min-height:54px}
 .safety-note{font-size:16px;line-height:1.7;background:#fff5df;border-left:4px solid #a56b00;padding:12px;border-radius:8px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* 明確的返回動作：文字與圖示並列，避免只有箭頭造成困惑 */
+.sub .shdr .bk { min-width: 88px; min-height: 48px; padding: 8px 12px; white-space: nowrap; font-size: 17px; font-weight: 700; }
+.sub .shdr .stit { min-width: 0; }
+
+/* V4: hidden 永遠優先於 show；避免舊頁因 CSS 權重再次覆蓋新頁 */
+.page[hidden], .sub[hidden], .page.show[hidden], .sub.show[hidden] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.page.show:not([hidden]), .sub.show:not([hidden]) { visibility: visible; }
+/* 限制各頁在獨立層疊環境，避免內部元素穿透到別的畫面 */
+.page, .sub { isolation: isolate; contain: layout paint; }
+/* Release: the hidden attribute wins against every display rule. */
+.page[hidden], .sub[hidden] { display:none !important; }
+/* Keep the active page visible, including during fast navigation. */
+.page.show:not([hidden]), .sub.show:not([hidden]) { display:flex !important; }
