@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-10-17T15:03:14.758210+00:00",
+  "checked_at": "2026-10-18T00:13:14.915725+00:00",
   "sources": {
     "預定停水": {
       "state": "ok",
-      "items": 0
+      "items": 1
     },
     "預定停電": {
       "state": "ok",
@@ -38,5 +38,5 @@
       "message": "HTTP Error 500: Server Error"
     }
   },
-  "items": 66
+  "items": 67
 }
