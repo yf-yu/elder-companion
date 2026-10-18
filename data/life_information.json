@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T03:45:07.193396+00:00",
+  "generated_at": "2026-10-18T04:00:36.881034+00:00",
   "items": [
     {
       "id": "water-70cb6addc2f395be7a97d39e",
@@ -40,20 +40,6 @@
       "district": "",
       "starts_at": "2026-10-18T08:30:00+08:00",
       "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-11b179982b121337feef229f",
-      "category": "預定停電",
-      "title": "預定停電｜台電基隆區營業處",
-      "summary": "停電範圍：基隆市信義區中興路；工作內容：改良工程；查詢電話：1911",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -166,20 +152,6 @@
       "district": "",
       "starts_at": "2026-10-18T08:30:00+08:00",
       "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-b5158c60aaa427799b756e15",
-      "category": "預定停電",
-      "title": "預定停電｜台電基隆區營業處",
-      "summary": "停電範圍：基隆市信義區信二路；工作內容：改良工程；查詢電話：1911",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -310,20 +282,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-44359a1c77a21ddadcbf99bb",
-      "category": "預定停電",
-      "title": "預定停電｜台電基隆區營業處",
-      "summary": "停電範圍：基隆市安樂區基金一路；工作內容：改良工程；查詢電話：1911",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-55561c8ae4761c9ed0a262dc",
       "category": "預定停電",
       "title": "預定停電｜台電台中區營業處",
@@ -348,20 +306,6 @@
       "district": "",
       "starts_at": "2026-10-18T09:00:00+08:00",
       "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-98ceceb8371fe0dc7ee07414",
-      "category": "預定停電",
-      "title": "預定停電｜台電基隆區營業處",
-      "summary": "停電範圍：基隆市安樂區安樂轄區；工作內容：改良工程；查詢電話：1911",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -436,104 +380,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-14d5b4e11020ee405e7cf21c",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市安南區學中段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T10:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-2d446f867a6cc9e5fcfe293c",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市安南區學甲寮段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T10:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-52ca23e062b0ed4c3ff3468d",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市安南區安明路四段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T10:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-a037087e004879df173172bd",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市安南區青草崙段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T10:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-bb8802c573becf0522168e34",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市安南區國聖段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T10:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-f2eadf82dfa2e10ba760857d",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市安南區聖母段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T10:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-fec4d61c7550d2903ac6e7a7",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市安南區學東段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T10:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "water-865832e9798802951ce1ee80",
       "category": "預定停水",
       "title": "停水通知｜桃園市龜山區",
@@ -546,20 +392,6 @@
       "ends_at": "2026-10-18T14:00:00+08:00",
       "source": "台灣自來水公司",
       "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "power-361cacfa76a4e4367d81de5d",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北西區營業處",
-      "summary": "停電範圍：新北市三峽區五寮；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T11:00:00+08:00",
-      "ends_at": "2026-10-18T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
     },
     {
       "id": "water-577ea83db971abb0e9d98531",
@@ -579,7 +411,7 @@
       "id": "water-aafdf7dfa66e214ad91d7214",
       "category": "預定停水",
       "title": "停水通知｜臺中市北屯區",
-      "summary": "影響地區：官方未提供詳細影響範圍；原因：官方未提供詳細原因",
+      "summary": "影響地區：未提供；原因：未提供",
       "cities": [
         "臺中市"
       ],

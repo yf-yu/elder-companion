@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-18T03:45:07.193396+00:00",
-  "version": "8.5.1",
+  "checked_at": "2026-10-18T04:00:36.881034+00:00",
+  "version": "8.6",
   "retention": {
     "weather_days": 3,
     "water_days": 30,
@@ -11,70 +11,113 @@
     "預定停水": {
       "state": "ok",
       "items": 4,
-      "last_success_at": "2026-10-18T03:44:50.365063+00:00",
+      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
       "hours_since_success": 0,
-      "stale": false
+      "stale": false,
+      "quality": {
+        "raw_rows": 4,
+        "excluded": {}
+      }
     },
     "預定停電": {
       "state": "ok",
-      "items": 7839,
-      "last_success_at": "2026-10-18T03:44:55.109119+00:00",
+      "items": 7827,
+      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
       "hours_since_success": 0,
-      "stale": false
+      "stale": false,
+      "quality": {
+        "raw_rows": 8573,
+        "excluded": {
+          "已結束": 53,
+          "超過30天": 499,
+          "地區無法辨識": 6,
+          "缺少範圍": 3,
+          "時間無法解析": 184,
+          "相同公告ID": 1
+        }
+      }
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "last_success_at": "2026-10-18T03:44:57.339869+00:00",
+      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
       "hours_since_success": 0,
-      "stale": false
+      "stale": false,
+      "quality": {
+        "raw_rows": 22,
+        "excluded": {}
+      }
     },
     "W-C0033-006": {
       "state": "ok",
       "items": 0,
-      "last_success_at": "2026-10-18T03:44:58.081284+00:00",
+      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
       "hours_since_success": 0,
-      "stale": false
+      "stale": false,
+      "quality": {
+        "raw_rows": 0,
+        "excluded": {}
+      }
     },
     "W-C0033-007": {
       "state": "error",
       "items": 0,
       "last_success_at": null,
-      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 失敗：HTTP Error 404: Not Found",
       "hours_since_success": null,
-      "stale": true
+      "stale": true,
+      "message": "RuntimeError: REST：HTTP Error 404: Not Found；CAP：HTTP Error 404: Not Found"
     },
     "W-C0033-008": {
       "state": "error",
       "items": 0,
       "last_success_at": null,
-      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 失敗：不安全的轉址",
       "hours_since_success": null,
-      "stale": true
+      "stale": true,
+      "message": "RuntimeError: REST：HTTP Error 404: Not Found；CAP：轉址至非白名單網域，已阻擋"
     },
     "W-C0033-009": {
       "state": "error",
       "items": 0,
       "last_success_at": null,
-      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 失敗：不安全的轉址",
       "hours_since_success": null,
-      "stale": true
+      "stale": true,
+      "message": "RuntimeError: REST：HTTP Error 404: Not Found；CAP：轉址至非白名單網域，已阻擋"
     },
     "W-C0033-010": {
       "state": "error",
       "items": 0,
       "last_success_at": null,
-      "message": "RuntimeError: REST 失敗：HTTP Error 500: Server Error; CAP 失敗：不安全的轉址",
       "hours_since_success": null,
-      "stale": true
+      "stale": true,
+      "message": "RuntimeError: REST：HTTP Error 500: Server Error；CAP：轉址至非白名單網域，已阻擋"
     }
   },
-  "items": 7875,
+  "planned_modules": {
+    "防詐提醒": {
+      "state": "not_connected",
+      "note": "官方來源待驗證"
+    },
+    "長者福利": {
+      "state": "not_connected",
+      "note": "縣市官方來源待驗證"
+    },
+    "勞保與勞退": {
+      "state": "not_connected",
+      "note": "官方來源待驗證"
+    },
+    "健保資訊": {
+      "state": "not_connected",
+      "note": "官方來源待驗證"
+    }
+  },
+  "items": 7863,
   "category_counts": {
     "預定停水": 4,
-    "預定停電": 7805,
+    "預定停電": 7793,
     "天氣預報": 66
   },
-  "removed_expired_old_items": 51,
-  "note": "所有刊登資料均通過時效檢查；來源更新失敗時僅保留仍有效的舊公告。stale 表示距離最近一次成功更新已超過 24 小時，或從未成功更新。"
+  "removed_expired_old_items": 12,
+  "retained_during_source_errors": 0,
+  "deduplicated_records": 34,
+  "note": "僅顯示有效公告；新增模組未驗證前不刊登資料；stale 代表來源成功更新超過24小時。"
 }
