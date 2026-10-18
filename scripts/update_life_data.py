@@ -1,3 +1,4 @@
+
 import csv
 import io
 import json
@@ -7,15 +8,17 @@ import sys
 import zipfile
 import xml.etree.ElementTree as ET
 
-from urllib.error import HTTPError
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import urlencode, urlparse
-from urllib.request import (
-    HTTPRedirectHandler,
-    Request,
-    build_opener
-)
+from urllib.error import HTTPError
+from urllib.parse import urlencode, urlparse, urljoin
+from urllib.request import HTTPRedirectHandler, Request, build_opener
+
+
+# ============================================================
+# 伴老友 V8.5｜民生資訊整合
+# 停水、停電、天氣預報、氣象警示
+# ============================================================
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -51,11 +54,36 @@ ALERT_IDS = (
     "W-C0033-010"
 )
 
+OFFICE_CITIES = {
+    "基隆": "基隆市",
+    "臺北": "臺北市",
+    "新北": "新北市",
+    "桃園": "桃園市",
+    "苗栗": "苗栗縣",
+    "臺中": "臺中市",
+    "彰化": "彰化縣",
+    "南投": "南投縣",
+    "雲林": "雲林縣",
+    "臺南": "臺南市",
+    "高雄": "高雄市",
+    "屏東": "屏東縣",
+    "宜蘭": "宜蘭縣",
+    "花蓮": "花蓮縣",
+    "臺東": "臺東縣",
+    "澎湖": "澎湖縣",
+    "金門": "金門縣",
+    "馬祖": "連江縣"
+}
+
+
+# ============================================================
+# 安全下載與資料解析
+# ============================================================
 
 def allowed(url):
     try:
         p = urlparse(url)
-        h = (p.hostname or "").lower().rstrip(".")
+        host = (p.hostname or "").lower().rstrip(".")
 
         return (
             p.scheme == "https"
@@ -63,8 +91,8 @@ def allowed(url):
             and not p.password
             and p.port in (None, 443)
             and any(
-                h == x or h.endswith("." + x)
-                for x in HOSTS
+                host == domain or host.endswith("." + domain)
+                for domain in HOSTS
             )
         )
     except ValueError:
@@ -72,12 +100,9 @@ def allowed(url):
 
 
 class SafeRedirect(HTTPRedirectHandler):
-
     def redirect_request(
         self, req, fp, code, msg, headers, newurl
     ):
-        from urllib.parse import urljoin
-
         target = urljoin(req.full_url, newurl)
 
         if not allowed(target):
@@ -117,10 +142,8 @@ def fetch(url):
         return data
 
 
-
 def clean(value):
-    """清理官方資料的空值、陣列與多餘空白。"""
-
+    """清理空值、陣列、無效文字。"""
     if value is None:
         return ""
 
@@ -134,19 +157,12 @@ def clean(value):
     text = re.sub(r"\s+", " ", str(value)).strip()
 
     if text.lower() in (
-        "",
-        "null",
-        "none",
-        "nan",
-        "undefined",
-        "[]",
-        "{}",
-        "n/a"
+        "", "null", "none", "nan", "undefined",
+        "[]", "{}", "n/a"
     ):
         return ""
 
     return text
-
 
 
 def parse_dt(value):
@@ -155,72 +171,60 @@ def parse_dt(value):
     if not s:
         return None
 
-    s = s.replace("T", " ").replace(
-        "Z", "+00:00"
-    )
+    s = s.replace("T", " ").replace("Z", "+00:00")
 
     try:
         d = datetime.fromisoformat(s)
-
         return (
             d.replace(tzinfo=TZ)
             if d.tzinfo is None
             else d.astimezone(TZ)
         )
-
     except ValueError:
         pass
 
     m = re.match(
-        r"^(\d{2,3})[/.-](\d{1,2})[/.-](\d{1,2})"
+        r"^(\d{2,4})[/.-](\d{1,2})[/.-](\d{1,2})"
         r"(?:\s+(\d{1,2}):(\d{2}))?",
         s
     )
 
-    if m:
-        y = int(m[1])
+    if not m:
+        return None
 
-        if y < 1911:
-            y += 1911
+    year = int(m[1])
 
-        try:
-            return datetime(
-                y,
-                int(m[2]),
-                int(m[3]),
-                int(m[4] or 0),
-                int(m[5] or 0),
-                tzinfo=TZ
-            )
-        except ValueError:
-            pass
+    if year < 1911:
+        year += 1911
 
-    return None
+    try:
+        return datetime(
+            year, int(m[2]), int(m[3]),
+            int(m[4] or 0), int(m[5] or 0),
+            tzinfo=TZ
+        )
+    except ValueError:
+        return None
 
 
-def stamp(d):
-    return d.isoformat() if d else None
+def stamp(value):
+    return value.isoformat() if value else None
 
 
 def pick(row, *keys):
     for key in keys:
-        if clean(row.get(key)):
-            return clean(row[key])
-
+        value = clean(row.get(key))
+        if value:
+            return value
     return ""
 
 
 def unwrap(obj):
     if isinstance(obj, list):
-        return [
-            x for x in obj
-            if isinstance(x, dict)
-        ]
+        return [x for x in obj if isinstance(x, dict)]
 
     if isinstance(obj, dict):
-        for key in (
-            "records", "data", "result", "items"
-        ):
+        for key in ("records", "data", "result", "items"):
             value = obj.get(key)
 
             if isinstance(value, list):
@@ -238,46 +242,36 @@ def rows_from_bytes(data):
     if data[:2] == b"PK":
         rows = []
 
-        with zipfile.ZipFile(io.BytesIO(data)) as z:
-            for info in z.infolist():
-                if (
-                    info.is_dir()
-                    or info.file_size > MAX_BYTES
-                ):
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            for info in archive.infolist():
+                if info.is_dir() or info.file_size > MAX_BYTES:
                     continue
 
                 if info.filename.lower().endswith(
                     (".csv", ".json")
                 ):
                     rows.extend(
-                        rows_from_bytes(z.read(info))
+                        rows_from_bytes(archive.read(info))
                     )
 
         if not rows:
-            raise ValueError(
-                "ZIP 內沒有可讀的 CSV/JSON"
-            )
+            raise ValueError("ZIP 內沒有可讀的 CSV/JSON")
 
         return rows
 
-    for enc in ("utf-8-sig", "cp950", "big5"):
+    for encoding in ("utf-8-sig", "cp950", "big5"):
         try:
-            s = data.decode(enc)
-
-            try:
-                return unwrap(json.loads(s))
-
-            except (ValueError, TypeError):
-                reader = csv.DictReader(
-                    io.StringIO(s)
-                )
-                rows = list(reader)
-
-                if reader.fieldnames:
-                    return rows
-
+            content = data.decode(encoding)
         except UnicodeError:
             continue
+
+        try:
+            return unwrap(json.loads(content))
+        except (ValueError, TypeError):
+            reader = csv.DictReader(io.StringIO(content))
+
+            if reader.fieldnames:
+                return list(reader)
 
     raise ValueError("無法解析 JSON/CSV")
 
@@ -313,8 +307,8 @@ def dataset_urls(dataset_id):
 
     urls = []
 
-    for r in resources:
-        if not isinstance(r, dict):
+    for resource in resources:
+        if not isinstance(resource, dict):
             continue
 
         for key in (
@@ -323,80 +317,47 @@ def dataset_urls(dataset_id):
             "downloadURL",
             "url"
         ):
-            u = r.get(key)
+            value = resource.get(key)
 
             if (
-                isinstance(u, str)
-                and allowed(u)
-                and u not in urls
+                isinstance(value, str)
+                and allowed(value)
+                and value not in urls
             ):
-                urls.append(u)
+                urls.append(value)
 
     if not urls:
-        raise ValueError(
-            "找不到官方資源下載網址"
-        )
+        raise ValueError("找不到官方資源下載網址")
 
     return urls
 
 
 def city_in(value):
-    value = str(value or "").replace(
-        "台", "臺"
-    )
-
-    return [
-        c for c in CITIES
-        if c in value
-    ]
-
-
-OFFICE_CITIES = {
-    "臺北": "臺北市",
-    "新北": "新北市",
-    "桃園": "桃園市",
-    "新竹": "新竹市",
-    "苗栗": "苗栗縣",
-    "臺中": "臺中市",
-    "彰化": "彰化縣",
-    "南投": "南投縣",
-    "雲林": "雲林縣",
-    "嘉義": "嘉義市",
-    "臺南": "臺南市",
-    "高雄": "高雄市",
-    "屏東": "屏東縣",
-    "宜蘭": "宜蘭縣",
-    "花蓮": "花蓮縣",
-    "臺東": "臺東縣",
-    "澎湖": "澎湖縣",
-    "金門": "金門縣",
-    "馬祖": "連江縣",
-    "基隆": "基隆市"
-}
+    text = str(value or "").replace("台", "臺")
+    return [city for city in CITIES if city in text]
 
 
 def infer_cities(office, area):
     cities = city_in(
-        str(office) + " " + str(area)
+        str(office or "") + " " + str(area or "")
     )
 
     if cities:
         return cities
 
-    office = str(office or "").replace(
-        "台", "臺"
-    )
+    office = str(office or "").replace("台", "臺")
 
-    # 新竹、嘉義可能跨縣市，不直接推論。
     for prefix, city in OFFICE_CITIES.items():
-        if prefix in ("新竹", "嘉義"):
-            continue
-
         if office.startswith(prefix):
             return [city]
 
+    # 新竹與嘉義可能跨縣市，不能只憑區處推斷。
     return []
 
+
+# ============================================================
+# 停水公告
+# ============================================================
 
 def load_water():
     errors = []
@@ -406,147 +367,168 @@ def load_water():
             rows = rows_from_bytes(fetch(url))
             output = []
 
-            for r in rows:
+            for row in rows:
                 start = parse_dt(
                     pick(
-                        r,
-                        "案件日期時間",
-                        "停水開始時間",
-                        "停水時間"
+                        row, "案件日期時間",
+                        "停水開始時間", "停水時間"
                     )
                 )
 
                 end = parse_dt(
                     pick(
-                        r,
-                        "恢復日期時間",
-                        "停水結束時間",
-                        "復水時間"
+                        row, "恢復日期時間",
+                        "停水結束時間", "復水時間"
                     )
                 )
 
                 if (
-                    not start
-                    or not end
-                    or end < NOW
-                    or end < start
+                    not start or not end
+                    or end < NOW or end < start
                 ):
                     continue
 
                 area = pick(
-                    r,
-                    "停水地區",
-                    "影響範圍"
+                    row, "停水地區", "影響範圍"
                 )
-
                 county = pick(
-                    r,
-                    "影響縣市",
-                    "縣市"
+                    row, "影響縣市", "縣市"
                 )
-
                 district = pick(
-                    r,
-                    "影響行政區",
-                    "行政區"
+                    row, "影響行政區", "行政區"
                 )
 
-                places = city_in(
-                    county + " " + district
-                    + " " + area
+                cities = city_in(
+                    county + " " + district + " " + area
                 )
 
-                if (
-                    not (county or district or area)
-                    or not places
-                ):
+                if not cities:
                     continue
 
-                item_id = pick(
-                    r, "案件編號"
-                ) or (
-                    f"{start.isoformat()}-"
-                    f"{county}-{area}"
+                item_id = pick(row, "案件編號") or (
+                    f"{start.isoformat()}-{county}-{area}"
                 )
 
+                reason = pick(
+                    row, "停水原因", "原因"
+                ) or "官方未提供詳細原因"
+
                 output.append({
-                    "id": (
-                        "water-" + clean(item_id)[:130]
-                    ),
+                    "id": "water-" + clean(item_id)[:130],
                     "category": "預定停水",
                     "title": (
                         f"停水通知｜{county}{district}"
+                        if county or district
+                        else "停水通知"
                     )[:120],
-                    
-"summary": (
-    "影響地區："
-    + (area or "官方未提供詳細影響範圍")
-    + "；原因："
-    + (
-        pick(r, "停水原因", "原因")
-        or "官方未提供詳細原因"
-    )
-)[:300],
-
-                    "cities": places,
+                    "summary": (
+                        "影響地區："
+                        + (area or "官方未提供詳細影響範圍")
+                        + "；原因："
+                        + reason
+                    )[:300],
+                    "cities": cities,
                     "district": district,
                     "starts_at": stamp(start),
                     "ends_at": stamp(end),
                     "source": "台灣自來水公司",
-                    "url": (
-                        "https://data.gov.tw/"
-                        "dataset/6050"
-                    )
+                    "url": "https://data.gov.tw/dataset/6050"
                 })
 
+            print(
+                f"[停水診斷] 原始 {len(rows)} 筆，"
+                f"有效 {len(output)} 筆"
+            )
             return output
 
-        except Exception as e:
-            errors.append(str(e))
+        except Exception as exc:
+            errors.append(
+                f"{type(exc).__name__}: {exc}"
+            )
 
-    raise RuntimeError(
-        "; ".join(errors)[:300]
-    )
+    raise RuntimeError("; ".join(errors)[:300])
 
+
+# ============================================================
+# 台電停電公告
+# ============================================================
 
 def power_times(raw):
-    s = clean(raw).replace(
-        "～", "~"
-    ).replace("至", "~")
+    """支援民國、西元、跨日停電時段。"""
+    text = clean(raw)
 
-    full = re.findall(
-        r"\d{2,4}[/.-]\d{1,2}[/.-]\d{1,2}"
-        r"\s+\d{1,2}:\d{2}",
-        s
+    text = re.sub(
+        r"[～〜－—–至到]", "~", text
     )
 
-    if len(full) >= 2:
-        return (
-            parse_dt(full[0]),
-            parse_dt(full[1])
-        )
-
-    dates = re.findall(
-        r"\d{2,4}[/.-]\d{1,2}[/.-]\d{1,2}",
-        s
+    text = (
+        text.replace("：", ":")
+        .replace("年", "/")
+        .replace("月", "/")
+        .replace("日", " ")
     )
 
-    times = re.findall(
-        r"(?<!\d)\d{1,2}:\d{2}",
-        s
+    dates = list(re.finditer(
+        r"(?<!\d)\d{2,4}[/.-]\d{1,2}[/.-]\d{1,2}(?!\d)",
+        text
+    ))
+
+    times = list(re.finditer(
+        r"(?<!\d)(?:[01]?\d|2[0-3]):[0-5]\d(?!\d)",
+        text
+    ))
+
+    if not dates or len(times) < 2:
+        return None, None
+
+    first_date = dates[0].group()
+    last_date = (
+        dates[1].group()
+        if len(dates) >= 2
+        else first_date
     )
 
-    if len(dates) == 1 and len(times) == 2:
-        start = parse_dt(
-            dates[0] + " " + times[0]
-        )
+    start = parse_dt(
+        first_date + " " + times[0].group()
+    )
+    end = parse_dt(
+        last_date + " " + times[1].group()
+    )
 
-        end = parse_dt(
-            dates[0] + " " + times[1]
-        )
+    if start and end and end < start and len(dates) == 1:
+        end += timedelta(days=1)
 
-        if start and end and end > start:
+    if not start or not end or end < start:
+        return None, None
+
+    return start, end
+
+
+def power_row_times(row):
+    for first, last in (
+        ("停電開始時間", "停電結束時間"),
+        ("開始時間", "結束時間"),
+        ("預定停電開始時間", "預定停電結束時間")
+    ):
+        start = parse_dt(pick(row, first))
+        end = parse_dt(pick(row, last))
+
+        if start and end and end >= start:
             return start, end
+
+    for field in (
+        "第一次停電時間",
+        "停電時間",
+        "預定停電時間",
+        "第二次停電時間"
+    ):
+        raw = pick(row, field)
+
+        if raw:
+            start, end = power_times(raw)
+
+            if start and end:
+                return start, end
 
     return None, None
 
@@ -556,13 +538,19 @@ def load_power():
 
     for url in dataset_urls(26144):
         try:
-    for url in dataset_urls(26144):
-        try:
             rows = rows_from_bytes(fetch(url))
             output = []
 
-            # V8.5 台電資料診斷
-            print(f"[台電診斷] 原始資料筆數：{len(rows)}")
+            skipped = {
+                "時間無法解析": 0,
+                "已過期": 0,
+                "缺少停電範圍": 0,
+                "無法辨識縣市": 0
+            }
+
+            print(
+                f"[台電診斷] 原始資料筆數：{len(rows)}"
+            )
 
             if rows:
                 print(
@@ -570,93 +558,105 @@ def load_power():
                     list(rows[0].keys())
                 )
 
+                # 不在 Actions 紀錄公開完整地址及電話。
+                sample = {
+                    key: clean(value)[:100]
+                    for key, value in rows[0].items()
+                    if "時間" in key or "日期" in key
+                }
+
                 print(
-                    "[台電診斷] 第一筆資料內容：",
-                    json.dumps(
-                        rows[0],
-                        ensure_ascii=False,
-                        default=str
-                    )[:2000]
+                    "[台電診斷] 時間欄位範例：",
+                    sample
                 )
 
-            for r in rows:
+            for row in rows:
+                start, end = power_row_times(row)
 
+                if not start or not end:
+                    skipped["時間無法解析"] += 1
+                    continue
 
-
-            for r in rows:
-                raw = pick(
-                    r, "第一次停電時間"
-                )
-
-                start, end = power_times(raw)
-
-                if (
-                    not start
-                    or not end
-                    or end < NOW
-                    or end < start
-                ):
+                if end < NOW:
+                    skipped["已過期"] += 1
                     continue
 
                 area = pick(
-                    r, "停電範圍"
+                    row,
+                    "停電範圍",
+                    "停電區域",
+                    "停電地區"
                 )
 
                 if not area:
+                    skipped["缺少停電範圍"] += 1
                     continue
 
                 office = pick(
-                    r, "營業區處"
+                    row,
+                    "營業區處",
+                    "區處",
+                    "營業處"
                 )
 
-                cities = infer_cities(
-                    office, area
-                )
+                cities = infer_cities(office, area)
 
                 if not cities:
+                    skipped["無法辨識縣市"] += 1
                     continue
 
                 item_id = pick(
-                    r, "請求號數"
-                ) or (
-                    f"{start.isoformat()}-{area}"
-                )
+                    row, "請求號數", "案件編號"
+                ) or f"{start.isoformat()}-{area}"
+
+                reason = pick(
+                    row, "工作概述", "停電原因"
+                ) or "官方未提供詳細原因"
 
                 output.append({
-                    "id": (
-                        "power-" + clean(item_id)[:130]
-                    ),
+                    "id": "power-" + clean(item_id)[:130],
                     "category": "預定停電",
                     "title": (
                         "預定停電｜"
                         + (office or area[:20])
-                    ),
+                    )[:120],
                     "summary": (
                         f"停電範圍：{area}；"
-                        "工作內容："
-                        + pick(r, "工作概述")
-                        + "；查詢電話：1911"
+                        f"工作內容：{reason}；"
+                        "查詢電話：1911"
                     )[:300],
                     "cities": cities,
                     "district": "",
                     "starts_at": stamp(start),
                     "ends_at": stamp(end),
                     "source": "台灣電力公司",
-                    "url": (
-                        "https://data.gov.tw/"
-                        "dataset/26144"
-                    )
+                    "url": "https://data.gov.tw/dataset/26144"
                 })
+
+            print(
+                "[台電診斷] 排除原因統計：",
+                json.dumps(
+                    skipped, ensure_ascii=False
+                )
+            )
+
+            print(
+                f"[台電診斷] 有效公告筆數：{len(output)}"
+            )
 
             return output
 
-        except Exception as e:
-            errors.append(str(e))
+        except Exception as exc:
+            errors.append(
+                f"{type(exc).__name__}: {exc}"
+            )
 
-    raise RuntimeError(
-        "; ".join(errors)[:300]
-    )
+    raise RuntimeError("; ".join(errors)[:300])
 
+
+# ============================================================
+# 中央氣象署 API
+# ============================================================
 
 def cwa(api_id, key):
     url = (
@@ -684,16 +684,18 @@ def cwa(api_id, key):
 
 
 def weather_value(elements, code, index):
-    for e in elements:
-        if e.get("elementName") == code:
-            periods = e.get("time", [])
+    for element in elements:
+        if element.get("elementName") != code:
+            continue
 
-            if index < len(periods):
-                return clean(
-                    periods[index].get(
-                        "parameter", {}
-                    ).get("parameterName")
-                )
+        periods = element.get("time", [])
+
+        if index < len(periods):
+            return clean(
+                periods[index]
+                .get("parameter", {})
+                .get("parameterName")
+            )
 
     return ""
 
@@ -701,74 +703,64 @@ def weather_value(elements, code, index):
 def load_forecast(key):
     obj = cwa("F-C0032-001", key)
 
-    locations = obj.get(
-        "records", {}
-    ).get("location", [])
+    locations = (
+        obj.get("records", {})
+        .get("location", [])
+    )
 
     output = []
 
-    for loc in locations:
+    for location in locations:
         city = clean(
-            loc.get("locationName")
+            location.get("locationName")
         ).replace("台", "臺")
 
         if city not in CITIES:
             continue
 
-        elements = loc.get(
+        elements = location.get(
             "weatherElement", []
         )
 
-        wx = next(
+        periods = next(
             (
-                e.get("time", [])
-                for e in elements
-                if e.get("elementName") == "Wx"
+                element.get("time", [])
+                for element in elements
+                if element.get("elementName") == "Wx"
             ),
             []
         )
 
-        for index, p in enumerate(wx):
+        for index, period in enumerate(periods):
             start = parse_dt(
-                p.get("startTime")
+                period.get("startTime")
             )
-
             end = parse_dt(
-                p.get("endTime")
+                period.get("endTime")
             )
 
-            if (
-                not start
-                or not end
-                or end < NOW
-            ):
+            if not start or not end or end < NOW:
                 continue
 
             condition = weather_value(
                 elements, "Wx", index
             )
-
             low = weather_value(
                 elements, "MinT", index
             )
-
             high = weather_value(
                 elements, "MaxT", index
             )
-
             rain = weather_value(
                 elements, "PoP", index
             )
 
             output.append({
                 "id": (
-                    f"weather-{city}-"
-                    f"{start.isoformat()}"
+                    f"weather-{city}-{start.isoformat()}"
                 ),
                 "category": "天氣預報",
-                "title": (
-                    f"{city}天氣｜{condition}"
-                ),
+                "title": f"{city}天氣｜{condition}",
                 "summary": (
                     f"氣溫 {low}～{high}°C，"
                     f"降雨機率 {rain}%。"
@@ -782,31 +774,31 @@ def load_forecast(key):
             })
 
     if not output:
-        raise ValueError(
-            "沒有有效的預報時段"
-        )
+        raise ValueError("沒有有效的預報時段")
 
     return output
 
+
+# ============================================================
+# 氣象警示 CAP 解析
+# ============================================================
 
 def nested_strings(obj):
     if isinstance(obj, str):
         yield obj
 
     elif isinstance(obj, list):
-        for x in obj:
-            yield from nested_strings(x)
+        for value in obj:
+            yield from nested_strings(value)
 
     elif isinstance(obj, dict):
-        for k, v in obj.items():
-            if k not in (
-                "Authorization", "apikey"
-            ):
-                yield from nested_strings(v)
+        for key, value in obj.items():
+            if key not in ("Authorization", "apikey"):
+                yield from nested_strings(value)
 
 
-def cap_text(elem, name):
-    for child in elem.iter():
+def cap_text(element, name):
+    for child in element.iter():
         if (
             child.tag.rsplit("}", 1)[-1] == name
             and child.text
@@ -835,16 +827,18 @@ def load_alert_file(api_id, key):
         alerts = [root]
     else:
         alerts = [
-            e for e in root.iter()
-            if e.tag.rsplit("}", 1)[-1] == "alert"
+            element
+            for element in root.iter()
+            if element.tag.rsplit("}", 1)[-1] == "alert"
         ]
 
-    result = []
+    output = []
 
-    for i, alert in enumerate(alerts):
+    for index, alert in enumerate(alerts):
         infos = [
-            x for x in alert
-            if x.tag.rsplit("}", 1)[-1] == "info"
+            element
+            for element in alert
+            if element.tag.rsplit("}", 1)[-1] == "info"
         ]
 
         for info in infos:
@@ -863,11 +857,7 @@ def load_alert_file(api_id, key):
                 cap_text(info, "expires")
             )
 
-            if (
-                not title
-                or not end
-                or end < NOW
-            ):
+            if not title or not end or end < NOW:
                 continue
 
             summary = (
@@ -876,25 +866,24 @@ def load_alert_file(api_id, key):
             )
 
             areas = [
-                x for x in info.iter()
-                if x.tag.rsplit(
-                    "}", 1
-                )[-1] == "area"
+                element
+                for element in info.iter()
+                if element.tag.rsplit("}", 1)[-1] == "area"
             ]
 
             cities = city_in(
                 " ".join(
-                    cap_text(x, "areaDesc")
-                    for x in areas
+                    cap_text(area, "areaDesc")
+                    for area in areas
                 )
             )
 
             if not cities:
                 continue
 
-            result.append({
+            output.append({
                 "id": (
-                    f"{api_id}-cap-{i}-"
+                    f"{api_id}-cap-{index}-"
                     f"{end.isoformat()}"
                 ),
                 "category": "天氣警示",
@@ -909,7 +898,7 @@ def load_alert_file(api_id, key):
                 "api_id": api_id
             })
 
-    return result
+    return output
 
 
 def load_alert(api_id, key):
@@ -918,9 +907,7 @@ def load_alert(api_id, key):
 
     except (HTTPError, ValueError) as rest_error:
         try:
-            return load_alert_file(
-                api_id, key
-            )
+            return load_alert_file(api_id, key)
 
         except Exception as file_error:
             raise RuntimeError(
@@ -934,8 +921,8 @@ def load_alert(api_id, key):
     def walk(value):
         if isinstance(value, dict):
             if any(
-                k in value
-                for k in (
+                key in value
+                for key in (
                     "headline",
                     "event",
                     "alertName",
@@ -944,20 +931,20 @@ def load_alert(api_id, key):
             ):
                 candidates.append(value)
 
-            for v in value.values():
-                walk(v)
+            for child in value.values():
+                walk(child)
 
         elif isinstance(value, list):
-            for v in value:
-                walk(v)
+            for child in value:
+                walk(child)
 
     walk(records)
 
     output = []
 
-    for i, r in enumerate(candidates):
+    for index, row in enumerate(candidates):
         title = pick(
-            r,
+            row,
             "headline",
             "alertName",
             "title",
@@ -966,7 +953,7 @@ def load_alert(api_id, key):
 
         start = parse_dt(
             pick(
-                r,
+                row,
                 "effective",
                 "onset",
                 "startTime",
@@ -976,36 +963,29 @@ def load_alert(api_id, key):
 
         end = parse_dt(
             pick(
-                r,
+                row,
                 "expires",
                 "endTime",
                 "expireTime"
             )
         )
 
-        if (
-            not title
-            or not end
-            or end < NOW
-        ):
+        if not title or not end or end < NOW:
             continue
 
-        summary = (
-            pick(
-                r,
-                "description",
-                "instruction",
-                "content",
-                "summary"
-            )
-            or (
-                "請查看中央氣象署原始"
-                "警示內容及適用地區。"
-            )
+        summary = pick(
+            row,
+            "description",
+            "instruction",
+            "content",
+            "summary"
+        ) or (
+            "請查看中央氣象署原始"
+            "警示內容及適用地區。"
         )
 
         cities = city_in(
-            " ".join(nested_strings(r))
+            " ".join(nested_strings(row))
         )
 
         if not cities:
@@ -1013,8 +993,7 @@ def load_alert(api_id, key):
 
         output.append({
             "id": (
-                f"{api_id}-{i}-"
-                f"{end.isoformat()}"
+                f"{api_id}-{index}-{end.isoformat()}"
             ),
             "category": "天氣警示",
             "title": title[:120],
@@ -1031,20 +1010,19 @@ def load_alert(api_id, key):
     return output
 
 
+# ============================================================
+# 整合更新、來源狀態與安全寫入
+# ============================================================
+
 def main():
-    DATA.mkdir(
-        parents=True,
-        exist_ok=True
-    )
+    DATA.mkdir(parents=True, exist_ok=True)
 
     previous = {}
 
     if OUT.exists():
         try:
             previous = json.loads(
-                OUT.read_text(
-                    encoding="utf-8"
-                )
+                OUT.read_text(encoding="utf-8")
             )
         except (ValueError, OSError):
             previous = {}
@@ -1077,50 +1055,51 @@ def main():
                 code,
                 lambda c=code: load_alert(c, key)
             ))
-
     else:
-        for name in (
-            "天氣預報",
-        ) + ALERT_IDS:
+        for name in ("天氣預報",) + ALERT_IDS:
             status[name] = {
                 "state": "not_configured",
                 "items": 0,
                 "message": "缺少 CWA_API_KEY"
             }
 
-    for name, func in sources:
+    for name, function in sources:
         try:
-            items = func()
+            items = function()
 
             status[name] = {
                 "state": "ok",
                 "items": len(items),
                 "note": (
-                    "來源請求成功，且資料已完成解析；"
-                    "0 筆不等於官方沒有事件"
+                    "來源請求成功且完成解析；"
+                    "0 筆不代表官方沒有事件"
                 )
             }
 
             collected.extend(items)
 
         except Exception as exc:
+            message = (
+                f"{type(exc).__name__}: {str(exc)[:200]}"
+            )
+
+            print(f"[來源錯誤] {name}: {message}")
+
             status[name] = {
                 "state": "error",
                 "items": 0,
-                "message": str(exc)[:250]
+                "message": message[:250]
             }
 
-    # 來源失敗時保留尚未過期的舊事件。
-    # 來源成功時則使用新資料。
+    # 更新失敗時保留尚未過期的舊公告。
+    # 更新成功時採用新公告。
     keep = []
 
     for item in old:
         if not isinstance(item, dict):
             continue
 
-        end = parse_dt(
-            item.get("ends_at")
-        )
+        end = parse_dt(item.get("ends_at"))
 
         if not end or end < NOW:
             continue
@@ -1130,11 +1109,7 @@ def main():
         else:
             group = item.get("category")
 
-        if (
-            status.get(
-                group, {}
-            ).get("state") != "ok"
-        ):
+        if status.get(group, {}).get("state") != "ok":
             keep.append(item)
 
     unique = {}
@@ -1142,30 +1117,30 @@ def main():
     for item in keep + collected:
         unique[item["id"]] = item
 
+    generated_at = datetime.now(
+        timezone.utc
+    ).isoformat()
+
     result = {
-        "generated_at": datetime.now(
-            timezone.utc
-        ).isoformat(),
+        "generated_at": generated_at,
         "items": list(unique.values())
     }
 
     report = {
-        "checked_at": result["generated_at"],
+        "checked_at": generated_at,
         "sources": status,
         "items": len(result["items"]),
         "note": (
-            "ok + 0 筆僅代表程式解析後沒有"
-            "有效事件；API 未能解析或缺少"
-            "地區者不刊登。"
+            "ok 且 0 筆僅代表程式解析後"
+            "沒有有效事件；無法解析或缺少"
+            "地區的公告不刊登。"
         )
     }
 
     def write_atomic(path, obj):
-        tmp = path.with_suffix(
-            ".json.tmp"
-        )
+        temp = path.with_suffix(".json.tmp")
 
-        tmp.write_text(
+        temp.write_text(
             json.dumps(
                 obj,
                 ensure_ascii=False,
@@ -1174,7 +1149,7 @@ def main():
             encoding="utf-8"
         )
 
-        tmp.replace(path)
+        temp.replace(path)
 
     write_atomic(OUT, result)
     write_atomic(STATUS, report)
