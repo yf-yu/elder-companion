@@ -117,10 +117,36 @@ def fetch(url):
         return data
 
 
+
 def clean(value):
-    return re.sub(
-        r"\s+", " ", str(value or "")
-    ).strip()
+    """清理官方資料的空值、陣列與多餘空白。"""
+
+    if value is None:
+        return ""
+
+    if isinstance(value, (list, tuple, set)):
+        parts = [clean(x) for x in value]
+        return "、".join(x for x in parts if x)
+
+    if isinstance(value, dict):
+        return ""
+
+    text = re.sub(r"\s+", " ", str(value)).strip()
+
+    if text.lower() in (
+        "",
+        "null",
+        "none",
+        "nan",
+        "undefined",
+        "[]",
+        "{}",
+        "n/a"
+    ):
+        return ""
+
+    return text
+
 
 
 def parse_dt(value):
@@ -451,13 +477,17 @@ def load_water():
                     "title": (
                         f"停水通知｜{county}{district}"
                     )[:120],
-                    "summary": (
-                        f"影響地區：{area}；"
-                        "原因："
-                        + pick(
-                            r, "停水原因", "原因"
-                        )
-                    )[:300],
+                    
+"summary": (
+    "影響地區："
+    + (area or "官方未提供詳細影響範圍")
+    + "；原因："
+    + (
+        pick(r, "停水原因", "原因")
+        or "官方未提供詳細原因"
+    )
+)[:300],
+
                     "cities": places,
                     "district": district,
                     "starts_at": stamp(start),
