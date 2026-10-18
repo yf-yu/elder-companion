@@ -323,7 +323,7 @@ def main():
     for item in keep+collected:
         unique[item['id']]=item
     result={'generated_at':datetime.now(timezone.utc).isoformat(),'items':list(unique.values())}
-    report={'checked_at':result['generated_at'],'sources':status,'items':len(result['items'])}
+    report={'checked_at':result['generated_at'],'sources':status,'items':len(result['items']), 'note':'ok + 0 筆僅代表程式解析後沒有有效事件，不能保證官方無事件。'}
     def write_atomic(path,obj):
         tmp=path.with_suffix('.json.tmp')
         tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
