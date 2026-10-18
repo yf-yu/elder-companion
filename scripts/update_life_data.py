@@ -1,17 +1,6 @@
 
 # -*- coding: utf-8 -*-
-"""
-伴老友 V8.5.1
-民生資訊自動更新與過期資料淘汰
-
-資料保留規則：
-- 天氣預報：現在至未來 3 天
-- 停水公告：現在至未來 30 天
-- 停電公告：現在至未來 30 天
-- 氣象警示：僅保留有效警示
-- API 更新失敗：舊資料仍須符合時效規則
-- 資料來源：記錄最近成功更新時間
-"""
+"""伴老友 V8.6：民生資訊整合、時效管理、資料品質與來源診斷。"""
 
 import csv
 import hashlib
@@ -27,17 +16,9 @@ from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import HTTPError
-from urllib.parse import urlencode, urlparse, urljoin
-from urllib.request import (
-    HTTPRedirectHandler,
-    Request,
-    build_opener
-)
+from urllib.parse import urlencode, urljoin, urlparse
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
-
-# ============================================================
-# 基本設定
-# ============================================================
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -50,10 +31,6 @@ NOW = datetime.now(TZ)
 
 MAX_BYTES = 20 * 1024 * 1024
 
-WEATHER_DAYS = 3
-NOTICE_DAYS = 30
-STALE_HOURS = 24
-
 CITIES = (
     "基隆市", "臺北市", "新北市", "桃園市",
     "新竹市", "新竹縣", "苗栗縣", "臺中市",
@@ -62,6 +39,29 @@ CITIES = (
     "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣",
     "金門縣", "連江縣"
 )
+
+OFFICES = {
+    "基隆": "基隆市",
+    "臺北": "臺北市",
+    "新北": "新北市",
+    "桃園": "桃園市",
+    "新竹": "新竹縣",
+    "苗栗": "苗栗縣",
+    "臺中": "臺中市",
+    "彰化": "彰化縣",
+    "南投": "南投縣",
+    "雲林": "雲林縣",
+    "嘉義": "嘉義縣",
+    "臺南": "臺南市",
+    "高雄": "高雄市",
+    "屏東": "屏東縣",
+    "宜蘭": "宜蘭縣",
+    "花蓮": "花蓮縣",
+    "臺東": "臺東縣",
+    "澎湖": "澎湖縣",
+    "金門": "金門縣",
+    "馬祖": "連江縣"
+}
 
 HOSTS = (
     "data.gov.tw",
@@ -79,29 +79,18 @@ ALERT_IDS = (
     "W-C0033-010"
 )
 
-OFFICE_CITIES = {
-    "基隆": "基隆市",
-    "臺北": "臺北市",
-    "台北": "臺北市",
-    "新北": "新北市",
-    "桃園": "桃園市",
-    "苗栗": "苗栗縣",
-    "臺中": "臺中市",
-    "台中": "臺中市",
-    "彰化": "彰化縣",
-    "南投": "南投縣",
-    "雲林": "雲林縣",
-    "臺南": "臺南市",
-    "台南": "臺南市",
-    "高雄": "高雄市",
-    "屏東": "屏東縣",
-    "宜蘭": "宜蘭縣",
-    "花蓮": "花蓮縣",
-    "臺東": "臺東縣",
-    "台東": "臺東縣",
-    "澎湖": "澎湖縣",
-    "金門": "金門縣",
-    "馬祖": "連江縣"
+WINDOWS = {
+    "天氣預報": 3,
+    "預定停水": 30,
+    "預定停電": 30,
+    "天氣警示": None
+}
+
+EXTRA = {
+    "防詐提醒": "官方來源待驗證",
+    "長者福利": "縣市官方來源待驗證",
+    "勞保與勞退": "官方來源待驗證",
+    "健保資訊": "官方來源待驗證"
 }
 
 
@@ -109,186 +98,154 @@ OFFICE_CITIES = {
 # 通用工具
 # ============================================================
 
-def clean(value):
-    if value is None:
+def clean(x):
+    if x is None or isinstance(x, dict):
         return ""
 
-    if isinstance(value, (list, tuple, set)):
-        parts = [clean(x) for x in value]
-        return "、".join(x for x in parts if x)
+    if isinstance(x, (list, tuple)):
+        return "、".join(filter(None, map(clean, x)))
 
-    if isinstance(value, dict):
-        return ""
+    s = re.sub(r"\s+", " ", str(x)).strip()
 
-    text = re.sub(
-        r"\s+", " ", str(value)
-    ).strip()
-
-    if text.lower() in (
-        "", "null", "none", "nan",
-        "undefined", "[]", "{}", "n/a"
+    if s.lower() in (
+        "null", "none", "nan", "undefined",
+        "n/a", "[]", "{}"
     ):
         return ""
 
-    return text
+    return s
 
 
-def normalize_city(value):
-    return clean(value).replace("台", "臺")
+def pick(row, *names):
+    for name in names:
+        value = (
+            clean(row.get(name))
+            if isinstance(row, dict)
+            else ""
+        )
 
-
-def city_in(value):
-    text = normalize_city(value)
-
-    return [
-        city for city in CITIES
-        if city in text
-    ]
-
-
-def pick(row, *keys):
-    if not isinstance(row, dict):
-        return ""
-
-    for key in keys:
-        value = clean(row.get(key))
         if value:
             return value
 
     return ""
 
 
-def parse_dt(value):
-    text = clean(value)
+def dt(x):
+    s = (
+        clean(x)
+        .replace("T", " ")
+        .replace("Z", "+00:00")
+    )
 
-    if not text:
+    if not s:
         return None
 
-    text = text.replace("T", " ")
-    text = text.replace("Z", "+00:00")
-
     try:
-        dt = datetime.fromisoformat(text)
+        d = datetime.fromisoformat(s)
 
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=TZ)
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=TZ)
 
-        return dt.astimezone(TZ)
+        return d.astimezone(TZ)
 
     except ValueError:
         pass
 
-    text = (
-        text.replace("年", "/")
+    s = (
+        s.replace("年", "/")
         .replace("月", "/")
         .replace("日", " ")
         .replace("：", ":")
     )
 
-    match = re.search(
+    m = re.search(
         r"(?<!\d)"
         r"(\d{2,4})[/.-](\d{1,2})[/.-](\d{1,2})"
         r"(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?",
-        text
+        s
     )
 
-    if not match:
+    if not m:
         return None
 
-    year = int(match.group(1))
+    a = [int(v or 0) for v in m.groups()]
 
-    if year < 1911:
-        year += 1911
+    if a[0] < 1911:
+        a[0] += 1911
 
     try:
-        return datetime(
-            year,
-            int(match.group(2)),
-            int(match.group(3)),
-            int(match.group(4) or 0),
-            int(match.group(5) or 0),
-            int(match.group(6) or 0),
-            tzinfo=TZ
-        )
+        return datetime(*a, tzinfo=TZ)
     except ValueError:
         return None
 
 
-def stamp(value):
-    return value.isoformat() if value else None
+def iso(d):
+    return d.isoformat() if d else None
 
 
-def stable_id(prefix, *parts):
-    content = "|".join(
-        clean(part) for part in parts
-    )
+def uid(prefix, *parts):
+    s = "|".join(map(clean, parts))
 
     digest = hashlib.sha256(
-        content.encode("utf-8")
+        s.encode()
     ).hexdigest()[:24]
 
-    return f"{prefix}-{digest}"
+    return prefix + "-" + digest
 
 
-def is_current(item, now=None):
-    """
-    統一資料生命週期檢查。
-    只有仍有效且落在顯示期間的資料可刊登。
-    """
-    if now is None:
-        now = NOW
+def cities(text):
+    s = clean(text).replace("台", "臺")
 
+    return [
+        c for c in CITIES
+        if c in s
+    ]
+
+
+def valid(item):
     if not isinstance(item, dict):
         return False
 
-    category = clean(item.get("category"))
+    kind = item.get("category")
 
-    start = parse_dt(item.get("starts_at"))
-    end = parse_dt(item.get("ends_at"))
+    if kind not in WINDOWS:
+        return False
+
+    start = dt(item.get("starts_at"))
+    end = dt(item.get("ends_at"))
 
     if not start or not end:
         return False
 
-    if end < start:
+    if start > end or end <= NOW:
         return False
 
-    # 已結束的公告直接淘汰
-    if end <= now:
+    days = WINDOWS[kind]
+
+    if days is not None:
+        if start >= NOW + timedelta(days=days):
+            return False
+
+    item_cities = item.get("cities")
+
+    if not isinstance(item_cities, list):
         return False
 
-    if category == "天氣預報":
-        return start < (
-            now + timedelta(days=WEATHER_DAYS)
-        )
-
-    if category in ("預定停水", "預定停電"):
-        return start < (
-            now + timedelta(days=NOTICE_DAYS)
-        )
-
-    if category == "天氣警示":
-        return True
-
-    # 未來新增的公告類型，不在未定義
-    # 保存期限時自動放進民生公告。
-    return False
+    return any(
+        c in CITIES for c in item_cities
+    )
 
 
-def safe_json(path, default):
-    if not path.exists():
-        return default
-
+def read_json(path, default):
     try:
-        with path.open(
-            "r", encoding="utf-8"
-        ) as file:
-            return json.load(file)
-
+        return json.loads(
+            path.read_text(encoding="utf-8")
+        )
     except (OSError, ValueError):
         return default
 
 
-def write_atomic(path, obj):
+def save(path, obj):
     temp = path.with_suffix(".json.tmp")
 
     temp.write_text(
@@ -309,21 +266,20 @@ def write_atomic(path, obj):
 
 def allowed(url):
     try:
-        parsed = urlparse(url)
+        p = urlparse(url)
 
-        host = (
-            parsed.hostname or ""
+        h = (
+            p.hostname or ""
         ).lower().rstrip(".")
 
         return (
-            parsed.scheme == "https"
-            and not parsed.username
-            and not parsed.password
-            and parsed.port in (None, 443)
+            p.scheme == "https"
+            and not p.username
+            and not p.password
+            and p.port in (None, 443)
             and any(
-                host == domain
-                or host.endswith("." + domain)
-                for domain in HOSTS
+                h == x or h.endswith("." + x)
+                for x in HOSTS
             )
         )
 
@@ -339,7 +295,9 @@ class SafeRedirect(HTTPRedirectHandler):
         target = urljoin(req.full_url, newurl)
 
         if not allowed(target):
-            raise ValueError("不安全的轉址")
+            raise ValueError(
+                "轉址至非白名單網域，已阻擋"
+            )
 
         return super().redirect_request(
             req, fp, code, msg, headers, target
@@ -348,12 +306,14 @@ class SafeRedirect(HTTPRedirectHandler):
 
 def fetch(url):
     if not allowed(url):
-        raise ValueError("非允許的官方 HTTPS 網址")
+        raise ValueError(
+            "非白名單 HTTPS 網址"
+        )
 
-    request = Request(
+    req = Request(
         url,
         headers={
-            "User-Agent": "BanLaoYou/8.5.1",
+            "User-Agent": "BanLaoYou/8.6",
             "Accept": (
                 "application/json,text/csv,"
                 "application/zip,application/xml,*/*"
@@ -361,57 +321,58 @@ def fetch(url):
         }
     )
 
-    opener = build_opener(SafeRedirect())
-
-    with opener.open(
-        request, timeout=35
-    ) as response:
+    with build_opener(
+        SafeRedirect()
+    ).open(req, timeout=35) as response:
 
         if not allowed(response.geturl()):
-            raise ValueError("最終網址不安全")
+            raise ValueError(
+                "最終網址不安全"
+            )
 
-        data = response.read(MAX_BYTES + 1)
+        raw = response.read(MAX_BYTES + 1)
 
-        if len(data) > MAX_BYTES:
-            raise ValueError("檔案超過 20MB")
+        if len(raw) > MAX_BYTES:
+            raise ValueError(
+                "來源檔案超過 20MB"
+            )
 
-        return data
+        return raw
 
 
 def unwrap(obj):
     if isinstance(obj, list):
         return [
-            row for row in obj
-            if isinstance(row, dict)
+            x for x in obj
+            if isinstance(x, dict)
         ]
 
     if isinstance(obj, dict):
-        for key in (
+        for name in (
             "records", "data", "result", "items"
         ):
-            value = obj.get(key)
+            value = obj.get(name)
 
-            if isinstance(value, list):
-                return unwrap(value)
-
-            if isinstance(value, dict):
+            if isinstance(value, (list, dict)):
                 try:
                     return unwrap(value)
                 except ValueError:
                     pass
 
-    raise ValueError("無法辨識資料列結構")
+    raise ValueError(
+        "無法辨識資料格式"
+    )
 
 
-def rows_from_bytes(data):
-    if data[:2] == b"PK":
-        rows = []
+def rows(raw):
+    if raw.startswith(b"PK"):
+        result = []
 
         with zipfile.ZipFile(
-            io.BytesIO(data)
-        ) as archive:
+            io.BytesIO(raw)
+        ) as z:
 
-            for info in archive.infolist():
+            for info in z.infolist():
                 if info.is_dir():
                     continue
 
@@ -421,63 +382,58 @@ def rows_from_bytes(data):
                 if info.filename.lower().endswith(
                     (".csv", ".json")
                 ):
-                    rows.extend(
-                        rows_from_bytes(
-                            archive.read(info)
-                        )
+                    result.extend(
+                        rows(z.read(info))
                     )
 
-        if not rows:
+        if not result:
             raise ValueError(
-                "ZIP 內沒有可讀取的 CSV/JSON"
+                "ZIP 沒有 CSV/JSON"
             )
 
-        return rows
+        return result
 
-    for encoding in (
+    for enc in (
         "utf-8-sig", "cp950", "big5"
     ):
         try:
-            content = data.decode(encoding)
+            text = raw.decode(enc)
 
         except UnicodeError:
             continue
 
         try:
-            return unwrap(json.loads(content))
+            return unwrap(json.loads(text))
 
         except (ValueError, TypeError):
             reader = csv.DictReader(
-                io.StringIO(content)
+                io.StringIO(text)
             )
 
             if reader.fieldnames:
                 return list(reader)
 
-    raise ValueError("無法解析 JSON/CSV")
-
-
-def dataset_urls(dataset_id):
-    metadata_url = (
-        "https://data.gov.tw/api/v2/rest/"
-        f"dataset/{dataset_id}"
+    raise ValueError(
+        "CSV/JSON 無法解析"
     )
 
-    obj = json.loads(fetch(metadata_url))
+
+def dataset_urls(number):
+    obj = json.loads(
+        fetch(
+            "https://data.gov.tw/api/v2/rest/"
+            f"dataset/{number}"
+        )
+    )
 
     if isinstance(obj, list):
-        if not obj:
-            raise ValueError("資料集不存在")
-        obj = obj[0]
+        obj = obj[0] if obj else {}
 
     if (
         isinstance(obj, dict)
         and isinstance(obj.get("result"), dict)
     ):
         obj = obj["result"]
-
-    if not isinstance(obj, dict):
-        raise ValueError("資料集詮釋資料格式錯誤")
 
     resources = (
         obj.get("distribution")
@@ -494,13 +450,13 @@ def dataset_urls(dataset_id):
         if not isinstance(resource, dict):
             continue
 
-        for key in (
+        for field in (
             "resourceDownloadUrl",
             "resourceDownloadURL",
             "downloadURL",
             "url"
         ):
-            url = resource.get(key)
+            url = resource.get(field)
 
             if (
                 isinstance(url, str)
@@ -511,199 +467,194 @@ def dataset_urls(dataset_id):
 
     if not urls:
         raise ValueError(
-            "找不到可下載的官方資料資源"
+            "沒有可用的官方下載連結"
         )
 
     return urls
 
 
-# ============================================================
-# 停水公告
-# ============================================================
-
-def load_water():
+def first_dataset(number, parse):
     errors = []
 
-    for url in dataset_urls(6050):
+    for url in dataset_urls(number):
         try:
-            rows = rows_from_bytes(fetch(url))
-            output = []
-
-            for row in rows:
-                start = parse_dt(
-                    pick(
-                        row,
-                        "案件日期時間",
-                        "停水開始時間",
-                        "停水時間"
-                    )
-                )
-
-                end = parse_dt(
-                    pick(
-                        row,
-                        "恢復日期時間",
-                        "停水結束時間",
-                        "復水時間"
-                    )
-                )
-
-                if not start or not end:
-                    continue
-
-                county = pick(
-                    row, "影響縣市", "縣市"
-                )
-
-                district = pick(
-                    row, "影響行政區", "行政區"
-                )
-
-                area = pick(
-                    row, "停水地區", "影響範圍"
-                )
-
-                cities = city_in(
-                    county + " " + district + " " + area
-                )
-
-                if not cities:
-                    continue
-
-                reason = pick(
-                    row, "停水原因", "原因"
-                ) or "官方未提供詳細原因"
-
-                case_number = pick(
-                    row, "案件編號"
-                )
-
-                item = {
-                    "id": stable_id(
-                        "water",
-                        case_number,
-                        start.isoformat(),
-                        end.isoformat(),
-                        county,
-                        district,
-                        area
-                    ),
-                    "category": "預定停水",
-                    "title": (
-                        f"停水通知｜{county}{district}"
-                    )[:120],
-                    "summary": (
-                        "影響地區："
-                        + (
-                            area
-                            or "官方未提供詳細影響範圍"
-                        )
-                        + "；原因："
-                        + reason
-                    )[:300],
-                    "cities": cities,
-                    "district": district,
-                    "starts_at": stamp(start),
-                    "ends_at": stamp(end),
-                    "source": "台灣自來水公司",
-                    "url": (
-                        "https://data.gov.tw/"
-                        "dataset/6050"
-                    )
-                }
-
-                if is_current(item):
-                    output.append(item)
-
-            print(
-                f"[停水] 原始 {len(rows)} 筆，"
-                f"符合時效 {len(output)} 筆"
+            return parse(
+                rows(fetch(url))
             )
 
-            return output
-
-        except Exception as exc:
+        except Exception as e:
             errors.append(
-                f"{type(exc).__name__}: {exc}"
+                f"{type(e).__name__}: {e}"
             )
 
     raise RuntimeError(
-        "; ".join(errors)[:300]
+        "; ".join(errors)[:350]
     )
 
 
 # ============================================================
-# 台電停電
+# 停水
 # ============================================================
 
-def power_times(raw):
-    text = clean(raw)
+def water_parse(data):
+    out = []
+    stats = Counter()
 
-    text = re.sub(
-        r"[～〜－—–至到]", "~", text
-    )
+    for r in data:
+        a = dt(
+            pick(
+                r,
+                "案件日期時間",
+                "停水開始時間",
+                "停水時間"
+            )
+        )
 
-    text = (
-        text.replace("：", ":")
+        b = dt(
+            pick(
+                r,
+                "恢復日期時間",
+                "停水結束時間",
+                "復水時間"
+            )
+        )
+
+        county = pick(
+            r, "影響縣市", "縣市"
+        )
+
+        district = pick(
+            r, "影響行政區", "行政區"
+        )
+
+        area = pick(
+            r, "停水地區", "影響範圍"
+        )
+
+        cc = cities(
+            " ".join(
+                (county, district, area)
+            )
+        )
+
+        if not a or not b:
+            stats["時間無法解析"] += 1
+            continue
+
+        if not cc:
+            stats["地區無法辨識"] += 1
+            continue
+
+        item = {
+            "id": uid(
+                "water",
+                pick(r, "案件編號"),
+                iso(a),
+                iso(b),
+                county,
+                district,
+                area
+            ),
+            "category": "預定停水",
+            "title": (
+                "停水通知｜"
+                + county
+                + district
+            )[:120],
+            "summary": (
+                "影響地區："
+                + (area or "未提供")
+                + "；原因："
+                + (
+                    pick(
+                        r, "停水原因", "原因"
+                    ) or "未提供"
+                )
+            )[:300],
+            "cities": cc,
+            "district": district,
+            "starts_at": iso(a),
+            "ends_at": iso(b),
+            "source": "台灣自來水公司",
+            "url": (
+                "https://data.gov.tw/"
+                "dataset/6050"
+            )
+        }
+
+        if valid(item):
+            out.append(item)
+        else:
+            stats["超出時效"] += 1
+
+    return out, stats, len(data)
+
+
+# ============================================================
+# 停電
+# ============================================================
+
+def power_range(text):
+    s = (
+        clean(text)
+        .replace("：", ":")
         .replace("年", "/")
         .replace("月", "/")
         .replace("日", " ")
     )
 
-    dates = list(re.finditer(
+    dates = re.findall(
         r"(?<!\d)"
         r"\d{2,4}[/.-]\d{1,2}[/.-]\d{1,2}"
         r"(?!\d)",
-        text
-    ))
+        s
+    )
 
-    times = list(re.finditer(
+    times = re.findall(
         r"(?<!\d)"
         r"(?:[01]?\d|2[0-3]):[0-5]\d"
         r"(?!\d)",
-        text
-    ))
+        s
+    )
 
     if not dates or len(times) < 2:
         return None, None
 
-    first_date = dates[0].group()
-
-    last_date = (
-        dates[1].group()
-        if len(dates) >= 2
-        else first_date
+    a = dt(
+        dates[0] + " " + times[0]
     )
 
-    start = parse_dt(
-        first_date + " " + times[0].group()
-    )
-
-    end = parse_dt(
-        last_date + " " + times[1].group()
+    b = dt(
+        (
+            dates[1]
+            if len(dates) > 1
+            else dates[0]
+        )
+        + " "
+        + times[1]
     )
 
     if (
-        start and end
-        and end < start
+        a and b
+        and b < a
         and len(dates) == 1
     ):
-        end += timedelta(days=1)
+        b += timedelta(days=1)
 
-    if not start or not end or end < start:
-        return None, None
-
-    return start, end
+    return a, b
 
 
-def power_row_times(row):
-    for first, last in (
+def power_dates(r):
+    for a, b in (
         ("停電開始時間", "停電結束時間"),
         ("開始時間", "結束時間"),
-        ("預定停電開始時間", "預定停電結束時間")
+        (
+            "預定停電開始時間",
+            "預定停電結束時間"
+        )
     ):
-        start = parse_dt(pick(row, first))
-        end = parse_dt(pick(row, last))
+        start = dt(pick(r, a))
+        end = dt(pick(r, b))
 
         if start and end and end >= start:
             return start, end
@@ -714,189 +665,152 @@ def power_row_times(row):
         "預定停電時間",
         "第二次停電時間"
     ):
-        raw = pick(row, field)
+        if pick(r, field):
+            a, b = power_range(
+                pick(r, field)
+            )
 
-        if raw:
-            start, end = power_times(raw)
-
-            if start and end:
-                return start, end
+            if a and b and b >= a:
+                return a, b
 
     return None, None
 
 
-def infer_cities(office, area):
-    cities = city_in(area)
+def office_cities(office, area):
+    cc = cities(area) or cities(office)
 
-    if cities:
-        return cities
+    if cc:
+        return cc
 
-    cities = city_in(office)
+    office = clean(office).replace(
+        "台", "臺"
+    )
 
-    if cities:
-        return cities
-
-    office = normalize_city(office)
-
-    for prefix, city in OFFICE_CITIES.items():
-        if office.startswith(
-            normalize_city(prefix)
-        ):
-            return [city]
+    for key, value in OFFICES.items():
+        if office.startswith(key):
+            return [value]
 
     return []
 
 
-def load_power():
-    errors = []
+def power_parse(data):
+    out = []
+    stats = Counter()
 
-    for url in dataset_urls(26144):
-        try:
-            rows = rows_from_bytes(fetch(url))
-            output = []
+    for r in data:
+        a, b = power_dates(r)
 
-            skipped = Counter()
+        if not a or not b:
+            stats["時間無法解析"] += 1
+            continue
 
-            print(
-                f"[台電] 原始資料：{len(rows)} 筆"
+        if b <= NOW:
+            stats["已結束"] += 1
+            continue
+
+        if a >= NOW + timedelta(days=30):
+            stats["超過30天"] += 1
+            continue
+
+        area = pick(
+            r,
+            "停電範圍",
+            "停電區域",
+            "停電地區"
+        )
+
+        office = pick(
+            r,
+            "營業區處",
+            "區處",
+            "營業處"
+        )
+
+        if not area:
+            stats["缺少範圍"] += 1
+            continue
+
+        cc = office_cities(
+            office, area
+        )
+
+        if not cc:
+            stats["地區無法辨識"] += 1
+            continue
+
+        number = pick(
+            r, "請求號數", "案件編號"
+        )
+
+        reason = (
+            pick(
+                r,
+                "工作概述",
+                "停電原因"
+            ) or "未提供"
+        )
+
+        item = {
+            "id": uid(
+                "power",
+                office,
+                number,
+                iso(a),
+                iso(b),
+                area
+            ),
+            "category": "預定停電",
+            "title": (
+                "預定停電｜"
+                + (office or area[:20])
+            )[:120],
+            "summary": (
+                "停電範圍："
+                + area
+                + "；工作內容："
+                + reason
+                + "；查詢電話：1911"
+            )[:300],
+            "cities": cc,
+            "district": "",
+            "starts_at": iso(a),
+            "ends_at": iso(b),
+            "source": "台灣電力公司",
+            "url": (
+                "https://data.gov.tw/"
+                "dataset/26144"
             )
+        }
 
-            if rows:
-                print(
-                    "[台電] 第一筆欄位：",
-                    list(rows[0].keys())
-                )
+        if valid(item):
+            out.append(item)
+        else:
+            stats["時效不符"] += 1
 
-            for row in rows:
-                start, end = power_row_times(row)
+    unique = {
+        x["id"]: x for x in out
+    }
 
-                if not start or not end:
-                    skipped["時間無法解析"] += 1
-                    continue
+    stats["相同公告ID"] += (
+        len(out) - len(unique)
+    )
 
-                if end <= NOW:
-                    skipped["已過期"] += 1
-                    continue
-
-                if start >= (
-                    NOW + timedelta(days=NOTICE_DAYS)
-                ):
-                    skipped["超出未來30天"] += 1
-                    continue
-
-                area = pick(
-                    row,
-                    "停電範圍",
-                    "停電區域",
-                    "停電地區"
-                )
-
-                if not area:
-                    skipped["缺少停電範圍"] += 1
-                    continue
-
-                office = pick(
-                    row,
-                    "營業區處",
-                    "區處",
-                    "營業處"
-                )
-
-                cities = infer_cities(
-                    office, area
-                )
-
-                if not cities:
-                    skipped["無法辨識縣市"] += 1
-                    continue
-
-                case_number = pick(
-                    row,
-                    "請求號數",
-                    "案件編號"
-                )
-
-                reason = pick(
-                    row,
-                    "工作概述",
-                    "停電原因"
-                ) or "官方未提供詳細原因"
-
-                # 不再只用請求號數當 ID，
-                # 避免不同區處或時段互相覆蓋。
-                item = {
-                    "id": stable_id(
-                        "power",
-                        office,
-                        case_number,
-                        start.isoformat(),
-                        end.isoformat(),
-                        area
-                    ),
-                    "category": "預定停電",
-                    "title": (
-                        "預定停電｜"
-                        + (office or area[:20])
-                    )[:120],
-                    "summary": (
-                        f"停電範圍：{area}；"
-                        f"工作內容：{reason}；"
-                        "查詢電話：1911"
-                    )[:300],
-                    "cities": cities,
-                    "district": "",
-                    "starts_at": stamp(start),
-                    "ends_at": stamp(end),
-                    "source": "台灣電力公司",
-                    "url": (
-                        "https://data.gov.tw/"
-                        "dataset/26144"
-                    )
-                }
-
-                if is_current(item):
-                    output.append(item)
-
-            unique = {
-                item["id"]: item
-                for item in output
-            }
-
-            print(
-                "[台電] 排除統計：",
-                json.dumps(
-                    dict(skipped),
-                    ensure_ascii=False
-                )
-            )
-
-            print(
-                f"[台電] 時效內 {len(output)} 筆，"
-                f"去重後 {len(unique)} 筆，"
-                f"重複 {len(output) - len(unique)} 筆"
-            )
-
-            return list(unique.values())
-
-        except Exception as exc:
-            errors.append(
-                f"{type(exc).__name__}: {exc}"
-            )
-
-    raise RuntimeError(
-        "; ".join(errors)[:300]
+    return (
+        list(unique.values()),
+        stats,
+        len(data)
     )
 
 
 # ============================================================
-# 中央氣象署天氣預報
+# 中央氣象署
 # ============================================================
 
-def cwa(api_id, key):
+def cwa(code, key):
     url = (
         "https://opendata.cwa.gov.tw/"
         "api/v1/rest/datastore/"
-        + api_id
+        + code
         + "?"
         + urlencode({
             "Authorization": key,
@@ -910,142 +824,118 @@ def cwa(api_id, key):
         obj.get("success", "")
     ).lower() not in ("true", "1"):
         raise ValueError(
-            f"{api_id} API 未成功："
-            + clean(obj.get("message"))[:100]
+            "氣象署回傳失敗："
+            + clean(obj.get("message"))
         )
 
     return obj
 
 
-def weather_value(elements, code, index):
-    for element in elements:
-        if element.get("elementName") != code:
-            continue
+def forecast(key):
+    obj = cwa(
+        "F-C0032-001", key
+    )
 
-        periods = element.get("time", [])
-
-        if index < len(periods):
-            return clean(
-                periods[index]
-                .get("parameter", {})
-                .get("parameterName")
-            )
-
-    return ""
-
-
-def load_forecast(key):
-    obj = cwa("F-C0032-001", key)
+    out = []
+    stats = Counter()
 
     locations = (
         obj.get("records", {})
         .get("location", [])
     )
 
-    output = []
-
-    for location in locations:
-        city = normalize_city(
-            location.get("locationName")
-        )
+    for loc in locations:
+        city = clean(
+            loc.get("locationName")
+        ).replace("台", "臺")
 
         if city not in CITIES:
+            stats["未知縣市"] += 1
             continue
 
-        elements = location.get(
-            "weatherElement", []
-        )
-
-        periods = next(
-            (
-                element.get("time", [])
-                for element in elements
-                if element.get("elementName") == "Wx"
-            ),
-            []
-        )
-
-        for index, period in enumerate(periods):
-            start = parse_dt(
-                period.get("startTime")
+        elements = {
+            e.get("elementName"): e.get(
+                "time", []
             )
-
-            end = parse_dt(
-                period.get("endTime")
+            for e in loc.get(
+                "weatherElement", []
             )
+        }
 
-            if not start or not end:
+        for i, p in enumerate(
+            elements.get("Wx", [])
+        ):
+            a = dt(p.get("startTime"))
+            b = dt(p.get("endTime"))
+
+            if not a or not b:
+                stats["時間錯誤"] += 1
                 continue
 
-            condition = weather_value(
-                elements, "Wx", index
-            )
+            def val(k):
+                periods = elements.get(k, [])
 
-            low = weather_value(
-                elements, "MinT", index
-            )
+                if i >= len(periods):
+                    return ""
 
-            high = weather_value(
-                elements, "MaxT", index
-            )
-
-            rain = weather_value(
-                elements, "PoP", index
-            )
+                return clean(
+                    periods[i]
+                    .get("parameter", {})
+                    .get("parameterName")
+                )
 
             item = {
-                "id": stable_id(
+                "id": uid(
                     "weather",
                     city,
-                    start.isoformat(),
-                    end.isoformat()
+                    iso(a),
+                    iso(b)
                 ),
                 "category": "天氣預報",
                 "title": (
-                    f"{city}天氣｜{condition}"
+                    f"{city}天氣｜{val('Wx')}"
                 ),
                 "summary": (
-                    f"氣溫 {low}～{high}°C，"
-                    f"降雨機率 {rain}%。"
+                    f"氣溫 {val('MinT')}"
+                    f"～{val('MaxT')}°C，"
+                    f"降雨機率 {val('PoP')}%。"
                 ),
                 "cities": [city],
                 "district": "",
-                "starts_at": stamp(start),
-                "ends_at": stamp(end),
+                "starts_at": iso(a),
+                "ends_at": iso(b),
                 "source": "中央氣象署",
                 "url": "https://www.cwa.gov.tw/"
             }
 
-            if is_current(item):
-                output.append(item)
+            if valid(item):
+                out.append(item)
+            else:
+                stats["已過期或超出3天"] += 1
 
-    print(
-        f"[天氣] 時效內預報：{len(output)} 筆"
-    )
-
-    return output
+    return out, stats, len(locations)
 
 
 # ============================================================
-# 氣象警示 CAP
+# 氣象警示
 # ============================================================
 
-def cap_text(element, name):
-    for child in element.iter():
+def xml_text(node, name):
+    for e in node.iter():
         if (
-            child.tag.rsplit("}", 1)[-1] == name
-            and child.text
+            e.tag.rsplit("}", 1)[-1] == name
+            and e.text
         ):
-            return clean(child.text)
+            return clean(e.text)
 
     return ""
 
 
-def load_alert_file(api_id, key):
+def cap_alert(code, key):
     url = (
         "https://opendata.cwa.gov.tw/"
         "fileapi/v1/opendataapi/"
-        + api_id
+        + code
         + "?"
         + urlencode({
             "Authorization": key,
@@ -1053,170 +943,139 @@ def load_alert_file(api_id, key):
         })
     )
 
-    raw = fetch(url)
-    root = ET.fromstring(raw)
+    root = ET.fromstring(fetch(url))
 
     if root.tag.rsplit("}", 1)[-1] == "alert":
         alerts = [root]
-
     else:
         alerts = [
-            element
-            for element in root.iter()
-            if element.tag.rsplit("}", 1)[-1]
+            e for e in root.iter()
+            if e.tag.rsplit("}", 1)[-1]
             == "alert"
         ]
 
-    output = []
+    out = []
 
-    for alert in alerts:
-        identifier = cap_text(
-            alert, "identifier"
-        )
-
-        infos = [
-            element
-            for element in alert
-            if element.tag.rsplit("}", 1)[-1]
-            == "info"
-        ]
-
-        for info in infos:
-            title = (
-                cap_text(info, "headline")
-                or cap_text(info, "event")
-            )
-
-            start = parse_dt(
-                cap_text(info, "effective")
-                or cap_text(info, "onset")
-                or cap_text(alert, "sent")
-            )
-
-            end = parse_dt(
-                cap_text(info, "expires")
-            )
-
-            if not title or not end:
+    for alert_node in alerts:
+        for info in alert_node:
+            if info.tag.rsplit(
+                "}", 1
+            )[-1] != "info":
                 continue
 
-            areas = [
-                element
-                for element in info.iter()
-                if element.tag.rsplit("}", 1)[-1]
-                == "area"
-            ]
+            title = (
+                xml_text(info, "headline")
+                or xml_text(info, "event")
+            )
 
-            cities = city_in(
-                " ".join(
-                    cap_text(area, "areaDesc")
-                    for area in areas
+            a = dt(
+                xml_text(info, "effective")
+                or xml_text(info, "onset")
+                or xml_text(
+                    alert_node, "sent"
                 )
             )
 
-            if not cities:
-                continue
-
-            summary = (
-                cap_text(info, "description")
-                or cap_text(info, "instruction")
-                or "請查看中央氣象署警示內容。"
+            b = dt(
+                xml_text(info, "expires")
             )
 
+            cc = cities(
+                " ".join(
+                    xml_text(e, "areaDesc")
+                    for e in info.iter()
+                    if e.tag.rsplit(
+                        "}", 1
+                    )[-1] == "area"
+                )
+            )
+
+            if (
+                not a or not b
+                or not cc or not title
+            ):
+                continue
+
             item = {
-                "id": stable_id(
+                "id": uid(
                     "alert",
-                    api_id,
-                    identifier,
+                    code,
+                    xml_text(
+                        alert_node, "identifier"
+                    ),
                     title,
-                    stamp(start),
-                    stamp(end),
-                    ",".join(cities)
+                    iso(a),
+                    iso(b),
+                    ",".join(cc)
                 ),
                 "category": "天氣警示",
                 "title": title[:120],
-                "summary": summary[:300],
-                "cities": cities,
+                "summary": (
+                    xml_text(
+                        info, "description"
+                    )
+                    or xml_text(
+                        info, "instruction"
+                    )
+                    or "請參閱氣象署公告"
+                )[:300],
+                "cities": cc,
                 "district": "",
-                "starts_at": stamp(start),
-                "ends_at": stamp(end),
+                "starts_at": iso(a),
+                "ends_at": iso(b),
                 "source": "中央氣象署",
                 "url": "https://www.cwa.gov.tw/",
-                "api_id": api_id
+                "api_id": code
             }
 
-            if is_current(item):
-                output.append(item)
+            if valid(item):
+                out.append(item)
 
-    return output
-
-
-def nested_strings(obj):
-    if isinstance(obj, str):
-        yield obj
-
-    elif isinstance(obj, list):
-        for value in obj:
-            yield from nested_strings(value)
-
-    elif isinstance(obj, dict):
-        for value in obj.values():
-            yield from nested_strings(value)
+    return out
 
 
-def load_alert(api_id, key):
-    try:
-        obj = cwa(api_id, key)
+def rest_alert(code, key):
+    obj = cwa(code, key)
 
-    except (HTTPError, ValueError) as rest_error:
-        try:
-            return load_alert_file(api_id, key)
+    found = []
 
-        except Exception as file_error:
-            raise RuntimeError(
-                f"REST 失敗：{rest_error}; "
-                f"CAP 失敗：{file_error}"
-            ) from file_error
-
-    records = obj.get("records", {})
-    candidates = []
-
-    def walk(value):
-        if isinstance(value, dict):
+    def walk(x):
+        if isinstance(x, dict):
             if any(
-                key in value
-                for key in (
+                k in x
+                for k in (
                     "headline",
                     "event",
-                    "alertName",
-                    "title"
+                    "alertName"
                 )
             ):
-                candidates.append(value)
+                found.append(x)
 
-            for child in value.values():
-                walk(child)
+            for v in x.values():
+                walk(v)
 
-        elif isinstance(value, list):
-            for child in value:
-                walk(child)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
 
-    walk(records)
+    walk(
+        obj.get("records", {})
+    )
 
-    output = []
+    out = []
 
-    for row in candidates:
+    for r in found:
         title = pick(
-            row,
+            r,
             "headline",
             "alertName",
-            "title",
-            "event"
+            "event",
+            "title"
         )
 
-        start = parse_dt(
+        a = dt(
             pick(
-                row,
+                r,
                 "effective",
                 "onset",
                 "startTime",
@@ -1224,149 +1083,166 @@ def load_alert(api_id, key):
             )
         )
 
-        end = parse_dt(
+        b = dt(
             pick(
-                row,
+                r,
                 "expires",
                 "endTime",
                 "expireTime"
             )
         )
 
-        if not title or not end:
-            continue
-
-        cities = city_in(
-            " ".join(nested_strings(row))
+        cc = cities(
+            json.dumps(
+                r,
+                ensure_ascii=False
+            )
         )
 
-        if not cities:
+        if (
+            not a or not b
+            or not cc or not title
+        ):
             continue
 
-        summary = pick(
-            row,
-            "description",
-            "instruction",
-            "content",
-            "summary"
-        ) or "請查看中央氣象署警示內容。"
-
         item = {
-            "id": stable_id(
+            "id": uid(
                 "alert",
-                api_id,
+                code,
                 title,
-                stamp(start),
-                stamp(end),
-                ",".join(cities)
+                iso(a),
+                iso(b),
+                ",".join(cc)
             ),
             "category": "天氣警示",
             "title": title[:120],
-            "summary": summary[:300],
-            "cities": cities,
+            "summary": (
+                pick(
+                    r,
+                    "description",
+                    "instruction",
+                    "content",
+                    "summary"
+                )
+                or "請參閱氣象署公告"
+            )[:300],
+            "cities": cc,
             "district": "",
-            "starts_at": stamp(start),
-            "ends_at": stamp(end),
+            "starts_at": iso(a),
+            "ends_at": iso(b),
             "source": "中央氣象署",
             "url": "https://www.cwa.gov.tw/",
-            "api_id": api_id
+            "api_id": code
         }
 
-        if is_current(item):
-            output.append(item)
+        if valid(item):
+            out.append(item)
 
-    return output
+    return out
+
+
+def alert(code, key):
+    try:
+        items = rest_alert(code, key)
+
+    except (HTTPError, ValueError) as e:
+        try:
+            items = cap_alert(code, key)
+
+        except Exception as f:
+            raise RuntimeError(
+                f"REST：{e}；CAP：{f}"
+            ) from f
+
+    return items, Counter(), len(items)
 
 
 # ============================================================
-# 資料來源狀態
+# 來源狀態與更新紀錄
 # ============================================================
 
-def source_group(item):
-    if item.get("category") == "天氣警示":
+def group(item):
+    if item.get(
+        "category"
+    ) == "天氣警示":
         return item.get("api_id")
 
     return item.get("category")
 
 
-def last_success(previous_status, name):
-    old_sources = previous_status.get(
+def last_success(previous, name):
+    source = previous.get(
         "sources", {}
+    ).get(name, {})
+
+    return dt(
+        source.get("last_success_at")
+        or (
+            previous.get("checked_at")
+            if source.get("state") == "ok"
+            else None
+        )
     )
 
-    if not isinstance(old_sources, dict):
-        return None
 
-    old = old_sources.get(name, {})
-
-    if not isinstance(old, dict):
-        return None
-
-    value = old.get("last_success_at")
-
-    if value:
-        return parse_dt(value)
-
-    # 相容 V8.5：舊版成功狀態只有 checked_at
-    if old.get("state") == "ok":
-        return parse_dt(
-            previous_status.get("checked_at")
-        )
-
-    return None
-
-
-def status_entry(
+def state(
     name,
-    state,
-    items,
-    previous_status,
-    message=""
+    status,
+    count,
+    previous,
+    message="",
+    stats=None,
+    raw=None
 ):
-    now_utc = datetime.now(
-        timezone.utc
+    success = (
+        NOW
+        if status == "ok"
+        else last_success(previous, name)
     )
 
-    if state == "ok":
-        success = now_utc.astimezone(TZ)
-
-    else:
-        success = last_success(
-            previous_status, name
+    hours = (
+        max(
+            0,
+            (NOW - success).total_seconds()
+            / 3600
         )
+        if success
+        else None
+    )
 
-    entry = {
-        "state": state,
-        "items": items,
+    result = {
+        "state": status,
+        "items": count,
         "last_success_at": (
-            success.astimezone(
-                timezone.utc
-            ).isoformat()
-            if success else None
+            iso(
+                success.astimezone(
+                    timezone.utc
+                )
+            )
+            if success
+            else None
+        ),
+        "hours_since_success": (
+            round(hours, 1)
+            if hours is not None
+            else None
+        ),
+        "stale": (
+            hours is None
+            or hours > 24
         )
     }
 
     if message:
-        entry["message"] = message[:250]
+        result["message"] = message[:350]
 
-    if success:
-        hours = (
-            NOW - success
-        ).total_seconds() / 3600
+    if stats is not None:
+        result["quality"] = {
+            "raw_rows": raw,
+            "excluded": dict(stats)
+        }
 
-        entry["hours_since_success"] = round(
-            max(0, hours), 1
-        )
-
-        entry["stale"] = (
-            hours > STALE_HOURS
-        )
-
-    else:
-        entry["hours_since_success"] = None
-        entry["stale"] = True
-
-    return entry
+    return result
 
 
 # ============================================================
@@ -1379,208 +1255,218 @@ def main():
         exist_ok=True
     )
 
-    previous_data = safe_json(
+    previous = read_json(
         OUT, {}
     )
 
-    previous_status = safe_json(
+    old = (
+        previous.get("items", [])
+        if isinstance(previous, dict)
+        else []
+    )
+
+    if not isinstance(old, list):
+        old = []
+
+    prev_status = read_json(
         STATUS, {}
     )
 
-    old_items = previous_data.get(
-        "items", []
-    )
-
-    if not isinstance(old_items, list):
-        old_items = []
-
-    status = {}
-    collected = []
+    if not isinstance(prev_status, dict):
+        prev_status = {}
 
     sources = [
-        ("預定停水", load_water),
-        ("預定停電", load_power)
+        (
+            "預定停水",
+            lambda: first_dataset(
+                6050, water_parse
+            )
+        ),
+        (
+            "預定停電",
+            lambda: first_dataset(
+                26144, power_parse
+            )
+        )
     ]
 
-    key = os.environ.get(
+    api_key = os.environ.get(
         "CWA_API_KEY", ""
     ).strip()
 
-    if key:
-        sources.append((
-            "天氣預報",
-            lambda: load_forecast(key)
-        ))
+    if api_key:
+        sources.append(
+            (
+                "天氣預報",
+                lambda: forecast(api_key)
+            )
+        )
 
-        for code in ALERT_IDS:
-            sources.append((
+        sources.extend(
+            (
                 code,
-                lambda c=code: load_alert(c, key)
-            ))
+                lambda c=code: alert(
+                    c, api_key
+                )
+            )
+            for code in ALERT_IDS
+        )
 
-    else:
+    results = {}
+    fresh = []
+
+    if not api_key:
         for name in (
             "天氣預報",
         ) + ALERT_IDS:
-            status[name] = status_entry(
+            results[name] = state(
                 name,
                 "not_configured",
                 0,
-                previous_status,
+                prev_status,
                 "缺少 CWA_API_KEY"
             )
 
-    for name, function in sources:
+    for name, fn in sources:
         try:
-            items = function()
+            items, quality, raw = fn()
 
-            # 所有來源都統一執行時效檢查
-            valid = [
-                item for item in items
-                if is_current(item)
+            items = [
+                x for x in items
+                if valid(x)
             ]
 
-            status[name] = status_entry(
+            fresh.extend(items)
+
+            results[name] = state(
                 name,
                 "ok",
-                len(valid),
-                previous_status
-            )
-
-            collected.extend(valid)
-
-        except Exception as exc:
-            message = (
-                f"{type(exc).__name__}: "
-                f"{str(exc)[:200]}"
+                len(items),
+                prev_status,
+                stats=quality,
+                raw=raw
             )
 
             print(
-                f"[來源錯誤] {name}: {message}"
+                f"[{name}] 成功 {len(items)} 筆；"
+                f"來源 {raw} 筆；"
+                f"排除 {dict(quality)}"
             )
 
-            status[name] = status_entry(
+        except Exception as e:
+            msg = (
+                f"{type(e).__name__}: {e}"
+            )
+
+            results[name] = state(
                 name,
                 "error",
                 0,
-                previous_status,
-                message
+                prev_status,
+                msg
             )
 
-    # 來源更新失敗時：
-    # 只保留仍在時效內的舊資料。
-    # 來源成功時：
-    # 以新資料取代舊資料。
-    retained = []
+            print(
+                f"[{name}] 錯誤：{msg}"
+            )
 
-    for item in old_items:
-        if not is_current(item):
-            continue
+    # 來源失敗時，只保留仍有效的舊資料
+    retained = [
+        x for x in old
+        if (
+            valid(x)
+            and results.get(
+                group(x), {}
+            ).get("state") != "ok"
+        )
+    ]
 
-        group = source_group(item)
-
-        if not group:
-            continue
-
-        current_state = status.get(
-            group, {}
-        ).get("state")
-
-        if current_state != "ok":
-            retained.append(item)
-
-    # 舊版 ID 與新版 ID 不同時，
-    # 用公告內容建立統一的去重鍵。
+    # 跨版本統一去重
     unique = {}
 
-    for item in retained + collected:
-        key_parts = (
+    for item in retained + fresh:
+        identity = uid(
+            "record",
             item.get("category"),
             item.get("source"),
             item.get("title"),
             item.get("summary"),
             item.get("starts_at"),
             item.get("ends_at"),
-            ",".join(item.get("cities", []))
-        )
-
-        identity = stable_id(
-            "record", *key_parts
+            ",".join(
+                item.get("cities", [])
+            )
         )
 
         unique[identity] = item
 
-    final_items = [
-        item for item in unique.values()
-        if is_current(item)
-    ]
-
-    final_items.sort(
-        key=lambda item: (
-            item.get("starts_at") or "",
-            item.get("category") or "",
-            item.get("id") or ""
+    final = sorted(
+        unique.values(),
+        key=lambda x: (
+            x.get("starts_at") or "",
+            x.get("category") or "",
+            x.get("id") or ""
         )
     )
 
-    generated_at = datetime.now(
+    now = datetime.now(
         timezone.utc
     ).isoformat()
 
-    category_counts = dict(
-        Counter(
-            item.get("category", "其他")
-            for item in final_items
-        )
+    save(
+        OUT,
+        {
+            "generated_at": now,
+            "items": final
+        }
     )
-
-    result = {
-        "generated_at": generated_at,
-        "items": final_items
-    }
 
     report = {
-        "checked_at": generated_at,
-        "version": "8.5.1",
+        "checked_at": now,
+        "version": "8.6",
         "retention": {
-            "weather_days": WEATHER_DAYS,
-            "water_days": NOTICE_DAYS,
-            "power_days": NOTICE_DAYS,
-            "stale_hours": STALE_HOURS
+            "weather_days": 3,
+            "water_days": 30,
+            "power_days": 30,
+            "stale_hours": 24
         },
-        "sources": status,
-        "items": len(final_items),
-        "category_counts": category_counts,
+        "sources": results,
+        "planned_modules": {
+            k: {
+                "state": "not_connected",
+                "note": v
+            }
+            for k, v in EXTRA.items()
+        },
+        "items": len(final),
+        "category_counts": dict(
+            Counter(
+                x["category"]
+                for x in final
+            )
+        ),
         "removed_expired_old_items": sum(
-            1 for item in old_items
-            if not is_current(item)
+            not valid(x)
+            for x in old
+        ),
+        "retained_during_source_errors": len(
+            retained
+        ),
+        "deduplicated_records": (
+            len(retained)
+            + len(fresh)
+            - len(final)
         ),
         "note": (
-            "所有刊登資料均通過時效檢查；"
-            "來源更新失敗時僅保留仍有效的舊公告。"
-            "stale 表示距離最近一次成功更新"
-            "已超過 24 小時，或從未成功更新。"
+            "僅顯示有效公告；"
+            "新增模組未驗證前不刊登資料；"
+            "stale 代表來源成功更新超過24小時。"
         )
     }
 
-    write_atomic(OUT, result)
-    write_atomic(STATUS, report)
-
-    print(
-        "[V8.5.1] 更新完成"
-    )
-
-    print(
-        "[V8.5.1] 分類統計：",
-        json.dumps(
-            category_counts,
-            ensure_ascii=False
-        )
-    )
-
-    print(
-        "[V8.5.1] 淘汰舊資料：",
-        report["removed_expired_old_items"]
+    save(
+        STATUS,
+        report
     )
 
     print(
@@ -1596,10 +1482,10 @@ if __name__ == "__main__":
     try:
         main()
 
-    except Exception as exc:
+    except Exception as e:
         print(
-            "民生資訊更新失敗："
-            + str(exc),
+            f"V8.6 執行失敗：{e}",
             file=sys.stderr
         )
+
         sys.exit(1)
