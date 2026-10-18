@@ -556,8 +556,32 @@ def load_power():
 
     for url in dataset_urls(26144):
         try:
+    for url in dataset_urls(26144):
+        try:
             rows = rows_from_bytes(fetch(url))
             output = []
+
+            # V8.5 台電資料診斷
+            print(f"[台電診斷] 原始資料筆數：{len(rows)}")
+
+            if rows:
+                print(
+                    "[台電診斷] 第一筆資料欄位：",
+                    list(rows[0].keys())
+                )
+
+                print(
+                    "[台電診斷] 第一筆資料內容：",
+                    json.dumps(
+                        rows[0],
+                        ensure_ascii=False,
+                        default=str
+                    )[:2000]
+                )
+
+            for r in rows:
+
+
 
             for r in rows:
                 raw = pick(
