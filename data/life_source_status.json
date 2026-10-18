@@ -1,47 +1,47 @@
 {
-  "checked_at": "2026-10-18T03:28:46.607818+00:00",
+  "checked_at": "2026-10-18T03:37:52.600270+00:00",
   "sources": {
     "預定停水": {
       "state": "ok",
       "items": 4,
-      "note": "來源請求成功，且資料已完成解析；0 筆不等於官方沒有事件"
+      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
     },
     "預定停電": {
       "state": "ok",
-      "items": 0,
-      "note": "來源請求成功，且資料已完成解析；0 筆不等於官方沒有事件"
+      "items": 8339,
+      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "note": "來源請求成功，且資料已完成解析；0 筆不等於官方沒有事件"
+      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
     },
     "W-C0033-006": {
       "state": "ok",
       "items": 0,
-      "note": "來源請求成功，且資料已完成解析；0 筆不等於官方沒有事件"
+      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
     },
     "W-C0033-007": {
       "state": "error",
       "items": 0,
-      "message": "REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：HTTP Error 404: Not Found"
+      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：HTTP Error 404: Not Found"
     },
     "W-C0033-008": {
       "state": "error",
       "items": 0,
-      "message": "REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：不安全的轉址"
+      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：不安全的轉址"
     },
     "W-C0033-009": {
       "state": "error",
       "items": 0,
-      "message": "REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：不安全的轉址"
+      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：不安全的轉址"
     },
     "W-C0033-010": {
       "state": "error",
       "items": 0,
-      "message": "REST 失敗：HTTP Error 500: Server Error; CAP 檔案 API 失敗：不安全的轉址"
+      "message": "RuntimeError: REST 失敗：HTTP Error 500: Server Error; CAP 檔案 API 失敗：不安全的轉址"
     }
   },
-  "items": 70,
-  "note": "ok + 0 筆僅代表程式解析後沒有有效事件；API 未能解析或缺少地區者不刊登。"
+  "items": 1629,
+  "note": "ok 且 0 筆僅代表程式解析後沒有有效事件；無法解析或缺少地區的公告不刊登。"
 }
