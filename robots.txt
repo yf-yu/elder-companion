@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /elder-companion/
+
+Sitemap: https://yf-yu.github.io/elder-companion/sitemap.xml
