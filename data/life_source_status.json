@@ -1,47 +1,80 @@
 {
-  "checked_at": "2026-10-18T03:37:52.600270+00:00",
+  "checked_at": "2026-10-18T03:45:07.193396+00:00",
+  "version": "8.5.1",
+  "retention": {
+    "weather_days": 3,
+    "water_days": 30,
+    "power_days": 30,
+    "stale_hours": 24
+  },
   "sources": {
     "預定停水": {
       "state": "ok",
       "items": 4,
-      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
+      "last_success_at": "2026-10-18T03:44:50.365063+00:00",
+      "hours_since_success": 0,
+      "stale": false
     },
     "預定停電": {
       "state": "ok",
-      "items": 8339,
-      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
+      "items": 7839,
+      "last_success_at": "2026-10-18T03:44:55.109119+00:00",
+      "hours_since_success": 0,
+      "stale": false
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
+      "last_success_at": "2026-10-18T03:44:57.339869+00:00",
+      "hours_since_success": 0,
+      "stale": false
     },
     "W-C0033-006": {
       "state": "ok",
       "items": 0,
-      "note": "來源請求成功且完成解析；0 筆不代表官方沒有事件"
+      "last_success_at": "2026-10-18T03:44:58.081284+00:00",
+      "hours_since_success": 0,
+      "stale": false
     },
     "W-C0033-007": {
       "state": "error",
       "items": 0,
-      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：HTTP Error 404: Not Found"
+      "last_success_at": null,
+      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 失敗：HTTP Error 404: Not Found",
+      "hours_since_success": null,
+      "stale": true
     },
     "W-C0033-008": {
       "state": "error",
       "items": 0,
-      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：不安全的轉址"
+      "last_success_at": null,
+      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 失敗：不安全的轉址",
+      "hours_since_success": null,
+      "stale": true
     },
     "W-C0033-009": {
       "state": "error",
       "items": 0,
-      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 檔案 API 失敗：不安全的轉址"
+      "last_success_at": null,
+      "message": "RuntimeError: REST 失敗：HTTP Error 404: Not Found; CAP 失敗：不安全的轉址",
+      "hours_since_success": null,
+      "stale": true
     },
     "W-C0033-010": {
       "state": "error",
       "items": 0,
-      "message": "RuntimeError: REST 失敗：HTTP Error 500: Server Error; CAP 檔案 API 失敗：不安全的轉址"
+      "last_success_at": null,
+      "message": "RuntimeError: REST 失敗：HTTP Error 500: Server Error; CAP 失敗：不安全的轉址",
+      "hours_since_success": null,
+      "stale": true
     }
   },
-  "items": 1629,
-  "note": "ok 且 0 筆僅代表程式解析後沒有有效事件；無法解析或缺少地區的公告不刊登。"
+  "items": 7875,
+  "category_counts": {
+    "預定停水": 4,
+    "預定停電": 7805,
+    "天氣預報": 66
+  },
+  "removed_expired_old_items": 51,
+  "note": "所有刊登資料均通過時效檢查；來源更新失敗時僅保留仍有效的舊公告。stale 表示距離最近一次成功更新已超過 24 小時，或從未成功更新。"
 }
