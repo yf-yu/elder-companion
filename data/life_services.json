@@ -1,0 +1,13 @@
+{
+  "version": "8.4",
+  "note": "以下為官方查詢入口，不代表已自動取得該網站最新公告。",
+  "services": [
+    {"category":"防詐提醒","name":"165 全民防騙網","url":"https://165.npa.gov.tw/","coverage":"全國","automatic":false},
+    {"category":"年金給付","name":"勞動部勞工保險局","url":"https://www.bli.gov.tw/","coverage":"全國","automatic":false},
+    {"category":"健保就醫","name":"中央健康保險署","url":"https://www.nhi.gov.tw/","coverage":"全國","automatic":false},
+    {"category":"長者福利","name":"衛生福利部","url":"https://www.mohw.gov.tw/","coverage":"全國","automatic":false},
+    {"category":"長者福利","name":"衛生福利部長期照顧專區","url":"https://1966.gov.tw/","coverage":"全國","automatic":false},
+    {"category":"預定停水","name":"台灣自來水公司","url":"https://www.water.gov.tw/","coverage":"全國（不含部分獨立供水區）","automatic":true},
+    {"category":"預定停電","name":"台灣電力公司","url":"https://www.taipower.com.tw/","coverage":"全國","automatic":true}
+  ]
+}
