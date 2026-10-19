@@ -1,1910 +1,6 @@
 {
-  "generated_at": "2026-10-18T04:00:36.881034+00:00",
+  "generated_at": "2026-10-19T00:24:51.121135+00:00",
   "items": [
-    {
-      "id": "water-70cb6addc2f395be7a97d39e",
-      "category": "預定停水",
-      "title": "停水通知｜新竹市北區",
-      "summary": "影響地區：新竹市/北區/崧嶺路。；原因：[配合「台電公司工程停電施工(H14612)」，辦理崧嶺路加壓站配電設備改善]",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "北區",
-      "starts_at": "2026-10-18T08:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "power-046632605c2001a1d7a9b30c",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市成德國中；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-10bd2ff32c5b8f14d027ca73",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市曲溪里；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-3e3073ab5cde73cab1aef6df",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市唐高段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-6881a6e2f9fae7a2ba761adb",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市客雅段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-7440acc02573c13f2f42761a",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市中山路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-7a06fe384e79a45ce8584f87",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市香山鄉；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-89a0f7d07aed80b5f88244bc",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市曲溪里客雅；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-8c7d9b968618fa2c4dfc46a1",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市客雅；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-9aa192b85bf4edf64adfbece",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市頂埔里；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-aed2732fbd27cd090778ccca",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市成德段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-de968c7355eb947903887a8c",
-      "category": "預定停電",
-      "title": "預定停電｜台電新竹區營業處",
-      "summary": "停電範圍：新竹市崧嶺路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T08:30:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-0b27fa56b580566c81c18cf9",
-      "category": "預定停電",
-      "title": "預定停電｜台電台中區營業處",
-      "summary": "停電範圍：台中市梧棲區自立二街；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-0c71d598b34ee67de522a35f",
-      "category": "預定停電",
-      "title": "預定停電｜台電台中區營業處",
-      "summary": "停電範圍：台中市潭子區中山路三段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T15:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-1a856e6b2f60ddae4f755600",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉新庄村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-1bd41570d2681e4b9351418c",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉文化路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-223950d8b7e70a8ea3663bf4",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉荷苞村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-279da922ab4089e29983a1d8",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣斗六市文化路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-32bd060473172cffbae7f727",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉東陽段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-3c2d49951b0543b40c1a4b74",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉高林村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-55561c8ae4761c9ed0a262dc",
-      "category": "預定停電",
-      "title": "預定停電｜台電台中區營業處",
-      "summary": "停電範圍：台中市西屯區工業區二十八路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T16:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-630fa9db83a569c534ea2613",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉永和路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-9d944d760c940ba25d06276b",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉宮前路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-ad3aff3b5e8f446f646556d2",
-      "category": "預定停電",
-      "title": "預定停電｜台電台中區營業處",
-      "summary": "停電範圍：台中市潭子區北環路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-c5b95608a33cfb5e243fa077",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉東和村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-d3119709fdc07a3eb82af1c4",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉荷苞村荷苞；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-d61a75f6b47ffebea9cbf0b2",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣古坑鄉廣濟路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T09:00:00+08:00",
-      "ends_at": "2026-10-18T13:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "water-865832e9798802951ce1ee80",
-      "category": "預定停水",
-      "title": "停水通知｜桃園市龜山區",
-      "summary": "影響地區：桃園市/龜山區/文信路、文化一路、文吉路、文工一路、文桃路、文華路、樂善一路、樂善二路、牛角坡路。；原因：[牛角坡路29號漏水維修]",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "龜山區",
-      "starts_at": "2026-10-18T10:53:00+08:00",
-      "ends_at": "2026-10-18T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-577ea83db971abb0e9d98531",
-      "category": "預定停水",
-      "title": "停水通知｜宜蘭縣冬山鄉",
-      "summary": "影響地區：宜蘭縣/冬山鄉/德興十一路、德興十路、龍祥九路、龍祥八路、龍祥十路。；原因：[自來水管線漏水緊急搶修 修理地點：冬山鄉德興十路10號前]",
-      "cities": [
-        "宜蘭縣"
-      ],
-      "district": "冬山鄉",
-      "starts_at": "2026-10-18T11:17:00+08:00",
-      "ends_at": "2026-10-18T16:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-aafdf7dfa66e214ad91d7214",
-      "category": "預定停水",
-      "title": "停水通知｜臺中市北屯區",
-      "summary": "影響地區：未提供；原因：未提供",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "北屯區",
-      "starts_at": "2026-10-18T11:22:00+08:00",
-      "ends_at": "2026-10-18T17:30:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "weather-32bc5885a34e35c5a932d59f",
-      "category": "天氣預報",
-      "title": "雲林縣天氣｜晴時多雲",
-      "summary": "氣溫 28～33°C，降雨機率 0%。",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-3d31cd9faf536bbd55ee344b",
-      "category": "天氣預報",
-      "title": "新竹縣天氣｜晴時多雲",
-      "summary": "氣溫 27～31°C，降雨機率 0%。",
-      "cities": [
-        "新竹縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-432c74bc6356615172b8839d",
-      "category": "天氣預報",
-      "title": "臺北市天氣｜晴時多雲",
-      "summary": "氣溫 29～34°C，降雨機率 0%。",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-48a35a7e2da5bf6a8dff30d9",
-      "category": "天氣預報",
-      "title": "高雄市天氣｜多雲時晴",
-      "summary": "氣溫 30～32°C，降雨機率 0%。",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-54bfa6be2834aba44d4b37f1",
-      "category": "天氣預報",
-      "title": "苗栗縣天氣｜晴時多雲",
-      "summary": "氣溫 27～31°C，降雨機率 0%。",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-54d4ca928c19dfda6e56df17",
-      "category": "天氣預報",
-      "title": "屏東縣天氣｜晴時多雲",
-      "summary": "氣溫 29～34°C，降雨機率 0%。",
-      "cities": [
-        "屏東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-58781ff16a216ab4dafb60b7",
-      "category": "天氣預報",
-      "title": "連江縣天氣｜多雲時晴",
-      "summary": "氣溫 26～28°C，降雨機率 0%。",
-      "cities": [
-        "連江縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-5a5da71aa916cbc40eafe34a",
-      "category": "天氣預報",
-      "title": "彰化縣天氣｜晴時多雲",
-      "summary": "氣溫 28～32°C，降雨機率 0%。",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-5b5673c808d484b66b47882a",
-      "category": "天氣預報",
-      "title": "嘉義市天氣｜晴時多雲",
-      "summary": "氣溫 28～33°C，降雨機率 0%。",
-      "cities": [
-        "嘉義市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-67bfef28c0af0e7817561d40",
-      "category": "天氣預報",
-      "title": "基隆市天氣｜晴時多雲",
-      "summary": "氣溫 27～30°C，降雨機率 10%。",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-7499d09a2b75bf55ddc586de",
-      "category": "天氣預報",
-      "title": "臺東縣天氣｜晴時多雲",
-      "summary": "氣溫 28～31°C，降雨機率 0%。",
-      "cities": [
-        "臺東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-8603bfc9ca2c26352ab368dd",
-      "category": "天氣預報",
-      "title": "臺南市天氣｜晴時多雲",
-      "summary": "氣溫 28～31°C，降雨機率 0%。",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-960be29fff578fb57fe12578",
-      "category": "天氣預報",
-      "title": "宜蘭縣天氣｜多雲時晴",
-      "summary": "氣溫 27～31°C，降雨機率 0%。",
-      "cities": [
-        "宜蘭縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-9aae31c6e5b086faef1e5f56",
-      "category": "天氣預報",
-      "title": "新北市天氣｜晴時多雲",
-      "summary": "氣溫 28～33°C，降雨機率 0%。",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-a6854c80b60e7c832e9cac03",
-      "category": "天氣預報",
-      "title": "嘉義縣天氣｜晴時多雲",
-      "summary": "氣溫 28～32°C，降雨機率 0%。",
-      "cities": [
-        "嘉義縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-a77eb66d92359817c7781d3a",
-      "category": "天氣預報",
-      "title": "南投縣天氣｜晴時多雲",
-      "summary": "氣溫 29～34°C，降雨機率 0%。",
-      "cities": [
-        "南投縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-c456a2f2461f8118232fd783",
-      "category": "天氣預報",
-      "title": "新竹市天氣｜晴時多雲",
-      "summary": "氣溫 27～30°C，降雨機率 0%。",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-c9d32531c4069b5a0c1fd954",
-      "category": "天氣預報",
-      "title": "金門縣天氣｜晴時多雲",
-      "summary": "氣溫 26～30°C，降雨機率 0%。",
-      "cities": [
-        "金門縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-cc225cdf94ce09705e4460d7",
-      "category": "天氣預報",
-      "title": "臺中市天氣｜晴時多雲",
-      "summary": "氣溫 29～33°C，降雨機率 0%。",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-d2edba3f1dcae610eb897dad",
-      "category": "天氣預報",
-      "title": "花蓮縣天氣｜晴時多雲",
-      "summary": "氣溫 28～31°C，降雨機率 0%。",
-      "cities": [
-        "花蓮縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-e94009187effcb3077ddc42a",
-      "category": "天氣預報",
-      "title": "澎湖縣天氣｜晴時多雲",
-      "summary": "氣溫 26～30°C，降雨機率 0%。",
-      "cities": [
-        "澎湖縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-ebc2c046e8d0ef125a6a4466",
-      "category": "天氣預報",
-      "title": "桃園市天氣｜多雲時晴",
-      "summary": "氣溫 28～33°C，降雨機率 0%。",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T12:00:00+08:00",
-      "ends_at": "2026-10-18T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "power-11ccbbc4a843d28e69759f2d",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北北區營業處",
-      "summary": "停電範圍：台北市中山區北安路；工作內容：管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:00:00+08:00",
-      "ends_at": "2026-10-18T16:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-5ecd9fe33a511f18f5cf0d0e",
-      "category": "預定停電",
-      "title": "預定停電｜台電彰化區營業處",
-      "summary": "停電範圍：彰化縣秀水鄉；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-71915adf2d4ceab4771a30eb",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北北區營業處",
-      "summary": "停電範圍：台北市中山區明水路；工作內容：管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:00:00+08:00",
-      "ends_at": "2026-10-18T16:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-7c46656acc74565b9b0476f7",
-      "category": "預定停電",
-      "title": "預定停電｜台電彰化區營業處",
-      "summary": "停電範圍：彰化縣秀水鄉合興段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-80c61cc10a8ed6187d4f9414",
-      "category": "預定停電",
-      "title": "預定停電｜台電彰化區營業處",
-      "summary": "停電範圍：彰化縣秀水鄉中正巷；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-b9b81759335a5f27f7290086",
-      "category": "預定停電",
-      "title": "預定停電｜台電彰化區營業處",
-      "summary": "停電範圍：彰化縣秀水鄉下崙村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-cf29bfab3da8d2991a47f2cd",
-      "category": "預定停電",
-      "title": "預定停電｜台電彰化區營業處",
-      "summary": "停電範圍：彰化縣秀水鄉民生街；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-36148bfb3a3bda9880524a36",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮大山里上大山腳；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:30:00+08:00",
-      "ends_at": "2026-10-18T16:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-3cbefe55f2df7dd2d6d61737",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮上大山腳；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:30:00+08:00",
-      "ends_at": "2026-10-18T16:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-92bdbbe6382585fdaa950869",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮大山腳段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:30:00+08:00",
-      "ends_at": "2026-10-18T16:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-97688459c09bbf3afa3dd6ad",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮大山里大山腳段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:30:00+08:00",
-      "ends_at": "2026-10-18T16:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-a0b1c9cdc4a77d1d0325995f",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮大山里；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:30:00+08:00",
-      "ends_at": "2026-10-18T16:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-d332aedd54af21a9e436f9cb",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮大山腳；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:30:00+08:00",
-      "ends_at": "2026-10-18T16:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-f0a0dddc7c3bf875dc53318e",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮外埔；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T13:30:00+08:00",
-      "ends_at": "2026-10-18T16:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-3c5bbcba054fafb1606b51fb",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區六甲頂段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-57f0210090f25267bd84a300",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區頂安段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-6c4db67bc3371217a2cd0401",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區頂溪段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-6d60ed6079a607bed7339b18",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區溪頂段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-7dc8966ed8835cba7fe337da",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣斗六市復興路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-a573928c240bfe3db427ed34",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區頂西段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-db1b153f998c6b26aabfcf25",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區中央路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-de5eca308d31c71ec4b2454f",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區中華路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-e4aa08150a064ef92b279a52",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市永康區中正南路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T14:00:00+08:00",
-      "ends_at": "2026-10-18T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "weather-07ccd1a064e6225f1fd3a2c3",
-      "category": "天氣預報",
-      "title": "臺北市天氣｜晴時多雲",
-      "summary": "氣溫 24～29°C，降雨機率 0%。",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-0cde4a5a6cbceae9476dbb95",
-      "category": "天氣預報",
-      "title": "連江縣天氣｜晴時多雲",
-      "summary": "氣溫 24～26°C，降雨機率 0%。",
-      "cities": [
-        "連江縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-274febd6e6adaff03df1fd49",
-      "category": "天氣預報",
-      "title": "桃園市天氣｜晴時多雲",
-      "summary": "氣溫 24～28°C，降雨機率 0%。",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-2d5b190a7e317648238610cd",
-      "category": "天氣預報",
-      "title": "雲林縣天氣｜晴時多雲",
-      "summary": "氣溫 24～28°C，降雨機率 0%。",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-3105be3b564db11c34230110",
-      "category": "天氣預報",
-      "title": "澎湖縣天氣｜晴時多雲",
-      "summary": "氣溫 25～26°C，降雨機率 0%。",
-      "cities": [
-        "澎湖縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-3684629ca1bbec56d4a49a83",
-      "category": "天氣預報",
-      "title": "新竹市天氣｜晴時多雲",
-      "summary": "氣溫 24～27°C，降雨機率 0%。",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-4723f78c1aa02417e8f8f149",
-      "category": "天氣預報",
-      "title": "高雄市天氣｜晴時多雲",
-      "summary": "氣溫 26～30°C，降雨機率 0%。",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-559e104a0e497dc1947c5d35",
-      "category": "天氣預報",
-      "title": "金門縣天氣｜晴時多雲",
-      "summary": "氣溫 25～26°C，降雨機率 0%。",
-      "cities": [
-        "金門縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-641aafda85f194bcdc9499f8",
-      "category": "天氣預報",
-      "title": "宜蘭縣天氣｜晴時多雲",
-      "summary": "氣溫 23～27°C，降雨機率 10%。",
-      "cities": [
-        "宜蘭縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-6535db3590edf91210149832",
-      "category": "天氣預報",
-      "title": "南投縣天氣｜晴時多雲",
-      "summary": "氣溫 23～29°C，降雨機率 0%。",
-      "cities": [
-        "南投縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-7f8e2995315fb2db8e2a405d",
-      "category": "天氣預報",
-      "title": "嘉義縣天氣｜晴時多雲",
-      "summary": "氣溫 24～28°C，降雨機率 0%。",
-      "cities": [
-        "嘉義縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-8566a990e07286f29b4179af",
-      "category": "天氣預報",
-      "title": "臺東縣天氣｜晴時多雲",
-      "summary": "氣溫 24～28°C，降雨機率 10%。",
-      "cities": [
-        "臺東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-87cb6becd3fbbe8b921fd9fb",
-      "category": "天氣預報",
-      "title": "新北市天氣｜晴時多雲",
-      "summary": "氣溫 24～28°C，降雨機率 0%。",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-8a3f98f92ce6573b85b13711",
-      "category": "天氣預報",
-      "title": "臺中市天氣｜晴時多雲",
-      "summary": "氣溫 24～29°C，降雨機率 0%。",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-8f574fab5743b677ee2404e6",
-      "category": "天氣預報",
-      "title": "基隆市天氣｜晴時多雲",
-      "summary": "氣溫 24～27°C，降雨機率 10%。",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-8fa6fa6fed64bb2692422aa2",
-      "category": "天氣預報",
-      "title": "新竹縣天氣｜晴時多雲",
-      "summary": "氣溫 24～27°C，降雨機率 0%。",
-      "cities": [
-        "新竹縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-909f164e3a05965dc83b0006",
-      "category": "天氣預報",
-      "title": "彰化縣天氣｜晴時多雲",
-      "summary": "氣溫 24～28°C，降雨機率 0%。",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-a441fbadcbc59b8fb937d906",
-      "category": "天氣預報",
-      "title": "嘉義市天氣｜晴時多雲",
-      "summary": "氣溫 23～28°C，降雨機率 0%。",
-      "cities": [
-        "嘉義市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-d1c6e2be632ed54d5352f3a9",
-      "category": "天氣預報",
-      "title": "臺南市天氣｜晴時多雲",
-      "summary": "氣溫 25～28°C，降雨機率 0%。",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-eb546580c414812c3fa03ee6",
-      "category": "天氣預報",
-      "title": "花蓮縣天氣｜晴時多雲",
-      "summary": "氣溫 23～28°C，降雨機率 0%。",
-      "cities": [
-        "花蓮縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-f03cd460c37933923dcb59e3",
-      "category": "天氣預報",
-      "title": "苗栗縣天氣｜晴時多雲",
-      "summary": "氣溫 22～27°C，降雨機率 0%。",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-f3c929a5922637c4f45618f5",
-      "category": "天氣預報",
-      "title": "屏東縣天氣｜晴時多雲",
-      "summary": "氣溫 24～29°C，降雨機率 0%。",
-      "cities": [
-        "屏東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-18T18:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "power-0310672bf6a35ea5b501ae81",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區三民段；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-0545c6863be6b15b173b60b8",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北西區營業處",
-      "summary": "停電範圍：新北市三重區疏洪西路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-07b0957b50ac9e2b9ee5bae3",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市大園區內海里；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-0de80bd98325e1212f0d4045",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區三民一路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-263a08279d675becc57cc471",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北市區營業處",
-      "summary": "停電範圍：台北市中正區牯嶺街；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-2e11dac5651f218ee7befd7b",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北西區營業處",
-      "summary": "停電範圍：新北市三重區神農街；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-312c3c0b7314b9a224ef3991",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市中和區中正路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T02:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-37e0799ad1585c698d6e9738",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北市區營業處",
-      "summary": "停電範圍：台北市中正區寧波西街；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-44bf8fc83fec6115aaa57035",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市板橋區三民路二段居仁巷；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T02:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-50a13ef859f52ba777107b67",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北市區營業處",
-      "summary": "停電範圍：台北市中正區羅斯福路一段；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-532b9f37500da042951f56f9",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區中正路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-62095cdf6a1e00f55da901a8",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市大園區民生路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-6dae0ee46cb48c324a12590b",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北北區營業處",
-      "summary": "停電範圍：新北市淡水區北新路；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-6e8f07e2c657be3036ff78fd",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市板橋區三民路二段；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T02:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-77660dd9f4640b964499d2df",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區民權路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-86f04bbf80c507fcf57d8e04",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北西區營業處",
-      "summary": "停電範圍：新北市三重區神農街；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T00:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-8daea76e7c33efd377e5843d",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區光明里；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-9479a17383427e831d214c3d",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北市區營業處",
-      "summary": "停電範圍：台北市中正區；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-94864c609f6ac601b7dfc15e",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北市區營業處",
-      "summary": "停電範圍：台北市中正區重慶南路三段；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-953cc18a4eec2a0bc6be8b79",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北市區營業處",
-      "summary": "停電範圍：台北市信義區松隆路；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T03:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-989547a8e071a0d30f70bb7a",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區三民里；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-a6ca112b7c6c708dcc1711e2",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區新明里；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-c05db64598d111375af6f60d",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市大園區中山北路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-c6fd442d6d5a341572b2d71e",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區三座屋段；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-d1f08a24bc81e8ebe87ac433",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區民權路三段；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-d30eea95e6ad165c563ff1f9",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市中和區南山路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T01:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-d8fcc97e06d3fc2c488ab8e3",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區上三座屋；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-dbad0633949f6ef7f91f2796",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北市區營業處",
-      "summary": "停電範圍：台北市中正區南昌路一段；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T04:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-e16ad2ef5581ba18b05f60b7",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區光明里下舊社；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-e22e461e14e319bd2f98300b",
-      "category": "預定停電",
-      "title": "預定停電｜台電桃園區營業處",
-      "summary": "停電範圍：桃園市中壢區永光里；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T05:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-fa49300ca0871df0b175360a",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北北區營業處",
-      "summary": "停電範圍：新北市淡水區北投子；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-9c0e3feff66ec284f1fd7854",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北北區營業處",
-      "summary": "停電範圍：台北市士林區中山北路七段；工作內容：配合政府工程施工管線遷移；查詢電話：1911",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T00:30:00+08:00",
-      "ends_at": "2026-10-19T03:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-4f2150d25ebb8b3f81a50806",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市中和區立德街；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T01:00:00+08:00",
-      "ends_at": "2026-10-19T03:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-66d383b981866605c4af6040",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市中和區板南路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T01:00:00+08:00",
-      "ends_at": "2026-10-19T03:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-8d9bb7b140897623e7d0980d",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市板橋區光復街；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T02:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-aeed357b3b467bd0aa3fb6b8",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北南區營業處",
-      "summary": "停電範圍：新北市板橋區中山路二段；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T02:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-2d2183460523c9440bfdc70d",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北西區營業處",
-      "summary": "停電範圍：新北市新莊區福德一街；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T04:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-c95f09a16d0ef3a268f0418e",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北西區營業處",
-      "summary": "停電範圍：新北市新莊區福前街；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T04:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-f8c2d369742902e93f377570",
-      "category": "預定停電",
-      "title": "預定停電｜台電台北西區營業處",
-      "summary": "停電範圍：新北市新莊區化成路；工作內容：高壓線路改善；查詢電話：1911",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-19T04:00:00+08:00",
-      "ends_at": "2026-10-19T06:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
     {
       "id": "weather-088da92a853cf55cae2db868",
       "category": "天氣預報",
@@ -1937,7 +33,7 @@
       "id": "weather-3b193b7c86ad294bdae04401",
       "category": "天氣預報",
       "title": "新竹縣天氣｜晴時多雲",
-      "summary": "氣溫 24～32°C，降雨機率 0%。",
+      "summary": "氣溫 23～32°C，降雨機率 0%。",
       "cities": [
         "新竹縣"
       ],
@@ -1951,7 +47,7 @@
       "id": "weather-3bffea78021d85f3630d25f3",
       "category": "天氣預報",
       "title": "新竹市天氣｜晴時多雲",
-      "summary": "氣溫 24～31°C，降雨機率 0%。",
+      "summary": "氣溫 23～31°C，降雨機率 0%。",
       "cities": [
         "新竹市"
       ],
@@ -1965,7 +61,7 @@
       "id": "weather-3ca4983584dc71c01a7b9902",
       "category": "天氣預報",
       "title": "臺北市天氣｜晴時多雲",
-      "summary": "氣溫 24～34°C，降雨機率 0%。",
+      "summary": "氣溫 25～34°C，降雨機率 0%。",
       "cities": [
         "臺北市"
       ],
@@ -2007,7 +103,7 @@
       "id": "weather-4ee1f3a506dda559ebb33124",
       "category": "天氣預報",
       "title": "新北市天氣｜晴時多雲",
-      "summary": "氣溫 24～34°C，降雨機率 0%。",
+      "summary": "氣溫 25～34°C，降雨機率 0%。",
       "cities": [
         "新北市"
       ],
@@ -2161,7 +257,7 @@
       "id": "weather-e97a28f5a343397ff6bd6b2d",
       "category": "天氣預報",
       "title": "金門縣天氣｜晴時多雲",
-      "summary": "氣溫 25～31°C，降雨機率 0%。",
+      "summary": "氣溫 25～30°C，降雨機率 0%。",
       "cities": [
         "金門縣"
       ],
@@ -2203,7 +299,7 @@
       "id": "weather-fbe4ca7bbd34501f0c177f86",
       "category": "天氣預報",
       "title": "澎湖縣天氣｜多雲時晴",
-      "summary": "氣溫 25～30°C，降雨機率 0%。",
+      "summary": "氣溫 25～29°C，降雨機率 0%。",
       "cities": [
         "澎湖縣"
       ],
@@ -2212,6 +308,90 @@
       "ends_at": "2026-10-19T18:00:00+08:00",
       "source": "中央氣象署",
       "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "water-a94adc602b70e4eae12edc4a",
+      "category": "預定停水",
+      "title": "停水通知｜臺南市歸仁區",
+      "summary": "影響地區：臺南市/歸仁區/中山一街、中山路一段、中正一街、中正南路一段、仁愛一街、仁愛三街、仁愛五街、仁愛八街、仁愛十二街、仁愛十六街、仁愛十街、仁愛南街、信義南路、公園路、和平南街、大仁街、大成路、大智街、忠孝北路、忠孝南路、成功一街、成功三街、成功六街、成功路一段。；原因：[歸仁區中山路一段_300mm破管搶修]",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "歸仁區",
+      "starts_at": "2026-10-19T07:59:00+08:00",
+      "ends_at": "2026-10-19T11:00:00+08:00",
+      "source": "台灣自來水公司",
+      "url": "https://data.gov.tw/dataset/6050"
+    },
+    {
+      "id": "water-170dda5e8151220fa07b4983",
+      "category": "預定停水",
+      "title": "停水通知｜臺中市大雅區",
+      "summary": "影響地區：臺中市/大雅區/忠義里。共1個村里。；原因：[為提升供水穩定度、降低管線漏水風險並確保民眾用水水質安全，辦理大雅區月祥路等汰換管線工程，以強化整體供水系統效能，提供更安心可靠之用水服務。]",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "大雅區",
+      "starts_at": "2026-10-19T08:00:00+08:00",
+      "ends_at": "2026-10-19T17:30:00+08:00",
+      "source": "台灣自來水公司",
+      "url": "https://data.gov.tw/dataset/6050"
+    },
+    {
+      "id": "water-1a9599dd64312f4036362890",
+      "category": "預定停水",
+      "title": "停水通知｜臺南市新營區",
+      "summary": "影響地區：臺南市/新營區/東安街、東明街及鄰近巷道、東興八街。；原因：[因辦理新營區東安街及東興八街汰換管線工程斷管連絡。]",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "新營區",
+      "starts_at": "2026-10-19T08:00:00+08:00",
+      "ends_at": "2026-10-23T17:00:00+08:00",
+      "source": "台灣自來水公司",
+      "url": "https://data.gov.tw/dataset/6050"
+    },
+    {
+      "id": "water-3d5125068ed06868e66db084",
+      "category": "預定停水",
+      "title": "停水通知｜雲林縣口湖鄉",
+      "summary": "影響地區：雲林縣/口湖鄉/信義路。；原因：[口湖鄉中正路等汰換管線工程停水施工]",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "口湖鄉",
+      "starts_at": "2026-10-19T08:00:00+08:00",
+      "ends_at": "2026-10-19T18:00:00+08:00",
+      "source": "台灣自來水公司",
+      "url": "https://data.gov.tw/dataset/6050"
+    },
+    {
+      "id": "water-530015f2dec979b6fe82799f",
+      "category": "預定停水",
+      "title": "停水通知｜臺中市沙鹿區",
+      "summary": "影響地區：臺中市/沙鹿區/正義路。；原因：[為提升供水穩定度、降低管線漏水風險並確保民眾用水水質安全，辦理正德路段汰換管線工程，以強化整體供水系統效能，提供更安心可靠之用水服務。]",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "沙鹿區",
+      "starts_at": "2026-10-19T08:00:00+08:00",
+      "ends_at": "2026-10-19T17:00:00+08:00",
+      "source": "台灣自來水公司",
+      "url": "https://data.gov.tw/dataset/6050"
+    },
+    {
+      "id": "water-925a1a9ed69ff57723d8486f",
+      "category": "預定停水",
+      "title": "停水通知｜彰化縣員林市,埔心鄉",
+      "summary": "影響地區：彰化縣/員林市/鎮國路。埔心鄉/建國路、新民路、新生路、明聖路二段、明道路、經口路、鎮國路。彰化縣/員林市/鎮國路。埔心鄉/中山路、建國路、新民路、新生路、明聖路一段、明聖路二段、明道路、經口路、鎮國路。；原因：[為提升供水穩定度、降低管線漏水風險並確保民眾用水水質安全，辦理北斗-埔心鄉鎮國路等汰換管線工程工程，以強化整體供水系統效能，提供更安心可靠之用水服務。]",
+      "cities": [
+        "彰化縣"
+      ],
+      "district": "員林市,埔心鄉",
+      "starts_at": "2026-10-19T08:00:00+08:00",
+      "ends_at": "2026-10-19T18:00:00+08:00",
+      "source": "台灣自來水公司",
+      "url": "https://data.gov.tw/dataset/6050"
     },
     {
       "id": "power-01fb12c4282f1296b4583137",
@@ -9704,6 +7884,314 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "weather-0e0b0ff123e4e31958dc2421",
+      "category": "天氣預報",
+      "title": "金門縣天氣｜晴時多雲",
+      "summary": "氣溫 25～26°C，降雨機率 0%。",
+      "cities": [
+        "金門縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-38b1d001b28a9556e4c543c4",
+      "category": "天氣預報",
+      "title": "新竹市天氣｜晴時多雲",
+      "summary": "氣溫 24～27°C，降雨機率 0%。",
+      "cities": [
+        "新竹市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-46ded45d582bc5c0f4025a0e",
+      "category": "天氣預報",
+      "title": "苗栗縣天氣｜晴時多雲",
+      "summary": "氣溫 22～27°C，降雨機率 0%。",
+      "cities": [
+        "苗栗縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-47585b1b7f9710b57d9f06c7",
+      "category": "天氣預報",
+      "title": "彰化縣天氣｜晴時多雲",
+      "summary": "氣溫 24～28°C，降雨機率 0%。",
+      "cities": [
+        "彰化縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-54d4033c8b70fa36f076aba0",
+      "category": "天氣預報",
+      "title": "新竹縣天氣｜晴時多雲",
+      "summary": "氣溫 24～27°C，降雨機率 0%。",
+      "cities": [
+        "新竹縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-5b1557ac9e99ba12f2ff880b",
+      "category": "天氣預報",
+      "title": "連江縣天氣｜多雲",
+      "summary": "氣溫 24～25°C，降雨機率 10%。",
+      "cities": [
+        "連江縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-5c0640d4c6d8cefae400ec29",
+      "category": "天氣預報",
+      "title": "新北市天氣｜晴時多雲",
+      "summary": "氣溫 25～29°C，降雨機率 0%。",
+      "cities": [
+        "新北市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-5c2cd06e80befb575a08fd76",
+      "category": "天氣預報",
+      "title": "澎湖縣天氣｜晴時多雲",
+      "summary": "氣溫 25～26°C，降雨機率 0%。",
+      "cities": [
+        "澎湖縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-6229e73d0206c93ed526a0c8",
+      "category": "天氣預報",
+      "title": "宜蘭縣天氣｜晴時多雲",
+      "summary": "氣溫 23～27°C，降雨機率 20%。",
+      "cities": [
+        "宜蘭縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-652e7acdb9fe9e0b30c21429",
+      "category": "天氣預報",
+      "title": "臺東縣天氣｜晴時多雲",
+      "summary": "氣溫 25～28°C，降雨機率 10%。",
+      "cities": [
+        "臺東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-68dfa58d709c4767ae18d371",
+      "category": "天氣預報",
+      "title": "雲林縣天氣｜晴時多雲",
+      "summary": "氣溫 23～28°C，降雨機率 0%。",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-6e7450048a5d8486a5d7c26b",
+      "category": "天氣預報",
+      "title": "嘉義縣天氣｜晴時多雲",
+      "summary": "氣溫 23～28°C，降雨機率 0%。",
+      "cities": [
+        "嘉義縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-700d7300bc6bb0b65d4a9845",
+      "category": "天氣預報",
+      "title": "臺中市天氣｜晴時多雲",
+      "summary": "氣溫 24～29°C，降雨機率 0%。",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-87e121bfcf00bece2732afeb",
+      "category": "天氣預報",
+      "title": "基隆市天氣｜晴時多雲",
+      "summary": "氣溫 25～28°C，降雨機率 10%。",
+      "cities": [
+        "基隆市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-8afc5c9ce8804e388a958910",
+      "category": "天氣預報",
+      "title": "南投縣天氣｜晴時多雲",
+      "summary": "氣溫 23～29°C，降雨機率 0%。",
+      "cities": [
+        "南投縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-9fc62d3345d2e7d3ec8fec1c",
+      "category": "天氣預報",
+      "title": "臺北市天氣｜晴時多雲",
+      "summary": "氣溫 25～29°C，降雨機率 0%。",
+      "cities": [
+        "臺北市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b6f4a1a82112111cc975d169",
+      "category": "天氣預報",
+      "title": "花蓮縣天氣｜晴時多雲",
+      "summary": "氣溫 24～28°C，降雨機率 10%。",
+      "cities": [
+        "花蓮縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-be5a52587e5dfd9f1668a763",
+      "category": "天氣預報",
+      "title": "臺南市天氣｜晴時多雲",
+      "summary": "氣溫 25～28°C，降雨機率 0%。",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-c01aeb032edde532b701d240",
+      "category": "天氣預報",
+      "title": "高雄市天氣｜晴時多雲",
+      "summary": "氣溫 26～30°C，降雨機率 0%。",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-c6f6dedc10e27198b832dd71",
+      "category": "天氣預報",
+      "title": "桃園市天氣｜晴時多雲",
+      "summary": "氣溫 24～29°C，降雨機率 0%。",
+      "cities": [
+        "桃園市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-dcdba7688e4414d953a70fc2",
+      "category": "天氣預報",
+      "title": "嘉義市天氣｜晴時多雲",
+      "summary": "氣溫 23～28°C，降雨機率 0%。",
+      "cities": [
+        "嘉義市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-ec030f5ea470e61a76103545",
+      "category": "天氣預報",
+      "title": "屏東縣天氣｜晴時多雲",
+      "summary": "氣溫 25～30°C，降雨機率 0%。",
+      "cities": [
+        "屏東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-19T18:00:00+08:00",
+      "ends_at": "2026-10-20T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
       "id": "power-208745689c64e87bd9b1fab6",
       "category": "預定停電",
       "title": "預定停電｜台電高雄區營業處",
@@ -11494,6 +9982,314 @@
       "ends_at": "2026-10-20T05:10:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "weather-1b723387d2d4216680860725",
+      "category": "天氣預報",
+      "title": "高雄市天氣｜晴時多雲",
+      "summary": "氣溫 26～32°C，降雨機率 0%。",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-251a5e4b9cc9aa3113d61397",
+      "category": "天氣預報",
+      "title": "桃園市天氣｜晴時多雲",
+      "summary": "氣溫 24～33°C，降雨機率 0%。",
+      "cities": [
+        "桃園市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-2c9725962e9e965c8ffc610a",
+      "category": "天氣預報",
+      "title": "雲林縣天氣｜多雲時晴",
+      "summary": "氣溫 23～33°C，降雨機率 0%。",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-3ab7169794d61e09a7760ff5",
+      "category": "天氣預報",
+      "title": "屏東縣天氣｜多雲時晴",
+      "summary": "氣溫 25～34°C，降雨機率 0%。",
+      "cities": [
+        "屏東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-3c7d90ccdafd934f3eb1f893",
+      "category": "天氣預報",
+      "title": "臺北市天氣｜多雲時晴",
+      "summary": "氣溫 25～34°C，降雨機率 0%。",
+      "cities": [
+        "臺北市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-3f0b719753b7e73fec1cf25e",
+      "category": "天氣預報",
+      "title": "苗栗縣天氣｜晴時多雲",
+      "summary": "氣溫 22～31°C，降雨機率 0%。",
+      "cities": [
+        "苗栗縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-4cc532ddc4a4a2da976a449d",
+      "category": "天氣預報",
+      "title": "金門縣天氣｜晴時多雲",
+      "summary": "氣溫 25～30°C，降雨機率 0%。",
+      "cities": [
+        "金門縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-4e5735e82687cab8b1834615",
+      "category": "天氣預報",
+      "title": "花蓮縣天氣｜晴時多雲",
+      "summary": "氣溫 24～31°C，降雨機率 10%。",
+      "cities": [
+        "花蓮縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-6db89618877b312fbdc7806c",
+      "category": "天氣預報",
+      "title": "連江縣天氣｜多雲",
+      "summary": "氣溫 24～28°C，降雨機率 10%。",
+      "cities": [
+        "連江縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-7dcafa8ea15efe2b84f9ae38",
+      "category": "天氣預報",
+      "title": "嘉義縣天氣｜晴時多雲",
+      "summary": "氣溫 23～32°C，降雨機率 0%。",
+      "cities": [
+        "嘉義縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-840772dc91fe8ddab443a9b8",
+      "category": "天氣預報",
+      "title": "宜蘭縣天氣｜多雲時陰",
+      "summary": "氣溫 23～31°C，降雨機率 10%。",
+      "cities": [
+        "宜蘭縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-a19d0134e08a5deb80fc788b",
+      "category": "天氣預報",
+      "title": "臺中市天氣｜晴時多雲",
+      "summary": "氣溫 24～33°C，降雨機率 0%。",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-a3365425b3de8a47287b67a0",
+      "category": "天氣預報",
+      "title": "臺東縣天氣｜晴時多雲",
+      "summary": "氣溫 25～31°C，降雨機率 10%。",
+      "cities": [
+        "臺東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-a49be6512be4539cea92ee14",
+      "category": "天氣預報",
+      "title": "新竹縣天氣｜晴時多雲",
+      "summary": "氣溫 24～32°C，降雨機率 0%。",
+      "cities": [
+        "新竹縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b25115bc5769312578dc17ed",
+      "category": "天氣預報",
+      "title": "新竹市天氣｜晴時多雲",
+      "summary": "氣溫 24～31°C，降雨機率 0%。",
+      "cities": [
+        "新竹市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b6e64d94e8ab172428c530d8",
+      "category": "天氣預報",
+      "title": "嘉義市天氣｜晴時多雲",
+      "summary": "氣溫 23～34°C，降雨機率 0%。",
+      "cities": [
+        "嘉義市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-c3324a64c4ffc261a671adae",
+      "category": "天氣預報",
+      "title": "澎湖縣天氣｜多雲時晴",
+      "summary": "氣溫 25～30°C，降雨機率 0%。",
+      "cities": [
+        "澎湖縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-cd6711757d48a295d7257b74",
+      "category": "天氣預報",
+      "title": "彰化縣天氣｜多雲時晴",
+      "summary": "氣溫 24～32°C，降雨機率 0%。",
+      "cities": [
+        "彰化縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-cf4382a12112f5987ab2d75f",
+      "category": "天氣預報",
+      "title": "南投縣天氣｜晴時多雲",
+      "summary": "氣溫 23～33°C，降雨機率 0%。",
+      "cities": [
+        "南投縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-cf5188ed170515bcf1d8fee0",
+      "category": "天氣預報",
+      "title": "基隆市天氣｜多雲時晴",
+      "summary": "氣溫 25～30°C，降雨機率 10%。",
+      "cities": [
+        "基隆市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-f323683e27d2408c769e973c",
+      "category": "天氣預報",
+      "title": "臺南市天氣｜晴時多雲",
+      "summary": "氣溫 25～31°C，降雨機率 0%。",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-faffbb6b5630d50da296692b",
+      "category": "天氣預報",
+      "title": "新北市天氣｜晴時多雲",
+      "summary": "氣溫 25～33°C，降雨機率 0%。",
+      "cities": [
+        "新北市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T06:00:00+08:00",
+      "ends_at": "2026-10-20T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
     },
     {
       "id": "power-392be3d7b241ab0c39f5a1cb",
@@ -16676,6 +15472,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-1ae79e8b3d020cdc02f62c37",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市鼓山區九如四路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T09:00:00+08:00",
+      "ends_at": "2026-10-20T11:50:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-1bace0122951498bfe223705",
       "category": "預定停電",
       "title": "預定停電｜台電雲林區營業處",
@@ -17152,6 +15962,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-404054e75ee3e47ce048d590",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市鼓山區內惟路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T09:00:00+08:00",
+      "ends_at": "2026-10-20T11:50:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-4201765c33175f614fbf2115",
       "category": "預定停電",
       "title": "預定停電｜台電基隆區營業處",
@@ -17260,20 +16084,6 @@
       "district": "",
       "starts_at": "2026-10-20T09:00:00+08:00",
       "ends_at": "2026-10-20T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-4b8f3146dfdeefcec3e74382",
-      "category": "預定停電",
-      "title": "預定停電｜台電高雄區營業處",
-      "summary": "停電範圍：高雄市鼓山區內惟路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-20T09:00:00+08:00",
-      "ends_at": "2026-10-20T11:50:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -17806,20 +16616,6 @@
       "district": "",
       "starts_at": "2026-10-20T09:00:00+08:00",
       "ends_at": "2026-10-20T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-8333502c36b6a4a1b6f27b0a",
-      "category": "預定停電",
-      "title": "預定停電｜台電高雄區營業處",
-      "summary": "停電範圍：高雄市鼓山區九如四路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-20T09:00:00+08:00",
-      "ends_at": "2026-10-20T11:50:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -20484,20 +19280,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-27d71478fd1fe4b03098a078",
-      "category": "預定停電",
-      "title": "預定停電｜台電台南區營業處",
-      "summary": "停電範圍：台南市仁德區如意段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-20T13:00:00+08:00",
-      "ends_at": "2026-10-20T14:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-2f7d7df940b9266aac16e86a",
       "category": "預定停電",
       "title": "預定停電｜台電台北南區營業處",
@@ -20530,6 +19312,20 @@
       "category": "預定停電",
       "title": "預定停電｜台電台南區營業處",
       "summary": "停電範圍：台南市仁德區崑崙路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-20T13:00:00+08:00",
+      "ends_at": "2026-10-20T14:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-458214c3b6f0d86b3e954dda",
+      "category": "預定停電",
+      "title": "預定停電｜台電台南區營業處",
+      "summary": "停電範圍：台南市仁德區如意段；工作內容：管線遷移工程；查詢電話：1911",
       "cities": [
         "臺南市"
       ],
@@ -29570,6 +28366,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-942bf984a816cadd7323dcd7",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市鳳山區文化西路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-21T09:00:00+08:00",
+      "ends_at": "2026-10-21T13:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-942d9661f246875368a10a1a",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -37284,6 +36094,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-083bbc83dbce15284f7698d9",
+      "category": "預定停電",
+      "title": "預定停電｜台電雲林區營業處",
+      "summary": "停電範圍：雲林縣麥寮鄉雷厝村；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-22T09:00:00+08:00",
+      "ends_at": "2026-10-22T17:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-0945fbf06eccbae6743da649",
       "category": "預定停電",
       "title": "預定停電｜台電台南區營業處",
@@ -37634,20 +36458,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-2cf2658327de9d10dac2d184",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣麥寮鄉橋頭村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-22T09:00:00+08:00",
-      "ends_at": "2026-10-22T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-2dcd98cff85b263583076e7f",
       "category": "預定停電",
       "title": "預定停電｜台電台南區營業處",
@@ -37882,6 +36692,20 @@
       "district": "",
       "starts_at": "2026-10-22T09:00:00+08:00",
       "ends_at": "2026-10-22T12:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-57c4547d274d8d579f0db5f1",
+      "category": "預定停電",
+      "title": "預定停電｜台電雲林區營業處",
+      "summary": "停電範圍：雲林縣麥寮鄉橋頭村；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-22T09:00:00+08:00",
+      "ends_at": "2026-10-22T17:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -39436,20 +38260,6 @@
       "district": "",
       "starts_at": "2026-10-22T09:00:00+08:00",
       "ends_at": "2026-10-22T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-fafb79f8d7f93d6f93638255",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣麥寮鄉雷厝村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-22T09:00:00+08:00",
-      "ends_at": "2026-10-22T17:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -46496,6 +45306,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-0f5001f7ebd7d6020730bf72",
+      "category": "預定停電",
+      "title": "預定停電｜台電雲林區營業處",
+      "summary": "停電範圍：雲林縣口湖鄉梧北村；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-23T09:00:00+08:00",
+      "ends_at": "2026-10-23T16:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-15c05928d00436973c1ad6bf",
       "category": "預定停電",
       "title": "預定停電｜台電雲林區營業處",
@@ -47042,20 +45866,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-659626740cd672ee4b885d68",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣口湖鄉梧北村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-23T09:00:00+08:00",
-      "ends_at": "2026-10-23T16:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-6650ae0d5c0206485b2fde10",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -47388,6 +46198,20 @@
       "district": "",
       "starts_at": "2026-10-23T09:00:00+08:00",
       "ends_at": "2026-10-23T12:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-820be32ca7753bc73af09b6d",
+      "category": "預定停電",
+      "title": "預定停電｜台電雲林區營業處",
+      "summary": "停電範圍：雲林縣水林鄉萬興村；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-23T09:00:00+08:00",
+      "ends_at": "2026-10-23T16:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -48228,20 +47052,6 @@
       "district": "",
       "starts_at": "2026-10-23T09:00:00+08:00",
       "ends_at": "2026-10-23T09:30:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-fb6973a62f82841c4641a7b6",
-      "category": "預定停電",
-      "title": "預定停電｜台電雲林區營業處",
-      "summary": "停電範圍：雲林縣水林鄉萬興村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-23T09:00:00+08:00",
-      "ends_at": "2026-10-23T16:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -60930,20 +59740,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-11f64a2fa92190df03a1e938",
-      "category": "預定停電",
-      "title": "預定停電｜台電彰化區營業處",
-      "summary": "停電範圍：彰化縣彰化市中山路一段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-10-25T08:30:00+08:00",
-      "ends_at": "2026-10-25T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-14c0e472cb9d1628d25e4408",
       "category": "預定停電",
       "title": "預定停電｜台電新營區營業處",
@@ -61094,6 +59890,20 @@
       "district": "",
       "starts_at": "2026-10-25T08:30:00+08:00",
       "ends_at": "2026-10-25T10:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-db590212f9e0819fa26ae299",
+      "category": "預定停電",
+      "title": "預定停電｜台電彰化區營業處",
+      "summary": "停電範圍：彰化縣彰化市中山路一段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "彰化縣"
+      ],
+      "district": "",
+      "starts_at": "2026-10-25T08:30:00+08:00",
+      "ends_at": "2026-10-25T12:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -61290,20 +60100,6 @@
       "district": "",
       "starts_at": "2026-10-25T09:00:00+08:00",
       "ends_at": "2026-10-25T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-4285c69e8facd602c6e29058",
-      "category": "預定停電",
-      "title": "預定停電｜台電台中區營業處",
-      "summary": "停電範圍：台中市潭子區建國路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-25T09:00:00+08:00",
-      "ends_at": "2026-10-25T17:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -61780,6 +60576,20 @@
       "district": "",
       "starts_at": "2026-10-25T09:00:00+08:00",
       "ends_at": "2026-10-25T12:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-ef7114b62da8a4c581cfb8fc",
+      "category": "預定停電",
+      "title": "預定停電｜台電台中區營業處",
+      "summary": "停電範圍：台中市潭子區建國路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-25T09:00:00+08:00",
+      "ends_at": "2026-10-25T17:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -66600,6 +65410,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-1cebd66725e5fc9203b7d1af",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區廈莊一街；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-27T09:00:00+08:00",
+      "ends_at": "2026-10-27T13:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-20ce89b224802e952549e113",
       "category": "預定停電",
       "title": "預定停電｜台電台南區營業處",
@@ -66624,20 +65448,6 @@
       "district": "",
       "starts_at": "2026-10-27T09:00:00+08:00",
       "ends_at": "2026-10-27T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-23814971ea30f6192e558f76",
-      "category": "預定停電",
-      "title": "預定停電｜台電新營區營業處",
-      "summary": "停電範圍：台南市新營區周武街；工作內容：管線遷移；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-27T09:00:00+08:00",
-      "ends_at": "2026-10-27T16:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -66838,6 +65648,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-497d9ea932d34dc6849a81d4",
+      "category": "預定停電",
+      "title": "預定停電｜台電新營區營業處",
+      "summary": "停電範圍：台南市新營區育德段；工作內容：管線遷移；查詢電話：1911",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-27T09:00:00+08:00",
+      "ends_at": "2026-10-27T16:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-498d8eb26fdc5565e0178588",
       "category": "預定停電",
       "title": "預定停電｜台電雲林區營業處",
@@ -67030,6 +65854,20 @@
       "district": "",
       "starts_at": "2026-10-27T09:00:00+08:00",
       "ends_at": "2026-10-27T09:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-7144852ea05edcfb15ae68a3",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區廈莊三街；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-27T09:00:00+08:00",
+      "ends_at": "2026-10-27T13:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -67314,6 +66152,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-ad2a3029e5b4b35824c1cfae",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區桂華街；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-27T09:00:00+08:00",
+      "ends_at": "2026-10-27T13:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-aedb7f99f63f75b049afb3a7",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -67454,20 +66306,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-d47f3a824439c31c1b753d06",
-      "category": "預定停電",
-      "title": "預定停電｜台電新營區營業處",
-      "summary": "停電範圍：台南市新營區育德段；工作內容：管線遷移；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-27T09:00:00+08:00",
-      "ends_at": "2026-10-27T16:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-d4c838e2a429b7a93b3ca784",
       "category": "預定停電",
       "title": "預定停電｜台電雲林區營業處",
@@ -67534,6 +66372,20 @@
       "district": "",
       "starts_at": "2026-10-27T09:00:00+08:00",
       "ends_at": "2026-10-27T17:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-eba8fbda7898b5f1efc294e6",
+      "category": "預定停電",
+      "title": "預定停電｜台電新營區營業處",
+      "summary": "停電範圍：台南市新營區周武街；工作內容：管線遷移；查詢電話：1911",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-27T09:00:00+08:00",
+      "ends_at": "2026-10-27T16:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -71724,6 +70576,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-19a6eda1a93436d1f9b654b1",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區大鵬路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-28T09:00:00+08:00",
+      "ends_at": "2026-10-28T13:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-19d75c5daea99db937863533",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -71786,6 +70652,20 @@
       "summary": "停電範圍：台南市官田區社子里社子；工作內容：管線遷移；查詢電話：1911",
       "cities": [
         "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-28T09:00:00+08:00",
+      "ends_at": "2026-10-28T13:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-284067f51c9f701277959684",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區漢民路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
       ],
       "district": "",
       "starts_at": "2026-10-28T09:00:00+08:00",
@@ -72088,6 +70968,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-4e731357050cc27f4eb62aad",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區新豐街；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-28T09:00:00+08:00",
+      "ends_at": "2026-10-28T13:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-4e90586385a8aa877f200891",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -72210,6 +71104,20 @@
       "district": "",
       "starts_at": "2026-10-28T09:00:00+08:00",
       "ends_at": "2026-10-28T12:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-652a644b31c8ab581be8b55b",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區高松段一小段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-28T09:00:00+08:00",
+      "ends_at": "2026-10-28T13:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -72728,6 +71636,20 @@
       "district": "",
       "starts_at": "2026-10-28T09:00:00+08:00",
       "ends_at": "2026-10-28T11:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-bd4f31913fa905eee724aeef",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市小港區華盛街；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-28T09:00:00+08:00",
+      "ends_at": "2026-10-28T13:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -83568,20 +82490,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-481a790ce15147886fe4fd75",
-      "category": "預定停電",
-      "title": "預定停電｜台電台中區營業處",
-      "summary": "停電範圍：台中市沙鹿區興安段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-31T08:30:00+08:00",
-      "ends_at": "2026-10-31T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-4a60f4573767158973dbf161",
       "category": "預定停電",
       "title": "預定停電｜台電高雄區營業處",
@@ -85710,20 +84618,6 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
-      "id": "power-04e7075f1b62622c0b2b9b42",
-      "category": "預定停電",
-      "title": "預定停電｜台電新營區營業處",
-      "summary": "停電範圍：台南市麻豆區麻柚路；工作內容：管線遷移；查詢電話：1911",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-10-31T09:00:00+08:00",
-      "ends_at": "2026-10-31T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
       "id": "power-05d23b202271d4975f8ca883",
       "category": "預定停電",
       "title": "預定停電｜台電新營區營業處",
@@ -85874,6 +84768,20 @@
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
       "ends_at": "2026-10-31T16:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-0df87d0a4bd4e2c6fed032fc",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區北極巷；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -86280,6 +85188,20 @@
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
       "ends_at": "2026-10-31T17:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-2f7d41a4d43548e5084f8e16",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區九曲堂段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -86956,6 +85878,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-5dafa59c04e6bd3bca6827c0",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區河濱二巷；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-5e85b4981d2b13fd6befd2fc",
       "category": "預定停電",
       "title": "預定停電｜台電高雄區營業處",
@@ -86994,6 +85930,20 @@
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
       "ends_at": "2026-10-31T17:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-5fb1a6d554af1a6b39ea94ed",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大寮區；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -87488,6 +86438,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-82e83bcb4a99ef0dde281696",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大寮區磚仔段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-8443a0c3c737a085d2f8ce9b",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -87642,6 +86606,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-92a90660de063fe97c0a1213",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區神農街；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-93fab75dae7be66a79eaa0ba",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -87652,6 +86630,20 @@
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
       "ends_at": "2026-10-31T17:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-95c5c8a62563da262c85138e",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區九曲路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -87936,6 +86928,34 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-b14c57e7c51a759effe89707",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區維新段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-b4e46633739b67f59094c050",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區九大路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-b53ec7bcbca64756486ac076",
       "category": "預定停電",
       "title": "預定停電｜台電桃園區營業處",
@@ -87970,6 +86990,20 @@
       "summary": "停電範圍：台中市潭子區崇德路五段；工作內容：管線遷移工程；查詢電話：1911",
       "cities": [
         "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T12:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-b8fc7970604fa084c7918afd",
+      "category": "預定停電",
+      "title": "預定停電｜台電新營區營業處",
+      "summary": "停電範圍：台南市麻豆區麻柚路；工作內容：管線遷移；查詢電話：1911",
+      "cities": [
+        "臺南市"
       ],
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
@@ -88114,6 +87148,20 @@
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
       "ends_at": "2026-10-31T12:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-ca3193c71352f11c74d87355",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大寮區義堂段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -88272,6 +87320,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-d4a3b1bc6bfe59bf92436e73",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大寮區義和路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-d512f2279f819af0ef13cee6",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -88338,6 +87400,20 @@
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
       "ends_at": "2026-10-31T17:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-dd579d959d5a169ea8bfd841",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區九曲里；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -88440,6 +87516,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-f0f3515117a2004e02a610ac",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大樹區九曲段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-f1539f3f80e1cdaec9e00a5c",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -88524,6 +87614,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-fa47f3c078fa52dbdaea6f91",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大寮區鳳屏二路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-fa5532f814bf61f3aae781ee",
       "category": "預定停電",
       "title": "預定停電｜台電屏東區營業處",
@@ -88576,6 +87680,20 @@
       "district": "",
       "starts_at": "2026-10-31T09:00:00+08:00",
       "ends_at": "2026-10-31T09:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-fe3a8c9e2b1c3f57e280f025",
+      "category": "預定停電",
+      "title": "預定停電｜台電鳳山區營業處",
+      "summary": "停電範圍：高雄市大寮區義和里；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-10-31T09:00:00+08:00",
+      "ends_at": "2026-10-31T14:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     },
@@ -105520,6 +104638,20 @@
       "url": "https://data.gov.tw/dataset/26144"
     },
     {
+      "id": "power-dc3aa40542722433b77bd4ae",
+      "category": "預定停電",
+      "title": "預定停電｜台電屏東區營業處",
+      "summary": "停電範圍：屏東縣林邊鄉？仔口段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "屏東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-11T13:00:00+08:00",
+      "ends_at": "2026-11-11T16:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
       "id": "power-0c97a9fc49033b54cd0c9060",
       "category": "預定停電",
       "title": "預定停電｜台電鳳山區營業處",
@@ -110080,6 +109212,230 @@
       "district": "",
       "starts_at": "2026-11-17T10:00:00+08:00",
       "ends_at": "2026-11-17T11:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-36bd98823fab1a0250575c2c",
+      "category": "預定停電",
+      "title": "預定停電｜台電台中區營業處",
+      "summary": "停電範圍：台中市神岡區豐洲路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-17T14:00:00+08:00",
+      "ends_at": "2026-11-17T15:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-2381230888d0300a16384741",
+      "category": "預定停電",
+      "title": "預定停電｜台電台中區營業處",
+      "summary": "停電範圍：台中市神岡區圳堵段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-17T16:00:00+08:00",
+      "ends_at": "2026-11-17T17:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-5afd70d42fc00dad6a0db8bf",
+      "category": "預定停電",
+      "title": "預定停電｜台電台中區營業處",
+      "summary": "停電範圍：台中市神岡區下溪洲段後壁厝小段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-17T16:00:00+08:00",
+      "ends_at": "2026-11-17T17:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-c0efecfc24ab9d99dce6fee3",
+      "category": "預定停電",
+      "title": "預定停電｜台電台中區營業處",
+      "summary": "停電範圍：台中市神岡區下溪洲段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-17T16:00:00+08:00",
+      "ends_at": "2026-11-17T17:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-e10c6acb9b4ffa8a1dc15fe5",
+      "category": "預定停電",
+      "title": "預定停電｜台電台中區營業處",
+      "summary": "停電範圍：台中市神岡區堤南路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-17T16:00:00+08:00",
+      "ends_at": "2026-11-17T17:30:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-0350fb02cbda66336b9a4fdc",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區後協路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-0f1dbe057cfa60735002e860",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區後協段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-19548aaed25d99621e7a84e4",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區介壽路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-6489ea0fb28101150f569431",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區後協里；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-745f19a2cd9c0aef46102d69",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區鵬程西街；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-769ebc9404e5e908874b1b10",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區介壽西路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-7ee41ba406d0a79b401cfd50",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-907e25f7cd0f9874f3f76611",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區白米路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-99d5ba1538c6b1a9a1fdcacc",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區介壽段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-bffd85ba9ca108ee63422171",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區協榮段；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
+      "source": "台灣電力公司",
+      "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "power-ef0d07a0cb5164d0ba49bae2",
+      "category": "預定停電",
+      "title": "預定停電｜台電高雄區營業處",
+      "summary": "停電範圍：高雄市岡山區仁壽路；工作內容：管線遷移工程；查詢電話：1911",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-18T05:00:00+08:00",
+      "ends_at": "2026-11-18T07:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
     }

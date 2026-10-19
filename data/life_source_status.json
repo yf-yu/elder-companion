@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-18T04:00:36.881034+00:00",
+  "checked_at": "2026-10-19T00:24:51.121135+00:00",
   "version": "8.6",
   "retention": {
     "weather_days": 3,
@@ -10,26 +10,26 @@
   "sources": {
     "預定停水": {
       "state": "ok",
-      "items": 4,
-      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
+      "items": 6,
+      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 4,
+        "raw_rows": 6,
         "excluded": {}
       }
     },
     "預定停電": {
       "state": "ok",
-      "items": 7827,
-      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
+      "items": 7778,
+      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 8573,
+        "raw_rows": 8515,
         "excluded": {
-          "已結束": 53,
-          "超過30天": 499,
+          "超過30天": 496,
+          "已結束": 47,
           "地區無法辨識": 6,
           "缺少範圍": 3,
           "時間無法解析": 184,
@@ -40,7 +40,7 @@
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
+      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -51,7 +51,7 @@
     "W-C0033-006": {
       "state": "ok",
       "items": 0,
-      "last_success_at": "2026-10-18T04:00:23.944835+00:00",
+      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -110,14 +110,14 @@
       "note": "官方來源待驗證"
     }
   },
-  "items": 7863,
+  "items": 7817,
   "category_counts": {
-    "預定停水": 4,
-    "預定停電": 7793,
-    "天氣預報": 66
+    "天氣預報": 66,
+    "預定停水": 6,
+    "預定停電": 7745
   },
-  "removed_expired_old_items": 12,
+  "removed_expired_old_items": 136,
   "retained_during_source_errors": 0,
-  "deduplicated_records": 34,
+  "deduplicated_records": 33,
   "note": "僅顯示有效公告；新增模組未驗證前不刊登資料；stale 代表來源成功更新超過24小時。"
 }
