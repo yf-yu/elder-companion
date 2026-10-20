@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-19T00:24:51.121135+00:00",
+  "checked_at": "2026-10-20T01:12:27.233859+00:00",
   "version": "8.6",
   "retention": {
     "weather_days": 3,
@@ -10,37 +10,27 @@
   "sources": {
     "預定停水": {
       "state": "ok",
-      "items": 6,
-      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
+      "items": 33,
+      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 6,
+        "raw_rows": 33,
         "excluded": {}
       }
     },
     "預定停電": {
-      "state": "ok",
-      "items": 7778,
+      "state": "error",
+      "items": 0,
       "last_success_at": "2026-10-19T00:24:33.747250+00:00",
-      "hours_since_success": 0,
-      "stale": false,
-      "quality": {
-        "raw_rows": 8515,
-        "excluded": {
-          "超過30天": 496,
-          "已結束": 47,
-          "地區無法辨識": 6,
-          "缺少範圍": 3,
-          "時間無法解析": 184,
-          "相同公告ID": 1
-        }
-      }
+      "hours_since_success": 24.8,
+      "stale": true,
+      "message": "RuntimeError: URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
+      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -51,7 +41,7 @@
     "W-C0033-006": {
       "state": "ok",
       "items": 0,
-      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
+      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -84,12 +74,15 @@
       "message": "RuntimeError: REST：HTTP Error 404: Not Found；CAP：轉址至非白名單網域，已阻擋"
     },
     "W-C0033-010": {
-      "state": "error",
+      "state": "ok",
       "items": 0,
-      "last_success_at": null,
-      "hours_since_success": null,
-      "stale": true,
-      "message": "RuntimeError: REST：HTTP Error 500: Server Error；CAP：轉址至非白名單網域，已阻擋"
+      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
+      "hours_since_success": 0,
+      "stale": false,
+      "quality": {
+        "raw_rows": 0,
+        "excluded": {}
+      }
     }
   },
   "planned_modules": {
@@ -110,14 +103,14 @@
       "note": "官方來源待驗證"
     }
   },
-  "items": 7817,
+  "items": 7149,
   "category_counts": {
+    "預定停水": 32,
     "天氣預報": 66,
-    "預定停水": 6,
-    "預定停電": 7745
+    "預定停電": 7051
   },
-  "removed_expired_old_items": 136,
-  "retained_during_source_errors": 0,
-  "deduplicated_records": 33,
+  "removed_expired_old_items": 743,
+  "retained_during_source_errors": 7051,
+  "deduplicated_records": 1,
   "note": "僅顯示有效公告；新增模組未驗證前不刊登資料；stale 代表來源成功更新超過24小時。"
 }
