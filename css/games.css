@@ -98,3 +98,31 @@
 .quiz-option{padding:18px 12px;min-height:64px;border:2px solid var(--border);border-radius:14px;background:var(--white);color:var(--text);font:inherit;font-size:clamp(18px,2.6vw,23px);font-weight:700;cursor:pointer}
 .brain-game-msg{min-height:2em;font-size:clamp(16px,2.5vw,20px);line-height:1.7;margin:12px 0;color:var(--n);font-weight:700}
 @media(max-width:420px){.brain-tabs .btab{flex-basis:calc(50% - 8px)}.mem-grid{gap:6px}.mem-card{font-size:clamp(30px,9vw,44px)}}
+
+
+
+/* 翻翻樂：放大卡片內的圖案 */
+.mem-card {
+  font-size: clamp(38px, 8vw, 78px) !important;
+  line-height: 1;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.mem-card .mem-emoji {
+  display: block;
+  font-size: inherit;
+  line-height: 1;
+  transform: scale(1.08);
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    sans-serif;
+}
+
+@media (max-width: 480px) {
+  .mem-card {
+    font-size: clamp(35px, 10vw, 58px) !important;
+  }
+}
