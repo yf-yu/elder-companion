@@ -172,7 +172,7 @@ window.renderMoodHist = function(){
 window.swb = function(btn, tid){
   document.querySelectorAll('.btab').forEach(t => t.classList.remove('act'));
   btn.classList.add('act');
-  ['mem-game','math-game','mood-track'].forEach(id => {
+  ['mem-game','math-game','spot-game','sequence-game','quiz-game','mood-track'].forEach(id => {
     const el = e(id);
     if(el) el.style.display = 'none';
   });
@@ -182,4 +182,103 @@ window.swb = function(btn, tid){
   if(tid === 'mem-game')   initMem();
   if(tid === 'math-game')  { setMathLevel(1); }
   if(tid === 'mood-track') renderMoodHist();
+  if(tid === 'spot-game') startSpot();
+  if(tid === 'sequence-game') startSequence(true);
+  if(tid === 'quiz-game') startQuiz(true);
 };
+
+
+/* 動腦遊戲整合：同一選單切換，不另加第二套遊戲。 */
+(function () {
+  'use strict';
+  const byId = id => document.getElementById(id);
+  const symbols = ['🍎','🍋','🌷','🐱','🐟','⭐','🍇','🦋','🍊','🌙','🐸','🐻'];
+  const random = n => Math.floor(Math.random()*n);
+  const shuffled = arr => { const a=[...arr]; for(let i=a.length-1;i>0;i--){const k=random(i+1);[a[i],a[k]]=[a[k],a[i]];}return a; };
+  const button = (label, cb, cls='') => {const b=document.createElement('button');b.type='button';b.textContent=label;b.className=cls;b.addEventListener('click',cb);return b;};
+  const visible = id => {const n=byId(id);return n && n.style.display!=='none' && !byId('brain').hidden;};
+  let spotLevel=1, spotCorrect=0, spotLock=false, spotTimer=null, spotToken=0;
+  function drawSpot(){
+    if(!byId('spot-grid'))return;
+    const token=++spotToken;spotLock=false;
+    const base=symbols[random(symbols.length)];
+    // Higher levels prefer similar-looking pairs for a gradual challenge.
+    const similar=[['🍎','🍊'],['🍋','🍊'],['🐱','🐻'],['🌷','🌸'],['⭐','🌙'],['🐟','🐬']];
+    const pair=similar.find(x=>x.includes(base));
+    const odd=spotLevel>=4&&pair?pair.find(x=>x!==base):shuffled(symbols.filter(x=>x!==base))[0];
+    const pos=random(9), area=byId('spot-grid');area.replaceChildren();
+    byId('spot-level').textContent=`第 ${spotLevel} 關`;
+    byId('spot-score').textContent=`答對 ${spotCorrect} 題`;
+    byId('spot-msg').textContent='請點選不一樣的圖案';
+    for(let i=0;i<9;i++){
+      const b=button(i===pos?odd:base,()=>{
+        if(spotLock||!visible('spot-game'))return;
+        if(i===pos){spotLock=true;spotCorrect++;spotLevel++;b.classList.add('correct');byId('spot-msg').textContent='答對了！準備下一關。';}
+        else{b.classList.add('wrong');byId('spot-msg').textContent='再看看，找出唯一不同的圖案。';return;}
+        byId('spot-score').textContent=`答對 ${spotCorrect} 題`;
+        spotTimer=setTimeout(()=>{if(token===spotToken&&visible('spot-game'))drawSpot();},950);
+      },'spot-cell');area.appendChild(b);
+    }
+  }
+  window.startSpot=function(){clearTimeout(spotTimer);spotLevel=1;spotCorrect=0;drawSpot();};
+  let seqLevel=1,seq=[],seqStep=0,seqToken=0,seqTimers=[],seqLocked=false;
+  function clearSeq(){seqToken++;seqTimers.forEach(clearTimeout);seqTimers=[];}
+  function scheduleSeq(fn,ms){seqTimers.push(setTimeout(fn,ms));}
+  function drawSequence(){
+    clearSeq();const token=seqToken,area=byId('seq-grid');if(!area)return;
+    const count=Math.min(2+seqLevel-1,8);
+    const pool=shuffled(symbols).slice(0,Math.max(4,count));
+    seq=shuffled(pool).slice(0,count);
+    seqStep=0;seqLocked=true;
+    byId('seq-level').textContent=`第 ${seqLevel} 關`;
+    byId('seq-count').textContent=`記住 ${count} 個`;
+    byId('seq-msg').textContent=`先看 ${Math.max(3,Math.min(6,count+1))} 秒，記住順序`;
+    area.replaceChildren();
+    seq.forEach(x=>{const n=document.createElement('span');n.className='sequence-symbol';n.textContent=x;area.appendChild(n);});
+    scheduleSeq(()=>{
+      if(token!==seqToken||!visible('sequence-game'))return;
+      seqLocked=false;area.replaceChildren();
+      byId('seq-msg').textContent=`依照順序點選：第 1 / ${count} 個`;
+      pool.forEach(x=>area.appendChild(button(x,()=>{
+        if(seqLocked||!visible('sequence-game'))return;
+        if(x===seq[seqStep]){
+          seqStep++;
+          if(seqStep===seq.length){seqLocked=true;byId('seq-msg').textContent='🎉 全部正確！下一關會更難。';seqLevel++;scheduleSeq(()=>{if(token===seqToken&&visible('sequence-game'))drawSequence();},1200);}
+          else byId('seq-msg').textContent=`答對了！請點第 ${seqStep+1} / ${count} 個`;
+        } else {
+          seqLocked=true;byId('seq-msg').textContent='順序不太一樣，這一關再試一次。';
+          scheduleSeq(()=>{if(token===seqToken&&visible('sequence-game'))drawSequence();},1400);
+        }
+      },'sequence-cell')));
+    },Math.max(3,Math.min(6,count+1))*1000);
+  }
+  window.startSequence=function(reset){if(reset)seqLevel=1;drawSequence();};
+  const quizzes=[
+    ['買三顆蘋果，每顆 20 元，一共多少元？',['40 元','60 元','80 元'],1,'20 × 3 = 60 元'],
+    ['今天星期二，後天是星期幾？',['星期三','星期四','星期五'],1,'星期四'],
+    ['出門前看到天空烏雲密布，適合帶什麼？',['雨傘','毛帽','拖鞋'],0,'雨傘'],
+    ['下午 3 點再過 2 小時是幾點？',['下午 4 點','下午 5 點','下午 6 點'],1,'下午 5 點'],
+    ['搭公車付 50 元，車資 18 元，找回多少？',['22 元','32 元','42 元'],1,'32 元'],
+    ['一週有幾天？',['5 天','7 天','10 天'],1,'7 天'],
+    ['買兩瓶水各 15 元，付 50 元找回多少？',['10 元','20 元','30 元'],1,'20 元'],
+    ['上午 9 點半，再過半小時是幾點？',['10 點','10 點半','11 點'],0,'10 點']
+  ];
+  let quizAnswered=0,quizCorrect=0,quizLock=false,quizToken=0,quizTimer=null,quizLast=-1;
+  function drawQuiz(){const area=byId('quiz-options');if(!area)return;
+    const token=++quizToken;quizLock=false;let idx=random(quizzes.length);
+    if(idx===quizLast)idx=(idx+1)%quizzes.length;quizLast=idx;
+    const q=quizzes[idx];byId('quiz-question').textContent=q[0];area.replaceChildren();
+    byId('quiz-msg').textContent='請選擇答案';
+    q[1].forEach((a,i)=>area.appendChild(button(a,()=>{
+      if(quizLock||!visible('quiz-game'))return;quizLock=true;quizAnswered++;
+      if(i===q[2]){quizCorrect++;byId('quiz-msg').textContent='答對了！'+q[3];}
+      else byId('quiz-msg').textContent='一起看看答案：'+q[3];
+      byId('quiz-progress').textContent=`已答 ${quizAnswered} 題`;
+      byId('quiz-score').textContent=`答對 ${quizCorrect} 題`;
+      quizTimer=setTimeout(()=>{if(token===quizToken&&visible('quiz-game'))drawQuiz();},1600);
+    },'quiz-option')));
+  }
+  window.startQuiz=function(reset){clearTimeout(quizTimer);if(reset){quizAnswered=0;quizCorrect=0;byId('quiz-progress').textContent='已答 0 題';byId('quiz-score').textContent='答對 0 題';}drawQuiz();};
+  // Stop pending callbacks when navigating away from the brain page.
+  window.addEventListener('hashchange',()=>{if(!visible('sequence-game'))clearSeq();});
+})();
