@@ -146,7 +146,7 @@
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/games.css">
 <link rel="stylesheet" href="css/page-fix.css">
-<link rel="stylesheet" href="css/brain-extra.css">
+
 
 <style>
 .video-box {
@@ -346,6 +346,9 @@
     <div class="brain-tabs">
       <button class="btab act" onclick="swb(this,'mem-game')">配對記憶</button>
       <button class="btab" onclick="swb(this,'math-game')">算術練習</button>
+      <button class="btab" onclick="swb(this,'spot-game')">找不同</button>
+      <button class="btab" onclick="swb(this,'sequence-game')">記憶順序</button>
+      <button class="btab" onclick="swb(this,'quiz-game')">生活問答</button>
       <button class="btab" onclick="swb(this,'mood-track')">今日心情</button>
     </div>
     <div id="mem-game">
@@ -371,6 +374,27 @@
         <div class="math-opts" id="math-opts"></div>
       </div>
     </div>
+    <div id="spot-game" style="display:none"><div class="game-card">
+      <div class="game-title">🔎 找不同</div><div class="game-desc">從九個圖案中找出唯一不一樣的圖案。</div>
+      <div class="score-bar"><span id="spot-level">第 1 關</span><span id="spot-score">答對 0 題</span></div>
+      <div id="spot-grid" class="spot-grid" aria-label="九宮格找不同"></div>
+      <p id="spot-msg" class="brain-game-msg" aria-live="polite"></p>
+      <button type="button" class="btn-restart" onclick="startSpot()">重新開始</button>
+    </div></div>
+    <div id="sequence-game" style="display:none"><div class="game-card">
+      <div class="game-title">🧩 記憶順序</div><div class="game-desc">先記住圖案出現的順序，再依序點選。過關會逐漸增加難度。</div>
+      <div class="score-bar"><span id="seq-level">第 1 關</span><span id="seq-count">記住 2 個</span></div>
+      <div id="seq-grid" class="sequence-grid"></div>
+      <p id="seq-msg" class="brain-game-msg" aria-live="polite"></p>
+      <button type="button" class="btn-restart" onclick="startSequence(true)">從第一關開始</button>
+    </div></div>
+    <div id="quiz-game" style="display:none"><div class="game-card">
+      <div class="game-title">💡 生活問答</div><div class="game-desc">生活中的小問題，動動腦、慢慢答。</div>
+      <div class="score-bar"><span id="quiz-progress">已答 0 題</span><span id="quiz-score">答對 0 題</span></div>
+      <div id="quiz-question" class="quiz-question"></div><div id="quiz-options" class="quiz-options"></div>
+      <p id="quiz-msg" class="brain-game-msg" aria-live="polite"></p>
+      <button type="button" class="btn-restart" onclick="startQuiz(true)">重新開始</button>
+    </div></div>
     <div id="mood-track" style="display:none">
       <div class="game-card" style="text-align:left">
         <div class="game-title" style="text-align:center">😊 今天心情怎麼樣？</div>
@@ -503,6 +527,6 @@
 <script src="js/setup.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/notices.js" defer></script>  
-<script src="js/brain-extra.js" defer></script>  
+  
 </body>
 </html>
