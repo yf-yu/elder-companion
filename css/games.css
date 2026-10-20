@@ -80,3 +80,21 @@
 .mhdate{min-width:70px; font-size:clamp(11px,3vw,12px)}
 .mhface{font-size:clamp(18px,4.5vw,22px)}
 .mood-note{margin-top:12px; font-size:clamp(11px,3vw,12px); color:var(--hint); line-height:1.7}
+
+
+/* V8.5：整合動腦遊戲與大字圖示 */
+.brain-tabs{flex-wrap:wrap;overflow-x:visible;gap:8px}
+.brain-tabs .btab{flex:1 1 110px;min-height:48px;font-size:clamp(15px,2.4vw,18px)}
+.mem-card{font-size:clamp(32px,5vw,58px);min-height:64px;line-height:1.1}
+.spot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.5vw,16px);max-width:570px;margin:14px auto 20px}
+.spot-cell,.sequence-cell{aspect-ratio:1;min-width:0;min-height:64px;display:grid;place-items:center;font-size:clamp(32px,6vw,64px);border:2px solid var(--border);border-radius:16px;background:var(--white);cursor:pointer;touch-action:manipulation}
+.spot-cell.correct{background:var(--greenbg);border-color:var(--green2)}
+.spot-cell.wrong{background:var(--redbg);border-color:var(--red)}
+.sequence-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:16px auto;max-width:760px}
+.sequence-symbol,.sequence-cell{width:clamp(68px,14vw,112px);height:clamp(68px,14vw,112px);display:grid;place-items:center;font-size:clamp(34px,5vw,58px)}
+.sequence-symbol{border:2px solid var(--border);border-radius:16px;background:var(--sky)}
+.quiz-question{font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.6;margin:16px auto}
+.quiz-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;margin:16px 0}
+.quiz-option{padding:18px 12px;min-height:64px;border:2px solid var(--border);border-radius:14px;background:var(--white);color:var(--text);font:inherit;font-size:clamp(18px,2.6vw,23px);font-weight:700;cursor:pointer}
+.brain-game-msg{min-height:2em;font-size:clamp(16px,2.5vw,20px);line-height:1.7;margin:12px 0;color:var(--n);font-weight:700}
+@media(max-width:420px){.brain-tabs .btab{flex-basis:calc(50% - 8px)}.mem-grid{gap:6px}.mem-card{font-size:clamp(30px,9vw,44px)}}

@@ -166,3 +166,20 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
     overscroll-behavior-y: auto;
   }
 }
+
+
+/* V8.5：各種裝置滿版，不受舊 480px 上限影響 */
+:root{--app-max:100vw}
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.page,.sub,#home,#setup{
+  width:100% !important;
+  max-width:none !important;
+  left:0 !important;
+  right:0 !important;
+  transform:none !important;
+  box-shadow:none !important;
+}
+#home.show:not([hidden]),#setup.show:not([hidden]){overflow-y:auto !important;overflow-x:hidden !important}
+.sub.show:not([hidden]){overflow:hidden !important}
+.sub .sbdy{width:100%;min-width:0;overflow-y:auto !important;overflow-x:hidden !important;scrollbar-gutter:auto}
+.game-card{max-width:100%}
