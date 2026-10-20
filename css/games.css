@@ -1,161 +1,68 @@
 
-.brain-tabs{display:flex; gap:7px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px}
-.brain-tabs::-webkit-scrollbar{display:none}
-.btab{
-  padding:9px 18px; border-radius:100px;
-  font-size:clamp(13px,3.4vw,15px); font-weight:600;
-  background:var(--white); color:var(--muted);
-  border:2px solid var(--border); white-space:nowrap;
-  cursor:pointer; font-family:inherit; transition:all .15s;
-}
-.btab.act{background:var(--n); color:#fff; border-color:var(--n)}
+/* =========================================
+   伴老友 games.css V8.9
+   完整覆蓋版
+========================================= */
 
-.game-card{
-  background:var(--white); border:2px solid var(--border);
-  border-radius:18px; padding:var(--pad-x); margin-bottom:12px; text-align:center;
-}
-.game-title{font-size:clamp(16px,4.5vw,20px); font-weight:900; color:var(--n); margin-bottom:8px}
-.game-desc{font-size:clamp(12px,3.2vw,14px); color:var(--muted); margin-bottom:16px; line-height:1.7}
-
-.mem-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px}
-.mem-card{
-  aspect-ratio:1; border-radius:12px;
-  border:2px solid var(--border); background:var(--n);
-  display:flex; align-items:center; justify-content:center;
-  font-size:clamp(20px,6vw,30px);
-  cursor:pointer; transition:all .2s; user-select:none;
-}
-.mem-card.flip{background:var(--white); border-color:var(--green2)}
-.mem-card.matched{background:var(--greenbg); border-color:var(--green2); cursor:default}
-.mem-card.wrong{background:var(--redbg); border-color:var(--red)}
-
-.score-bar{display:flex; justify-content:space-between; font-size:clamp(12px,3.2vw,15px); font-weight:600; color:var(--muted); margin-bottom:10px}
-.score-bar span{color:var(--n); font-weight:900}
-
-.btn-restart{
-  width:100%; padding:12px; background:var(--n); color:#fff;
-  border:none; border-radius:12px;
-  font-size:clamp(14px,3.6vw,16px); font-weight:700;
-  cursor:pointer; font-family:inherit;
+/* 遊戲選單 */
+.brain-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
-.math-levels{display:flex; gap:8px; margin-bottom:12px}
-.ml{
-  flex:1; padding:8px; border-radius:10px;
-  border:2px solid var(--border); background:var(--white);
-  color:var(--muted); font-size:clamp(12px,3vw,13px); font-weight:600;
-  cursor:pointer; font-family:inherit; transition:all .15s;
-}
-.ml.act{background:var(--n); color:#fff; border-color:var(--n)}
-
-.math-box{background:var(--sky); border-radius:16px; padding:clamp(16px,4vw,24px); margin-bottom:14px}
-.math-q{font-size:clamp(24px,7vw,32px); font-weight:900; color:var(--n); text-align:center; margin-bottom:16px}
-.math-opts{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-.mopt{
-  padding:clamp(12px,3.5vw,16px); border-radius:12px;
-  border:2px solid var(--border); background:var(--white);
-  font-size:clamp(18px,5vw,22px); font-weight:700; color:var(--text);
-  cursor:pointer; transition:all .15s; font-family:inherit;
-}
-.mopt:active{transform:scale(.97)}
-.mopt.correct{background:var(--greenbg); border-color:var(--green2); color:var(--green)}
-.mopt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
-
-.mood-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:14px}
-.mood-btn{
-  padding:10px 4px; border-radius:12px;
-  border:2px solid var(--border); background:var(--white);
-  font-size:clamp(22px,6.5vw,28px);
-  cursor:pointer; text-align:center; transition:all .15s;
-}
-.mood-btn:active{transform:scale(.95)}
-.mood-btn.sel{border:3px solid var(--n); background:var(--sky); transform:scale(1.08)}
-.mood-label{font-size:clamp(10px,2.6vw,11px); color:var(--muted); display:block; margin-top:3px}
-
-.mood-msg{text-align:center; font-size:clamp(13px,3.4vw,16px); color:var(--muted); margin-bottom:12px}
-.mood-hist-title{font-size:13px; font-weight:700; color:var(--muted); letter-spacing:1px; margin-bottom:8px}
-.mood-history{margin-top:4px}
-.mhrow{display:flex; gap:6px; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); font-size:clamp(12px,3.2vw,14px); color:var(--muted)}
-.mhrow:last-child{border:none}
-.mhdate{min-width:70px; font-size:clamp(11px,3vw,12px)}
-.mhface{font-size:clamp(18px,4.5vw,22px)}
-.mood-note{margin-top:12px; font-size:clamp(11px,3vw,12px); color:var(--hint); line-height:1.7}
-
-
-/* V8.5：整合動腦遊戲與大字圖示 */
-.brain-tabs{flex-wrap:wrap;overflow-x:visible;gap:8px}
-.brain-tabs .btab{flex:1 1 110px;min-height:48px;font-size:clamp(15px,2.4vw,18px)}
-.mem-card{font-size:clamp(32px,5vw,58px);min-height:64px;line-height:1.1}
-.spot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.5vw,16px);max-width:570px;margin:14px auto 20px}
-.spot-cell,.sequence-cell{aspect-ratio:1;min-width:0;min-height:64px;display:grid;place-items:center;font-size:clamp(32px,6vw,64px);border:2px solid var(--border);border-radius:16px;background:var(--white);cursor:pointer;touch-action:manipulation}
-.spot-cell.correct{background:var(--greenbg);border-color:var(--green2)}
-.spot-cell.wrong{background:var(--redbg);border-color:var(--red)}
-.sequence-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:16px auto;max-width:760px}
-.sequence-symbol,.sequence-cell{width:clamp(68px,14vw,112px);height:clamp(68px,14vw,112px);display:grid;place-items:center;font-size:clamp(34px,5vw,58px)}
-.sequence-symbol{border:2px solid var(--border);border-radius:16px;background:var(--sky)}
-.quiz-question{font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.6;margin:16px auto}
-.quiz-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;margin:16px 0}
-.quiz-option{padding:18px 12px;min-height:64px;border:2px solid var(--border);border-radius:14px;background:var(--white);color:var(--text);font:inherit;font-size:clamp(18px,2.6vw,23px);font-weight:700;cursor:pointer}
-.brain-game-msg{min-height:2em;font-size:clamp(16px,2.5vw,20px);line-height:1.7;margin:12px 0;color:var(--n);font-weight:700}
-@media(max-width:420px){.brain-tabs .btab{flex-basis:calc(50% - 8px)}.mem-grid{gap:6px}.mem-card{font-size:clamp(30px,9vw,44px)}}
-
-
-
-/* 翻翻樂：放大卡片內的圖案 */
-.mem-card {
-  font-size: clamp(38px, 8vw, 78px) !important;
-  line-height: 1;
-  padding: 2px;
-  overflow: hidden;
-}
-
-.mem-card .mem-emoji {
-  display: block;
-  font-size: inherit;
-  line-height: 1;
-  transform: scale(1.08);
-  font-family:
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Noto Color Emoji",
-    sans-serif;
-}
-
-@media (max-width: 480px) {
-  .mem-card {
-    font-size: clamp(35px, 10vw, 58px) !important;
-  }
-}
-
-
-/* 生活問答：下一題按鈕 */
-.quiz-next {
-  display: block;
-  width: 100%;
-  min-height: 64px;
-  margin-top: 18px;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 16px;
-  background: #267c55;
-  color: #fff;
-  font-size: 24px;
-  font-weight: 800;
+.brain-tabs .btab {
+  flex: 1 1 110px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--muted);
+  font: inherit;
+  font-size: clamp(15px, 2.4vw, 18px);
+  font-weight: 700;
   cursor: pointer;
 }
 
-.quiz-next:active {
-  transform: scale(0.98);
+.brain-tabs .btab.act {
+  background: var(--n);
+  color: #fff;
+  border-color: var(--n);
 }
 
-.quiz-option:disabled {
-  cursor: default;
-  opacity: 1;
+/* 遊戲共用容器 */
+.game-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: var(--pad-x);
+  margin-bottom: 12px;
+  text-align: center;
+  min-width: 0;
 }
 
+.game-title {
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 900;
+  color: var(--n);
+  margin-bottom: 8px;
+}
 
-/* ─── 配對記憶 V8.8：難度選擇 ─── */
+.game-desc {
+  font-size: clamp(14px, 3.2vw, 16px);
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
 
+/* =========================================
+   1. 配對記憶
+========================================= */
+
+/* 2×2、4×4、6×6 難度選擇 */
 .mem-levels {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -165,77 +72,562 @@
 
 .mem-level {
   min-width: 0;
-  min-height: 52px;
+  min-height: 54px;
   padding: 8px 4px;
-  border: 2px solid #d4dfd8;
+  border: 2px solid var(--border);
   border-radius: 12px;
-  background: #fff;
-  color: #275640;
-  font-size: clamp(12px, 3vw, 17px);
+  background: var(--white);
+  color: var(--n);
+  font: inherit;
+  font-size: clamp(12px, 2.6vw, 17px);
   font-weight: 800;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
-.mem-level.act {
-  background: #267c55;
+.mem-level.act,
+.mem-level[aria-pressed="true"] {
+  background: var(--n);
+  border-color: var(--n);
   color: #fff;
-  border-color: #267c55;
 }
 
-/* 固定正方形盤面 */
+/* 正方形盤面 */
 .mem-grid {
   display: grid;
   grid-template-columns:
     repeat(var(--mem-columns, 2), minmax(0, 1fr));
-  gap: clamp(4px, 1.2vw, 10px);
+  gap: clamp(4px, 1vw, 10px);
   width: 100%;
   max-width: 600px;
   margin: 0 auto 16px;
+  min-width: 0;
 }
 
-/* 每張卡片維持正方形 */
+/* 正方形卡片 */
 .mem-card {
+  box-sizing: border-box;
   width: 100%;
   min-width: 0;
+  min-height: 0;
   aspect-ratio: 1 / 1;
   padding: 2px;
+  border: 2px solid var(--border);
+  border-radius: clamp(7px, 1.6vw, 14px);
+  background: var(--n);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  font-size: clamp(24px, 6vw, 54px);
+  font-family: inherit;
+  font-size: clamp(25px, 6vw, 56px);
   line-height: 1;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  touch-action: manipulation;
+  transition: background .15s, border-color .15s;
 }
 
-/* 真正放大卡片裡的 Emoji */
+.mem-card.flip {
+  background: var(--white);
+  border-color: var(--green2);
+}
+
+.mem-card.matched {
+  background: var(--greenbg);
+  border-color: var(--green2);
+  cursor: default;
+  opacity: 1;
+}
+
+.mem-card.wrong {
+  background: var(--redbg);
+  border-color: var(--red);
+}
+
+/* 真正放大 Emoji */
 .mem-card .mem-emoji {
   display: block;
   font-size: inherit !important;
   line-height: 1;
+  max-width: 100%;
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    sans-serif;
 }
 
-/* 2×2 圖案更大 */
+/* 各難度自動調整圖案大小 */
 .mem-grid[style*="--mem-columns: 2"] .mem-card {
-  font-size: clamp(52px, 14vw, 100px);
+  font-size: clamp(50px, 13vw, 108px);
 }
 
-/* 4×4 圖案適中 */
 .mem-grid[style*="--mem-columns: 4"] .mem-card {
-  font-size: clamp(34px, 8vw, 72px);
+  font-size: clamp(31px, 7.5vw, 70px);
 }
 
-/* 6×6 圖案依螢幕自動縮放 */
 .mem-grid[style*="--mem-columns: 6"] .mem-card {
-  font-size: clamp(22px, 5vw, 48px);
+  font-size: clamp(19px, 4.8vw, 48px);
 }
 
-@media (max-width: 380px) {
-  .mem-level {
-    font-size: 12px;
+/* 步數與配對統計 */
+.score-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: clamp(14px, 3.2vw, 17px);
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.score-bar span,
+.score-bar strong {
+  color: var(--n);
+  font-weight: 900;
+}
+
+/* 重新開始 */
+.btn-restart {
+  display: block;
+  width: 100%;
+  min-height: 54px;
+  padding: 12px;
+  background: var(--n);
+  color: #fff;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+  font-size: clamp(16px, 3.6vw, 19px);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* =========================================
+   2. 算術練習
+========================================= */
+
+.math-levels {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ml {
+  flex: 1;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: var(--white);
+  color: var(--muted);
+  font: inherit;
+  font-size: clamp(13px, 3vw, 16px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ml.act {
+  background: var(--n);
+  color: #fff;
+  border-color: var(--n);
+}
+
+.math-box {
+  background: var(--sky);
+  border-radius: 16px;
+  padding: clamp(16px, 4vw, 24px);
+  margin-bottom: 14px;
+}
+
+.math-q {
+  font-size: clamp(24px, 7vw, 36px);
+  font-weight: 900;
+  color: var(--n);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.math-opts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mopt {
+  min-width: 0;
+  min-height: 60px;
+  padding: clamp(12px, 3.5vw, 16px);
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--white);
+  font: inherit;
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 800;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.mopt:active {
+  transform: scale(.97);
+}
+
+.mopt.correct {
+  background: var(--greenbg);
+  border-color: var(--green2);
+  color: var(--green);
+}
+
+.mopt.wrong {
+  background: var(--redbg);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.mopt:disabled {
+  opacity: 1;
+}
+
+/* =========================================
+   3. 情緒打卡
+========================================= */
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.mood-btn {
+  min-width: 0;
+  min-height: 66px;
+  padding: 10px 2px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--white);
+  font: inherit;
+  font-size: clamp(22px, 6.5vw, 30px);
+  cursor: pointer;
+  text-align: center;
+}
+
+.mood-btn:active {
+  transform: scale(.95);
+}
+
+.mood-btn.sel {
+  border: 3px solid var(--n);
+  background: var(--sky);
+}
+
+.mood-label {
+  font-size: clamp(10px, 2.6vw, 13px);
+  color: var(--muted);
+  display: block;
+  margin-top: 3px;
+}
+
+.mood-msg {
+  text-align: center;
+  font-size: clamp(14px, 3.4vw, 18px);
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.mood-hist-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.mood-history {
+  margin-top: 4px;
+}
+
+.mhrow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(13px, 3.2vw, 16px);
+  color: var(--muted);
+}
+
+.mhrow:last-child {
+  border: none;
+}
+
+.mhdate {
+  min-width: 70px;
+  font-size: clamp(12px, 3vw, 14px);
+}
+
+.mhface {
+  font-size: clamp(22px, 4.5vw, 28px);
+}
+
+.mood-note {
+  margin-top: 12px;
+  font-size: clamp(12px, 3vw, 14px);
+  color: var(--hint);
+  line-height: 1.7;
+}
+
+/* =========================================
+   4. 找不同：3×3
+========================================= */
+
+.spot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(6px, 1.5vw, 16px);
+  width: 100%;
+  max-width: 570px;
+  margin: 14px auto 20px;
+}
+
+.spot-cell {
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(35px, 7vw, 70px);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.spot-cell.correct {
+  background: var(--greenbg);
+  border-color: var(--green2);
+}
+
+.spot-cell.wrong {
+  background: var(--redbg);
+  border-color: var(--red);
+}
+
+/* =========================================
+   5. 記憶順序
+========================================= */
+
+.sequence-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 1.5vw, 12px);
+  justify-content: center;
+  align-items: center;
+  margin: 16px auto;
+  max-width: 760px;
+  min-width: 0;
+}
+
+.sequence-symbol,
+.sequence-cell {
+  box-sizing: border-box;
+  width: clamp(52px, 13vw, 112px);
+  height: clamp(52px, 13vw, 112px);
+  display: grid;
+  place-items: center;
+  font-size: clamp(28px, 5vw, 58px);
+  line-height: 1;
+}
+
+.sequence-symbol {
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  background: var(--sky);
+}
+
+.sequence-cell {
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sequence-cell.correct {
+  background: var(--greenbg);
+  border-color: var(--green2);
+}
+
+.sequence-cell.wrong {
+  background: var(--redbg);
+  border-color: var(--red);
+}
+
+.sequence-cell:disabled {
+  opacity: 1;
+}
+
+/* =========================================
+   6. 生活常識問答
+========================================= */
+
+.quiz-question {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 900;
+  line-height: 1.6;
+  margin: 16px auto;
+  overflow-wrap: anywhere;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.quiz-option {
+  min-width: 0;
+  min-height: 64px;
+  padding: 18px 12px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--text);
+  font: inherit;
+  font-size: clamp(18px, 2.6vw, 23px);
+  font-weight: 800;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+/* 正確答案：綠色 */
+.quiz-option.correct {
+  background: #e7f8ed !important;
+  border: 3px solid #16834a !important;
+  color: #116b3b !important;
+}
+
+/* 錯誤答案：紅色 */
+.quiz-option.wrong {
+  background: #fff0f0 !important;
+  border: 3px solid #d32f2f !important;
+  color: #a82020 !important;
+}
+
+.quiz-option:disabled {
+  opacity: 1 !important;
+  cursor: default;
+}
+
+/* 共用提示 */
+.brain-game-msg {
+  min-height: 2em;
+  font-size: clamp(17px, 2.5vw, 21px);
+  line-height: 1.7;
+  margin: 12px 0;
+  color: var(--n);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+#quiz-msg {
+  white-space: pre-line;
+}
+
+/* 答對提示 */
+#quiz-msg.quiz-result-correct {
+  background: #e7f8ed;
+  color: #116b3b;
+  border: 2px solid #16834a;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 800;
+}
+
+/* 答錯提示 */
+#quiz-msg.quiz-result-wrong {
+  background: #fff0f0;
+  color: #a82020;
+  border: 2px solid #d32f2f;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 800;
+}
+
+/* =========================================
+   7. 手動下一題
+========================================= */
+
+#quiz-next,
+#seq-next,
+#spot-next {
+  display: block;
+  width: 100%;
+  min-height: 64px;
+  margin-top: 18px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 16px;
+  background: #267c55;
+  color: #fff;
+  font: inherit;
+  font-size: clamp(20px, 4vw, 24px);
+  font-weight: 900;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+#quiz-next:active,
+#seq-next:active,
+#spot-next:active,
+.btn-restart:active {
+  transform: scale(.98);
+}
+
+/* =========================================
+   8. 無障礙與手機版
+========================================= */
+
+.brain-tabs button:focus-visible,
+.mem-level:focus-visible,
+.mem-card:focus-visible,
+.quiz-option:focus-visible,
+.sequence-cell:focus-visible,
+.spot-cell:focus-visible,
+#quiz-next:focus-visible,
+#seq-next:focus-visible,
+#spot-next:focus-visible {
+  outline: 3px solid #f4a340;
+  outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .brain-tabs .btab {
+    flex-basis: calc(50% - 8px);
   }
 
   .mem-grid {
     gap: 4px;
   }
-}
 
+  .mem-level {
+    font-size: 12px;
+  }
+
+  .sequence-grid {
+    gap: 6px;
+  }
+
+  .game-card {
+    padding: 12px;
+  }
+}
