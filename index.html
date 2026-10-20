@@ -355,9 +355,28 @@
       <div class="game-card">
         <div class="game-title">🃏 翻牌配對</div>
         <div class="game-desc">找出兩張一樣的牌，全部配對完成！訓練記憶力和注意力。</div>
-        <div class="score-bar"><span>步數：</span><span id="mem-steps">0</span><span>已配對：</span><span id="mem-matched">0</span><span>/8</span></div>
-        <div class="mem-grid" id="mem-grid"></div>
-        <button onclick="initMem()" class="btn-restart">重新開始</button>
+        
+<div class="mem-levels" role="group" aria-label="選擇配對記憶難度">
+  <button type="button" class="mem-level act"
+          onclick="setMemSize(2,this)">2 × 2 入門</button>
+  <button type="button" class="mem-level"
+          onclick="setMemSize(4,this)">4 × 4 標準</button>
+  <button type="button" class="mem-level"
+          onclick="setMemSize(6,this)">6 × 6 挑戰</button>
+</div>
+
+<div class="score-bar">
+  <span>步數：<strong id="mem-steps">0</strong></span>
+  <span>已配對：<strong id="mem-matched">0</strong>
+    / <strong id="mem-total">2</strong></span>
+</div>
+
+<div class="mem-grid" id="mem-grid"></div>
+
+<button type="button" onclick="initMem()" class="btn-restart">
+  🔄 重新開始
+</button>
+
       </div>
     </div>
     <div id="math-game" style="display:none">
