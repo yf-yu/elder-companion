@@ -1,52 +1,106 @@
-/* ============ brain.js：配對記憶、算術、情緒打卡 ============ */
 
-/* ─── 配對記憶 ─── */
-const EMOJIS = ['🍎','🐶','🌸','🐟','🌙','☀️','🍊','🐸','🐔','🐥','🍅','🐹','🌼','🐬','🍌'];
+/* ─── 配對記憶：可選 N×N、每局隨機圖案 ─── */
 
+const EMOJIS = [
+  '🍎','🍊','🍋','🍌','🍇','🍓','🍉','🍍',
+  '🍑','🥝','🍒','🥕','🌽','🍅','🥦','🍄',
+  '🐶','🐱','🐰','🐻','🐼','🐸','🐵','🐷',
+  '🐔','🐥','🐟','🐬','🦋','🐢','🐝','🐞',
+  '🌸','🌼','🌷','🌻','🌹','🌈','⭐','🌙',
+  '☀️','☁️','🌳','🍀','🎈','🎁','⚽','🎵',
+  '🚗','🚲','🚀','🏠','📚','✏️','💎','❤️'
+];
+
+let memSize = 2;
 let memFlipped = [];
 let memMatched = 0;
 let memSteps = 0;
 let memLock = false;
 let memTimers = [];
 let memRound = 0;
+let memTotal = 2;
 
+function shuffleMem(items) {
+  const result = [...items];
+
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+
+  return result;
+}
+
+// 選擇難度
+window.setMemSize = function (size, btn) {
+  if (![2, 4, 6].includes(size)) return;
+
+  memSize = size;
+
+  document.querySelectorAll('.mem-level').forEach(item => {
+    item.classList.remove('act');
+    item.setAttribute('aria-pressed', 'false');
+  });
+
+  if (btn) {
+    btn.classList.add('act');
+    btn.setAttribute('aria-pressed', 'true');
+  }
+
+  initMem();
+};
+
+// 開始新的一局
 window.initMem = function () {
   memRound++;
 
   memTimers.forEach(clearTimeout);
   memTimers = [];
 
-  const cards = [...EMOJIS, ...EMOJIS]
-    .sort(() => Math.random() - 0.5);
-
   memFlipped = [];
   memMatched = 0;
   memSteps = 0;
   memLock = false;
 
-  if (e('mem-steps')) {
-    e('mem-steps').textContent = '0';
-  }
-
-  if (e('mem-matched')) {
-    e('mem-matched').textContent = '0';
-  }
-
-  const grid = e('mem-grid');
+  const grid = document.getElementById('mem-grid');
   if (!grid) return;
 
-  grid.innerHTML = cards.map((emoji, index) => `
-    <button
-      type="button"
-      class="mem-card"
-      data-em="${emoji}"
-      data-i="${index}"
-      aria-label="第 ${index + 1} 張牌，尚未翻開"
-      onclick="flipCard(this)"
-    >❓</button>
-  `).join('');
+  const cardCount = memSize * memSize;
+  memTotal = cardCount / 2;
+
+  // 每次從 56 種 Emoji 隨機抽取需要的組數
+  const selected = shuffleMem(EMOJIS).slice(0, memTotal);
+
+  // 每個圖案各兩張，再重新打亂位置
+  const cards = shuffleMem([...selected, ...selected]);
+
+  grid.style.setProperty('--mem-columns', memSize);
+  grid.replaceChildren();
+
+  document.getElementById('mem-steps').textContent = '0';
+  document.getElementById('mem-matched').textContent = '0';
+  document.getElementById('mem-total').textContent = memTotal;
+
+  cards.forEach((emoji, index) => {
+    const card = document.createElement('button');
+
+    card.type = 'button';
+    card.className = 'mem-card';
+    card.dataset.em = emoji;
+    card.dataset.i = index;
+    card.textContent = '❓';
+    card.setAttribute(
+      'aria-label',
+      `第 ${index + 1} 張牌，尚未翻開`
+    );
+
+    card.addEventListener('click', () => flipCard(card));
+
+    grid.appendChild(card);
+  });
 };
 
+// 點選翻牌
 window.flipCard = function (card) {
   if (
     memLock ||
@@ -58,85 +112,81 @@ window.flipCard = function (card) {
 
   card.classList.add('flip');
 
-  // Emoji 獨立包在 span，讓 CSS 能真正放大圖案
-  card.innerHTML =
-    '<span class="mem-emoji" aria-hidden="true">' +
-    card.dataset.em +
-    '</span>';
+  const emoji = document.createElement('span');
+  emoji.className = 'mem-emoji';
+  emoji.textContent = card.dataset.em;
 
-  card.setAttribute(
-    'aria-label',
-    '圖案：' + card.dataset.em
-  );
+  card.replaceChildren(emoji);
+  card.setAttribute('aria-label', `圖案：${card.dataset.em}`);
 
   memFlipped.push(card);
 
-  if (memFlipped.length !== 2) return;
+  if (memFlipped.length < 2) return;
 
   memLock = true;
   memSteps++;
 
-  if (e('mem-steps')) {
-    e('mem-steps').textContent = memSteps;
-  }
+  document.getElementById('mem-steps').textContent = memSteps;
 
-  const first = memFlipped[0];
-  const second = memFlipped[1];
+  const [first, second] = memFlipped;
 
   if (first.dataset.em === second.dataset.em) {
-    memFlipped.forEach(item => {
-      item.classList.add('matched');
-      item.classList.remove('flip');
-      item.disabled = true;
-    });
+    first.classList.add('matched');
+    second.classList.add('matched');
+
+    first.classList.remove('flip');
+    second.classList.remove('flip');
+
+    first.disabled = true;
+    second.disabled = true;
 
     memMatched++;
 
-    if (e('mem-matched')) {
-      e('mem-matched').textContent = memMatched;
-    }
+    document.getElementById('mem-matched').textContent =
+      memMatched;
 
     memFlipped = [];
     memLock = false;
 
-    if (memMatched === EMOJIS.length) {
-      memTimers.push(
-        setTimeout(() => {
-          toast('🎉 恭喜！全部配對完成！步數：' + memSteps);
-        }, 300)
-      );
+    if (memMatched === memTotal) {
+      const round = memRound;
+
+      memTimers.push(setTimeout(() => {
+        if (round !== memRound) return;
+
+        if (typeof toast === 'function') {
+          toast(`🎉 全部配對完成！共用了 ${memSteps} 步！`);
+        }
+      }, 350));
     }
 
     return;
   }
 
+  // 不相同：短暫顯示，再蓋回卡片
   const round = memRound;
 
-  memTimers.push(
-    setTimeout(() => {
+  memTimers.push(setTimeout(() => {
+    if (round !== memRound) return;
+
+    first.classList.add('wrong');
+    second.classList.add('wrong');
+
+    memTimers.push(setTimeout(() => {
       if (round !== memRound) return;
 
-      memFlipped.forEach(item => {
-        item.classList.add('wrong');
+      [first, second].forEach(item => {
+        item.classList.remove('flip', 'wrong');
+        item.textContent = '❓';
+        item.setAttribute('aria-label', '尚未翻開');
       });
 
-      memTimers.push(
-        setTimeout(() => {
-          if (round !== memRound) return;
-
-          memFlipped.forEach(item => {
-            item.classList.remove('flip', 'wrong');
-            item.textContent = '❓';
-            item.setAttribute('aria-label', '尚未翻開');
-          });
-
-          memFlipped = [];
-          memLock = false;
-        }, 600)
-      );
-    }, 600)
-  );
+      memFlipped = [];
+      memLock = false;
+    }, 700));
+  }, 800));
 };
+
 
 
 /* =========================
