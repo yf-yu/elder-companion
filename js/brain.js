@@ -1113,77 +1113,94 @@ window.swb = function (btn, targetId) {
   let quizTimer = null;
   let quizLast = -1;
 
-  function drawQuiz() {
-    const area = byId('quiz-options');
-    if (!area) return;
+  
+function drawQuiz() {
+  const area = byId('quiz-options');
+  if (!area) return;
 
-    const token = ++quizToken;
+  ++quizToken;
+  quizLock = false;
 
-    quizLock = false;
+  let index = random(quizzes.length);
 
-    let index = random(quizzes.length);
-
-    // 避免連續兩題完全相同
-    if (index === quizLast) {
-      index = (index + 1) % quizzes.length;
-    }
-
-    quizLast = index;
-
-    const question = quizzes[index];
-
-    byId('quiz-question').textContent = question[0];
-    byId('quiz-msg').textContent = '請選擇答案';
-
-    area.replaceChildren();
-
-    question[1].forEach((answer, answerIndex) => {
-      const option = button(
-        answer,
-        () => {
-          if (
-            quizLock ||
-            !visible('quiz-game')
-          ) {
-            return;
-          }
-
-          quizLock = true;
-          quizAnswered++;
-
-          if (answerIndex === question[2]) {
-            quizCorrect++;
-
-            byId('quiz-msg').textContent =
-              '🎉 答對了！' + question[3];
-          }
-
-          else {
-            byId('quiz-msg').textContent =
-              '一起記住這個生活常識：' + question[3];
-          }
-
-          byId('quiz-progress').textContent =
-            `已答 ${quizAnswered} 題`;
-
-          byId('quiz-score').textContent =
-            `答對 ${quizCorrect} 題`;
-
-          quizTimer = setTimeout(() => {
-            if (
-              token === quizToken &&
-              visible('quiz-game')
-            ) {
-              drawQuiz();
-            }
-          }, 1600);
-        },
-        'quiz-option'
-      );
-
-      area.appendChild(option);
-    });
+  // 避免連續兩題相同
+  if (index === quizLast) {
+    index = (index + 1) % quizzes.length;
   }
+
+  quizLast = index;
+
+  const question = quizzes[index];
+
+  byId('quiz-question').textContent = question[0];
+  byId('quiz-msg').textContent = '請選擇答案';
+
+  area.replaceChildren();
+
+  // 避免重複產生下一題按鈕
+  const oldNext = byId('quiz-next');
+  if (oldNext) oldNext.remove();
+
+  question[1].forEach((answer, answerIndex) => {
+    const option = button(
+      answer,
+      () => {
+        if (quizLock || !visible('quiz-game')) return;
+
+        quizLock = true;
+        quizAnswered++;
+
+        const correct = answerIndex === question[2];
+
+        if (correct) {
+          quizCorrect++;
+          option.classList.add('correct');
+
+          byId('quiz-msg').textContent =
+            '🎉 答對了！' + question[3];
+        } else {
+          option.classList.add('wrong');
+
+          byId('quiz-msg').textContent =
+            '💡 一起記住這個生活常識：' + question[3];
+        }
+
+        // 顯示正確答案
+        [...area.querySelectorAll('.quiz-option')]
+          .forEach((item, i) => {
+            item.disabled = true;
+
+            if (i === question[2]) {
+              item.classList.add('correct');
+            }
+          });
+
+        byId('quiz-progress').textContent =
+          `已答 ${quizAnswered} 題`;
+
+        byId('quiz-score').textContent =
+          `答對 ${quizCorrect} 題`;
+
+        // 由使用者決定何時進入下一題
+        const next = button(
+          '下一題 →',
+          () => {
+            next.remove();
+            drawQuiz();
+          },
+          'quiz-next'
+        );
+
+        next.id = 'quiz-next';
+        area.after(next);
+      },
+      'quiz-option'
+    );
+
+    area.appendChild(option);
+  });
+}
+
 
   window.startQuiz = function (reset) {
     clearTimeout(quizTimer);
