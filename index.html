@@ -546,6 +546,127 @@
 <script src="js/setup.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/notices.js" defer></script>  
-  
+
+
+<!-- 伴老友：新增 8 篇生活小知識 -->
+<script>
+(function () {
+  function addLifeKnowledge() {
+    const health = document.getElementById('health');
+    if (!health || document.getElementById('life-safety')) return;
+
+    const tabs = health.querySelector('.htabs');
+    const body = health.querySelector('.sbdy');
+    if (!tabs || !body) return;
+
+    const groups = [
+      {
+        id: 'life-safety', name: '居家安全',
+        articles: [
+          ['🛁', '洗澡時，怎麼避免滑倒？',
+           '洗澡前先確認防滑設備放穩。移動時扶住安裝牢固的扶手，不要抓毛巾架借力。如果頭暈，先坐穩並請家人協助。',
+           '洗澡不用趕，安全比速度重要。'],
+          ['👀', '眼睛看不清楚，家裡怎麼調整？',
+           '走道保持明亮，移開雜物。常用物品放在固定位置，手機文字可以調大，樓梯與浴室要特別注意照明。',
+           '如果視力突然變差，請儘速就醫。']
+        ]
+      },
+      {
+        id: 'life-activity', name: '日常活動',
+        articles: [
+          ['🚶', '每天走一走，腿腳更有力',
+           '依自己的體力選擇安全、平坦的路線。穿穩固的鞋子，走路時不要勉強，累了就休息。',
+           '容易跌倒或行走不穩的人，先詢問醫療專業人員。']
+        ]
+      },
+      {
+        id: 'life-mood', name: '心情陪伴',
+        articles: [
+          ['❤️', '心情不好時，可以做的三件事',
+           '第一，找信任的人聊聊。第二，做一件自己喜歡的小事。第三，在安全的情況下稍微活動或到戶外透透氣。',
+           '如果心情低落持續影響生活，可以請家人陪同尋求專業協助。']
+        ]
+      }
+    ];
+
+    const existing = [
+      ['hf', '🥣', '早餐怎麼吃才有精神？',
+       '早餐可以搭配蛋、豆製品等蛋白質食物，加入蔬果與適量主食。份量要依食慾、咀嚼能力與健康狀況調整。',
+       '有糖尿病或特殊飲食限制，請依醫療團隊建議。'],
+      ['hs', '🌙', '半夜起床上廁所要注意什麼？',
+       '床邊放好夜燈，走道不要堆雜物。起床時先坐穩，再慢慢站起來；若容易頭暈，請家人協助。',
+       '經常頭暈或跌倒，應就醫評估。'],
+      ['hm', '💊', '忘記吃藥怎麼辦？',
+       '先查看藥袋上的指示。不同藥物的漏服處理方式不同，不要自行補吃雙倍劑量。',
+       '不確定時，請先詢問藥師或開藥醫師。'],
+      ['hse', '☀️', '天氣熱，怎麼預防中暑？',
+       '高溫時盡量待在通風、涼爽的地方，避開炎熱時段外出。依個人健康狀況與醫囑補充水分。',
+       '若出現意識不清或嚴重不適，立即尋求緊急協助。']
+    ];
+
+    function makeCard(article) {
+      const [icon, title, content, tip] = article;
+      const card = document.createElement('div');
+      card.className = 'hc';
+
+      const iconEl = document.createElement('span');
+      iconEl.className = 'hci';
+      iconEl.textContent = icon;
+
+      const titleEl = document.createElement('div');
+      titleEl.className = 'hct';
+      titleEl.textContent = title;
+
+      const contentEl = document.createElement('div');
+      contentEl.className = 'hcb';
+      contentEl.textContent = content;
+
+      const tipEl = document.createElement('div');
+      tipEl.className = 'htp';
+      tipEl.textContent = '💡 ' + tip;
+
+      card.append(iconEl, titleEl, contentEl, tipEl);
+      return card;
+    }
+
+    existing.forEach(([id, icon, title, content, tip]) => {
+      const section = document.getElementById(id);
+      if (section) section.appendChild(
+        makeCard([icon, title, content, tip])
+      );
+    });
+
+    groups.forEach(group => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'htab';
+      button.textContent = group.name;
+      button.addEventListener('click', function () {
+        window.swh(this, group.id);
+      });
+      tabs.appendChild(button);
+
+      const section = document.createElement('div');
+      section.id = group.id;
+      section.className = 'hcards';
+      section.style.display = 'none';
+
+      group.articles.forEach(article => {
+        section.appendChild(makeCard(article));
+      });
+
+      body.appendChild(section);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addLifeKnowledge);
+  } else {
+    addLifeKnowledge();
+  }
+})();
+</script>
+
+     
 </body>
 </html>
