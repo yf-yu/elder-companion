@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-20T01:12:27.233859+00:00",
+  "checked_at": "2026-10-21T00:49:28.298783+00:00",
   "version": "8.6",
   "retention": {
     "weather_days": 3,
@@ -10,27 +10,37 @@
   "sources": {
     "預定停水": {
       "state": "ok",
-      "items": 33,
-      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
+      "items": 13,
+      "last_success_at": "2026-10-21T00:49:06.856866+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 33,
+        "raw_rows": 13,
         "excluded": {}
       }
     },
     "預定停電": {
-      "state": "error",
-      "items": 0,
-      "last_success_at": "2026-10-19T00:24:33.747250+00:00",
-      "hours_since_success": 24.8,
-      "stale": true,
-      "message": "RuntimeError: URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      "state": "ok",
+      "items": 8244,
+      "last_success_at": "2026-10-21T00:49:06.856866+00:00",
+      "hours_since_success": 0,
+      "stale": false,
+      "quality": {
+        "raw_rows": 9088,
+        "excluded": {
+          "超過30天": 490,
+          "已結束": 155,
+          "地區無法辨識": 10,
+          "缺少範圍": 3,
+          "時間無法解析": 184,
+          "相同公告ID": 2
+        }
+      }
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
+      "last_success_at": "2026-10-21T00:49:06.856866+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -40,12 +50,12 @@
     },
     "W-C0033-006": {
       "state": "ok",
-      "items": 0,
-      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
+      "items": 1,
+      "last_success_at": "2026-10-21T00:49:06.856866+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 0,
+        "raw_rows": 1,
         "excluded": {}
       }
     },
@@ -76,7 +86,7 @@
     "W-C0033-010": {
       "state": "ok",
       "items": 0,
-      "last_success_at": "2026-10-20T01:11:37.566924+00:00",
+      "last_success_at": "2026-10-21T00:49:06.856866+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -103,14 +113,15 @@
       "note": "官方來源待驗證"
     }
   },
-  "items": 7149,
+  "items": 8296,
   "category_counts": {
-    "預定停水": 32,
+    "預定停水": 13,
+    "天氣警示": 1,
     "天氣預報": 66,
-    "預定停電": 7051
+    "預定停電": 8216
   },
-  "removed_expired_old_items": 743,
-  "retained_during_source_errors": 7051,
-  "deduplicated_records": 1,
+  "removed_expired_old_items": 960,
+  "retained_during_source_errors": 0,
+  "deduplicated_records": 28,
   "note": "僅顯示有效公告；新增模組未驗證前不刊登資料；stale 代表來源成功更新超過24小時。"
 }
