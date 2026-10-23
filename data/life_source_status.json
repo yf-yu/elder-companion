@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-22T00:51:39.711346+00:00",
+  "checked_at": "2026-10-23T00:53:01.919709+00:00",
   "version": "8.6",
   "retention": {
     "weather_days": 3,
@@ -10,12 +10,12 @@
   "sources": {
     "預定停水": {
       "state": "ok",
-      "items": 12,
-      "last_success_at": "2026-10-22T00:50:43.183839+00:00",
+      "items": 6,
+      "last_success_at": "2026-10-23T00:51:56.326933+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 12,
+        "raw_rows": 6,
         "excluded": {}
       }
     },
@@ -23,14 +23,14 @@
       "state": "error",
       "items": 0,
       "last_success_at": "2026-10-21T00:49:06.856866+00:00",
-      "hours_since_success": 24.0,
+      "hours_since_success": 48.0,
       "stale": true,
       "message": "RuntimeError: URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "last_success_at": "2026-10-22T00:50:43.183839+00:00",
+      "last_success_at": "2026-10-23T00:51:56.326933+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -41,7 +41,7 @@
     "W-C0033-006": {
       "state": "ok",
       "items": 2,
-      "last_success_at": "2026-10-22T00:50:43.183839+00:00",
+      "last_success_at": "2026-10-23T00:51:56.326933+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -76,7 +76,7 @@
     "W-C0033-010": {
       "state": "ok",
       "items": 0,
-      "last_success_at": "2026-10-22T00:50:43.183839+00:00",
+      "last_success_at": "2026-10-23T00:51:56.326933+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -103,15 +103,15 @@
       "note": "官方來源待驗證"
     }
   },
-  "items": 7524,
+  "items": 6669,
   "category_counts": {
-    "預定停水": 12,
-    "天氣預報": 66,
+    "預定停水": 6,
     "天氣警示": 2,
-    "預定停電": 7444
+    "天氣預報": 66,
+    "預定停電": 6595
   },
-  "removed_expired_old_items": 829,
-  "retained_during_source_errors": 7444,
+  "removed_expired_old_items": 906,
+  "retained_during_source_errors": 6595,
   "deduplicated_records": 0,
   "note": "僅顯示有效公告；新增模組未驗證前不刊登資料；stale 代表來源成功更新超過24小時。"
 }
