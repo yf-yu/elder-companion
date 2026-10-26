@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-25T00:29:42.479312+00:00",
+  "checked_at": "2026-10-26T00:38:07.618513+00:00",
   "version": "8.6",
   "retention": {
     "weather_days": 3,
@@ -10,12 +10,12 @@
   "sources": {
     "預定停水": {
       "state": "ok",
-      "items": 3,
-      "last_success_at": "2026-10-25T00:28:52.556144+00:00",
+      "items": 4,
+      "last_success_at": "2026-10-26T00:37:10.880968+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 3,
+        "raw_rows": 4,
         "excluded": {}
       }
     },
@@ -23,14 +23,14 @@
       "state": "error",
       "items": 0,
       "last_success_at": "2026-10-21T00:49:06.856866+00:00",
-      "hours_since_success": 95.7,
+      "hours_since_success": 119.8,
       "stale": true,
       "message": "RuntimeError: URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "last_success_at": "2026-10-25T00:28:52.556144+00:00",
+      "last_success_at": "2026-10-26T00:37:10.880968+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -40,12 +40,12 @@
     },
     "W-C0033-006": {
       "state": "ok",
-      "items": 0,
-      "last_success_at": "2026-10-25T00:28:52.556144+00:00",
+      "items": 1,
+      "last_success_at": "2026-10-26T00:37:10.880968+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 0,
+        "raw_rows": 1,
         "excluded": {}
       }
     },
@@ -76,7 +76,7 @@
     "W-C0033-010": {
       "state": "ok",
       "items": 0,
-      "last_success_at": "2026-10-25T00:28:52.556144+00:00",
+      "last_success_at": "2026-10-26T00:37:10.880968+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -103,14 +103,15 @@
       "note": "官方來源待驗證"
     }
   },
-  "items": 5287,
+  "items": 5217,
   "category_counts": {
-    "預定停水": 3,
+    "天氣警示": 1,
     "天氣預報": 66,
-    "預定停電": 5218
+    "預定停水": 4,
+    "預定停電": 5146
   },
-  "removed_expired_old_items": 872,
-  "retained_during_source_errors": 5218,
+  "removed_expired_old_items": 119,
+  "retained_during_source_errors": 5146,
   "deduplicated_records": 0,
   "note": "僅顯示有效公告；新增模組未驗證前不刊登資料；stale 代表來源成功更新超過24小時。"
 }
