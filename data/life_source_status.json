@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-02T01:44:29.820379+00:00",
+  "checked_at": "2026-11-03T03:39:50.657701+00:00",
   "version": "8.6",
   "retention": {
     "weather_days": 3,
@@ -10,37 +10,37 @@
   "sources": {
     "預定停水": {
       "state": "ok",
-      "items": 30,
-      "last_success_at": "2026-11-02T01:44:10.897838+00:00",
+      "items": 64,
+      "last_success_at": "2026-11-03T03:39:25.366242+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 30,
+        "raw_rows": 64,
         "excluded": {}
       }
     },
     "預定停電": {
       "state": "ok",
-      "items": 7763,
-      "last_success_at": "2026-11-02T01:44:10.897838+00:00",
+      "items": 8205,
+      "last_success_at": "2026-11-03T03:39:25.366242+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
-        "raw_rows": 8641,
+        "raw_rows": 9301,
         "excluded": {
-          "已結束": 89,
-          "地區無法辨識": 5,
-          "超過30天": 596,
-          "缺少範圍": 3,
+          "已結束": 290,
+          "地區無法辨識": 4,
+          "超過30天": 612,
+          "缺少範圍": 4,
           "時間無法解析": 184,
-          "相同公告ID": 1
+          "相同公告ID": 2
         }
       }
     },
     "天氣預報": {
       "state": "ok",
       "items": 66,
-      "last_success_at": "2026-11-02T01:44:10.897838+00:00",
+      "last_success_at": "2026-11-03T03:39:25.366242+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -49,15 +49,12 @@
       }
     },
     "W-C0033-006": {
-      "state": "ok",
-      "items": 1,
+      "state": "error",
+      "items": 0,
       "last_success_at": "2026-11-02T01:44:10.897838+00:00",
-      "hours_since_success": 0,
-      "stale": false,
-      "quality": {
-        "raw_rows": 1,
-        "excluded": {}
-      }
+      "hours_since_success": 25.9,
+      "stale": true,
+      "message": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
     },
     "W-C0033-007": {
       "state": "error",
@@ -73,7 +70,7 @@
       "last_success_at": null,
       "hours_since_success": null,
       "stale": true,
-      "message": "RuntimeError: REST：HTTP Error 404: Not Found；CAP：轉址至非白名單網域，已阻擋"
+      "message": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
     },
     "W-C0033-009": {
       "state": "error",
@@ -86,7 +83,7 @@
     "W-C0033-010": {
       "state": "ok",
       "items": 0,
-      "last_success_at": "2026-11-02T01:44:10.897838+00:00",
+      "last_success_at": "2026-11-03T03:39:25.366242+00:00",
       "hours_since_success": 0,
       "stale": false,
       "quality": {
@@ -113,15 +110,14 @@
       "note": "官方來源待驗證"
     }
   },
-  "items": 7773,
+  "items": 8246,
   "category_counts": {
-    "預定停水": 30,
-    "天氣警示": 1,
-    "天氣預報": 66,
-    "預定停電": 7676
+    "預定停水": 64,
+    "預定停電": 8116,
+    "天氣預報": 66
   },
-  "removed_expired_old_items": 251,
+  "removed_expired_old_items": 796,
   "retained_during_source_errors": 0,
-  "deduplicated_records": 87,
+  "deduplicated_records": 89,
   "note": "僅顯示有效公告；新增模組未驗證前不刊登資料；stale 代表來源成功更新超過24小時。"
 }
