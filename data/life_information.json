@@ -1,280 +1,15 @@
 {
-  "generated_at": "2026-11-27T04:27:58.199856+00:00",
+  "generated_at": "2026-11-28T04:10:37.041958+00:00",
   "items": [
     {
-      "id": "water-8cba72c5537576fbc1b36d00",
-      "category": "預定停水",
-      "title": "停水通知｜臺南市仁德區",
-      "summary": "影響地區：臺南市/仁德區/正義三街、正義二街、正義路。；原因：[仁德區中清路_150mm破管搶修]",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "仁德區",
-      "starts_at": "2026-11-27T08:30:00+08:00",
-      "ends_at": "2026-11-27T15:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-a22b8277e3aa6d498f32edf1",
-      "category": "預定停水",
-      "title": "停水通知｜新竹縣五峰鄉,竹東鎮",
-      "summary": "影響地區：新竹縣/五峰鄉/南清公路、羅山道路。竹東鎮/南清公路。；原因：[因五峰持減壓閥異常，致轄內部份區域停水，造成不便之處敬請見諒，也請用戶在停水時間內暫停取水，復水後請先排水一段時間再進行取水，謝謝。]",
-      "cities": [
-        "新竹縣"
-      ],
-      "district": "五峰鄉,竹東鎮",
-      "starts_at": "2026-11-27T08:48:00+08:00",
-      "ends_at": "2026-11-27T13:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-fd41f2ac627653d2573d7045",
-      "category": "預定停水",
-      "title": "停水通知｜南投縣魚池鄉",
-      "summary": "影響地區：南投縣/魚池鄉/頭社村。；原因：[魚池鄉頭社村平和巷80之1號旁道漏搶修]",
-      "cities": [
-        "南投縣"
-      ],
-      "district": "魚池鄉",
-      "starts_at": "2026-11-27T08:57:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-03b3d6df12ee04687294b2b6",
-      "category": "預定停水",
-      "title": "停水通知｜新北市深坑區",
-      "summary": "影響地區：新北市/深坑區/深南路、風格街。臺北市/南港區/南深路。；原因：[因深坑區深南路風格街前漏水搶修。]",
-      "cities": [
-        "臺北市",
-        "新北市"
-      ],
-      "district": "深坑區",
-      "starts_at": "2026-11-27T09:00:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-136319b0af131791b7ad0b2d",
-      "category": "預定停水",
-      "title": "停水通知｜高雄市路竹區,永安區",
-      "summary": "影響地區：高雄市/路竹區/後鄉里、文北里、文南里、新達里、竹南里、竹東里、竹滬里、竹西里、頂寮里。茄萣區/崎漏里。永安區/保寧里、新港里、永安里、永華里、維新里、鹽田里。共16個村里、台電興達電廠。；原因：[永安區鹽保路鹽保橋前600mmDIP漏水搶修]",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "路竹區,永安區",
-      "starts_at": "2026-11-27T09:00:00+08:00",
-      "ends_at": "2026-11-27T17:30:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-3396e7f54e87b0a9450b4544",
-      "category": "預定停水",
-      "title": "停水通知｜臺南市西港區",
-      "summary": "影響地區：臺南市/西港區/慶安路、南海街。；原因：[為提升供水穩定度、降低管線漏水風險並確保民眾用水水質安全，辦理西港區金砂及南海里等汰換管線工程，以強化整體供水系統效能，提供更安心可靠之用水服務。]",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "西港區",
-      "starts_at": "2026-11-27T09:00:00+08:00",
-      "ends_at": "2026-11-27T16:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-881fce9e219b3dbe08519cc8",
-      "category": "預定停水",
-      "title": "停水通知｜臺中市大里區",
-      "summary": "影響地區：未提供；原因：未提供",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "大里區",
-      "starts_at": "2026-11-27T09:00:00+08:00",
-      "ends_at": "2026-11-27T16:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "power-2991d3396a2e4cd9ea64b2b7",
-      "category": "預定停電",
-      "title": "預定停電｜台電台中區營業處",
-      "summary": "停電範圍：台中市大雅區中山路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T09:00:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "water-d2d91bea04306e7201900118",
-      "category": "預定停水",
-      "title": "停水通知｜嘉義縣阿里山鄉,竹崎鄉",
-      "summary": "影響地區：嘉義縣/竹崎鄉/中和村。阿里山鄉/樂野村。共2個村里。；原因：[嘉義縣竹崎鄉石棹22之6號附近破管搶修]",
-      "cities": [
-        "嘉義縣"
-      ],
-      "district": "阿里山鄉,竹崎鄉",
-      "starts_at": "2026-11-27T09:17:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-d4f3376c8486205a4fc5f44c",
-      "category": "預定停水",
-      "title": "停水通知｜桃園市蘆竹區",
-      "summary": "影響地區：桃園市/蘆竹區/富貴街、山富街、山林路一段、山林路二段、成功街、武聖街、聯發街、興化路、順利一街、順利二街，沿線含巷弄。；原因：[因蘆竹區山林路一段173號旁200mmPVCP漏水緊急搶修。]",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "蘆竹區",
-      "starts_at": "2026-11-27T09:35:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-0d7d6359181eda5ff9714534",
-      "category": "預定停水",
-      "title": "停水通知｜南投縣南投市",
-      "summary": "影響地區：南投縣/南投市/文化路、文林路、祖祠路。；原因：[文化路372號破管搶修]",
-      "cities": [
-        "南投縣"
-      ],
-      "district": "南投市",
-      "starts_at": "2026-11-27T09:45:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-6ae34d8ee3ebed8d7204d6ec",
-      "category": "預定停水",
-      "title": "停水通知｜高雄市前金區",
-      "summary": "影響地區：高雄市/前金區/文東里。共1個村里。；原因：[前金區新田路178巷轉彎處破管搶修]",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "前金區",
-      "starts_at": "2026-11-27T09:59:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-b63a64089789e8b2e3177283",
-      "category": "預定停水",
-      "title": "停水通知｜臺中市新社區",
-      "summary": "影響地區：未提供；原因：未提供",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "新社區",
-      "starts_at": "2026-11-27T10:00:00+08:00",
-      "ends_at": "2026-11-27T12:30:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-b089c77270dd53a77ae3f06f",
-      "category": "預定停水",
-      "title": "停水通知｜桃園市中壢區",
-      "summary": "影響地區：桃園市中壢區福壽九街、福壽六街、福壽十一街、福安二街、福州一街、福州二街、福星一街、福星七街、福星三街、福星二街、福星五街、福星六街。；原因：[桃園市中壢區福州二街388號漏水修理]",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "中壢區",
-      "starts_at": "2026-11-27T10:09:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-a886b6896f50ffad9c92f0c8",
-      "category": "預定停水",
-      "title": "停水通知｜臺中市東區,太平區",
-      "summary": "影響地區：未提供；原因：未提供",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "東區,太平區",
-      "starts_at": "2026-11-27T10:11:00+08:00",
-      "ends_at": "2026-11-27T17:30:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-7a40ff7b0b49f4156a77ee53",
-      "category": "預定停水",
-      "title": "停水通知｜高雄市湖內區",
-      "summary": "影響地區：高雄市/湖內區/公舘里、海埔里、海山里、葉厝里、逸賢里。共5個村里。；原因：[湖內區信義路171號前破館搶修]",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "湖內區",
-      "starts_at": "2026-11-27T10:13:00+08:00",
-      "ends_at": "2026-11-27T16:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-f0c3d3c32e319e4ce8f2742b",
-      "category": "預定停水",
-      "title": "停水通知｜臺中市太平區",
-      "summary": "影響地區：未提供；原因：未提供",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "太平區",
-      "starts_at": "2026-11-27T10:19:00+08:00",
-      "ends_at": "2026-11-27T12:30:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-8db55f209e82fadb58126a72",
-      "category": "預定停水",
-      "title": "停水通知｜高雄市彌陀區,梓官區",
-      "summary": "影響地區：高雄市/彌陀區/復興街、新庄路。梓官區/中正路、復興街、新庄路、赤崁北路、赤崁南路、赤崁東路、赤崁西路。；原因：[彌陀區南寮里新庄路1之11號自來水管緊急搶修]",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "彌陀區,梓官區",
-      "starts_at": "2026-11-27T10:22:00+08:00",
-      "ends_at": "2026-11-27T13:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-4b93b9e2c8c864edf8f3bf41",
-      "category": "預定停水",
-      "title": "停水通知｜新北市樹林區",
-      "summary": "影響地區：新北市樹林區中正路2~104號、俊英街22~78號雙號側、俊英街13~31號單號側、千歲街26~186雙號側、千歲街97~111號單號側。；原因：[新北市樹林區千歲街40號前漏水修理]",
-      "cities": [
-        "新北市"
-      ],
-      "district": "樹林區",
-      "starts_at": "2026-11-27T10:23:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "alert-1a6d407813c4a34fddf565a1",
+      "id": "alert-47e28b9bdb25b04b7562af25",
       "category": "天氣警示",
       "title": "陸上強風特報(黃色燈號)",
-      "summary": "東北風增強，28日晨至晚上桃園市、苗栗縣、臺中市、彰化縣、雲林縣、嘉義縣、臺南市、屏東縣、臺東縣(含蘭嶼、綠島)、澎湖縣局部地區有平均風6級以上或陣風8級以上發生的機率(黃色燈號)，請注意。",
+      "summary": "東北風明顯偏強，28日上午至29日晚上桃園市、新竹市、新竹縣、苗栗縣、臺中市、彰化縣、雲林縣、嘉義縣、臺南市、屏東縣、臺東縣(含蘭嶼、綠島)、澎湖縣、連江縣局部地區有平均風6級以上或陣風8級以上發生的機率(黃色燈號)，請注意。",
       "cities": [
         "桃園市",
+        "新竹市",
+        "新竹縣",
         "苗栗縣",
         "臺中市",
         "彰化縣",
@@ -283,1039 +18,32 @@
         "臺南市",
         "屏東縣",
         "臺東縣",
-        "澎湖縣"
+        "澎湖縣",
+        "連江縣"
       ],
       "district": "",
-      "starts_at": "2026-11-27T10:29:00+08:00",
-      "ends_at": "2026-11-28T23:00:00+08:00",
+      "starts_at": "2026-11-28T10:27:00+08:00",
+      "ends_at": "2026-11-29T23:00:00+08:00",
       "source": "中央氣象署",
       "url": "https://www.cwa.gov.tw/",
       "api_id": "W-C0033-006"
     },
     {
-      "id": "water-a3aa645c5d4d13971a44425f",
-      "category": "預定停水",
-      "title": "停水通知｜苗栗縣西湖鄉",
-      "summary": "影響地區：苗栗縣/西湖鄉/金獅村。；原因：[供水設備故障影響高勢地區供水]",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "西湖鄉",
-      "starts_at": "2026-11-27T10:39:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-479c0cf1f31a64208eaa7542",
-      "category": "預定停水",
-      "title": "停水通知｜高雄市楠梓區",
-      "summary": "影響地區：高雄市/楠梓區/錦屏里。共1個村里。；原因：[楠梓區後昌路105巷31號搶修]",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "楠梓區",
-      "starts_at": "2026-11-27T10:40:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-8c1a95a0521b271808dd60da",
-      "category": "預定停水",
-      "title": "停水通知｜桃園市八德區",
-      "summary": "影響地區：八德區:興豐路 沿線含巷弄；原因：[八德區興豐路1142號旁 80mmPVCP 漏水搶修停水。]",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "八德區",
-      "starts_at": "2026-11-27T10:45:00+08:00",
-      "ends_at": "2026-11-27T13:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-dad480bc4dce3db8b2b6e968",
-      "category": "預定停水",
-      "title": "停水通知｜臺中市豐原區",
-      "summary": "影響地區：臺中市/豐原區/南陽一街、南陽路、東陽路、綠山三街、綠山二街、綠山五街、豐原大道四段。；原因：[豐原區南陽路1之2之15號破管搶修]",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "豐原區",
-      "starts_at": "2026-11-27T10:52:00+08:00",
-      "ends_at": "2026-11-27T15:30:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-08f3949bd1e8e47995372051",
-      "category": "預定停水",
-      "title": "停水通知｜新北市新莊區",
-      "summary": "影響地區：新北市/新莊區/中和街155巷.中平路270巷.等；原因：[中平路210號10弄12號漏水修復]",
-      "cities": [
-        "新北市"
-      ],
-      "district": "新莊區",
-      "starts_at": "2026-11-27T11:00:00+08:00",
-      "ends_at": "2026-11-27T16:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-6e553c56b4659a0fbec01473",
-      "category": "預定停水",
-      "title": "停水通知｜臺南市大內區",
-      "summary": "影響地區：臺南市/大內區/東西向快速公路北門玉井線。；原因：[大內區頭社里頭社214號旁管線緊急維修]",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "大內區",
-      "starts_at": "2026-11-27T11:05:00+08:00",
-      "ends_at": "2026-11-27T13:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "water-a20acae5af2d1ee3d660ac4f",
-      "category": "預定停水",
-      "title": "停水通知｜臺中市大雅區,西屯區",
-      "summary": "影響地區：臺中市/大雅區/港尾路、西村路。西屯區/港尾路、環中路一段、西村路。；原因：[大雅區西村路10號破管搶修]",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "大雅區,西屯區",
-      "starts_at": "2026-11-27T11:46:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "weather-2019d0b8c5b02b8ffd7c436c",
-      "category": "天氣預報",
-      "title": "新竹市天氣｜晴時多雲",
-      "summary": "氣溫 21～24°C，降雨機率 10%。",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-25e463de398feb7f01e67070",
-      "category": "天氣預報",
-      "title": "臺中市天氣｜多雲",
-      "summary": "氣溫 23～27°C，降雨機率 0%。",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-2dc2e9b23c4ff46d50a354df",
-      "category": "天氣預報",
-      "title": "臺北市天氣｜多雲",
-      "summary": "氣溫 21～26°C，降雨機率 10%。",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-3555b7665a4fc168a471eab9",
-      "category": "天氣預報",
-      "title": "臺東縣天氣｜陰時多雲",
-      "summary": "氣溫 24～26°C，降雨機率 20%。",
-      "cities": [
-        "臺東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-59b5b09d933a80c7f12ef02e",
-      "category": "天氣預報",
-      "title": "花蓮縣天氣｜多雲",
-      "summary": "氣溫 23～25°C，降雨機率 20%。",
-      "cities": [
-        "花蓮縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-662936cc431fcdaac415db3b",
-      "category": "天氣預報",
-      "title": "桃園市天氣｜多雲時晴",
-      "summary": "氣溫 20～24°C，降雨機率 10%。",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-6b5c44188128f770436b5b82",
-      "category": "天氣預報",
-      "title": "嘉義縣天氣｜晴時多雲",
-      "summary": "氣溫 24～27°C，降雨機率 0%。",
-      "cities": [
-        "嘉義縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-6d5944be75f133aca0e4369c",
-      "category": "天氣預報",
-      "title": "新北市天氣｜晴時多雲",
-      "summary": "氣溫 21～25°C，降雨機率 10%。",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-76f275ec75f913ecff6daa8d",
+      "id": "weather-10add9e7eb76744574ced484",
       "category": "天氣預報",
       "title": "新竹縣天氣｜晴時多雲",
-      "summary": "氣溫 21～25°C，降雨機率 10%。",
-      "cities": [
-        "新竹縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-7a204f983c1f6250421513c2",
-      "category": "天氣預報",
-      "title": "南投縣天氣｜晴時多雲",
-      "summary": "氣溫 24～27°C，降雨機率 0%。",
-      "cities": [
-        "南投縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-886538a1430aa8653e2a1471",
-      "category": "天氣預報",
-      "title": "彰化縣天氣｜多雲",
-      "summary": "氣溫 23～26°C，降雨機率 0%。",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-9211f733738ea9575fe183ad",
-      "category": "天氣預報",
-      "title": "雲林縣天氣｜晴時多雲",
-      "summary": "氣溫 23～27°C，降雨機率 0%。",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-99de1bd16ee908f5ee8f105f",
-      "category": "天氣預報",
-      "title": "高雄市天氣｜晴時多雲",
-      "summary": "氣溫 26～29°C，降雨機率 0%。",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-9d423b540dcdaff1a6f51887",
-      "category": "天氣預報",
-      "title": "連江縣天氣｜晴時多雲",
-      "summary": "氣溫 18～20°C，降雨機率 0%。",
-      "cities": [
-        "連江縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-c7b35eb0ec40f2e8952d4bb2",
-      "category": "天氣預報",
-      "title": "屏東縣天氣｜晴時多雲",
-      "summary": "氣溫 26～29°C，降雨機率 10%。",
-      "cities": [
-        "屏東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-c9ccc3bdbb75250590b59c1e",
-      "category": "天氣預報",
-      "title": "臺南市天氣｜晴時多雲",
-      "summary": "氣溫 24～27°C，降雨機率 0%。",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-d3765e1fc22c7e36cc30f225",
-      "category": "天氣預報",
-      "title": "金門縣天氣｜晴時多雲",
-      "summary": "氣溫 19～22°C，降雨機率 0%。",
-      "cities": [
-        "金門縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-e5482c81f6ed2cd88cf490b0",
-      "category": "天氣預報",
-      "title": "宜蘭縣天氣｜多雲",
-      "summary": "氣溫 22～25°C，降雨機率 10%。",
-      "cities": [
-        "宜蘭縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-f2f927b99a3b0b9b2bd8ae7a",
-      "category": "天氣預報",
-      "title": "苗栗縣天氣｜晴時多雲",
-      "summary": "氣溫 21～25°C，降雨機率 10%。",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-f5626da687cadb8aa2ca340a",
-      "category": "天氣預報",
-      "title": "澎湖縣天氣｜晴時多雲",
-      "summary": "氣溫 22～24°C，降雨機率 0%。",
-      "cities": [
-        "澎湖縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-f7ff58294d9544baf9770f19",
-      "category": "天氣預報",
-      "title": "嘉義市天氣｜晴時多雲",
-      "summary": "氣溫 24～28°C，降雨機率 0%。",
-      "cities": [
-        "嘉義市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-fca3b667355db947228f57a3",
-      "category": "天氣預報",
-      "title": "基隆市天氣｜多雲",
-      "summary": "氣溫 21～23°C，降雨機率 10%。",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "water-f18640b4dbbfac2616d18cec",
-      "category": "預定停水",
-      "title": "停水通知｜桃園市大園區",
-      "summary": "影響地區：桃園市/大園區/大海里(皆含其巷道)；原因：[大園區桃5德昌營造對面漏水搶修]",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "大園區",
-      "starts_at": "2026-11-27T12:00:00+08:00",
-      "ends_at": "2026-11-27T16:00:00+08:00",
-      "source": "台灣自來水公司",
-      "url": "https://data.gov.tw/dataset/6050"
-    },
-    {
-      "id": "power-613f3da9be32ce9c24dbee9d",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣頭屋鄉枋寮坑段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T13:00:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-7fbd2f48c547cfd3778e7e43",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮埔頂里；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T13:00:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-7fe163e4a598ba6206bd891e",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣頭屋鄉鳴鳳村枋寮坑段；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T13:00:00+08:00",
-      "ends_at": "2026-11-27T14:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-f8a3a1bf955e885bae778b3e",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣後龍鎮頂東路；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T13:00:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-fcbe4bbef47c6ba884785252",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣銅鑼鄉中平村；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T13:30:00+08:00",
-      "ends_at": "2026-11-27T17:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "power-d6967c6c140257a52c156040",
-      "category": "預定停電",
-      "title": "預定停電｜台電苗栗區營業處",
-      "summary": "停電範圍：苗栗縣頭屋鄉枋寮坑；工作內容：管線遷移工程；查詢電話：1911",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T14:10:00+08:00",
-      "ends_at": "2026-11-27T15:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
-    },
-    {
-      "id": "weather-037e77dabd28cfbf6ca0c701",
-      "category": "天氣預報",
-      "title": "臺北市天氣｜多雲",
-      "summary": "氣溫 19～21°C，降雨機率 10%。",
-      "cities": [
-        "臺北市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-0eeaba7471366d29734179f1",
-      "category": "天氣預報",
-      "title": "澎湖縣天氣｜晴時多雲",
-      "summary": "氣溫 22～22°C，降雨機率 0%。",
-      "cities": [
-        "澎湖縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-16f842502e1f5371c14a87cc",
-      "category": "天氣預報",
-      "title": "基隆市天氣｜多雲",
-      "summary": "氣溫 19～21°C，降雨機率 10%。",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-1a3dfc8d10b9ad317ba41fdf",
-      "category": "天氣預報",
-      "title": "屏東縣天氣｜晴時多雲",
-      "summary": "氣溫 21～26°C，降雨機率 0%。",
-      "cities": [
-        "屏東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-1c7c4de75e3a129ab0f7cb2f",
-      "category": "天氣預報",
-      "title": "臺東縣天氣｜陰時多雲",
-      "summary": "氣溫 22～24°C，降雨機率 20%。",
-      "cities": [
-        "臺東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-2c8c6571547bca456fbcd369",
-      "category": "天氣預報",
-      "title": "新竹市天氣｜晴時多雲",
-      "summary": "氣溫 18～21°C，降雨機率 10%。",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-4a5edbea0605b1f4fdbf684e",
-      "category": "天氣預報",
-      "title": "高雄市天氣｜晴時多雲",
-      "summary": "氣溫 22～26°C，降雨機率 0%。",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-51a1a479d5a4e2ae67835dfe",
-      "category": "天氣預報",
-      "title": "嘉義市天氣｜晴時多雲",
       "summary": "氣溫 19～24°C，降雨機率 0%。",
       "cities": [
-        "嘉義市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-537b85edbbda360742245062",
-      "category": "天氣預報",
-      "title": "嘉義縣天氣｜晴時多雲",
-      "summary": "氣溫 20～24°C，降雨機率 0%。",
-      "cities": [
-        "嘉義縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-5b46f7efbdbc3f8165447890",
-      "category": "天氣預報",
-      "title": "新竹縣天氣｜晴時多雲",
-      "summary": "氣溫 18～21°C，降雨機率 10%。",
-      "cities": [
         "新竹縣"
       ],
       "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-5c9dbb9f7ecac7e2a543b091",
-      "category": "天氣預報",
-      "title": "宜蘭縣天氣｜多雲時陰",
-      "summary": "氣溫 19～22°C，降雨機率 10%。",
-      "cities": [
-        "宜蘭縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-6bbce959c490c6479f84759a",
-      "category": "天氣預報",
-      "title": "雲林縣天氣｜晴時多雲",
-      "summary": "氣溫 20～23°C，降雨機率 0%。",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-7d614fd2416f5a527677bf74",
-      "category": "天氣預報",
-      "title": "金門縣天氣｜晴時多雲",
-      "summary": "氣溫 17～19°C，降雨機率 0%。",
-      "cities": [
-        "金門縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-7f63a27f615a10a051c9a0c1",
-      "category": "天氣預報",
-      "title": "花蓮縣天氣｜多雲時陰",
-      "summary": "氣溫 20～23°C，降雨機率 20%。",
-      "cities": [
-        "花蓮縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-c280c8f7220d7835fef6585e",
-      "category": "天氣預報",
-      "title": "南投縣天氣｜晴時多雲",
-      "summary": "氣溫 20～24°C，降雨機率 0%。",
-      "cities": [
-        "南投縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-c4ae70e97d58e72f985542bf",
-      "category": "天氣預報",
-      "title": "新北市天氣｜多雲時晴",
-      "summary": "氣溫 19～21°C，降雨機率 10%。",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-c81d62f86a002c5c6b73d405",
-      "category": "天氣預報",
-      "title": "彰化縣天氣｜晴時多雲",
-      "summary": "氣溫 20～23°C，降雨機率 0%。",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-cf3cd78e7cdb7d78f6c9efa1",
-      "category": "天氣預報",
-      "title": "苗栗縣天氣｜多雲時晴",
-      "summary": "氣溫 18～21°C，降雨機率 10%。",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-d6cb444743c7bcc7fd19d81b",
-      "category": "天氣預報",
-      "title": "連江縣天氣｜晴時多雲",
-      "summary": "氣溫 16～18°C，降雨機率 0%。",
-      "cities": [
-        "連江縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-d970261608ae5e53aa0487f7",
-      "category": "天氣預報",
-      "title": "桃園市天氣｜多雲",
-      "summary": "氣溫 18～20°C，降雨機率 10%。",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-dc4544187eaf7304f18cc4ad",
-      "category": "天氣預報",
-      "title": "臺中市天氣｜晴時多雲",
-      "summary": "氣溫 20～23°C，降雨機率 0%。",
-      "cities": [
-        "臺中市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-ef445fbb8a1a9434a29e6e76",
-      "category": "天氣預報",
-      "title": "臺南市天氣｜晴時多雲",
-      "summary": "氣溫 21～24°C，降雨機率 0%。",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-27T18:00:00+08:00",
-      "ends_at": "2026-11-28T06:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-0b9469738f7d14e6b6feaa6e",
-      "category": "天氣預報",
-      "title": "新北市天氣｜晴時多雲",
-      "summary": "氣溫 19～24°C，降雨機率 10%。",
-      "cities": [
-        "新北市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
+      "starts_at": "2026-11-28T12:00:00+08:00",
       "ends_at": "2026-11-28T18:00:00+08:00",
       "source": "中央氣象署",
       "url": "https://www.cwa.gov.tw/"
     },
     {
-      "id": "weather-0ec4133d7be348495fa29773",
-      "category": "天氣預報",
-      "title": "苗栗縣天氣｜晴時多雲",
-      "summary": "氣溫 18～24°C，降雨機率 0%。",
-      "cities": [
-        "苗栗縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-130fcb4135421d6dc4b207c7",
-      "category": "天氣預報",
-      "title": "花蓮縣天氣｜陰天",
-      "summary": "氣溫 20～23°C，降雨機率 10%。",
-      "cities": [
-        "花蓮縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-2a3d66f900fc0a062ed10891",
-      "category": "天氣預報",
-      "title": "南投縣天氣｜晴時多雲",
-      "summary": "氣溫 20～26°C，降雨機率 0%。",
-      "cities": [
-        "南投縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-3020993862e58326e4c699f9",
-      "category": "天氣預報",
-      "title": "基隆市天氣｜晴時多雲",
-      "summary": "氣溫 19～22°C，降雨機率 10%。",
-      "cities": [
-        "基隆市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-3f1eb793f2ad19515201dee9",
-      "category": "天氣預報",
-      "title": "新竹縣天氣｜晴時多雲",
-      "summary": "氣溫 18～24°C，降雨機率 0%。",
-      "cities": [
-        "新竹縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-4a46fe19496d6d7fabcc76eb",
-      "category": "天氣預報",
-      "title": "澎湖縣天氣｜晴時多雲",
-      "summary": "氣溫 21～24°C，降雨機率 0%。",
-      "cities": [
-        "澎湖縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-50b4f5cdc5d6683576b0959b",
-      "category": "天氣預報",
-      "title": "連江縣天氣｜晴時多雲",
-      "summary": "氣溫 16～21°C，降雨機率 0%。",
-      "cities": [
-        "連江縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-55d4b5577f9a3e75e92c747e",
-      "category": "天氣預報",
-      "title": "宜蘭縣天氣｜晴時多雲",
-      "summary": "氣溫 19～24°C，降雨機率 10%。",
-      "cities": [
-        "宜蘭縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-6143d9dd2e6aa991d85cc219",
-      "category": "天氣預報",
-      "title": "高雄市天氣｜多雲時晴",
-      "summary": "氣溫 22～29°C，降雨機率 0%。",
-      "cities": [
-        "高雄市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-62c2f8665f86358ca827cf75",
-      "category": "天氣預報",
-      "title": "彰化縣天氣｜晴時多雲",
-      "summary": "氣溫 20～26°C，降雨機率 0%。",
-      "cities": [
-        "彰化縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-62ca5cb39dfb211c58b4ca97",
-      "category": "天氣預報",
-      "title": "雲林縣天氣｜晴時多雲",
-      "summary": "氣溫 20～26°C，降雨機率 0%。",
-      "cities": [
-        "雲林縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-63bc1f13890d4f52a2c74542",
-      "category": "天氣預報",
-      "title": "嘉義縣天氣｜晴時多雲",
-      "summary": "氣溫 20～26°C，降雨機率 0%。",
-      "cities": [
-        "嘉義縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-65dbc329e4988bc834e1ddfb",
-      "category": "天氣預報",
-      "title": "金門縣天氣｜晴時多雲",
-      "summary": "氣溫 17～24°C，降雨機率 0%。",
-      "cities": [
-        "金門縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-7f3e7eebe6e5fa910b82f348",
-      "category": "天氣預報",
-      "title": "屏東縣天氣｜多雲時晴",
-      "summary": "氣溫 21～28°C，降雨機率 0%。",
-      "cities": [
-        "屏東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-98cf7fbe726f69dc2eeb9730",
+      "id": "weather-136c55ca2381f4c4207779c8",
       "category": "天氣預報",
       "title": "臺北市天氣｜晴時多雲",
       "summary": "氣溫 19～24°C，降雨機率 10%。",
@@ -1323,108 +51,598 @@
         "臺北市"
       ],
       "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
+      "starts_at": "2026-11-28T12:00:00+08:00",
       "ends_at": "2026-11-28T18:00:00+08:00",
       "source": "中央氣象署",
       "url": "https://www.cwa.gov.tw/"
     },
     {
-      "id": "weather-ade227384ed2c818f5625a62",
+      "id": "weather-13ceb013fe5c36b823345c90",
       "category": "天氣預報",
-      "title": "嘉義市天氣｜晴時多雲",
-      "summary": "氣溫 19～26°C，降雨機率 0%。",
-      "cities": [
-        "嘉義市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-af7da7ba32cadf714349af79",
-      "category": "天氣預報",
-      "title": "桃園市天氣｜晴時多雲",
-      "summary": "氣溫 18～23°C，降雨機率 0%。",
-      "cities": [
-        "桃園市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-db248089298803b2792083b7",
-      "category": "天氣預報",
-      "title": "臺南市天氣｜晴時多雲",
-      "summary": "氣溫 21～27°C，降雨機率 0%。",
-      "cities": [
-        "臺南市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-e65f4e736faa574f731f0e7f",
-      "category": "天氣預報",
-      "title": "新竹市天氣｜晴時多雲",
-      "summary": "氣溫 18～23°C，降雨機率 0%。",
-      "cities": [
-        "新竹市"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "weather-ed9e4035922a50fad50ce293",
-      "category": "天氣預報",
-      "title": "臺中市天氣｜晴時多雲",
+      "title": "彰化縣天氣｜晴時多雲",
       "summary": "氣溫 20～26°C，降雨機率 0%。",
       "cities": [
-        "臺中市"
+        "彰化縣"
       ],
       "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
+      "starts_at": "2026-11-28T12:00:00+08:00",
       "ends_at": "2026-11-28T18:00:00+08:00",
       "source": "中央氣象署",
       "url": "https://www.cwa.gov.tw/"
     },
     {
-      "id": "weather-fa1507f9f639204cd6bd11bd",
+      "id": "weather-14adae1afc1011c91065784a",
       "category": "天氣預報",
-      "title": "臺東縣天氣｜陰天",
-      "summary": "氣溫 21～25°C，降雨機率 10%。",
-      "cities": [
-        "臺東縣"
-      ],
-      "district": "",
-      "starts_at": "2026-11-28T06:00:00+08:00",
-      "ends_at": "2026-11-28T18:00:00+08:00",
-      "source": "中央氣象署",
-      "url": "https://www.cwa.gov.tw/"
-    },
-    {
-      "id": "power-aa80d2772779a31cffe29c81",
-      "category": "預定停電",
-      "title": "預定停電｜台電高雄區營業處",
-      "summary": "停電範圍：高雄市大社區中正路；工作內容：管線遷移工程；查詢電話：1911",
+      "title": "高雄市天氣｜陰天",
+      "summary": "氣溫 25～28°C，降雨機率 20%。",
       "cities": [
         "高雄市"
       ],
       "district": "",
-      "starts_at": "2026-11-28T08:00:00+08:00",
-      "ends_at": "2026-11-28T12:00:00+08:00",
-      "source": "台灣電力公司",
-      "url": "https://data.gov.tw/dataset/26144"
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-19b4dee62b3c20a9deba7944",
+      "category": "天氣預報",
+      "title": "臺南市天氣｜多雲",
+      "summary": "氣溫 22～27°C，降雨機率 20%。",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-232615182f0d826e4fb70bd0",
+      "category": "天氣預報",
+      "title": "苗栗縣天氣｜晴時多雲",
+      "summary": "氣溫 18～24°C，降雨機率 0%。",
+      "cities": [
+        "苗栗縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-2525fa9a97e222f2332a49cf",
+      "category": "天氣預報",
+      "title": "基隆市天氣｜晴時多雲",
+      "summary": "氣溫 20～22°C，降雨機率 10%。",
+      "cities": [
+        "基隆市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-281f2a3212d3a40f66e1a2b1",
+      "category": "天氣預報",
+      "title": "澎湖縣天氣｜晴時多雲",
+      "summary": "氣溫 21～24°C，降雨機率 0%。",
+      "cities": [
+        "澎湖縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-394cdb03a33d49b0a7b076a9",
+      "category": "天氣預報",
+      "title": "花蓮縣天氣｜陰天",
+      "summary": "氣溫 20～23°C，降雨機率 20%。",
+      "cities": [
+        "花蓮縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-4a50930740271395951af528",
+      "category": "天氣預報",
+      "title": "金門縣天氣｜晴時多雲",
+      "summary": "氣溫 19～24°C，降雨機率 0%。",
+      "cities": [
+        "金門縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-561b6802435fa06e70807927",
+      "category": "天氣預報",
+      "title": "臺中市天氣｜晴時多雲",
+      "summary": "氣溫 21～26°C，降雨機率 0%。",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-62b5aa38156ced60e5a4bf4b",
+      "category": "天氣預報",
+      "title": "南投縣天氣｜晴時多雲",
+      "summary": "氣溫 21～26°C，降雨機率 0%。",
+      "cities": [
+        "南投縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-6471616314bf83ee3182ee4b",
+      "category": "天氣預報",
+      "title": "雲林縣天氣｜多雲",
+      "summary": "氣溫 20～25°C，降雨機率 0%。",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-687055b30f5e6fb5c3171cbb",
+      "category": "天氣預報",
+      "title": "連江縣天氣｜晴時多雲",
+      "summary": "氣溫 18～21°C，降雨機率 0%。",
+      "cities": [
+        "連江縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-6d8d0b97dfdb222dcd6b8ed8",
+      "category": "天氣預報",
+      "title": "新竹市天氣｜晴時多雲",
+      "summary": "氣溫 19～24°C，降雨機率 0%。",
+      "cities": [
+        "新竹市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-73c007987a476774a358ceca",
+      "category": "天氣預報",
+      "title": "宜蘭縣天氣｜晴時多雲",
+      "summary": "氣溫 19～24°C，降雨機率 10%。",
+      "cities": [
+        "宜蘭縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-94597a6e2bcefbf0235f9ce2",
+      "category": "天氣預報",
+      "title": "臺東縣天氣｜陰天",
+      "summary": "氣溫 20～24°C，降雨機率 20%。",
+      "cities": [
+        "臺東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-a0513e7602d1a933e75b5942",
+      "category": "天氣預報",
+      "title": "新北市天氣｜晴時多雲",
+      "summary": "氣溫 19～24°C，降雨機率 10%。",
+      "cities": [
+        "新北市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-a5c3ac5b1370ab1475a2e362",
+      "category": "天氣預報",
+      "title": "桃園市天氣｜晴時多雲",
+      "summary": "氣溫 19～23°C，降雨機率 0%。",
+      "cities": [
+        "桃園市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-af012947cacd942bffcdd2f5",
+      "category": "天氣預報",
+      "title": "屏東縣天氣｜陰天",
+      "summary": "氣溫 23～26°C，降雨機率 20%。",
+      "cities": [
+        "屏東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b42f1dcdef916d457ef90af2",
+      "category": "天氣預報",
+      "title": "嘉義市天氣｜多雲",
+      "summary": "氣溫 20～26°C，降雨機率 20%。",
+      "cities": [
+        "嘉義市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-ed1b4c8530008e926b1441ae",
+      "category": "天氣預報",
+      "title": "嘉義縣天氣｜多雲",
+      "summary": "氣溫 20～25°C，降雨機率 20%。",
+      "cities": [
+        "嘉義縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T12:00:00+08:00",
+      "ends_at": "2026-11-28T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-0911c23c2dcf3cbdbf9526d2",
+      "category": "天氣預報",
+      "title": "宜蘭縣天氣｜多雲時晴",
+      "summary": "氣溫 15～19°C，降雨機率 10%。",
+      "cities": [
+        "宜蘭縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-1a37670de09e3a6cb39a368a",
+      "category": "天氣預報",
+      "title": "金門縣天氣｜晴時多雲",
+      "summary": "氣溫 17～19°C，降雨機率 0%。",
+      "cities": [
+        "金門縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-2715a55a9493a6a88d6af56e",
+      "category": "天氣預報",
+      "title": "新竹縣天氣｜多雲時晴",
+      "summary": "氣溫 16～19°C，降雨機率 0%。",
+      "cities": [
+        "新竹縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-3338d276da6e73da7628eb08",
+      "category": "天氣預報",
+      "title": "苗栗縣天氣｜晴時多雲",
+      "summary": "氣溫 14～18°C，降雨機率 0%。",
+      "cities": [
+        "苗栗縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-37bdd834b63642326e230c82",
+      "category": "天氣預報",
+      "title": "嘉義縣天氣｜多雲時晴",
+      "summary": "氣溫 14～20°C，降雨機率 20%。",
+      "cities": [
+        "嘉義縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-3db07c846cbeaf50510db531",
+      "category": "天氣預報",
+      "title": "臺中市天氣｜晴時多雲",
+      "summary": "氣溫 16～21°C，降雨機率 0%。",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-4525de516c57e46c739cfd4e",
+      "category": "天氣預報",
+      "title": "南投縣天氣｜晴時多雲",
+      "summary": "氣溫 15～21°C，降雨機率 0%。",
+      "cities": [
+        "南投縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-45a46f36a19cecf7be603b7d",
+      "category": "天氣預報",
+      "title": "澎湖縣天氣｜晴時多雲",
+      "summary": "氣溫 20～21°C，降雨機率 0%。",
+      "cities": [
+        "澎湖縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-47c711ee6dac046f12270dd1",
+      "category": "天氣預報",
+      "title": "新竹市天氣｜多雲時晴",
+      "summary": "氣溫 16～19°C，降雨機率 0%。",
+      "cities": [
+        "新竹市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-4b5a2e54051082122c3e34ca",
+      "category": "天氣預報",
+      "title": "花蓮縣天氣｜晴時多雲",
+      "summary": "氣溫 17～20°C，降雨機率 20%。",
+      "cities": [
+        "花蓮縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-7178f0145d70a6d87790606b",
+      "category": "天氣預報",
+      "title": "臺南市天氣｜多雲時晴",
+      "summary": "氣溫 17～22°C，降雨機率 20%。",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-71f9e94cb008cde28b83be89",
+      "category": "天氣預報",
+      "title": "基隆市天氣｜多雲時晴",
+      "summary": "氣溫 18～20°C，降雨機率 10%。",
+      "cities": [
+        "基隆市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-803604fe1b6b62aed92f19c9",
+      "category": "天氣預報",
+      "title": "雲林縣天氣｜晴時多雲",
+      "summary": "氣溫 15～20°C，降雨機率 0%。",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-813978bf26c0440b20ba95a3",
+      "category": "天氣預報",
+      "title": "臺東縣天氣｜陰時多雲",
+      "summary": "氣溫 18～20°C，降雨機率 20%。",
+      "cities": [
+        "臺東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-8b8f65439348fb0b47ea096e",
+      "category": "天氣預報",
+      "title": "臺北市天氣｜多雲時晴",
+      "summary": "氣溫 17～19°C，降雨機率 10%。",
+      "cities": [
+        "臺北市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-8bc63d65922e1525cd1d4625",
+      "category": "天氣預報",
+      "title": "高雄市天氣｜多雲",
+      "summary": "氣溫 20～25°C，降雨機率 20%。",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b06b8ac0161ee00172c5ae8d",
+      "category": "天氣預報",
+      "title": "彰化縣天氣｜晴時多雲",
+      "summary": "氣溫 16～20°C，降雨機率 0%。",
+      "cities": [
+        "彰化縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b6a66a50e4bdb6b43250e302",
+      "category": "天氣預報",
+      "title": "新北市天氣｜多雲時晴",
+      "summary": "氣溫 17～19°C，降雨機率 10%。",
+      "cities": [
+        "新北市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b810654ec73790d68bc4398d",
+      "category": "天氣預報",
+      "title": "連江縣天氣｜晴時多雲",
+      "summary": "氣溫 16～18°C，降雨機率 0%。",
+      "cities": [
+        "連江縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-c4c50940a5bbbb88ef40616c",
+      "category": "天氣預報",
+      "title": "屏東縣天氣｜多雲",
+      "summary": "氣溫 19～23°C，降雨機率 20%。",
+      "cities": [
+        "屏東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-df14557fedd369ed7d1790cd",
+      "category": "天氣預報",
+      "title": "桃園市天氣｜多雲時晴",
+      "summary": "氣溫 16～19°C，降雨機率 0%。",
+      "cities": [
+        "桃園市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-ee3c7f45c3ad01c56fd939f7",
+      "category": "天氣預報",
+      "title": "嘉義市天氣｜多雲時晴",
+      "summary": "氣溫 15～20°C，降雨機率 20%。",
+      "cities": [
+        "嘉義市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-28T18:00:00+08:00",
+      "ends_at": "2026-11-29T06:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
     },
     {
       "id": "power-b950911038eba4adf5ba5dd5",
@@ -1453,6 +671,314 @@
       "ends_at": "2026-11-29T06:00:00+08:00",
       "source": "台灣電力公司",
       "url": "https://data.gov.tw/dataset/26144"
+    },
+    {
+      "id": "weather-00aa74821158e00110c26544",
+      "category": "天氣預報",
+      "title": "臺中市天氣｜晴時多雲",
+      "summary": "氣溫 16～26°C，降雨機率 0%。",
+      "cities": [
+        "臺中市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-04ddb810b25424889eb77942",
+      "category": "天氣預報",
+      "title": "新竹縣天氣｜晴時多雲",
+      "summary": "氣溫 16～23°C，降雨機率 0%。",
+      "cities": [
+        "新竹縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-21c04e095cc1b239f46c2c2f",
+      "category": "天氣預報",
+      "title": "基隆市天氣｜晴時多雲",
+      "summary": "氣溫 18～20°C，降雨機率 10%。",
+      "cities": [
+        "基隆市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-26e841c98ede70bc7683ae8c",
+      "category": "天氣預報",
+      "title": "屏東縣天氣｜晴時多雲",
+      "summary": "氣溫 19～27°C，降雨機率 10%。",
+      "cities": [
+        "屏東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-39fe25412fa0e95f4a492dd0",
+      "category": "天氣預報",
+      "title": "桃園市天氣｜晴時多雲",
+      "summary": "氣溫 16～22°C，降雨機率 0%。",
+      "cities": [
+        "桃園市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-44bfd9fa8bf51d7031f5597c",
+      "category": "天氣預報",
+      "title": "新竹市天氣｜晴時多雲",
+      "summary": "氣溫 16～23°C，降雨機率 0%。",
+      "cities": [
+        "新竹市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-50fa4a744d57f48cfa8529d9",
+      "category": "天氣預報",
+      "title": "彰化縣天氣｜晴時多雲",
+      "summary": "氣溫 16～26°C，降雨機率 0%。",
+      "cities": [
+        "彰化縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-52197c4a2f6679a47532ef76",
+      "category": "天氣預報",
+      "title": "南投縣天氣｜晴時多雲",
+      "summary": "氣溫 15～26°C，降雨機率 0%。",
+      "cities": [
+        "南投縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-55ceaafce619a2ed95151f5e",
+      "category": "天氣預報",
+      "title": "澎湖縣天氣｜晴時多雲",
+      "summary": "氣溫 20～23°C，降雨機率 0%。",
+      "cities": [
+        "澎湖縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-59a5e7fefc153f1030e56a4b",
+      "category": "天氣預報",
+      "title": "臺南市天氣｜晴時多雲",
+      "summary": "氣溫 17～25°C，降雨機率 10%。",
+      "cities": [
+        "臺南市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-6bae56246c8ae1e5284f344e",
+      "category": "天氣預報",
+      "title": "金門縣天氣｜晴時多雲",
+      "summary": "氣溫 16～20°C，降雨機率 0%。",
+      "cities": [
+        "金門縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-72206af328b74491f891711b",
+      "category": "天氣預報",
+      "title": "宜蘭縣天氣｜陰時多雲",
+      "summary": "氣溫 15～21°C，降雨機率 10%。",
+      "cities": [
+        "宜蘭縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-938836d96b4523f92f0d24d9",
+      "category": "天氣預報",
+      "title": "新北市天氣｜晴時多雲",
+      "summary": "氣溫 17～22°C，降雨機率 10%。",
+      "cities": [
+        "新北市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-9c0fe14cca459fa7d375803f",
+      "category": "天氣預報",
+      "title": "花蓮縣天氣｜晴時多雲",
+      "summary": "氣溫 17～21°C，降雨機率 10%。",
+      "cities": [
+        "花蓮縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-a75650e4ad2f210cc5aff464",
+      "category": "天氣預報",
+      "title": "高雄市天氣｜晴時多雲",
+      "summary": "氣溫 20～27°C，降雨機率 10%。",
+      "cities": [
+        "高雄市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-abb962b100daca9218fcf978",
+      "category": "天氣預報",
+      "title": "臺東縣天氣｜多雲時晴",
+      "summary": "氣溫 18～23°C，降雨機率 10%。",
+      "cities": [
+        "臺東縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-adc6411bc743656fdb82b6c8",
+      "category": "天氣預報",
+      "title": "嘉義市天氣｜晴時多雲",
+      "summary": "氣溫 15～26°C，降雨機率 10%。",
+      "cities": [
+        "嘉義市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-b25569be58d84076f190de9c",
+      "category": "天氣預報",
+      "title": "連江縣天氣｜晴時多雲",
+      "summary": "氣溫 16～18°C，降雨機率 0%。",
+      "cities": [
+        "連江縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-c966500d62fe4972be61bf45",
+      "category": "天氣預報",
+      "title": "臺北市天氣｜晴時多雲",
+      "summary": "氣溫 17～22°C，降雨機率 10%。",
+      "cities": [
+        "臺北市"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-d2e7281a948cd54bac7a3cdf",
+      "category": "天氣預報",
+      "title": "苗栗縣天氣｜晴時多雲",
+      "summary": "氣溫 14～24°C，降雨機率 0%。",
+      "cities": [
+        "苗栗縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-d4dfef83f3b09ff98c7674cb",
+      "category": "天氣預報",
+      "title": "雲林縣天氣｜晴時多雲",
+      "summary": "氣溫 15～26°C，降雨機率 0%。",
+      "cities": [
+        "雲林縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
+    },
+    {
+      "id": "weather-e2a1f56780c60832d1979028",
+      "category": "天氣預報",
+      "title": "嘉義縣天氣｜晴時多雲",
+      "summary": "氣溫 14～26°C，降雨機率 10%。",
+      "cities": [
+        "嘉義縣"
+      ],
+      "district": "",
+      "starts_at": "2026-11-29T06:00:00+08:00",
+      "ends_at": "2026-11-29T18:00:00+08:00",
+      "source": "中央氣象署",
+      "url": "https://www.cwa.gov.tw/"
     },
     {
       "id": "power-45d353ac23099f30c5848fb1",
